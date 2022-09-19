@@ -5,7 +5,7 @@ export interface RadioProps extends React.ComponentPropsWithoutRef<'input'> {
   labelClassName?: string;
 }
 
-export function Radio(props: RadioProps) {
+export const Radio = (props: RadioProps) => {
   const { label, labelClassName, ...inputProps } = props;
 
   const disabledClassName = props.disabled ? 'before:bg-dark-400' : '';
@@ -20,6 +20,4 @@ export function Radio(props: RadioProps) {
       {label && <Label className={`!text-sm font-normal mb-0 ${labelClassName}`}>{label}</Label>}
     </label>
   );
-}
-
-export default Radio;
+};
