@@ -18,6 +18,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.0",
     "remixicon": "^2.5.0"
   },
   "devDependencies": {

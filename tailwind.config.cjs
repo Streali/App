@@ -87,6 +87,13 @@ module.exports = {
           400: '#a5dc73',
           500: '#86d313',
         },
+        accent: {
+          500: '#d0ff1f',
+          400: '#d9ff4c',
+          300: '#e3ff79',
+          200: '#ecffa5',
+          100: '#f6ffd2',
+        },
       },
       animation: {
         dialogFadeIn: 'dialogFadeIn .3s ease-in-out',
