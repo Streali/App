@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Label } from '../forms/label/label';
+import { Label } from '../label/label';
 
 export enum InputState {
   Normal = 'normal',

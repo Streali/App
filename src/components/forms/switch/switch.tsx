@@ -1,5 +1,6 @@
 import * as SwitchLib from '@radix-ui/react-switch';
 import { useState } from 'react';
+import { Label } from '../label/label';
 
 export interface SwitchProps {
   checked?: boolean;
@@ -34,6 +35,7 @@ export const Switch = (props: SwitchProps) => {
               pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </SwitchLib.Root>
+      {label && <Label className={`!text-sm font-normal !mb-0 ${labelClassName}`}>{label}</Label>}
     </div>
   );
 };
