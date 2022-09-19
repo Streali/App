@@ -49,5 +49,3 @@ export const Tabs = (props: TabsProps) => {
     </TabsLib.Root>
   );
 };
-
-export default Tabs;
