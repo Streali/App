@@ -2,6 +2,11 @@ import { SingleValue } from 'react-select';
 import { GoogleFontsFamily, useGoogleFont } from '../../../hooks/fonts/useGoogleFont';
 import { Select } from '../select/select';
 
+export interface FontVariants {
+  label: string;
+  value: string;
+}
+
 export interface FontSelectProps {
   className?: string;
   onChange?: (font: string, variants: { label: string; value: string }[]) => void;
@@ -23,6 +28,8 @@ export const FontSelect = (props: FontSelectProps) => {
       case '300':
         return 'Light';
       case '400':
+        return 'Regular';
+      case 'regular':
         return 'Regular';
       case '500':
         return 'Medium';

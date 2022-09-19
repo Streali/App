@@ -1,7 +1,8 @@
 .select__control {
   background-color: theme('colors.dark.400') !important;
   border-color: transparent !important;
-  border-radius: theme('borderRadius.md') !important;
+  border-radius: theme('borderRadius.lg') !important;
+  height: theme('spacing.10') !important;
 
   &--is-focused {
     border-color: theme('colors.primary.500') !important;

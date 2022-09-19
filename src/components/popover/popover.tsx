@@ -8,6 +8,8 @@ export interface PopoverProps {
   children: React.ReactNode;
   open: boolean;
   onOpenChange?: (open: boolean) => void;
+  width?: string;
+  color?: 'normal' | 'black';
 }
 
 export const Popover = (props: PopoverProps) => {
@@ -17,7 +19,9 @@ export const Popover = (props: PopoverProps) => {
     side = 'bottom',
     children,
     open = false,
+    width = '300px',
     onOpenChange,
+    color = 'normal',
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +44,10 @@ export const Popover = (props: PopoverProps) => {
       </PopoverLib.Trigger>
       <PopoverLib.Portal>
         <PopoverLib.Content
-          className={`w-[300px] p-3 rounded-xl bg-dark-500 ${animationClassName[side]} outline-none`}
+          className={`p-3 rounded-xl ${color === 'normal' ? 'bg-dark-500' : 'bg-black'} ${
+            animationClassName[side]
+          } outline-none`}
+          style={{ width }}
           align={align}
           side={side}
           sideOffset={5}

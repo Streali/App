@@ -52,7 +52,7 @@ export const Input = (props: InputProps) => {
     <label className={containerClassName}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <input
-        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-md px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${className}`}
+        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${className}`}
         data-testid="input"
         onChange={onChangeValue}
         {...inputProps}

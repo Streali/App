@@ -6,6 +6,7 @@ export enum ButtonColor {
   Dark = 'dark',
   Error = 'error',
   Accent = 'accent',
+  Black = 'black',
 }
 
 export enum ButtonSize {
@@ -55,7 +56,9 @@ export const Button = (props: ButtonProps) => {
     [ButtonColor.Error]:
       'bg-error-500 hover:bg-error-400 focus-visible:bg-error-300 outline-error-500',
     [ButtonColor.Accent]:
-      'bg-accent-500 hover:bg-accent-400 focus-visible:bg-accent-300 outline-accent-500 text-black',
+      'bg-accent-500 hover:bg-accent-400 focus-visible:bg-accent-300 outline-accent-500 !text-black',
+    [ButtonColor.Black]:
+      'bg-black hover:bg-dark-500 focus-visible:bg-accent-300 outline-accent-500 text-white',
   };
 
   const sizeChoose = {
@@ -63,7 +66,7 @@ export const Button = (props: ButtonProps) => {
     [ButtonSize.Big]: 'h-14 rounded-md px-4',
     [ButtonSize.Small]: 'h-10 rounded px-3',
     [ButtonSize.Very_Small]: 'h-8 rounded px-3 text-sm',
-    [ButtonSize.Micro]: 'h-6 rounded px-2 text-xs rounded-full gap-1',
+    [ButtonSize.Micro]: '!h-6 rounded px-2 text-xs !rounded-full gap-1',
   };
 
   const disabledClassName =
@@ -88,7 +91,8 @@ export const Button = (props: ButtonProps) => {
         target="_blank"
         rel="noreferrer"
         className={defineClassName}
-        data-testid="btn-externallink">
+        data-testid="btn-externallink"
+      >
         {buttonContent}
       </a>
     );
