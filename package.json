@@ -67,8 +67,7 @@
   },
   "lint-staged": {
     "**/*": [
-      "prettier --write --ignore-unknown",
-      "yarn eslint --fix"
+      "prettier --write --ignore-unknown"
     ]
   },
   "husky": {
