@@ -6,6 +6,7 @@ import { Tabs } from './tabs';
 import { Pointer } from './pointer';
 import { rgbaStringToHsva, color as colorResult } from '@uiw/color-convert';
 import * as Portal from '@radix-ui/react-portal';
+import './color-picker.scss';
 
 export interface ColorPickerProps {
   color?: HsvaColor;
@@ -24,7 +25,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
   }, [hsva, onChange]);
 
   return (
-    <Portal.Root className="absolute z-50" style={{ top: `${top + 70}px`, left }}>
+    <Portal.Root className="absolute z-50" style={{ top: `${top + 48}px`, left }}>
       <div
         className={`color-picker flex w-56 rounded-md bg-dark-500 border-dark-300 border-2 box-border  ${className}`}
       >
