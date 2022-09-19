@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { hexToHsva } from '@uiw/color-convert';
 import { useRef, useState } from 'react';
-import { InputState } from '../input/input';
+import { Input, InputState } from '../input/input';
 import { Label } from '../label/label';
 import { ColorPicker } from '../color-picker/color-picker';
 import { useEffect } from 'react';
@@ -10,6 +10,7 @@ export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
   label?: string;
   labelClassName?: string;
   containerClassName?: string;
+  haveInput?: boolean;
   state?: InputState;
   errorMessage?: string;
   value?: string;
@@ -19,6 +20,7 @@ export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
 export const Color = (props: ColorProps) => {
   const {
     label,
+    haveInput = true,
     labelClassName = '',
     containerClassName = '',
     state = InputState.Normal,
@@ -77,10 +79,7 @@ export const Color = (props: ColorProps) => {
   return (
     <label className={`relative block ${containerClassName}`} ref={input}>
       {label && <Label className={labelClassName}>{label}</Label>}
-      <div
-        className={`h-10 w-full border-2 border-dark-300 text-sm text-white flex items-center gap-2 bg-dark-500 rounded-md px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
-        {...inputProps}
-      >
+      <div className="flex items-center gap-2">
         {showPicker && input.current && (
           <>
             <ColorPicker
@@ -98,16 +97,19 @@ export const Color = (props: ColorProps) => {
         )}
         <div
           onClick={() => setShowPicker(true)}
-          className="w-4 h-4 rounded-sm border border-dark-300"
-          style={{ backgroundColor: val }}
-        ></div>
-        <input
-          type="text"
-          className="flex grow bg-transparent border-none outline-none"
-          maxLength={9}
-          value={val.includes('#') ? val.toUpperCase() : `#${val.toUpperCase()}`}
-          onChange={(e) => onChangeTextValue(e)}
-        />
+          className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer"
+        >
+          <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
+        </div>
+        {haveInput && (
+          <input
+            type="text"
+            className={`h-10 flex-1 border border-transparent text-xs text-white bg-dark-400 rounded-md px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
+            maxLength={9}
+            value={val.includes('#') ? val.toUpperCase() : `#${val.toUpperCase()}`}
+            onChange={(e) => onChangeTextValue(e)}
+          />
+        )}
       </div>
       {errorMessage && (
         <span className="text-xs text-error-500 mt-1.5" data-testid="input-errormessage">
