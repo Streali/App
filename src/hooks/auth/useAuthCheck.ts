@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { AuthCheckSchema } from '../../../types/schema/auth';
-import { apiClient } from '../../../utils/axios/axios';
-import { queryKeys } from '../../query-keys';
+import { AuthCheckSchema } from '../../types/schema/auth';
+import { apiClient } from '../../utils/axios/axios';
+import { queryKeys } from '../query-keys';
 
-export function useAuthCheck() {
+export const useAuthCheck = () => {
   return useQuery(
     queryKeys.authCheck(),
     async () => {
@@ -15,4 +15,4 @@ export function useAuthCheck() {
       staleTime: Infinity,
     }
   );
-}
+};
