@@ -7,11 +7,72 @@
 @import 'remixicon/fonts/remixicon.css';
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: theme('fontFamily.sans');
-	background-color: theme('colors.dark.500');
-	color: theme('colors.white');
+  font-family: theme('fontFamily.sans');
+  background-color: theme('colors.dark.500');
+  color: theme('colors.white');
+}
+
+// Animations
+
+.slide-up-fade {
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-down-fade {
+  animation: slideDownFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-left-fade {
+  animation: slideLeftFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-right-fade {
+  animation: slideRightFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFade {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRightFade {
+  0% {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideLeftFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
