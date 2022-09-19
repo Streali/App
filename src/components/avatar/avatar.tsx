@@ -8,7 +8,7 @@ export interface AvatarProps {
   className?: string;
 }
 
-export function Avatar(props: AvatarProps) {
+export const Avatar = (props: AvatarProps) => {
   const { link, size = 40, src, tag, className } = props;
 
   const image = () => {
@@ -44,4 +44,4 @@ export function Avatar(props: AvatarProps) {
   } else {
     return image();
   }
-}
+};
