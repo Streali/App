@@ -27,8 +27,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
   return (
     <Portal.Root className="absolute z-50" style={{ top: `${top + 48}px`, left }}>
       <div
-        className={`color-picker flex w-56 rounded-md bg-dark-500 border-dark-300 border-2 box-border  ${className}`}
-      >
+        className={`color-picker flex w-56 rounded-md bg-dark-500 border-dark-300 border-2 box-border  ${className}`}>
         <Hue
           hue={hsva.h}
           onChange={(newHue) => {

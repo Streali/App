@@ -36,8 +36,7 @@ export const Slider = (props: SliderProps) => {
         max={max}
         step={step}
         className="relative flex items-center w-full"
-        disabled={disabled}
-      >
+        disabled={disabled}>
         <SliderLib.Track className="bg-dark-300 grow rounded h-3">
           <SliderLib.Range
             className={`absolute rounded h-full ${disabled ? 'bg-dark-300' : 'bg-primary-500'}`}

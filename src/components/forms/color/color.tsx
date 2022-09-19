@@ -97,8 +97,7 @@ export const Color = (props: ColorProps) => {
         )}
         <div
           onClick={() => setShowPicker(true)}
-          className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer"
-        >
+          className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer">
           <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
         </div>
         {haveInput && (
