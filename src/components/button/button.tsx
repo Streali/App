@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '../icon/icon';
+import { Icon, IconProps, IconSVG } from '../icon/icon';
 
 export enum ButtonColor {
   Primary = 'primary',
@@ -25,6 +25,7 @@ export interface ButtonProps {
   iconLeft?: string;
   iconRight?: string;
   buttonIcon?: string;
+  buttonIconSVG?: IconProps;
   link?: string;
   external?: boolean;
   onClick?: (e: React.MouseEvent) => void;
@@ -41,6 +42,7 @@ export const Button = (props: ButtonProps) => {
     iconLeft,
     iconRight,
     buttonIcon,
+    buttonIconSVG,
     link,
     external,
     onClick,
@@ -52,7 +54,7 @@ export const Button = (props: ButtonProps) => {
     [ButtonColor.Primary]:
       'bg-primary-500 hover:bg-primary-400 focus-visible:bg-primary-300 outline-primary-300',
     [ButtonColor.Dark]:
-      'bg-dark-500 border-2 border-dark-300 hover:bg-dark-400 focus-visible:bg-dark-300 outline-primary-300',
+      'bg-dark-400 hover:bg-dark-300 focus-visible:bg-dark-300 outline-primary-300',
     [ButtonColor.Error]:
       'bg-error-500 hover:bg-error-400 focus-visible:bg-error-300 outline-error-500',
     [ButtonColor.Accent]:
@@ -62,10 +64,10 @@ export const Button = (props: ButtonProps) => {
   };
 
   const sizeChoose = {
-    [ButtonSize.Normal]: 'h-12 rounded-md px-4',
-    [ButtonSize.Big]: 'h-14 rounded-md px-4',
-    [ButtonSize.Small]: 'h-10 rounded px-3',
-    [ButtonSize.Very_Small]: 'h-8 rounded px-3 text-sm',
+    [ButtonSize.Normal]: 'h-12 rounded-lg px-4',
+    [ButtonSize.Big]: 'h-14 rounded-lg px-4',
+    [ButtonSize.Small]: 'h-10 rounded-lg px-3',
+    [ButtonSize.Very_Small]: 'h-8 rounded-lg px-3 text-sm',
     [ButtonSize.Micro]: '!h-6 rounded px-2 text-xs !rounded-full gap-1',
   };
 
@@ -79,6 +81,7 @@ export const Button = (props: ButtonProps) => {
   const buttonContent = (
     <>
       {iconLeft && <Icon data-testid="btn-iconleft" name={iconLeft} />}
+      {buttonIconSVG && <Icon {...buttonIconSVG} />}
       {buttonIcon ? <Icon data-testid="btn-icon" name={buttonIcon} /> : children}
       {iconRight && <Icon data-testid="btn-iconright" name={iconRight} />}
     </>
