@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Label } from '../label/label';
+import './input.scss';
 
 export enum InputState {
   Normal = 'normal',
@@ -15,6 +16,8 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   state?: InputState;
   errorMessage?: string;
   onChange?: (event: React.ChangeEvent) => void;
+  prefix?: string;
+  suffix?: string;
 }
 
 export const Input = (props: InputProps) => {
@@ -26,6 +29,8 @@ export const Input = (props: InputProps) => {
     state = InputState.Normal,
     errorMessage,
     onChange,
+    prefix,
+    suffix,
     ...inputProps
   } = props;
 
@@ -49,10 +54,24 @@ export const Input = (props: InputProps) => {
   };
 
   return (
-    <label className={containerClassName}>
+    <label className={`relative block ${containerClassName}`}>
       {label && <Label className={labelClassName}>{label}</Label>}
+      {prefix && (
+        <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded left-1 inline-flex items-center leading-none">
+          {prefix}
+        </span>
+      )}
+      {suffix && (
+        <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none">
+          {suffix}
+        </span>
+      )}
       <input
-        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${className}`}
+        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg outline-none focus:border-primary-300 transition ${
+          prefix ? 'pl-11' : 'pl-4'
+        } ${suffix ? 'pr-11' : 'pr-4'} ${
+          stateClassName[state]
+        } ${haveValueClassName} ${disabledClassName} ${className}`}
         data-testid="input"
         onChange={onChangeValue}
         {...inputProps}

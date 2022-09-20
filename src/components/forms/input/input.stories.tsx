@@ -18,4 +18,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   label: 'Label Input',
   disabled: false,
+  prefix: 'px',
+  suffix: '$',
 };

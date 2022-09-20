@@ -130,6 +130,7 @@ export const TextStyle = (props: TextStyleProps) => {
               type="number"
               defaultValue="16"
               className="w-full"
+              suffix="px"
               onChange={(e) => {
                 const target = e.target as HTMLInputElement;
                 handleSettingsChange('fontSize', target.valueAsNumber);
@@ -222,6 +223,7 @@ export const TextStyle = (props: TextStyleProps) => {
                 <Input
                   type="number"
                   defaultValue={0}
+                  suffix="px"
                   onChange={(e) => {
                     const target = e.target as HTMLInputElement;
                     handleSettingsChange('letterSpacing', target.valueAsNumber);
@@ -236,6 +238,7 @@ export const TextStyle = (props: TextStyleProps) => {
                   type="number"
                   defaultValue={100}
                   step={10}
+                  suffix="%"
                   onChange={(e) => {
                     const target = e.target as HTMLInputElement;
                     handleSettingsChange('lineHeight', target.valueAsNumber);

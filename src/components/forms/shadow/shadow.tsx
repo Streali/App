@@ -63,6 +63,7 @@ export const Shadow = (props: ShadowProps) => {
       <Input
         type="number"
         defaultValue={0}
+        suffix="px"
         className="flex-1 w-full"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
@@ -72,6 +73,7 @@ export const Shadow = (props: ShadowProps) => {
       <Input
         type="number"
         defaultValue={0}
+        suffix="px"
         className="flex-1 w-full"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
@@ -81,6 +83,7 @@ export const Shadow = (props: ShadowProps) => {
       <Input
         type="number"
         defaultValue={0}
+        suffix="px"
         className="flex-1 w-full"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
