@@ -140,6 +140,7 @@ export const TextStyle = (props: TextStyleProps) => {
             haveInput={false}
             className="shrink-0"
             onColorChange={(value) => handleSettingsChange('color', value)}
+            align="end"
           />
         </div>
       </div>
@@ -208,12 +209,10 @@ export const TextStyle = (props: TextStyleProps) => {
             <Button
               size={ButtonSize.Micro}
               iconRight="arrow-down-s-line"
-              color={ButtonColor.Accent}
-            >
+              color={ButtonColor.Accent}>
               More
             </Button>
-          }
-        >
+          }>
           <div className="w-full">
             <div className="flex gap-2 mb-2">
               <div className="flex gap-2">

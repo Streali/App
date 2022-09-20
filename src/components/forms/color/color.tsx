@@ -5,6 +5,7 @@ import { Input, InputState } from '../input/input';
 import { Label } from '../label/label';
 import { ColorPicker } from '../color-picker/color-picker';
 import { useEffect } from 'react';
+import { Popover } from '../../popover/popover';
 
 export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
   label?: string;
@@ -15,6 +16,8 @@ export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
   errorMessage?: string;
   value?: string;
   onColorChange?: (value: string) => void;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
 }
 
 export const Color = (props: ColorProps) => {
@@ -27,14 +30,14 @@ export const Color = (props: ColorProps) => {
     errorMessage,
     onColorChange,
     value = '#ff0000',
+    side = 'bottom',
+    align = 'start',
     ...inputProps
   } = props;
 
   const [val, setVal] = useState<string>(value || '#000000');
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const input = useRef<HTMLLabelElement>(null);
-  const [top, setTop] = useState<number>(0);
-  const [left, setLeft] = useState<number>(0);
 
   const stateClassName = {
     [InputState.Normal]: '',
@@ -71,35 +74,36 @@ export const Color = (props: ColorProps) => {
     };
   };
 
-  useEffect(() => {
-    setTop(input.current?.offsetTop || 0);
-    setLeft(input.current?.offsetLeft || 0);
-  }, [input]);
-
   return (
     <label className={`relative block ${containerClassName}`} ref={input}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <div className="flex items-center gap-2">
-        {showPicker && input.current && (
+        <Popover
+          open={showPicker}
+          className="!p-0"
+          width="220px"
+          onOpenChange={(open) => setShowPicker(open)}
+          align={align}
+          side={side}
+          trigger={
+            <div
+              onClick={() => setShowPicker(true)}
+              className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer">
+              <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
+            </div>
+          }>
+          <ColorPicker color={hexaToHsva(val)} onChange={(e) => onChangePickerValue(e)} />
+        </Popover>
+
+        {/* {showPicker && input.current && (
           <>
-            <ColorPicker
-              top={top}
-              left={left}
-              className=""
-              color={hexaToHsva(val)}
-              onChange={(e) => onChangePickerValue(e)}
-            />
             <div
               className="fixed w-screen h-screen top-0 left-0"
               onClick={() => setShowPicker(false)}
             />
           </>
-        )}
-        <div
-          onClick={() => setShowPicker(true)}
-          className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer">
-          <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
-        </div>
+        )} */}
+
         {haveInput && (
           <input
             type="text"

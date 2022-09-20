@@ -91,8 +91,7 @@ export const Button = (props: ButtonProps) => {
         target="_blank"
         rel="noreferrer"
         className={defineClassName}
-        data-testid="btn-externallink"
-      >
+        data-testid="btn-externallink">
         {buttonContent}
       </a>
     );
