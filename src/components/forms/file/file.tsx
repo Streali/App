@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Dropzone from 'react-dropzone';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
+import { Button, ButtonSize } from '../../button/button';
 
 export interface FileProps {
   onChange?: (files: File[]) => void;
@@ -11,12 +11,23 @@ export interface FileProps {
   className?: string;
 }
 
-export const File = (props: FileProps) => {
+export interface FileProps {
+  onChange?: (files: File[]) => void;
+  maxFiles?: number;
+  maxSize?: number;
+  accept?: { [key: string]: string[] };
+  disabled?: boolean;
+  className?: string;
+}
+
+export function File(props: FileProps) {
   const { onChange, maxFiles = 1, maxSize = 1, accept, disabled = false, className = '' } = props;
   const [dragOver, setDragOver] = useState(false);
+  const sizeConversion = maxSize * 1000000;
   const [fileName, setFileName] = useState<string[]>([]);
 
   const handleDrop = (acceptedFiles: File[]) => {
+    console.log(accept);
     setFileName(acceptedFiles.map((file) => file.name));
     onChange && onChange(acceptedFiles);
   };
@@ -27,8 +38,8 @@ export const File = (props: FileProps) => {
       onDragEnter={() => setDragOver(true)}
       onDragLeave={() => setDragOver(false)}
       maxFiles={maxFiles}
-      maxSize={maxSize}
       accept={accept}
+      maxSize={sizeConversion}
       disabled={disabled}>
       {({ getRootProps, getInputProps }) => (
         <section>
