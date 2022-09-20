@@ -1,4 +1,5 @@
 import { Label } from '../label/label';
+import './checkbox.scss';
 
 export interface CheckboxProps extends React.ComponentPropsWithoutRef<'input'> {
   label?: string;

@@ -33,8 +33,7 @@ export const Tabs = (props: TabsProps) => {
                 size={ButtonSize.Small}
                 disabled={disabled}
                 onClick={() => handleChange(index)}
-                type="button"
-              >
+                type="button">
                 {title}
               </Button>
             </div>
