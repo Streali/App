@@ -42,7 +42,7 @@ export const Popover = (props: PopoverProps) => {
   return (
     <PopoverLib.Root open={isOpen} onOpenChange={onOpenChange}>
       <PopoverLib.Trigger asChild>
-        <div>{trigger}</div>
+        <div className="p-5">{trigger}</div>
       </PopoverLib.Trigger>
       <PopoverLib.Portal>
         <PopoverLib.Content
