@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { IconSVG } from '../../icon/icon';
-import Color from '../color/color';
+import { Color } from '../color/color';
 import { Input } from '../input/input';
 import { Select } from '../select/select';
 

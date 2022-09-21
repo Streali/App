@@ -1,5 +1,6 @@
 import { SingleValue } from 'react-select';
 import { GoogleFontsFamily, useGoogleFont } from '../../../hooks/fonts/useGoogleFont';
+import { convertFontWeight } from '../../../utils/fonts/convert-weight';
 import { Select } from '../select/select';
 
 export interface FontVariants {
@@ -18,33 +19,6 @@ export interface FontSelectProps {
 export const FontSelect = (props: FontSelectProps) => {
   const { className, onChange, value, disabled, label } = props;
   const { data: fonts } = useGoogleFont();
-
-  const convertFontWeight = (weight: string) => {
-    switch (weight) {
-      case '100':
-        return 'Thin';
-      case '200':
-        return 'Extra Light';
-      case '300':
-        return 'Light';
-      case '400':
-        return 'Regular';
-      case 'regular':
-        return 'Regular';
-      case '500':
-        return 'Medium';
-      case '600':
-        return 'Semi Bold';
-      case '700':
-        return 'Bold';
-      case '800':
-        return 'Extra Bold';
-      case '900':
-        return 'Black';
-      default:
-        return weight;
-    }
-  };
 
   function handleFontChange(value: SingleValue<{ value: string; label: string }>) {
     const font = fonts?.find((f: GoogleFontsFamily) => f.family === value?.value);

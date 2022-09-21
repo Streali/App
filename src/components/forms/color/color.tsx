@@ -121,5 +121,3 @@ export const Color = (props: ColorProps) => {
     </label>
   );
 };
-
-export default Color;

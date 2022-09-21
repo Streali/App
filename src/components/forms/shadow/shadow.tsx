@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Color from '../color/color';
+import { Color } from '../color/color';
 import { Input } from '../input/input';
 
 export interface ShadowSettings {
@@ -12,10 +12,11 @@ export interface ShadowSettings {
 export interface ShadowProps {
   onChange?: (settings: ShadowSettings) => void;
   settings?: ShadowSettings;
+  className?: string;
 }
 
 export const Shadow = (props: ShadowProps) => {
-  const { onChange, settings } = props;
+  const { onChange, settings, className = '' } = props;
 
   const [shadowSettings, setShadowSettings] = useState<ShadowSettings>({
     shadowColor: '#000000',
@@ -54,7 +55,7 @@ export const Shadow = (props: ShadowProps) => {
   }, [settings]);
 
   return (
-    <div className="flex gap-2 w-full flex-1 min-w-full">
+    <div className={`flex gap-2 w-full flex-1 min-w-full ${className}`}>
       <Color
         haveInput={false}
         value={shadowSettings.shadowColor}

@@ -49,7 +49,7 @@ export const Badges = (props: BadgesProps) => {
     if (settings) {
       setBadgesSettings(settings);
     }
-  }, []);
+  }, [settings]);
 
   return (
     <div className={className}>

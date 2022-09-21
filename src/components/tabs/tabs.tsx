@@ -24,13 +24,13 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <TabsLib.Root defaultValue="tab-0">
-      <TabsLib.List className="flex gap-2 mb-3">
+      <TabsLib.List className="flex gap-2 mb-3 bg-dark-600 p-2 rounded-2xl">
         {content.map(({ title, disabled }, index) => (
           <TabsLib.Trigger value={'tab-' + index} key={title + index} disabled={disabled} asChild>
             <div className="outline-none">
               <Button
                 color={activeTabIndex === index ? ButtonColor.Primary : ButtonColor.Dark}
-                size={ButtonSize.Small}
+                size={ButtonSize.Very_Small}
                 disabled={disabled}
                 onClick={() => handleChange(index)}
                 type="button">

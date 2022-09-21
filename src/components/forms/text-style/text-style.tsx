@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { convertFontWeight } from '../../../utils/fonts/convert-weight';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { Icon } from '../../icon/icon';
 import { Popover } from '../../popover/popover';
-import Color from '../color/color';
+import { Color } from '../color/color';
 import { FontSelect, FontVariants } from '../font-select/font-select';
 import { Input } from '../input/input';
 import { Select } from '../select/select';
@@ -23,11 +24,13 @@ export interface TextStyleSettings {
 
 export interface TextStyleProps {
   onChange?: (settings: TextStyleSettings) => void;
-  settings?: TextStyleSettings;
+  settings: TextStyleSettings;
 }
 
 export const TextStyle = (props: TextStyleProps) => {
   const { onChange, settings } = props;
+
+  console.log(settings);
 
   const [fontVariants, setFontVariants] = useState<FontVariants[]>([
     { label: 'Thin', value: '100' },
@@ -38,18 +41,7 @@ export const TextStyle = (props: TextStyleProps) => {
     { label: 'Black', value: '900' },
   ]);
 
-  const [fontSettings, setFontSettings] = useState<TextStyleSettings>({
-    fontFamily: 'Roboto',
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#ff0000',
-    textAlign: 'left',
-    textDecoration: 'none',
-    fontStyle: 'normal',
-    letterSpacing: 0,
-    lineHeight: 100,
-    textShadow: { x: 0, y: 0, blur: 0, color: '#00000000' },
-  });
+  const [fontSettings, setFontSettings] = useState<TextStyleSettings>(settings);
 
   const [moreOpen, setMoreOpen] = useState<boolean>(false);
 
@@ -116,7 +108,7 @@ export const TextStyle = (props: TextStyleProps) => {
       <div className="flex w-full gap-2 flex-1 mb-2 min-w-full">
         <div className="w-2/3">
           <FontSelect
-            value="Roboto"
+            value={fontSettings.fontFamily}
             className="w-full"
             onChange={(font, variants) => {
               handleSettingsChange('fontFamily', font);
@@ -128,7 +120,7 @@ export const TextStyle = (props: TextStyleProps) => {
           <div className="w-full">
             <Input
               type="number"
-              defaultValue="16"
+              defaultValue={fontSettings.fontSize}
               className="w-full"
               suffix="px"
               onChange={(e) => {
@@ -139,6 +131,7 @@ export const TextStyle = (props: TextStyleProps) => {
           </div>
           <Color
             haveInput={false}
+            value={fontSettings.color}
             className="shrink-0"
             onColorChange={(value) => handleSettingsChange('color', value)}
             align="end"
@@ -149,7 +142,7 @@ export const TextStyle = (props: TextStyleProps) => {
         <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3">
           <Button
             iconLeft="underline"
-            className="h-full w-full justify-center"
+            className="h-full w-full justify-center rounded"
             color={
               fontSettings.textDecoration === 'underline' ? ButtonColor.Primary : ButtonColor.Black
             }
@@ -162,7 +155,7 @@ export const TextStyle = (props: TextStyleProps) => {
           />
           <Button
             iconLeft="italic"
-            className="h-full w-full justify-center"
+            className="h-full w-full justify-center rounded"
             color={fontSettings.fontStyle === 'italic' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => {
               const fontStyle = fontSettings.fontStyle;
@@ -175,26 +168,29 @@ export const TextStyle = (props: TextStyleProps) => {
         <div className="w-1/3">
           <Select
             options={fontVariants}
-            defaultValue={{ label: 'Bold', value: '700' }}
+            defaultValue={{
+              label: convertFontWeight(fontSettings.fontWeight),
+              value: fontSettings.fontWeight,
+            }}
             onChange={(value) => handleSettingsChange('fontWeight', value?.value || '')}
           />
         </div>
         <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3">
           <Button
             iconLeft="align-left"
-            className="h-full w-full justify-center"
+            className="h-full w-full justify-center rounded"
             color={fontSettings.textAlign === 'left' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'left')}
           />
           <Button
             iconLeft="align-center"
-            className="h-full w-full justify-center"
+            className="h-full w-full justify-center rounded"
             color={fontSettings.textAlign === 'center' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'center')}
           />
           <Button
             iconLeft="align-right"
-            className="h-full w-full justify-center"
+            className="h-full w-full justify-center rounded"
             color={fontSettings.textAlign === 'right' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'right')}
           />
@@ -222,7 +218,7 @@ export const TextStyle = (props: TextStyleProps) => {
                 </div>
                 <Input
                   type="number"
-                  defaultValue={0}
+                  defaultValue={fontSettings.letterSpacing}
                   suffix="px"
                   onChange={(e) => {
                     const target = e.target as HTMLInputElement;
@@ -236,7 +232,7 @@ export const TextStyle = (props: TextStyleProps) => {
                 </div>
                 <Input
                   type="number"
-                  defaultValue={100}
+                  defaultValue={fontSettings.lineHeight}
                   step={10}
                   suffix="%"
                   onChange={(e) => {
@@ -248,6 +244,12 @@ export const TextStyle = (props: TextStyleProps) => {
             </div>
             <p className="font-medium text-xs mb-2">Text shadow</p>
             <Shadow
+              settings={{
+                shadowOffsetX: fontSettings.textShadow.x,
+                shadowOffsetY: fontSettings.textShadow.y,
+                shadowBlur: fontSettings.textShadow.blur,
+                shadowColor: fontSettings.textShadow.color,
+              }}
               onChange={(settings) =>
                 handleSettingsChange('textShadow', {
                   x: settings.shadowOffsetX,
