@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { BorderRadius, BorderRadiusAllSettings } from './border-radius';
+import { BorderRadius, BorderRadiusSettings } from './border-radius';
 
 export default {
   component: BorderRadius,
@@ -10,7 +10,7 @@ const Template: ComponentStory<typeof BorderRadius> = (args) => <BorderRadius {.
 
 export const Primary = Template.bind({});
 Primary.args = {
-  onChange: (settings: BorderRadiusAllSettings) => {
+  onChange: (settings: BorderRadiusSettings) => {
     console.log(settings);
   },
 };

@@ -4,20 +4,16 @@ import { IconSVG } from '../../icon/icon';
 import { Input } from '../input/input';
 
 export interface BorderRadiusSettings {
-  radius: number;
-}
-
-export interface BorderRadiusAllSettings {
-  topLeft: BorderRadiusSettings;
-  topRight: BorderRadiusSettings;
-  bottomRight: BorderRadiusSettings;
-  bottomLeft: BorderRadiusSettings;
+  topLeft: number;
+  topRight: number;
+  bottomRight: number;
+  bottomLeft: number;
 }
 
 export interface BorderRadiusProps {
   className?: string;
-  onChange?: (settings: BorderRadiusAllSettings) => void;
-  settings?: BorderRadiusAllSettings;
+  onChange?: (settings: BorderRadiusSettings) => void;
+  settings?: BorderRadiusSettings;
 }
 
 export const BorderRadius = (props: BorderRadiusProps) => {
@@ -26,29 +22,29 @@ export const BorderRadius = (props: BorderRadiusProps) => {
   const [selectBorder, setSelectBorder] = useState<
     'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft'
   >('topRight');
-  const [currentSettings, setCurrentSettings] = useState<BorderRadiusAllSettings>({
-    topLeft: { radius: 4 },
-    topRight: { radius: 4 },
-    bottomRight: { radius: 4 },
-    bottomLeft: { radius: 4 },
+  const [currentSettings, setCurrentSettings] = useState<BorderRadiusSettings>({
+    topLeft: 0,
+    topRight: 0,
+    bottomRight: 0,
+    bottomLeft: 0,
   });
   const borderRadiusPositions = ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'];
 
-  const handleAllChanges = (key: 'radius', value: number) => {
+  const handleAllChanges = (value: number) => {
     const newSettings = {
-      topLeft: { ...currentSettings.topLeft, [key]: value },
-      topRight: { ...currentSettings.topRight, [key]: value },
-      bottomRight: { ...currentSettings.bottomRight, [key]: value },
-      bottomLeft: { ...currentSettings.bottomLeft, [key]: value },
+      topLeft: value,
+      topRight: value,
+      bottomRight: value,
+      bottomLeft: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
   };
 
-  const handleChanges = (key: 'radius', value: number) => {
+  const handleChanges = (value: number) => {
     const newSettings = {
       ...currentSettings,
-      [selectBorder]: { ...currentSettings[selectBorder], [key]: value },
+      [selectBorder]: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
@@ -72,11 +68,11 @@ export const BorderRadius = (props: BorderRadiusProps) => {
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.topLeft.radius}
+            defaultValue={currentSettings.topLeft}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
-              handleAllChanges('radius', target.valueAsNumber);
+              handleAllChanges(target.valueAsNumber);
             }}
           />
         </div>
@@ -140,11 +136,11 @@ export const BorderRadius = (props: BorderRadiusProps) => {
                   <Input
                     type="number"
                     suffix="px"
-                    defaultValue={currentSettings[position].radius}
+                    defaultValue={currentSettings[position]}
                     className="w-full"
                     onChange={(e) => {
                       const target = e.target as HTMLInputElement;
-                      handleChanges('radius', target.valueAsNumber);
+                      handleChanges(target.valueAsNumber);
                     }}
                   />
                 </div>
