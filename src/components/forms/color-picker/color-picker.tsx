@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Saturation from '@uiw/react-color-saturation';
 import Hue from '@uiw/react-color-hue';
 import { HsvaColor } from '@uiw/color-convert';
@@ -6,6 +5,7 @@ import { Tabs } from './tabs';
 import { Pointer } from './pointer';
 import { rgbaStringToHsva, color as colorResult } from '@uiw/color-convert';
 import './color-picker.scss';
+import { useEffect, useState } from 'react';
 
 export interface ColorPickerProps {
   color?: HsvaColor;
@@ -15,11 +15,11 @@ export interface ColorPickerProps {
 
 export const ColorPicker = (props: ColorPickerProps) => {
   const { color = rgbaStringToHsva('rgba(255,0,0,1)'), onChange, className } = props;
-  const [hsva, setHsva] = React.useState<HsvaColor>(color);
+  const [hsva, setHsva] = useState<HsvaColor>(color);
 
-  React.useEffect(() => {
+  useEffect(() => {
     onChange(colorResult(hsva).hexa);
-  }, [hsva, onChange]);
+  }, [hsva]);
 
   return (
     <div
