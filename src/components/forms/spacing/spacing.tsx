@@ -80,6 +80,7 @@ export const Spacing = (props: SpacingProps) => {
           <Input
             type="number"
             suffix="px"
+            prefixIconSvg={IconSVG.BorderHorizontal}
             value={currentSettings.top}
             className="w-full"
             onChange={(e) => {
