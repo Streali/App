@@ -9,11 +9,29 @@ export const IconBorderRadiusTopRight = (props: IconSVGProps) => {
       width={width}
       height={height}
       fill="none"
-      viewBox="0 0 20 20"
+      viewBox="0 0 24 24"
       className={className}>
+      <mask
+        id="mask0_762_2289"
+        style={{ maskType: 'alpha' }}
+        width="20"
+        height="20"
+        x="2"
+        y="2"
+        maskUnits="userSpaceOnUse">
+        <path
+          fill={fill}
+          d="M17 2H7C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5zm3 15c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10c1.654 0 3 1.346 3 3v10z"></path>
+      </mask>
+      <g mask="url(#mask0_762_2289)">
+        <path fill={fill} d="M11 2H22V13H11z"></path>
+      </g>
       <path
         fill={fill}
-        d="M5.833 17.5H7.5v-1.667H5.833V17.5zM2.5 4.167h1.667V2.5H2.5v1.667zm3.333 0H7.5V2.5H5.833v1.667zm0 6.666H7.5V9.167H5.833v1.666zM2.5 17.5h1.667v-1.667H2.5V17.5zm6.667 0h1.666v-1.667H9.167V17.5zM2.5 10.833h1.667V9.167H2.5v1.666zm0 3.334h1.667V12.5H2.5v1.667zm0-6.667h1.667V5.833H2.5V7.5zm6.667 6.667h1.666V12.5H9.167v1.667zm3.333-3.334h1.667V9.167H12.5v1.666zM15.833 2.5v15H17.5v-15h-1.667zm-3.333 15h1.667v-1.667H12.5V17.5zm0-13.333h1.667V2.5H12.5v1.667zm-3.333 6.666h1.666V9.167H9.167v1.666zm0-6.666h1.666V2.5H9.167v1.667zm0 3.333h1.666V5.833H9.167V7.5z"></path>
+        fillOpacity="0.5"
+        fillRule="evenodd"
+        d="M7 2h4v2H7C5.346 4 4 5.346 4 7v10c0 1.654 1.346 3 3 3h10c1.654 0 3-1.346 3-3v-4h2v4c0 2.757-2.243 5-5 5H7c-2.757 0-5-2.243-5-5V7c0-2.757 2.243-5 5-5z"
+        clipRule="evenodd"></path>
     </svg>
   );
 };
