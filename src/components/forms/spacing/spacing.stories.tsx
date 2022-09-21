@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Spacing, SpacingSettings } from './spacing';
+import { Spacing } from './spacing';
+import { SpacingType } from '../../../types/schemas/components';
 
 export default {
   component: Spacing,
@@ -10,7 +11,7 @@ const Template: ComponentStory<typeof Spacing> = (args) => <Spacing {...args} />
 
 export const Primary = Template.bind({});
 Primary.args = {
-  onChange: (settings: SpacingSettings) => {
+  onChange: (settings: SpacingType) => {
     console.log(settings);
   },
 };
