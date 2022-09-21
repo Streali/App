@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta, addDecorator, DecoratorFn } from '@storybook/react';
+import { ComponentStory, ComponentMeta, DecoratorFn } from '@storybook/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { Navbar, NavbarProps } from './navbar';
+import { Navbar } from './navbar';
 
 const queryClient = new QueryClient();
 
