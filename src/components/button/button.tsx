@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon, IconProps, IconSVG } from '../icon/icon';
+import { Icon, IconProps } from '../icon/icon';
 
 export enum ButtonColor {
   Primary = 'primary',

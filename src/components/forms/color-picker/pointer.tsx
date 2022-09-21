@@ -1,4 +1,3 @@
-import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { PointerProps } from '@uiw/react-color-alpha/cjs/Pointer';
 
 export const Pointer = (props: PointerProps) => {
