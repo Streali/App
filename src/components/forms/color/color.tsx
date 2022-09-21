@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { hexToHsva } from '@uiw/color-convert';
 import { useRef, useState } from 'react';
-import { Input, InputState } from '../input/input';
+import { InputState } from '../input/input';
 import { Label } from '../label/label';
 import { ColorPicker } from '../color-picker/color-picker';
-import { useEffect } from 'react';
 import { Popover } from '../../popover/popover';
 
 export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
