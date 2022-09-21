@@ -4,49 +4,45 @@ import { IconSVG } from '../../icon/icon';
 import { Input } from '../input/input';
 
 export interface SpacingSettings {
-  width: number;
-}
-
-export interface SpacingAllSettings {
-  left: SpacingSettings;
-  top: SpacingSettings;
-  right: SpacingSettings;
-  bottom: SpacingSettings;
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
 }
 
 export interface SpacingProps {
   className?: string;
-  onChange?: (settings: SpacingAllSettings) => void;
-  settings?: SpacingAllSettings;
+  onChange?: (settings: SpacingSettings) => void;
+  settings?: SpacingSettings;
 }
 
 export const Spacing = (props: SpacingProps) => {
   const { className = '', onChange, settings } = props;
   const [allBordersRadius, setAllBordersRadius] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<'left' | 'top' | 'right' | 'bottom'>('top');
-  const [currentSettings, setCurrentSettings] = useState<SpacingAllSettings>({
-    left: { width: 10 },
-    top: { width: 10 },
-    right: { width: 10 },
-    bottom: { width: 10 },
+  const [currentSettings, setCurrentSettings] = useState<SpacingSettings>({
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
   });
   const spacingPosition = ['left', 'top', 'right', 'bottom'];
 
-  const handleAllChanges = (key: 'width', value: number) => {
+  const handleAllChanges = (value: number) => {
     const newSettings = {
-      left: { ...currentSettings.left, [key]: value },
-      top: { ...currentSettings.top, [key]: value },
-      right: { ...currentSettings.right, [key]: value },
-      bottom: { ...currentSettings.bottom, [key]: value },
+      left: value,
+      top: value,
+      right: value,
+      bottom: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
   };
 
-  const handleChanges = (key: 'width', value: number) => {
+  const handleChanges = (value: number) => {
     const newSettings = {
       ...currentSettings,
-      [selectBorder]: { ...currentSettings[selectBorder], [key]: value },
+      [selectBorder]: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
@@ -70,11 +66,11 @@ export const Spacing = (props: SpacingProps) => {
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.left.width}
+            defaultValue={currentSettings.left}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
-              handleAllChanges('width', target.valueAsNumber);
+              handleAllChanges(target.valueAsNumber);
             }}
           />
         </div>
@@ -138,11 +134,11 @@ export const Spacing = (props: SpacingProps) => {
                   <Input
                     type="number"
                     suffix="px"
-                    defaultValue={currentSettings[position].width}
+                    defaultValue={currentSettings[position]}
                     className="w-full"
                     onChange={(e) => {
                       const target = e.target as HTMLInputElement;
-                      handleChanges('width', target.valueAsNumber);
+                      handleChanges(target.valueAsNumber);
                     }}
                   />
                 </div>
