@@ -43,7 +43,7 @@ export const Input = (props: InputProps) => {
   };
 
   const haveValueClassName =
-    val.length > 0 && state === InputState.Normal ? `!border-primary-300` : '';
+    val.length > 0 && state === InputState.Normal ? `!border-primary-500` : '';
 
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
@@ -67,7 +67,7 @@ export const Input = (props: InputProps) => {
         </span>
       )}
       <input
-        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg outline-none focus:border-primary-300 transition ${
+        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg outline-none focus:border-primary-500 transition ${
           prefix ? 'pl-11' : 'pl-4'
         } ${suffix ? 'pr-11' : 'pr-4'} ${
           stateClassName[state]
