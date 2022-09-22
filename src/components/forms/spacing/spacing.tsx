@@ -80,8 +80,8 @@ export const Spacing = (props: SpacingProps) => {
           <Input
             type="number"
             suffix="px"
-            prefixIconSvg={IconSVG.BorderVertical}
-            defaultValue={currentSettings.top}
+            prefixIconSvg={IconSVG.BorderHorizontal}
+            defaultValue={currentSettings.left}
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
               handleHorizontalChanges(target.valueAsNumber);
