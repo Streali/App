@@ -16,7 +16,7 @@ export const defaultBadgesSettings: BadgesType = {
   style: 'twitch',
   size: 0,
   space: 0,
-  spaceBetween: 0,
+  space_between: 0,
 };
 
 export const Badges = (props: BadgesProps) => {
@@ -43,17 +43,20 @@ export const Badges = (props: BadgesProps) => {
     }
   }, [settings]);
 
+  console.log(badgesPositionOptions.find((pos) => pos.value === badgesSettings.position));
+
   return (
     <div className={className}>
       <div className="flex gap-2 mb-2">
-        <Switch onChange={(checked) => handleSettingsChange('enabled', checked)} />
+        <Switch
+          onChange={(checked) => handleSettingsChange('enabled', checked)}
+          checked={settings?.enabled}
+        />
         <div className="flex-1">
           <Select
             options={badgesPositionOptions}
             className="w-full"
-            defaultValue={badgesPositionOptions.find(
-              (pos) => pos.value === badgesSettings.position
-            )}
+            defaultValue={badgesPositionOptions.find((pos) => pos.value === settings?.position)}
             onChange={(option) => handleSettingsChange('position', option?.value || 'left')}
           />
         </div>
@@ -61,7 +64,7 @@ export const Badges = (props: BadgesProps) => {
           <Select
             options={badgesStyleOptions}
             className="w-full"
-            defaultValue={badgesStyleOptions.find((style) => style.value === badgesSettings.style)}
+            defaultValue={badgesStyleOptions.find((style) => style.value === settings?.style)}
             onChange={(option) => handleSettingsChange('style', option?.value || 'twitch')}
           />
         </div>
@@ -72,7 +75,7 @@ export const Badges = (props: BadgesProps) => {
             label="Badge size"
             type="number"
             suffix="px"
-            defaultValue={badgesSettings.size}
+            defaultValue={settings?.size}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
@@ -85,7 +88,7 @@ export const Badges = (props: BadgesProps) => {
             label="Space"
             type="number"
             suffix="px"
-            defaultValue={badgesSettings.space}
+            defaultValue={settings?.space}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
@@ -98,11 +101,11 @@ export const Badges = (props: BadgesProps) => {
             label="Space between"
             type="number"
             suffix="px"
-            defaultValue={badgesSettings.spaceBetween}
+            defaultValue={settings?.space_between}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
-              handleSettingsChange('spaceBetween', target.valueAsNumber);
+              handleSettingsChange('space_between', target.valueAsNumber);
             }}
           />
         </div>

@@ -1,4 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
+import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
 import { Accordion } from '../../accordion/accordion';
 import { Alignment } from '../../forms/alignment/alignment';
 import { DnDList } from '../../forms/dnd-list/dnd-list';
@@ -19,7 +20,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="title"
           control={control}
-          defaultValue="Chat theme title"
+          defaultValue={defaultChatTheme.title}
           render={({ field: { onChange, value } }) => (
             <Input
               defaultValue={value}
@@ -37,7 +38,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="global.space_between_messages"
           control={control}
-          defaultValue={0}
+          defaultValue={defaultChatTheme.global.space_between_messages}
           render={({ field: { onChange, value } }) => (
             <Slider
               className="mb-3"
@@ -55,7 +56,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="global.alignment"
           control={control}
-          defaultValue={'left'}
+          defaultValue={defaultChatTheme.global.alignment}
           render={({ field: { onChange, value } }) => (
             <Alignment className="mb-3" value={value} onChange={onChange} />
           )}
@@ -65,11 +66,14 @@ export const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="global.layout"
           control={control}
-          defaultValue={{ label: 'Stack', value: 'stack' }}
+          defaultValue={defaultChatTheme.global.layout}
           render={({ field: { onChange, value } }) => (
             <Select
-              defaultValue={value}
-              onChange={onChange}
+              defaultValue={{
+                label: value[0].toUpperCase() + value.substring(1),
+                value: value,
+              }}
+              onChange={(value) => onChange(value?.value)}
               className="mb-3"
               options={[
                 { label: 'Stack', value: 'stack' },

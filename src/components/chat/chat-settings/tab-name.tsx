@@ -34,7 +34,7 @@ export const TabName = (props: TabGeneralProps) => {
           control={control}
           defaultValue={defaultChatTheme.name.background}
           render={({ field: { onChange, value } }) => (
-            <Color value={value} onChange={onChange} containerClassName="mb-3" />
+            <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
           )}
         />
       </Accordion>
@@ -82,7 +82,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.radius"
           control={control}
-          defaultValue={defaultChatTheme.name.margin}
+          defaultValue={defaultChatTheme.name.radius}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}

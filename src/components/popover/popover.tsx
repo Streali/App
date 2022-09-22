@@ -9,7 +9,7 @@ export interface PopoverProps {
   open: boolean;
   onOpenChange?: (open: boolean) => void;
   width?: string;
-  color?: 'normal' | 'black';
+  color?: 'normal' | 'black' | 'dark';
   className?: string;
 }
 
@@ -46,9 +46,9 @@ export const Popover = (props: PopoverProps) => {
       </PopoverLib.Trigger>
       <PopoverLib.Portal>
         <PopoverLib.Content
-          className={`p-3 rounded-xl ${color === 'normal' ? 'bg-dark-400' : 'bg-black'} ${
-            animationClassName[side]
-          } outline-none ${className}`}
+          className={`p-3 rounded-xl ${
+            color === 'normal' ? 'bg-dark-400' : color === 'dark' ? 'bg-dark-500' : 'bg-black'
+          } ${animationClassName[side]} outline-none ${className}`}
           style={{ width }}
           align={align}
           side={side}

@@ -59,7 +59,7 @@ export const Spacing = (props: SpacingProps) => {
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.top}
+            value={currentSettings.top}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;

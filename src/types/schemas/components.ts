@@ -65,7 +65,7 @@ export const BadgesSchema = z.object({
   style: z.enum(['twitch']),
   size: z.number(),
   space: z.number(),
-  spaceBetween: z.number(),
+  space_between: z.number(),
 });
 
 export type BadgesType = z.infer<typeof BadgesSchema>;

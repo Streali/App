@@ -32,7 +32,7 @@ export const TabMessage = (props: TabGeneralProps) => {
           control={control}
           defaultValue={'#000000'}
           render={({ field: { onChange, value } }) => (
-            <Color value={value} onChange={onChange} containerClassName="mb-3" />
+            <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
           )}
         />
       </Accordion>

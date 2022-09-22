@@ -187,6 +187,7 @@ export const TextStyle = (props: TextStyleProps) => {
           open={moreOpen}
           align="end"
           width="350px"
+          color="dark"
           onOpenChange={(open) => setMoreOpen(open)}
           trigger={
             <Button

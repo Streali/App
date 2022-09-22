@@ -40,7 +40,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     margin: {
       top: 0,
       right: 0,
-      bottom: 0,
+      bottom: 8,
       left: 0,
     },
     padding: {
@@ -57,17 +57,17 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
     badges: {
       enabled: true,
-      position: 'left',
+      position: 'right',
       style: 'twitch',
       size: 12,
       space: 8,
-      spaceBetween: 4,
+      space_between: 4,
     },
   },
   message: {
     text: {
       fontFamily: 'Roboto',
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: '700',
       color: '#000000',
       textAlign: 'left',

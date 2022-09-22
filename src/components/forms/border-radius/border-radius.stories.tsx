@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { BorderRadius, BorderRadiusSettings } from './border-radius';
+import { BorderRadiusType } from '../../../types/schemas/components';
+import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
+import { BorderRadius } from './border-radius';
 
 export default {
   component: BorderRadius,
@@ -10,7 +12,8 @@ const Template: ComponentStory<typeof BorderRadius> = (args) => <BorderRadius {.
 
 export const Primary = Template.bind({});
 Primary.args = {
-  onChange: (settings: BorderRadiusSettings) => {
+  onChange: (settings: BorderRadiusType) => {
     console.log(settings);
   },
+  settings: defaultChatTheme.name.radius,
 };

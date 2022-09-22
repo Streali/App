@@ -1,5 +1,5 @@
 import { Icon } from '../../icon/icon';
-import { DragDropContext, DropResult, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult, Droppable, Draggable } from '@hello-pangea/dnd';
 import { useState } from 'react';
 import { OrderType } from '../../../types/schemas/components';
 export interface DnDListProps {
@@ -42,7 +42,7 @@ export const DnDList = (props: DnDListProps) => {
               {...providedDroppable.droppableProps}>
               <>
                 {list.map((element, index) => (
-                  <Draggable draggableId={index.toString()} index={index} key={index}>
+                  <Draggable draggableId={element.id} index={index} key={element.id}>
                     {(providedDraggable) => (
                       <div
                         ref={providedDraggable.innerRef}
@@ -56,6 +56,7 @@ export const DnDList = (props: DnDListProps) => {
                   </Draggable>
                 ))}
               </>
+              {providedDroppable.placeholder}
             </div>
           )}
         </Droppable>

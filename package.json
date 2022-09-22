@@ -16,6 +16,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^16.0.0",
     "@radix-ui/react-accordion": "^1.0.0",
     "@radix-ui/react-dialog": "^1.0.0",
     "@radix-ui/react-popover": "^1.0.0",
@@ -36,6 +37,7 @@
     "react-router-dom": "^6.4.0",
     "react-select": "^5.4.0",
     "remixicon": "^2.5.0",
+    "webfontloader": "^1.6.28",
     "zod": "^3.19.1"
   },
   "devDependencies": {
@@ -54,6 +56,7 @@
     "@types/react": "^18.0.17",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "^18.0.6",
+    "@types/webfontloader": "^1.6.34",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "@vitejs/plugin-react": "^2.1.0",

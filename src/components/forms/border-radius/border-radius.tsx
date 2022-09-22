@@ -13,22 +13,22 @@ export const BorderRadius = (props: BorderRadiusProps) => {
   const { className = '', onChange, settings } = props;
   const [allBordersRadius, setAllBordersRadius] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<
-    'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft'
-  >('topRight');
+    'top_left' | 'top_right' | 'bottom_right' | 'bottom_left'
+  >('top_right');
   const [currentSettings, setCurrentSettings] = useState<BorderRadiusType>({
-    topLeft: 0,
-    topRight: 0,
-    bottomRight: 0,
-    bottomLeft: 0,
+    top_left: 0,
+    top_right: 0,
+    bottom_right: 0,
+    bottom_left: 0,
   });
-  const borderRadiusPositions = ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'];
+  const borderRadiusPositions = ['top_left', 'top_right', 'bottom_right', 'bottom_left'];
 
   const handleAllChanges = (value: number) => {
     const newSettings = {
-      topLeft: value,
-      topRight: value,
-      bottomRight: value,
-      bottomLeft: value,
+      top_left: value,
+      top_right: value,
+      bottom_right: value,
+      bottom_left: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
@@ -45,9 +45,9 @@ export const BorderRadius = (props: BorderRadiusProps) => {
 
   useEffect(() => {
     if (settings) {
-      settings.topLeft === settings.topRight &&
-      settings.topRight === settings.bottomRight &&
-      settings.bottomRight === settings.bottomLeft
+      settings.top_left === settings.top_right &&
+      settings.top_right === settings.bottom_right &&
+      settings.bottom_right === settings.bottom_left
         ? setAllBordersRadius(true)
         : setAllBordersRadius(false);
       setCurrentSettings(settings);
@@ -61,7 +61,7 @@ export const BorderRadius = (props: BorderRadiusProps) => {
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.topLeft}
+            value={currentSettings.top_left}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
@@ -86,29 +86,29 @@ export const BorderRadius = (props: BorderRadiusProps) => {
               buttonIconSVG={{ svg: IconSVG.BorderRadiusTopLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
               className="!w-10 !p-0 justify-center"
-              color={selectBorder === 'topLeft' ? ButtonColor.Primary : ButtonColor.Dark}
-              onClick={() => setSelectBorder('topLeft')}
+              color={selectBorder === 'top_left' ? ButtonColor.Primary : ButtonColor.Dark}
+              onClick={() => setSelectBorder('top_left')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusTopRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
               className="!w-10 !p-0 justify-center"
-              color={selectBorder === 'topRight' ? ButtonColor.Primary : ButtonColor.Dark}
-              onClick={() => setSelectBorder('topRight')}
+              color={selectBorder === 'top_right' ? ButtonColor.Primary : ButtonColor.Dark}
+              onClick={() => setSelectBorder('top_right')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusBottomRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
               className="!w-10 !p-0 justify-center"
-              color={selectBorder === 'bottomRight' ? ButtonColor.Primary : ButtonColor.Dark}
-              onClick={() => setSelectBorder('bottomRight')}
+              color={selectBorder === 'bottom_right' ? ButtonColor.Primary : ButtonColor.Dark}
+              onClick={() => setSelectBorder('bottom_right')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusBottomLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
               className="!w-10 !p-0 justify-center"
-              color={selectBorder === 'bottomLeft' ? ButtonColor.Primary : ButtonColor.Dark}
-              onClick={() => setSelectBorder('bottomLeft')}
+              color={selectBorder === 'bottom_left' ? ButtonColor.Primary : ButtonColor.Dark}
+              onClick={() => setSelectBorder('bottom_left')}
             />
           </div>
           <div className="flex-1 flex justify-end">
