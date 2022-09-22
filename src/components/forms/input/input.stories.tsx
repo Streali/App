@@ -16,7 +16,8 @@ export default {
 const Template: ComponentStory<typeof Input> = (args) => (
   <div className="flex flex-col gap-4">
     <Input {...args} suffix="px" prefix="$" />
-    <Input {...args} suffixIcon={IconSVG.BorderRight} prefixIcon={IconSVG.BorderLeft} />
+    <Input {...args} suffixIconSvg={IconSVG.BorderRight} prefixIconSvg={IconSVG.BorderLeft} />
+    <Input {...args} suffixIcon="pencil-line" prefixIcon="ruler-line" />
   </div>
 );
 

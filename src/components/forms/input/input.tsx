@@ -65,31 +65,29 @@ export const Input = (props: InputProps) => {
   return (
     <label className={`relative block ${containerClassName}`}>
       {label && <Label className={labelClassName}>{label}</Label>}
-      {prefixIconSvg ||
-        (prefixIcon && (
-          <Icon
-            svg={prefixIconSvg}
-            name={prefixIcon}
-            width={32}
-            height={32}
-            className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none"
-          />
-        ))}
+      {(prefixIconSvg || prefixIcon) && (
+        <Icon
+          svg={prefixIconSvg}
+          name={prefixIcon}
+          width={32}
+          height={32}
+          className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none"
+        />
+      )}
       {prefix && (
         <span className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none">
           {prefix}
         </span>
       )}
-      {suffixIconSvg ||
-        (suffixIcon && (
-          <Icon
-            svg={suffixIconSvg}
-            name={suffixIcon}
-            width={32}
-            height={32}
-            className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none"
-          />
-        ))}
+      {(suffixIconSvg || suffixIcon) && (
+        <Icon
+          svg={suffixIconSvg}
+          name={suffixIcon}
+          width={32}
+          height={32}
+          className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none"
+        />
+      )}
       {suffix && (
         <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none">
           {suffix}
