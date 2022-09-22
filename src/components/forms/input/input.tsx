@@ -18,10 +18,10 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   errorMessage?: string;
   onChange?: (event: React.ChangeEvent) => void;
   prefixIconSvg?: IconSVG;
-  prefixIcon: string;
+  prefixIcon?: string;
   prefix?: string;
   suffixIconSvg?: IconSVG;
-  suffixIcon: string;
+  suffixIcon?: string;
   suffix?: string;
 }
 

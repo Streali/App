@@ -1,6 +1,8 @@
-export const defaultChatTheme = {
+import { ChatTheme } from '../../types/schemas/chat';
+
+export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
+  title: 'Chat theme title',
   global: {
-    title: 'Chat theme title',
     space_between_messages: 24,
     alignment: 'left',
     layout: 'stack',
@@ -20,7 +22,7 @@ export const defaultChatTheme = {
       fontStyle: 'normal',
       letterSpacing: 0,
       lineHeight: 100,
-      textShadow: { x: 0, y: 0, blur: 0, color: '#000000' },
+      textShadow: { shadowOffsetX: 0, shadowOffsetY: 0, shadowBlur: 0, shadowColor: '#000000' },
     },
     background: '#ffffff',
     shadow: {
@@ -73,7 +75,7 @@ export const defaultChatTheme = {
       fontStyle: 'normal',
       letterSpacing: 0,
       lineHeight: 100,
-      textShadow: { x: 0, y: 0, blur: 0, color: '#000000' },
+      textShadow: { shadowOffsetX: 0, shadowOffsetY: 0, shadowBlur: 0, shadowColor: '#000000' },
     },
     background: '#ffffff',
     shadow: {

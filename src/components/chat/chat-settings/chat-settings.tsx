@@ -5,17 +5,19 @@ import { TabName } from './tab-name';
 import { TabMessage } from './tab-message';
 import { Button, ButtonColor } from '../../button/button';
 import { useEffect } from 'react';
-import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
+import { ChatTheme } from '../../../types/schemas/chat';
 
 export interface ChatSettingsProps {
   className?: string;
   onSettingsChange: (settings: unknown) => void;
+  settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
+  onSave: (data: FieldValues) => void;
 }
 
 export const ChatSettings = (props: ChatSettingsProps) => {
-  const { className = '', onSettingsChange } = props;
+  const { className = '', onSettingsChange, settings, onSave } = props;
   const { handleSubmit, watch, getValues, control } = useForm({
-    defaultValues: defaultChatTheme as FieldValues,
+    defaultValues: settings as FieldValues,
   });
 
   const tabs: TabProps[] = [
@@ -30,7 +32,7 @@ export const ChatSettings = (props: ChatSettingsProps) => {
   }, [watch, onSettingsChange, getValues]);
 
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    console.log(theme);
+    onSave(theme);
   });
 
   return (

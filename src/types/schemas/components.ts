@@ -7,6 +7,8 @@ export const ShadowSchema = z.object({
   shadowBlur: z.number(),
 });
 
+export type ShadowType = z.infer<typeof ShadowSchema>;
+
 export const TextStyleSchema = z.object({
   fontFamily: z.string(),
   fontSize: z.number(),
@@ -20,11 +22,15 @@ export const TextStyleSchema = z.object({
   textShadow: ShadowSchema,
 });
 
+export type TextStyleType = z.infer<typeof TextStyleSchema>;
+
 export const BorderSchema = z.object({
   color: z.string(),
   width: z.number(),
   style: z.string(),
 });
+
+export type BorderType = z.infer<typeof BorderSchema>;
 
 export const BorderSettingsSchema = z.object({
   top: BorderSchema,
@@ -33,12 +39,16 @@ export const BorderSettingsSchema = z.object({
   left: BorderSchema,
 });
 
+export type BorderSettingsType = z.infer<typeof BorderSettingsSchema>;
+
 export const BorderRadiusSchema = z.object({
-  topLeft: z.number(),
-  topRight: z.number(),
-  bottomRight: z.number(),
-  bottomLeft: z.number(),
+  top_left: z.number(),
+  top_right: z.number(),
+  bottom_right: z.number(),
+  bottom_left: z.number(),
 });
+
+export type BorderRadiusType = z.infer<typeof BorderRadiusSchema>;
 
 export const SpacingSchema = z.object({
   top: z.number(),
@@ -46,6 +56,8 @@ export const SpacingSchema = z.object({
   bottom: z.number(),
   left: z.number(),
 });
+
+export type SpacingType = z.infer<typeof SpacingSchema>;
 
 export const BadgesSchema = z.object({
   enabled: z.boolean(),
@@ -56,9 +68,13 @@ export const BadgesSchema = z.object({
   spaceBetween: z.number(),
 });
 
+export type BadgesType = z.infer<typeof BadgesSchema>;
+
 export const OrderSchema = z.array(
   z.object({
     id: z.string(),
     name: z.string(),
   })
 );
+
+export type OrderType = z.infer<typeof OrderSchema>;

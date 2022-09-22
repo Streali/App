@@ -1,4 +1,5 @@
 import { ChatSettings } from '../../components/chat/chat-settings/chat-settings';
+import { defaultChatTheme } from '../../utils/chat/default-chat-theme';
 
 export const Create = () => {
   return (
@@ -7,6 +8,8 @@ export const Create = () => {
         <ChatSettings
           className="overflow-hidden"
           onSettingsChange={(settings) => console.log(settings)}
+          settings={defaultChatTheme}
+          onSave={(data) => console.log(data)}
         />
       </div>
       <div className="flex gap-10 flex-1">

@@ -39,26 +39,15 @@ export const TabGeneral = (props: TabGeneralProps) => {
           control={control}
           defaultValue={0}
           render={({ field: { onChange, value } }) => (
-            <div className="flex gap-4 items-center mb-3">
-              <div className="flex-1 shrink-0">
-                <Slider
-                  max={100}
-                  min={0}
-                  onChange={(value) => onChange(value[0])}
-                  value={[value]}
-                />
-              </div>
-              <Input
-                defaultValue={value}
-                suffix="px"
-                className="w-10"
-                type="number"
-                onChange={(e) => {
-                  const target = e.target as HTMLInputElement;
-                  onChange(target.valueAsNumber);
-                }}
-              />
-            </div>
+            <Slider
+              className="mb-3"
+              max={100}
+              min={0}
+              onChange={(value) => onChange(value[0])}
+              value={[value]}
+              haveInput
+              inputSuffix="px"
+            />
           )}
         />
       </Accordion>

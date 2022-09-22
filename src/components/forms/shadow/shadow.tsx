@@ -1,24 +1,18 @@
 import { useEffect, useState } from 'react';
+import { ShadowType } from '../../../types/schemas/components';
 import { Color } from '../color/color';
 import { Input } from '../input/input';
 
-export interface ShadowSettings {
-  shadowColor: string;
-  shadowOffsetX: number;
-  shadowOffsetY: number;
-  shadowBlur: number;
-}
-
 export interface ShadowProps {
-  onChange?: (settings: ShadowSettings) => void;
-  settings?: ShadowSettings;
+  onChange?: (settings: ShadowType) => void;
+  settings?: ShadowType;
   className?: string;
 }
 
 export const Shadow = (props: ShadowProps) => {
   const { onChange, settings, className = '' } = props;
 
-  const [shadowSettings, setShadowSettings] = useState<ShadowSettings>({
+  const [shadowSettings, setShadowSettings] = useState<ShadowType>({
     shadowColor: '#000000',
     shadowOffsetX: 0,
     shadowOffsetY: 0,
@@ -29,7 +23,7 @@ export const Shadow = (props: ShadowProps) => {
     key: 'shadowColor' | 'shadowOffsetX' | 'shadowOffsetY' | 'shadowBlur',
     value: string | number
   ) => {
-    const currentSettings: ShadowSettings = { ...shadowSettings };
+    const currentSettings: ShadowType = { ...shadowSettings };
     switch (key) {
       case 'shadowColor':
         currentSettings.shadowColor = value as string;

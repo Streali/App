@@ -7,6 +7,7 @@ import {
   SpacingSchema,
   BorderRadiusSchema,
   BadgesSchema,
+  BorderSettingsSchema,
 } from './components';
 
 export const ChatThemeGlobalSchema = z.object({
@@ -20,7 +21,7 @@ export const ChatThemeMessageSchema = z.object({
   text: TextStyleSchema,
   background: z.string(),
   shadow: ShadowSchema,
-  border: BorderSchema,
+  border: BorderSettingsSchema,
   margin: SpacingSchema,
   padding: SpacingSchema,
   radius: BorderRadiusSchema,
@@ -30,7 +31,7 @@ export const ChatThemeNameSchema = z.object({
   text: TextStyleSchema,
   background: z.string(),
   shadow: ShadowSchema,
-  border: BorderSchema,
+  border: BorderSettingsSchema,
   margin: SpacingSchema,
   padding: SpacingSchema,
   radius: BorderRadiusSchema,

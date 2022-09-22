@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react';
+import { SpacingType } from '../../../types/schemas/components';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { IconSVG } from '../../icon/icon';
 import { Input } from '../input/input';
-
-export interface SpacingSettings {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-}
-
 export interface SpacingProps {
   className?: string;
-  onChange?: (settings: SpacingSettings) => void;
-  settings?: SpacingSettings;
+  onChange?: (settings: SpacingType) => void;
+  settings?: SpacingType;
 }
 
 export const Spacing = (props: SpacingProps) => {
   const { className = '', onChange, settings } = props;
   const [allSpacing, setAllSpacing] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<'left' | 'top' | 'right' | 'bottom'>('top');
-  const [currentSettings, setCurrentSettings] = useState<SpacingSettings>({
+  const [currentSettings, setCurrentSettings] = useState<SpacingType>({
     left: 0,
     top: 0,
     right: 0,

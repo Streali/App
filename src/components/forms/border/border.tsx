@@ -1,34 +1,22 @@
 import { useEffect, useState } from 'react';
+import { BorderSettingsType } from '../../../types/schemas/components';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { IconSVG } from '../../icon/icon';
 import { Color } from '../color/color';
 import { Input } from '../input/input';
 import { Select } from '../select/select';
 
-export interface BorderSettings {
-  color: string;
-  width: number;
-  style: string;
-}
-
-export interface BorderAllSettings {
-  top: BorderSettings;
-  right: BorderSettings;
-  bottom: BorderSettings;
-  left: BorderSettings;
-}
-
 export interface BorderProps {
   className?: string;
-  onChange?: (settings: BorderAllSettings) => void;
-  settings?: BorderAllSettings;
+  onChange?: (settings: BorderSettingsType) => void;
+  settings?: BorderSettingsType;
 }
 
 export const Border = (props: BorderProps) => {
   const { className = '', onChange, settings } = props;
   const [allBorders, setAllBorders] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<'top' | 'right' | 'bottom' | 'left'>('top');
-  const [currentSettings, setCurrentSettings] = useState<BorderAllSettings>({
+  const [currentSettings, setCurrentSettings] = useState<BorderSettingsType>({
     top: { color: '#000000', width: 0, style: 'solid' },
     right: { color: '#000000', width: 0, style: 'solid' },
     bottom: { color: '#000000', width: 0, style: 'solid' },

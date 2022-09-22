@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
+import { BorderRadiusType } from '../../../types/schemas/components';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { IconSVG } from '../../icon/icon';
 import { Input } from '../input/input';
-
-export interface BorderRadiusSettings {
-  topLeft: number;
-  topRight: number;
-  bottomRight: number;
-  bottomLeft: number;
-}
-
 export interface BorderRadiusProps {
   className?: string;
-  onChange?: (settings: BorderRadiusSettings) => void;
-  settings?: BorderRadiusSettings;
+  onChange?: (settings: BorderRadiusType) => void;
+  settings?: BorderRadiusType;
 }
 
 export const BorderRadius = (props: BorderRadiusProps) => {
@@ -22,7 +15,7 @@ export const BorderRadius = (props: BorderRadiusProps) => {
   const [selectBorder, setSelectBorder] = useState<
     'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft'
   >('topRight');
-  const [currentSettings, setCurrentSettings] = useState<BorderRadiusSettings>({
+  const [currentSettings, setCurrentSettings] = useState<BorderRadiusType>({
     topLeft: 0,
     topRight: 0,
     bottomRight: 0,

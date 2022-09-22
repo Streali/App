@@ -1,24 +1,16 @@
 import { useEffect, useState } from 'react';
+import { BadgesType } from '../../../types/schemas/components';
 import { Input } from '../input/input';
 import { Select } from '../select/select';
 import { Switch } from '../switch/switch';
 
-export interface BadgesSettings {
-  enabled: boolean;
-  position: 'left' | 'right';
-  style: 'twitch';
-  size: number;
-  space: number;
-  spaceBetween: number;
-}
-
 export interface BadgesProps {
   className?: string;
-  settings?: BadgesSettings;
-  onChange?: (settings: BadgesSettings) => void;
+  settings?: BadgesType;
+  onChange?: (settings: BadgesType) => void;
 }
 
-export const defaultBadgesSettings: BadgesSettings = {
+export const defaultBadgesSettings: BadgesType = {
   enabled: true,
   position: 'left',
   style: 'twitch',
@@ -30,7 +22,7 @@ export const defaultBadgesSettings: BadgesSettings = {
 export const Badges = (props: BadgesProps) => {
   const { className, settings, onChange } = props;
 
-  const [badgesSettings, setBadgesSettings] = useState<BadgesSettings>(defaultBadgesSettings);
+  const [badgesSettings, setBadgesSettings] = useState<BadgesType>(defaultBadgesSettings);
 
   const badgesPositionOptions = [
     { label: 'Left', value: 'left' },
@@ -39,7 +31,7 @@ export const Badges = (props: BadgesProps) => {
 
   const badgesStyleOptions = [{ label: 'Twitch', value: 'twitch' }];
 
-  const handleSettingsChange = (key: keyof BadgesSettings, value: boolean | string | number) => {
+  const handleSettingsChange = (key: keyof BadgesType, value: boolean | string | number) => {
     const newSettings = { ...badgesSettings, [key]: value };
     setBadgesSettings(newSettings);
     onChange?.(newSettings);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { TextStyleType } from '../../../types/schemas/components';
 import { convertFontWeight } from '../../../utils/fonts/convert-weight';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { Icon } from '../../icon/icon';
@@ -9,22 +10,9 @@ import { Input } from '../input/input';
 import { Select } from '../select/select';
 import { Shadow } from '../shadow/shadow';
 
-export interface TextStyleSettings {
-  fontFamily: string;
-  fontSize: number;
-  fontWeight: string;
-  color: string;
-  textAlign: string;
-  textDecoration: string;
-  fontStyle: string;
-  letterSpacing: number;
-  lineHeight: number;
-  textShadow: { x: number; y: number; blur: number; color: string };
-}
-
 export interface TextStyleProps {
-  onChange?: (settings: TextStyleSettings) => void;
-  settings: TextStyleSettings;
+  onChange?: (settings: TextStyleType) => void;
+  settings: TextStyleType;
 }
 
 export const TextStyle = (props: TextStyleProps) => {
@@ -39,7 +27,7 @@ export const TextStyle = (props: TextStyleProps) => {
     { label: 'Black', value: '900' },
   ]);
 
-  const [fontSettings, setFontSettings] = useState<TextStyleSettings>(settings);
+  const [fontSettings, setFontSettings] = useState<TextStyleType>(settings);
 
   const [moreOpen, setMoreOpen] = useState<boolean>(false);
 
@@ -55,9 +43,9 @@ export const TextStyle = (props: TextStyleProps) => {
       | 'letterSpacing'
       | 'lineHeight'
       | 'textShadow',
-    value: string | number | FontVariants[] | TextStyleSettings['textShadow']
+    value: string | number | FontVariants[] | TextStyleType['textShadow']
   ) => {
-    const currentSettings: TextStyleSettings = { ...fontSettings };
+    const currentSettings: TextStyleType = { ...fontSettings };
     switch (key) {
       case 'fontFamily':
         currentSettings.fontFamily = value as string;
@@ -87,7 +75,7 @@ export const TextStyle = (props: TextStyleProps) => {
         currentSettings.lineHeight = value as number;
         break;
       case 'textShadow':
-        currentSettings.textShadow = value as TextStyleSettings['textShadow'];
+        currentSettings.textShadow = value as TextStyleType['textShadow'];
         break;
     }
 
@@ -243,19 +231,12 @@ export const TextStyle = (props: TextStyleProps) => {
             <p className="font-medium text-xs mb-2">Text shadow</p>
             <Shadow
               settings={{
-                shadowOffsetX: fontSettings.textShadow.x,
-                shadowOffsetY: fontSettings.textShadow.y,
-                shadowBlur: fontSettings.textShadow.blur,
-                shadowColor: fontSettings.textShadow.color,
+                shadowOffsetX: fontSettings.textShadow.shadowOffsetX,
+                shadowOffsetY: fontSettings.textShadow.shadowOffsetY,
+                shadowBlur: fontSettings.textShadow.shadowBlur,
+                shadowColor: fontSettings.textShadow.shadowColor,
               }}
-              onChange={(settings) =>
-                handleSettingsChange('textShadow', {
-                  x: settings.shadowOffsetX,
-                  y: settings.shadowOffsetY,
-                  blur: settings.shadowBlur,
-                  color: settings.shadowColor,
-                })
-              }
+              onChange={(settings) => handleSettingsChange('textShadow', settings)}
             />
           </div>
         </Popover>
