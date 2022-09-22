@@ -1,5 +1,6 @@
 import { IconBorder } from './icons/border';
 import { IconBorderBottom } from './icons/border-bottom';
+import { IconBorderHorizontal } from './icons/border-horizontal';
 import { IconBorderLeft } from './icons/border-left';
 import { IconBorderRadius } from './icons/border-radius';
 import { IconBorderRadiusBottomRight } from './icons/border-radius-bottom-right';
@@ -8,9 +9,12 @@ import { IconBorderRadiusTopRight } from './icons/border-radius-top-right';
 import { IconBorderRadiusBottomLeft } from './icons/border-radius_bottom-left';
 import { IconBorderRight } from './icons/border-right';
 import { IconBorderTop } from './icons/border-top';
+import { IconBorderVertical } from './icons/border-vertical';
 
 export enum IconSVG {
   Border = 'border',
+  BorderVertical = 'border-vertical',
+  BorderHorizontal = 'border-horizontal',
   BorderTop = 'border-top',
   BorderRight = 'border-right',
   BorderBottom = 'border-bottom',
@@ -44,6 +48,12 @@ export const Icon = (props: IconProps) => {
   const svgIcon = {
     [IconSVG.Border]: (
       <IconBorder className={className} width={width} height={height} fill={fill} />
+    ),
+    [IconSVG.BorderVertical]: (
+      <IconBorderVertical className={className} width={width} height={height} fill={fill} />
+    ),
+    [IconSVG.BorderHorizontal]: (
+      <IconBorderHorizontal className={className} width={width} height={height} fill={fill} />
     ),
     [IconSVG.BorderTop]: (
       <IconBorderTop className={className} width={width} height={height} fill={fill} />

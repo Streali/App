@@ -95,8 +95,8 @@ export const Input = (props: InputProps) => {
       )}
       <input
         className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg outline-none focus:border-primary-500 transition ${
-          prefix ? 'pl-11' : 'pl-4'
-        } ${suffix ? 'pr-11' : 'pr-4'} ${
+          prefix || prefixIcon || prefixIconSvg ? 'pl-11' : 'pl-4'
+        } ${suffix || suffixIcon || suffixIconSvg ? 'pr-11' : 'pr-4'} ${
           stateClassName[state]
         } ${haveValueClassName} ${disabledClassName} ${className}`}
         data-testid="input"

@@ -21,12 +21,21 @@ export const Spacing = (props: SpacingProps) => {
   });
   const spacingPosition = ['left', 'top', 'right', 'bottom'];
 
-  const handleAllChanges = (value: number) => {
+  const handleVerticalChanges = (value: number) => {
     const newSettings = {
-      left: value,
+      ...currentSettings,
       top: value,
-      right: value,
       bottom: value,
+    };
+    setCurrentSettings(newSettings);
+    onChange && onChange(newSettings);
+  };
+
+  const handleHorizontalChanges = (value: number) => {
+    const newSettings = {
+      ...currentSettings,
+      left: value,
+      right: value,
     };
     setCurrentSettings(newSettings);
     onChange && onChange(newSettings);
@@ -54,7 +63,19 @@ export const Spacing = (props: SpacingProps) => {
 
   if (allSpacing) {
     return (
-      <div className={`flex w-full gap-2 ${className}`}>
+      <div className={`flex gap-2 w-full ${className}`}>
+        <div className="flex-1">
+          <Input
+            type="number"
+            suffix="px"
+            prefixIconSvg={IconSVG.BorderVertical}
+            defaultValue={currentSettings.top}
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              handleVerticalChanges(target.valueAsNumber);
+            }}
+          />
+        </div>
         <div className="flex-1">
           <Input
             type="number"
@@ -63,7 +84,7 @@ export const Spacing = (props: SpacingProps) => {
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
-              handleAllChanges(target.valueAsNumber);
+              handleHorizontalChanges(target.valueAsNumber);
             }}
           />
         </div>
