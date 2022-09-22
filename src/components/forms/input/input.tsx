@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Icon, IconSVG } from '../../icon/icon';
 import { Label } from '../label/label';
 import './input.scss';
 
@@ -16,7 +17,9 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   state?: InputState;
   errorMessage?: string;
   onChange?: (event: React.ChangeEvent) => void;
+  prefixIcon?: IconSVG;
   prefix?: string;
+  suffixIcon?: IconSVG;
   suffix?: string;
 }
 
@@ -29,7 +32,9 @@ export const Input = (props: InputProps) => {
     state = InputState.Normal,
     errorMessage,
     onChange,
+    prefixIcon,
     prefix,
+    suffixIcon,
     suffix,
     ...inputProps
   } = props;
@@ -56,10 +61,26 @@ export const Input = (props: InputProps) => {
   return (
     <label className={`relative block ${containerClassName}`}>
       {label && <Label className={labelClassName}>{label}</Label>}
+      {prefixIcon && (
+        <Icon
+          svg={prefixIcon}
+          width={32}
+          height={32}
+          className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none"
+        />
+      )}
       {prefix && (
-        <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded left-1 inline-flex items-center leading-none">
+        <span className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none">
           {prefix}
         </span>
+      )}
+      {suffixIcon && (
+        <Icon
+          svg={suffixIcon}
+          width={32}
+          height={32}
+          className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none"
+        />
       )}
       {suffix && (
         <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none">
