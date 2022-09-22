@@ -18,7 +18,7 @@ export interface SpacingProps {
 
 export const Spacing = (props: SpacingProps) => {
   const { className = '', onChange, settings } = props;
-  const [allBordersRadius, setAllBordersRadius] = useState<boolean>(true);
+  const [allSpacing, setAllSpacing] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<'left' | 'top' | 'right' | 'bottom'>('top');
   const [currentSettings, setCurrentSettings] = useState<SpacingSettings>({
     left: 0,
@@ -53,20 +53,20 @@ export const Spacing = (props: SpacingProps) => {
       settings.left === settings.top &&
       settings.top === settings.right &&
       settings.right === settings.bottom
-        ? setAllBordersRadius(true)
-        : setAllBordersRadius(false);
+        ? setAllSpacing(true)
+        : setAllSpacing(false);
       setCurrentSettings(settings);
     }
-  }, [settings, selectBorder, currentSettings]);
+  }, []);
 
-  if (allBordersRadius) {
+  if (allSpacing) {
     return (
       <div className={`flex w-full gap-2 ${className}`}>
         <div className="flex-1">
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.left}
+            defaultValue={currentSettings.top}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
@@ -78,13 +78,14 @@ export const Spacing = (props: SpacingProps) => {
           buttonIconSVG={{ svg: IconSVG.Border, width: 20, height: 20 }}
           size={ButtonSize.Small}
           className="!w-10 !p-0 justify-center"
-          onClick={() => setAllBordersRadius(false)}
+          onClick={() => setAllSpacing(false)}
+          type="button"
         />
       </div>
     );
   } else {
     return (
-      <div>
+      <div className={className}>
         <div className="mb-2 flex">
           <div className="flex gap-2">
             <Button
@@ -93,6 +94,7 @@ export const Spacing = (props: SpacingProps) => {
               className="!w-10 !p-0 justify-center"
               color={selectBorder === 'left' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('left')}
+              type="button"
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderTop, width: 20, height: 20 }}
@@ -100,6 +102,7 @@ export const Spacing = (props: SpacingProps) => {
               className="!w-10 !p-0 justify-center"
               color={selectBorder === 'top' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('top')}
+              type="button"
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRight, width: 20, height: 20 }}
@@ -107,6 +110,7 @@ export const Spacing = (props: SpacingProps) => {
               className="!w-10 !p-0 justify-center"
               color={selectBorder === 'right' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('right')}
+              type="button"
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderBottom, width: 20, height: 20 }}
@@ -114,6 +118,7 @@ export const Spacing = (props: SpacingProps) => {
               className="!w-10 !p-0 justify-center"
               color={selectBorder === 'bottom' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('bottom')}
+              type="button"
             />
           </div>
           <div className="flex-1 flex justify-end">
@@ -122,7 +127,8 @@ export const Spacing = (props: SpacingProps) => {
               size={ButtonSize.Small}
               className="!w-10 !p-0 justify-center"
               color={ButtonColor.Dark}
-              onClick={() => setAllBordersRadius(true)}
+              onClick={() => setAllSpacing(true)}
+              type="button"
             />
           </div>
         </div>

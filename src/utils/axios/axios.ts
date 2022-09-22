@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = process.env['API_URL'];
+const endpoint = import.meta.env.VITE_API_URL;
 
 export const apiClient = axios.create({
   baseURL: endpoint,

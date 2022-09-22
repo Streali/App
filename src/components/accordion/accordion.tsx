@@ -1,5 +1,4 @@
 import * as AccordionLib from '@radix-ui/react-accordion';
-import { useState } from 'react';
 import { Icon } from '../icon/icon';
 import './accordion.scss';
 
@@ -30,7 +29,7 @@ export const Accordion = (props: AccordionProps) => {
             </div>
           </AccordionLib.Trigger>
         </AccordionLib.Header>
-        <AccordionLib.Content className="accordion__content">
+        <AccordionLib.Content forceMount className="accordion__content">
           <div>{children}</div>
         </AccordionLib.Content>
       </AccordionLib.Item>

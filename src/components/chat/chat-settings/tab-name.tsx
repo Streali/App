@@ -17,7 +17,7 @@ export const TabName = (props: TabGeneralProps) => {
   const { control } = props;
 
   return (
-    <div className="p-6 bg-dark-600 rounded-2xl">
+    <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_208px)] overflow-y-auto">
       <Accordion title="Text style">
         <Controller
           name="name.text"
@@ -32,7 +32,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.background"
           control={control}
-          defaultValue={'#000000'}
+          defaultValue={defaultChatTheme.name.background}
           render={({ field: { onChange, value } }) => (
             <Color value={value} onChange={onChange} containerClassName="mb-3" />
           )}
@@ -42,12 +42,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.shadow"
           control={control}
-          defaultValue={{
-            shadowColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-          }}
+          defaultValue={defaultChatTheme.name.shadow}
           render={({ field: { onChange, value } }) => (
             <Shadow settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -57,7 +52,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.border"
           control={control}
-          //defaultValue={'left'}
+          defaultValue={defaultChatTheme.name.border}
           render={({ field: { onChange, value } }) => (
             <Border className="mb-3" onChange={onChange} settings={value} />
           )}
@@ -67,7 +62,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.margin"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.name.margin}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -77,7 +72,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.padding"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.name.padding}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -87,7 +82,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.radius"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.name.margin}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -97,7 +92,7 @@ export const TabName = (props: TabGeneralProps) => {
         <Controller
           name="name.badges"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.name.badges}
           render={({ field: { onChange, value } }) => (
             <Badges settings={value} onChange={onChange} />
           )}

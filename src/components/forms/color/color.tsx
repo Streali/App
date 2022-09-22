@@ -45,7 +45,7 @@ export const Color = (props: ColorProps) => {
   };
 
   const haveValueClassName =
-    val.length > 0 && state === InputState.Normal ? `!border-primary-300` : '';
+    val.length > 0 && state === InputState.Normal ? `!border-primary-500` : '';
 
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
@@ -94,19 +94,10 @@ export const Color = (props: ColorProps) => {
           <ColorPicker color={hexaToHsva(val)} onChange={(e) => onChangePickerValue(e)} />
         </Popover>
 
-        {/* {showPicker && input.current && (
-          <>
-            <div
-              className="fixed w-screen h-screen top-0 left-0"
-              onClick={() => setShowPicker(false)}
-            />
-          </>
-        )} */}
-
         {haveInput && (
           <input
             type="text"
-            className={`h-10 flex-1 border border-transparent text-xs text-white bg-dark-400 rounded-md px-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
+            className={`h-10 flex-1 border border-transparent text-xs text-white bg-dark-400 rounded-md px-4 outline-none focus:border-primary-500 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
             maxLength={9}
             value={val.includes('#') ? val.toUpperCase() : `#${val.toUpperCase()}`}
             onChange={(e) => onChangeTextValue(e)}

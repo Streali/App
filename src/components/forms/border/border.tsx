@@ -64,14 +64,14 @@ export const Border = (props: BorderProps) => {
 
   useEffect(() => {
     if (settings) {
-      settings.top === settings.right &&
-      settings.right === settings.bottom &&
-      settings.bottom === settings.left
+      JSON.stringify(settings.top) === JSON.stringify(settings.right) &&
+      JSON.stringify(settings.right) === JSON.stringify(settings.bottom) &&
+      JSON.stringify(settings.bottom) === JSON.stringify(settings.left)
         ? setAllBorders(true)
         : setAllBorders(false);
       setCurrentSettings(settings);
     }
-  }, [settings, selectBorder, currentSettings]);
+  }, []);
 
   if (allBorders) {
     return (
@@ -116,7 +116,7 @@ export const Border = (props: BorderProps) => {
     );
   } else {
     return (
-      <div>
+      <div className={className}>
         <div className="mb-2 flex">
           <div className="flex gap-2">
             <Button

@@ -59,7 +59,7 @@ export const BorderRadius = (props: BorderRadiusProps) => {
         : setAllBordersRadius(false);
       setCurrentSettings(settings);
     }
-  }, [settings, selectBorder, currentSettings]);
+  }, []);
 
   if (allBordersRadius) {
     return (

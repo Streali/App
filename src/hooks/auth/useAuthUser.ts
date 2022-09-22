@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { AuthUserSchema } from '../../types/schema/auth';
+import { AuthUserSchema } from '../../types/schemas/auth';
 import { apiClient } from '../../utils/axios/axios';
 import { queryKeys } from '../query-keys';
 

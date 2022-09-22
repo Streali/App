@@ -14,10 +14,10 @@ export const TabGeneral = (props: TabGeneralProps) => {
   const { control } = props;
 
   return (
-    <div className="p-6 bg-dark-600 rounded-2xl">
+    <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_208px)] overflow-y-auto">
       <Accordion title="Title">
         <Controller
-          name="global.title"
+          name="title"
           control={control}
           defaultValue="Chat theme title"
           render={({ field: { onChange, value } }) => (

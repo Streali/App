@@ -30,8 +30,6 @@ export interface TextStyleProps {
 export const TextStyle = (props: TextStyleProps) => {
   const { onChange, settings } = props;
 
-  console.log(settings);
-
   const [fontVariants, setFontVariants] = useState<FontVariants[]>([
     { label: 'Thin', value: '100' },
     { label: 'Light', value: '300' },
@@ -121,7 +119,7 @@ export const TextStyle = (props: TextStyleProps) => {
             <Input
               type="number"
               defaultValue={fontSettings.fontSize}
-              className="w-full"
+              className="w-full !px-3"
               suffix="px"
               onChange={(e) => {
                 const target = e.target as HTMLInputElement;
@@ -139,10 +137,10 @@ export const TextStyle = (props: TextStyleProps) => {
         </div>
       </div>
       <div className="flex gap-2 mb-2">
-        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3">
+        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3 shrink-0">
           <Button
             iconLeft="underline"
-            className="h-full w-full justify-center rounded"
+            className="h-full w-auto text-xs justify-center rounded flex-1"
             color={
               fontSettings.textDecoration === 'underline' ? ButtonColor.Primary : ButtonColor.Black
             }
@@ -155,7 +153,7 @@ export const TextStyle = (props: TextStyleProps) => {
           />
           <Button
             iconLeft="italic"
-            className="h-full w-full justify-center rounded"
+            className="h-full w-auto text-xs justify-center rounded flex-1"
             color={fontSettings.fontStyle === 'italic' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => {
               const fontStyle = fontSettings.fontStyle;
@@ -175,22 +173,22 @@ export const TextStyle = (props: TextStyleProps) => {
             onChange={(value) => handleSettingsChange('fontWeight', value?.value || '')}
           />
         </div>
-        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3">
+        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3 shrink-0">
           <Button
-            iconLeft="align-left"
-            className="h-full w-full justify-center rounded"
+            buttonIcon="align-left"
+            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
             color={fontSettings.textAlign === 'left' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'left')}
           />
           <Button
-            iconLeft="align-center"
-            className="h-full w-full justify-center rounded"
+            buttonIcon="align-center"
+            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
             color={fontSettings.textAlign === 'center' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'center')}
           />
           <Button
-            iconLeft="align-right"
-            className="h-full w-full justify-center rounded"
+            buttonIcon="align-right"
+            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
             color={fontSettings.textAlign === 'right' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'right')}
           />
