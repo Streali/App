@@ -12,7 +12,7 @@ export interface NavbarProps {
 }
 
 export const Navbar = (props: NavbarProps) => {
-  // const { data: user } = useAuthUser();
+  const { data: user } = useAuthUser();
   const { mutate: logout } = useLogout();
   const { navigation } = props;
   const [userNavOpen, setUserNavOpen] = useState(false);
@@ -41,18 +41,18 @@ export const Navbar = (props: NavbarProps) => {
           ))}
         </div>
       </div>
-      {/* <div>
+      <div className="flex flex-shrink-0 p-4">
         {user && (
           <Popover
             open={userNavOpen}
             onOpenChange={setUserNavOpen}
-            trigger={<Avatar className="cursor-pointer" size={50} src={user.avatar_url} />}
+            trigger={<Avatar className="cursor-pointer" size={45} src={user.avatar_url} />}
             side="right"
             align="end">
             <PopoverNavigation links={userNavigation} onLinkClick={() => setUserNavOpen(false)} />
           </Popover>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

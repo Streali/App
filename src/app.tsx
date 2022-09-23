@@ -2,9 +2,17 @@ import { Navbar } from './components/navbar/navbar';
 import { routes } from './router';
 import { navigation, noLayout } from './navigation';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { useAuthCheck } from './hooks/auth/useAuthCheck';
+import { Protected } from './components/protect/protected';
+import { Login } from './pages/login';
 
 export const App = () => {
+  const { status } = useAuthCheck();
   const location = useLocation();
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -18,9 +26,12 @@ export const App = () => {
             : 'w-screen ml-0'
         }`}>
         <Routes>
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))}
+          <Route path={'/login'} element={<Login />} />
+          <Route element={<Protected />}>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
+          </Route>
         </Routes>
       </main>
     </>
