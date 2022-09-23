@@ -4,9 +4,23 @@ import { defaultChatTheme } from '../../utils/chat/default-chat-theme';
 import { useEffect, useState } from 'react';
 import { ChatTheme } from '../../types/schemas/chat';
 import { ChatDemo } from '../../components/chat/chat-demo/chat-demo';
+import { useCreateChat } from '../../hooks/chat/use-create-chat';
+import { FieldValues } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export const Create = () => {
   const [settings, setSettings] = useState(defaultChatTheme);
+  const navigate = useNavigate();
+
+  const { mutate: createChat } = useCreateChat();
+
+  const handleSubmit = (theme: FieldValues) => {
+    createChat(theme as ChatTheme, {
+      onSuccess: () => {
+        navigate('/chat/library');
+      },
+    });
+  };
 
   useEffect(() => {
     if (settings) {
@@ -31,7 +45,7 @@ export const Create = () => {
           className="overflow-hidden"
           onSettingsChange={(settings) => setSettings(settings as ChatTheme)}
           settings={defaultChatTheme}
-          onSave={(data) => console.log(data)}
+          onSave={(data) => handleSubmit(data)}
         />
       </div>
       <div className="flex gap-10 flex-1">

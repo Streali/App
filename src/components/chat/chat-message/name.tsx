@@ -40,37 +40,37 @@ export const Name = (props: NameProps) => {
       {badges.admin && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/admin.png`}
+          src={`/badges/${settings.badges.style}/admin.png`}
         />
       )}
       {badges.broadcaster && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/broadcaster.png`}
+          src={`/badges/${settings.badges.style}/broadcaster.png`}
         />
       )}
       {badges.moderator && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/moderator.png`}
+          src={`/badges/${settings.badges.style}/moderator.png`}
         />
       )}
       {badges.partner && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/partner.png`}
+          src={`/badges/${settings.badges.style}/partner.png`}
         />
       )}
       {badges.vip && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/vip.png`}
+          src={`/badges/${settings.badges.style}/vip.png`}
         />
       )}
       {badges.artist && (
         <img
           style={{ width: settings.badges.size + 'px' }}
-          src={`badges/${settings.badges.style}/artist.png`}
+          src={`/badges/${settings.badges.style}/artist.png`}
         />
       )}
     </div>

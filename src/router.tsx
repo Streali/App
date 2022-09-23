@@ -1,14 +1,19 @@
 import { RouteObject } from 'react-router-dom';
 import { Create } from './pages/chat/create';
+import { ChatLibrary } from './pages/chat/library';
 
 export const chatRouter: RouteObject[] = [
   {
     path: '/',
-    element: <Create />,
+    element: <ChatLibrary />,
   },
   {
     path: '/chat/create',
     element: <Create />,
+  },
+  {
+    path: '/chat/library',
+    element: <ChatLibrary />,
   },
 ];
 
