@@ -76,8 +76,6 @@ export const Name = (props: NameProps) => {
     </div>
   );
 
-  console.log(settings);
-
   return (
     <div style={nameStyle} className="shrink-0">
       <div className="flex items-center" style={{ gap: settings.badges.space + 'px' }}>
