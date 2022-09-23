@@ -1,6 +1,5 @@
 import * as z from 'zod';
 import {
-  BorderSchema,
   OrderSchema,
   ShadowSchema,
   TextStyleSchema,
@@ -46,6 +45,20 @@ export const ChatThemeSchema = z.object({
   name: ChatThemeNameSchema,
 });
 
+const TwitchMessageSchema = z.object({
+  id: z.optional(z.string()),
+  username: z.optional(z.string()),
+  twitch: z.optional(z.string()),
+  emotes: z.any(),
+  date: z.date(),
+  message: z.string(),
+  badges: z.optional(z.any()),
+  mod: z.optional(z.boolean()),
+  subscriber: z.optional(z.boolean()),
+  color: z.optional(z.string()),
+});
+
+export type TwitchMessage = z.infer<typeof TwitchMessageSchema>;
 export type ChatTheme = z.infer<typeof ChatThemeSchema>;
 export type NameChat = z.infer<typeof ChatThemeNameSchema>;
 export type GlobalChat = z.infer<typeof ChatThemeGlobalSchema>;

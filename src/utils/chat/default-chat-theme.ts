@@ -13,8 +13,8 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   },
   name: {
     text: {
-      fontFamily: 'Roboto',
-      fontSize: 12,
+      fontFamily: 'Rubik',
+      fontSize: 16,
       fontWeight: '700',
       color: '#000000',
       textAlign: 'left',
@@ -66,9 +66,9 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   },
   message: {
     text: {
-      fontFamily: 'Roboto',
-      fontSize: 12,
-      fontWeight: '700',
+      fontFamily: 'Rubik',
+      fontSize: 16,
+      fontWeight: '400',
       color: '#000000',
       textAlign: 'left',
       textDecoration: 'none',

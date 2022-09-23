@@ -8,8 +8,6 @@ export interface NameProps {
 export const Name = (props: NameProps) => {
   const { settings, name } = props;
 
-  console.log(settings);
-
   const nameStyle: React.CSSProperties = {
     fontFamily: settings.text.fontFamily,
     fontSize: settings.text.fontSize + 'px',
