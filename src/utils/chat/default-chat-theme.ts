@@ -10,6 +10,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       { id: 'name', name: 'Name' },
       { id: 'message', name: 'Message' },
     ],
+    animation: 'fade-in-left',
   },
   name: {
     text: {

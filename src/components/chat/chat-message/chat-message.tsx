@@ -2,6 +2,8 @@ import { memo } from 'react';
 import { ChatTheme, TwitchMessage } from '../../../types/schemas/chat';
 import { Message } from './message';
 import { Name } from './name';
+import { motion } from 'framer-motion';
+import { selectAnimation } from '../../../utils/chat/animations';
 
 export interface ChatMessageProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
@@ -23,7 +25,12 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
   };
 
   return (
-    <div className="flex w-full" style={containerStyle}>
+    <motion.div
+      animate={selectAnimation(settings.global.animation).animate}
+      initial={selectAnimation(settings.global.animation).initial}
+      transition={selectAnimation(settings.global.animation).transition}
+      className="flex w-full"
+      style={containerStyle}>
       {settings.global.order.map((item) => (
         <>
           {item.id === 'name' && (
@@ -34,6 +41,6 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
           )}
         </>
       ))}
-    </div>
+    </motion.div>
   );
 });

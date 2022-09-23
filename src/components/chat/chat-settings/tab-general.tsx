@@ -1,4 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
+import { animationList } from '../../../utils/chat/animations';
 import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
 import { Accordion } from '../../accordion/accordion';
 import { Alignment } from '../../forms/alignment/alignment';
@@ -59,6 +60,21 @@ export const TabGeneral = (props: TabGeneralProps) => {
           defaultValue={defaultChatTheme.global.alignment}
           render={({ field: { onChange, value } }) => (
             <Alignment className="mb-3" value={value} onChange={onChange} />
+          )}
+        />
+      </Accordion>
+      <Accordion title="Animation">
+        <Controller
+          name="global.animation"
+          control={control}
+          defaultValue={defaultChatTheme.global.animation}
+          render={({ field: { onChange, value } }) => (
+            <Select
+              defaultValue={animationList.find((item) => item.value === value)}
+              onChange={(value) => onChange(value?.value)}
+              className="mb-3"
+              options={animationList}
+            />
           )}
         />
       </Accordion>

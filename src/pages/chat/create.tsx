@@ -4,7 +4,6 @@ import { defaultChatTheme } from '../../utils/chat/default-chat-theme';
 import { useEffect, useState } from 'react';
 import { ChatTheme } from '../../types/schemas/chat';
 import { ChatDemo } from '../../components/chat/chat-demo/chat-demo';
-import { generateTwitchMessage } from '../../utils/chat/generate-chat-message';
 
 export const Create = () => {
   const [settings, setSettings] = useState(defaultChatTheme);
@@ -36,10 +35,24 @@ export const Create = () => {
         />
       </div>
       <div className="flex gap-10 flex-1">
-        <div className="flex-1 w-full bg-dark-600 rounded-2xl flex justify-center items-center p-4">
-          <ChatMessage settings={settings} message={generateTwitchMessage()} />
+        <div className="flex-1 w-full bg-dark-600 rounded-2xl flex justify-center items-center p-10">
+          <ChatMessage
+            settings={settings}
+            message={{
+              id: '1',
+              username: 'Pseudo',
+              twitch: 'pseudo',
+              emotes: {},
+              date: new Date(),
+              message: 'Message content',
+              badges: {},
+              mod: true,
+              subscriber: false,
+              color: '#000',
+            }}
+          />
         </div>
-        <div className="flex-1 bg-dark-600 rounded-2xl overflow-hidden p-5 h-[calc(100vh_-_80px)] flex flex-col items-end justify-end">
+        <div className="flex-1 bg-dark-600 rounded-2xl overflow-hidden p-10 h-[calc(100vh_-_80px)] flex flex-col items-end justify-end">
           <ChatDemo settings={settings} />
         </div>
       </div>

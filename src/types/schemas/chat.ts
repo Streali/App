@@ -14,6 +14,7 @@ export const ChatThemeGlobalSchema = z.object({
   alignment: z.enum(['left', 'center', 'right']),
   layout: z.enum(['stack', 'inline']),
   order: OrderSchema,
+  animation: z.string(),
 });
 
 export const ChatThemeMessageSchema = z.object({
