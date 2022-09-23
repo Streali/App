@@ -43,8 +43,6 @@ export const Badges = (props: BadgesProps) => {
     }
   }, [settings]);
 
-  console.log(badgesPositionOptions.find((pos) => pos.value === badgesSettings.position));
-
   return (
     <div className={className}>
       <div className="flex gap-2 mb-2">

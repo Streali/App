@@ -44,6 +44,7 @@ export const ChatThemeSchema = z.object({
   global: ChatThemeGlobalSchema,
   message: ChatThemeMessageSchema,
   name: ChatThemeNameSchema,
+  user_id: z.string(),
 });
 
 export const TwitchBadgeSchema = z.object({

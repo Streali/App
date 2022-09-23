@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { ChatTheme, TwitchMessage } from '../../../types/schemas/chat';
 import { Message } from './message';
 import { Name } from './name';
@@ -31,8 +31,8 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
       transition={selectAnimation(settings.global.animation).transition}
       className="flex w-full"
       style={containerStyle}>
-      {settings.global.order.map((item) => (
-        <>
+      {settings.global.order.map((item, index) => (
+        <React.Fragment key={index}>
           {item.id === 'name' && (
             <Name
               key={item.id}
@@ -44,7 +44,7 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
           {item.id === 'message' && (
             <Message key={item.id} settings={settings.message} message={message.message} />
           )}
-        </>
+        </React.Fragment>
       ))}
     </motion.div>
   );

@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom';
-import { Create } from './pages/chat/create';
+import { ChatCreate } from './pages/chat/create';
+import { ChatEdit } from './pages/chat/edit';
 import { ChatLibrary } from './pages/chat/library';
 
 export const chatRouter: RouteObject[] = [
@@ -9,11 +10,15 @@ export const chatRouter: RouteObject[] = [
   },
   {
     path: '/chat/create',
-    element: <Create />,
+    element: <ChatCreate />,
   },
   {
     path: '/chat/library',
     element: <ChatLibrary />,
+  },
+  {
+    path: '/chat/:id/edit',
+    element: <ChatEdit />,
   },
 ];
 

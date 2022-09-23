@@ -1,51 +1,63 @@
 import { ChatMessage } from '../../components/chat/chat-message/chat-message';
 import { ChatSettings } from '../../components/chat/chat-settings/chat-settings';
-import { defaultChatTheme } from '../../utils/chat/default-chat-theme';
 import { useEffect, useState } from 'react';
 import { ChatTheme } from '../../types/schemas/chat';
 import { ChatDemo } from '../../components/chat/chat-demo/chat-demo';
-import { useCreateChat } from '../../hooks/chat/use-create-chat';
 import { FieldValues } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useChat } from '../../hooks/chat/use-chat';
+import { useUpdateChat } from '../../hooks/chat/use-update-chat';
 
-export const ChatCreate = () => {
-  const [settings, setSettings] = useState(defaultChatTheme);
+export const ChatEdit = () => {
+  const [settings, setSettings] = useState<ChatTheme | null>(null);
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { data: theme, status, error } = useChat(id!);
 
-  const { mutate: createChat } = useCreateChat();
+  useEffect(() => {
+    if (theme) {
+      setSettings(theme);
+
+      (async () => {
+        const WebFont = await import('webfontloader');
+        WebFont.load({
+          google: {
+            families: [
+              theme.name.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
+              theme.message.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
+            ],
+          },
+        });
+      })();
+    }
+  }, [theme]);
+
+  const { mutate: updateChat } = useUpdateChat();
 
   const handleSubmit = (theme: FieldValues) => {
-    createChat(theme as ChatTheme, {
+    updateChat(theme as ChatTheme, {
       onSuccess: () => {
         navigate('/chat/library');
       },
     });
   };
 
-  useEffect(() => {
-    if (settings) {
-      (async () => {
-        const WebFont = await import('webfontloader');
-        WebFont.load({
-          google: {
-            families: [
-              settings.name.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
-              settings.message.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
-            ],
-          },
-        });
-      })();
-    }
-  }, [settings.name.text.fontFamily, settings.message.text.fontFamily]);
+  if (status === 'loading' || !settings) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error</div>;
+  }
 
   return (
     <div className="p-10 flex gap-10">
       <div className="w-[400px] shrink-0">
         <ChatSettings
-          title="New chatbox"
+          title="Edit chatbox"
           className="overflow-hidden"
           onSettingsChange={(settings) => setSettings(settings as ChatTheme)}
-          settings={defaultChatTheme}
+          settings={settings}
           onSave={(data) => handleSubmit(data)}
         />
       </div>

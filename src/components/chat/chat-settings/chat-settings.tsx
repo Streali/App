@@ -12,10 +12,11 @@ export interface ChatSettingsProps {
   onSettingsChange: (settings: unknown) => void;
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
   onSave: (data: FieldValues) => void;
+  title: string;
 }
 
 export const ChatSettings = (props: ChatSettingsProps) => {
-  const { className = '', onSettingsChange, settings, onSave } = props;
+  const { className = '', onSettingsChange, settings, onSave, title } = props;
   const { handleSubmit, watch, getValues, control } = useForm({
     defaultValues: settings as FieldValues,
   });
@@ -39,7 +40,7 @@ export const ChatSettings = (props: ChatSettingsProps) => {
     <div className={className}>
       <form onSubmit={onSubmit}>
         <div className="flex justify-between mb-5 items-center">
-          <h1 className="font-semibold text-4xl font-title">New chatbox</h1>
+          <h1 className="font-semibold text-4xl font-title">{title}</h1>
           <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
             Save
           </Button>
