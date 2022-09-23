@@ -25,7 +25,7 @@ export const ChatLibrary = () => {
             data.length > 0 &&
             data?.map((theme: ChatTheme) => (
               <div key={theme.id}>
-                <ChatCard title={theme.title} id={theme.id} />
+                <ChatCard theme={theme} />
               </div>
             ))}
         </div>
