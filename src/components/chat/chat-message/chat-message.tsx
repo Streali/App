@@ -4,6 +4,7 @@ import { Message } from './message';
 import { Name } from './name';
 import { motion } from 'framer-motion';
 import { selectAnimation } from '../../../utils/chat/animations';
+import './chat-message.scss';
 
 export interface ChatMessageProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;

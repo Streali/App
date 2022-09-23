@@ -30,5 +30,10 @@ export const Message = (props: MessageProps) => {
     borderRadius: `${settings.radius.top_left}px ${settings.radius.top_right}px ${settings.radius.bottom_right}px ${settings.radius.bottom_left}px`,
   };
 
-  return <div style={nameStyle} dangerouslySetInnerHTML={{ __html: message }}></div>;
+  return (
+    <div
+      className="chat__message"
+      style={nameStyle}
+      dangerouslySetInnerHTML={{ __html: message }}></div>
+  );
 };

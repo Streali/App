@@ -16,4 +16,4 @@ export const navigation = [
   },
 ];
 
-export const noLayout = ['/login'];
+export const noLayout = ['/login', '/embed'];

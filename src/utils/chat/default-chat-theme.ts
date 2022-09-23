@@ -33,10 +33,10 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       shadowBlur: 0,
     },
     border: {
-      top: { color: '#000000', width: 0, style: 'solid' },
-      right: { color: '#000000', width: 0, style: 'solid' },
-      bottom: { color: '#000000', width: 0, style: 'solid' },
-      left: { color: '#000000', width: 0, style: 'solid' },
+      top: { color: '#000000', width: 1, style: 'solid' },
+      right: { color: '#000000', width: 1, style: 'solid' },
+      bottom: { color: '#000000', width: 1, style: 'solid' },
+      left: { color: '#000000', width: 1, style: 'solid' },
     },
     margin: {
       top: 0,
@@ -58,7 +58,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
     badges: {
       enabled: true,
-      position: 'right',
+      position: 'left',
       style: 'twitch',
       size: 12,
       space: 8,
@@ -86,10 +86,10 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       shadowBlur: 0,
     },
     border: {
-      top: { color: '#000000', width: 0, style: 'solid' },
-      right: { color: '#000000', width: 0, style: 'solid' },
-      bottom: { color: '#000000', width: 0, style: 'solid' },
-      left: { color: '#000000', width: 0, style: 'solid' },
+      top: { color: '#000000', width: 1, style: 'solid' },
+      right: { color: '#000000', width: 1, style: 'solid' },
+      bottom: { color: '#000000', width: 1, style: 'solid' },
+      left: { color: '#000000', width: 1, style: 'solid' },
     },
     margin: {
       top: 0,
