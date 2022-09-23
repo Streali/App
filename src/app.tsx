@@ -27,9 +27,11 @@ export const App = () => {
         }`}>
         <Routes>
           <Route path={'/login'} element={<Login />} />
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))}
+          <Route element={<Protected />}>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
+          </Route>
         </Routes>
       </main>
     </>
