@@ -52,9 +52,7 @@ export const Spacing = (props: SpacingProps) => {
 
   useEffect(() => {
     if (settings) {
-      settings.left === settings.top &&
-      settings.top === settings.right &&
-      settings.right === settings.bottom
+      settings.left === settings.right && settings.top === settings.bottom
         ? setAllSpacing(true)
         : setAllSpacing(false);
       setCurrentSettings(settings);
