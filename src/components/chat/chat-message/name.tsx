@@ -29,7 +29,6 @@ export const Name = (props: NameProps) => {
     margin: `${settings.margin.top}px ${settings.margin.right}px ${settings.margin.bottom}px ${settings.margin.left}px`,
     padding: `${settings.padding.top}px ${settings.padding.right}px ${settings.padding.bottom}px ${settings.padding.left}px`,
     borderRadius: `${settings.radius.top_left}px ${settings.radius.top_right}px ${settings.radius.bottom_right}px ${settings.radius.bottom_left}px`,
-    gap: settings.badges.space + 'px',
   };
 
   const badgesStyle: React.CSSProperties = {
@@ -77,9 +76,11 @@ export const Name = (props: NameProps) => {
     </div>
   );
 
+  console.log(settings);
+
   return (
     <div style={nameStyle} className="shrink-0">
-      <div className="flex items-center" style={{ gap: settings.badges.space_between + 'px' }}>
+      <div className="flex items-center" style={{ gap: settings.badges.space + 'px' }}>
         {settings.badges.enabled && settings.badges.position === 'left' && badgeContent}
         {name}
         {settings.badges.enabled && settings.badges.position === 'right' && badgeContent}
