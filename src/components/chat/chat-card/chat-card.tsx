@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDeleteChat } from '../../../hooks/chat/use-delete-chat';
+import { UseExportChatTheme } from '../../../hooks/chat/use-export-chat';
 import { toastr, ToastType } from '../../../utils/toast/toast';
 import { Button, ButtonColor } from '../../button/button';
 import { PopoverNavigation } from '../../popover/navigation/popover-navigation';
@@ -13,6 +14,7 @@ export interface ChatCardProps {
 export const ChatCard = (props: ChatCardProps) => {
   const { title, id } = props;
   const { mutate: deleteChatTheme } = useDeleteChat();
+  const { mutate: exportChatTheme } = UseExportChatTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -45,6 +47,13 @@ export const ChatCard = (props: ChatCardProps) => {
                 );
               },
               icon: 'file-copy-line',
+            },
+            {
+              title: 'Export',
+              onClick: () => {
+                exportChatTheme(id);
+              },
+              icon: 'file-code-line',
             },
             {
               title: 'Delete',

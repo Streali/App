@@ -69,6 +69,12 @@ const TwitchMessageSchema = z.object({
   color: z.optional(z.string()),
 });
 
+export const ChatExportThemeSchema = z.object({
+  global: ChatThemeGlobalSchema,
+  message: ChatThemeMessageSchema,
+  name: ChatThemeNameSchema,
+});
+
 export type TwitchMessage = z.infer<typeof TwitchMessageSchema>;
 export type ChatTheme = z.infer<typeof ChatThemeSchema>;
 export type NameChat = z.infer<typeof ChatThemeNameSchema>;
