@@ -7,6 +7,11 @@ export const navigation = [
         icon: 'add-line',
         link: '/chat/create',
       },
+      {
+        title: 'My chat themes',
+        icon: 'book-2-line',
+        link: '/chat/library',
+      },
     ],
   },
 ];
