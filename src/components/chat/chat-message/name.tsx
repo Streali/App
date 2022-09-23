@@ -37,48 +37,38 @@ export const Name = (props: NameProps) => {
 
   const badgeContent = (
     <div style={badgesStyle} className="flex">
-      {badges.admin && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/admin.png`}
-        />
-      )}
-      {badges.broadcaster && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/broadcaster.png`}
-        />
-      )}
-      {badges.moderator && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/moderator.png`}
-        />
-      )}
-      {badges.partner && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/partner.png`}
-        />
-      )}
-      {badges.vip && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/vip.png`}
-        />
-      )}
-      {badges.artist && (
-        <img
-          style={{ width: settings.badges.size + 'px' }}
-          src={`/badges/${settings.badges.style}/artist.png`}
-        />
-      )}
+      {Object.entries(badges).map(([key, value]) => {
+        if (value) {
+          return (
+            value && (
+              <img
+                key={key}
+                style={{ width: settings.badges.size + 'px' }}
+                src={`/badges/${settings.badges.style}/${key}.png`}
+              />
+            )
+          );
+        }
+      })}
     </div>
   );
 
+  const haveBadges = () => {
+    return (
+      badges.admin ||
+      badges.broadcaster ||
+      badges.moderator ||
+      badges.partner ||
+      badges.vip ||
+      badges.artist
+    );
+  };
+
   return (
     <div style={nameStyle} className="shrink-0">
-      <div className="flex items-center" style={{ gap: settings.badges.space + 'px' }}>
+      <div
+        className="flex items-center"
+        style={{ gap: haveBadges() ? settings.badges.space + 'px' : '0px' }}>
         {settings.badges.enabled && settings.badges.position === 'left' && badgeContent}
         {name}
         {settings.badges.enabled && settings.badges.position === 'right' && badgeContent}
