@@ -34,7 +34,12 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
       {settings.global.order.map((item) => (
         <>
           {item.id === 'name' && (
-            <Name key={item.id} settings={settings.name} name={message.username} />
+            <Name
+              key={item.id}
+              settings={settings.name}
+              name={message.username}
+              badges={message.badges}
+            />
           )}
           {item.id === 'message' && (
             <Message key={item.id} settings={settings.message} message={message.message} />
