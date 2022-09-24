@@ -89,12 +89,7 @@ export const Button = (props: ButtonProps) => {
 
   if (link && external) {
     return (
-      <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        className={defineClassName}
-        data-testid="btn-externallink">
+      <a href={link} rel="noreferrer" className={defineClassName} data-testid="btn-externallink">
         {buttonContent}
       </a>
     );
