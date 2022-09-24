@@ -40,7 +40,7 @@ export const ChatCreate = () => {
 
   return (
     <div className="p-10 flex gap-10">
-      <div className="w-[400px] shrink-0">
+      <div className="w-[450px] shrink-0">
         <ChatSettings
           title="New chatbox"
           className="overflow-hidden"

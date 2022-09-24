@@ -53,10 +53,30 @@
   padding: theme('spacing.3') !important;
 
   &-list {
-    padding: 0 !important;
+    padding: 0 theme('spacing.2') 0 0 !important;
     display: flex;
     flex-direction: column;
     gap: theme('spacing.1') !important;
+    scrollbar-color: theme('colors.primary.500') theme('colors.black');
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: theme('colors.black');
+      border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: theme('colors.primary.500');
+      border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: theme('colors.primary.400');
+    }
   }
 }
 
