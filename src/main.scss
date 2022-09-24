@@ -76,3 +76,27 @@ body {
     transform: translateX(0);
   }
 }
+
+// Scrollbar
+.custom-scrollbar {
+  scrollbar-color: theme('colors.primary.500') theme('colors.black');
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: theme('colors.black');
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: theme('colors.primary.500');
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.primary.400');
+  }
+}
