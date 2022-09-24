@@ -1580,6 +1580,11 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@interactjs/types@1.10.17":
+  version "1.10.17"
+  resolved "https://registry.yarnpkg.com/@interactjs/types/-/types-1.10.17.tgz#1649de06d9ead790c81ecece76736b852bdfc77e"
+  integrity sha512-X2JpoM7xUw0p9Me0tMaI0HNfcF/Hd07ZZlzpnpEMpGerUZOLoyeThrV9P+CrBHxZrluWJrigJbcdqXliFd0YMA==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -8051,6 +8056,13 @@ inline-style-parser@0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.1.1.tgz"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
+
+interactjs@^1.10.17:
+  version "1.10.17"
+  resolved "https://registry.yarnpkg.com/interactjs/-/interactjs-1.10.17.tgz#aed66a63020cd092236133f9149e6448dc405d72"
+  integrity sha512-grjHJgnWkCoQLmAlk2yalNd1r0ztUhXLJNVjSOfWn1wfNNgU2tx1cDEkro9WYerDNC9UG3MZTeD4O6zOM5gbIA==
+  dependencies:
+    "@interactjs/types" "1.10.17"
 
 internal-slot@^1.0.3:
   version "1.0.3"
