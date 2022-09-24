@@ -7,6 +7,7 @@ import { Border } from '../../forms/border/border';
 import { Color } from '../../forms/color/color';
 import { Shadow } from '../../forms/shadow/shadow';
 import { Spacing } from '../../forms/spacing/spacing';
+import { Switch } from '../../forms/switch/switch';
 import { TextStyle } from '../../forms/text-style/text-style';
 
 export interface TabGeneralProps {
@@ -25,6 +26,21 @@ export const TabName = (props: TabGeneralProps) => {
           defaultValue={defaultChatTheme.name.text}
           render={({ field: { onChange, value } }) => (
             <TextStyle onChange={onChange} settings={value} />
+          )}
+        />
+      </Accordion>
+      <Accordion title="Full width">
+        <Controller
+          name="name.full_width"
+          control={control}
+          defaultValue={defaultChatTheme.name.full_width}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              onChange={onChange}
+              className="mb-3"
+              label="Activate full width"
+            />
           )}
         />
       </Accordion>

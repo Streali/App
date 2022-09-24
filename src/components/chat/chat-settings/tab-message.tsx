@@ -1,10 +1,12 @@
 import { Control, Controller } from 'react-hook-form';
+import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
 import { Accordion } from '../../accordion/accordion';
 import { BorderRadius } from '../../forms/border-radius/border-radius';
 import { Border } from '../../forms/border/border';
 import { Color } from '../../forms/color/color';
 import { Shadow } from '../../forms/shadow/shadow';
 import { Spacing } from '../../forms/spacing/spacing';
+import { Switch } from '../../forms/switch/switch';
 import { TextStyle } from '../../forms/text-style/text-style';
 
 export interface TabGeneralProps {
@@ -20,9 +22,24 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.text"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.message.text}
           render={({ field: { onChange, value } }) => (
             <TextStyle onChange={onChange} settings={value} />
+          )}
+        />
+      </Accordion>
+      <Accordion title="Full width">
+        <Controller
+          name="message.full_width"
+          control={control}
+          defaultValue={defaultChatTheme.message.full_width}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              onChange={onChange}
+              className="mb-3"
+              label="Activate full width"
+            />
           )}
         />
       </Accordion>
@@ -30,7 +47,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.background"
           control={control}
-          defaultValue={'#000000'}
+          defaultValue={defaultChatTheme.message.background}
           render={({ field: { onChange, value } }) => (
             <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
           )}
@@ -40,12 +57,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.shadow"
           control={control}
-          defaultValue={{
-            shadowColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-          }}
+          defaultValue={defaultChatTheme.message.shadow}
           render={({ field: { onChange, value } }) => (
             <Shadow settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -55,7 +67,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.border"
           control={control}
-          //defaultValue={'left'}
+          defaultValue={defaultChatTheme.message.border}
           render={({ field: { onChange, value } }) => (
             <Border className="mb-3" onChange={onChange} settings={value} />
           )}
@@ -65,7 +77,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.margin"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.message.margin}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -75,7 +87,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.padding"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.message.padding}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -85,7 +97,7 @@ export const TabMessage = (props: TabGeneralProps) => {
         <Controller
           name="message.radius"
           control={control}
-          //defaultValue={}
+          defaultValue={defaultChatTheme.message.radius}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}
