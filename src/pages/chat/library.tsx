@@ -30,6 +30,14 @@ export const ChatLibrary = () => {
             ))}
         </div>
       )}
+      {(!data || data.length === 0) && (
+        <div className="flex flex-col justify-center items-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <h2 className="text-2xl font-medium">No themes found 🥲</h2>
+          <Button iconLeft="add-line" link="/chat/create">
+            Create chat theme
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

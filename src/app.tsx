@@ -22,7 +22,7 @@ export const App = () => {
         <Navbar navigation={navigation} />
       )}
       <main
-        className={`min-h-screen ${
+        className={`min-h-screen relative ${
           !noLayout.some((path) => location.pathname.includes(path))
             ? 'w-[calc(100%_-_80px)] ml-[80px]'
             : 'w-screen ml-0'
