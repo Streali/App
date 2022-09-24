@@ -78,7 +78,7 @@ export const ButtonNav = (props: ButtonNavbarProps) => {
         </div>
       }>
       <div className="flex flex-col gap-2">
-        <PopoverNavigation links={items} onLinkClick={() => setNavOpen(true)} />
+        <PopoverNavigation links={items} onLinkClick={() => setNavOpen(false)} />
       </div>
     </Popover>
   );
