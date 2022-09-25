@@ -8,10 +8,10 @@ export interface TimelineProps {
   className?: string;
   onElementMove?: (startTime: Milliseconds) => void;
   onElementResize?: (duration: Milliseconds) => void;
-  type: 'image' | 'video' | 'text' | 'sound' | 'lottie';
+  type: 'image' | 'video' | 'text' | 'audio' | 'lottie';
   title: string;
-  duration?: Milliseconds;
-  startTime?: Milliseconds;
+  duration: Milliseconds;
+  startTime: Milliseconds;
   totalTime: Milliseconds;
   onClick?: () => void;
   color?: string;
@@ -35,7 +35,7 @@ export const Timeline = (props: TimelineProps) => {
     image: 'image-line',
     video: 'film-line',
     text: 'text',
-    sound: 'music-fill',
+    audio: 'music-fill',
     lottie: 'pencil-ruler-2-line',
   };
 
@@ -67,27 +67,26 @@ export const Timeline = (props: TimelineProps) => {
   };
 
   const resizeElement = (event: any) => {
-    Object.assign(event.target.style, {
-      width: `${event.rect.width}px`,
-    });
     onElementResize && onElementResize(pixelToTime(event.rect.width as Pixels));
+    Object.assign(event.target.style, {
+      width: `${timeToPixel(duration)}px`,
+    });
   };
 
   const moveElement = (event: any) => {
     const target = event.target;
     const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-    target.style.left = `${x}px`;
-    target.setAttribute('data-x', x);
     onElementMove && onElementMove(pixelToTime(x as Pixels));
+    target.setAttribute('data-x', x);
   };
 
   useEffect(() => {
     initInteract();
-  }, []);
+  }, [duration, startTime]);
 
   return (
     <div
-      className="w-full h-16 bg-black py-3"
+      className="w-full h-10 bg-dark-600 rounded"
       style={{
         width: `${timeToPixel(totalTime)}px`,
       }}
@@ -96,7 +95,7 @@ export const Timeline = (props: TimelineProps) => {
         className={`h-full w-20 rounded draggable relative flex items-center px-1.5 overflow-hidden gap-2`}
         style={{
           transform: `translateX(${timeToPixel(startTime as Milliseconds)}px)`,
-          width: `${timeToPixel(duration as Milliseconds)}px`,
+          width: `${timeToPixel(duration)}px`,
           maxWidth: `${timeToPixel(totalTime)}px`,
           background: color,
         }}

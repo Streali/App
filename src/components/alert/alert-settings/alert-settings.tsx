@@ -3,6 +3,7 @@ import { Control, Controller } from 'react-hook-form';
 import { Accordion } from '../../accordion/accordion';
 import { Input } from '../../forms/input/input';
 import { Icon } from '../../icon/icon';
+import { Slider } from '../../forms/slider/slider';
 
 export interface AlertSettingsProps {
   className?: string;
@@ -23,7 +24,7 @@ export const AlertSettings = (props: AlertSettingsProps) => {
             Save
           </Button>
         </div>
-        <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_148px)] overflow-y-auto custom-scrollbar">
+        <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_488px)] overflow-y-auto custom-scrollbar">
           <Accordion title="Title">
             <Controller
               name="title"
@@ -74,6 +75,24 @@ export const AlertSettings = (props: AlertSettingsProps) => {
                     const target = e.target as HTMLInputElement;
                     onChange(target.valueAsNumber);
                   }}
+                />
+              )}
+            />
+          </Accordion>
+          <Accordion title="Duration">
+            <Controller
+              name="duration"
+              control={control}
+              defaultValue={5000}
+              render={({ field: { onChange, value } }) => (
+                <Slider
+                  min={0}
+                  max={30}
+                  step={1}
+                  value={[value / 1000]}
+                  haveInput
+                  inputSuffix="s"
+                  onChange={(value) => onChange(value[0] * 1000)}
                 />
               )}
             />
