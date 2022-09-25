@@ -46,7 +46,7 @@ export const Input = (props: InputProps) => {
   const [val, setVal] = useState<string>('');
 
   const stateClassName = {
-    [InputState.Normal]: '',
+    [InputState.Normal]: '!border-primary-500',
     [InputState.Error]: '!border-error-500',
     [InputState.Success]: '!border-success-500',
   };

@@ -21,13 +21,12 @@ export interface FileProps {
 }
 
 export function File(props: FileProps) {
-  const { onChange, maxFiles = 1, maxSize = 1, accept, disabled = false, className = '' } = props;
+  const { onChange, maxFiles = 1, maxSize = 100, accept, disabled = false, className = '' } = props;
   const [dragOver, setDragOver] = useState(false);
   const sizeConversion = maxSize * 1000000;
   const [fileName, setFileName] = useState<string[]>([]);
 
   const handleDrop = (acceptedFiles: File[]) => {
-    console.log(accept);
     setFileName(acceptedFiles.map((file) => file.name));
     onChange && onChange(acceptedFiles);
   };
