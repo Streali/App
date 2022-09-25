@@ -1,4 +1,5 @@
 import { RouteObject } from 'react-router-dom';
+import { AlertCreate } from './pages/alert/create';
 import { ChatCreate } from './pages/chat/create';
 import { ChatEdit } from './pages/chat/edit';
 import { ChatEmbed } from './pages/chat/embed';
@@ -27,4 +28,11 @@ export const chatRouter: RouteObject[] = [
   },
 ];
 
-export const routes: RouteObject[] = [...chatRouter];
+export const alertRoutes: RouteObject[] = [
+  {
+    path: '/alert/create',
+    element: <AlertCreate />,
+  },
+];
+
+export const routes: RouteObject[] = [...chatRouter, ...alertRoutes];

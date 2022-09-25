@@ -14,6 +14,16 @@ export const navigation = [
       },
     ],
   },
+  {
+    icon: 'alarm-warning-line',
+    items: [
+      {
+        title: 'Create alert',
+        icon: 'add-line',
+        link: '/alert/create',
+      },
+    ],
+  },
 ];
 
 export const noLayout = ['/login', '/embed'];
