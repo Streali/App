@@ -28,7 +28,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
           key={index}
           className="pl-4 py-2 flex gap-2 items-center border-b border-dark-400"
           style={{ width: timeToPixel(totalTime) + 171 + 'px' }}>
-          <div className="flex gap-2 border-r items-center border-dark-400 pr-2 h-12">
+          <div className="flex gap-2 items-center h-12">
             <Button
               buttonIcon="delete-bin-line"
               color={ButtonColor.Error}
@@ -43,6 +43,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
           </div>
           <Timeline
             type={element.type}
+            id={element.id}
             title={element.title + ' - ' + index.toString()}
             totalTime={totalTime}
             color={element.color}

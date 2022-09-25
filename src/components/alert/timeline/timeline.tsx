@@ -15,6 +15,7 @@ export interface TimelineProps {
   totalTime: Milliseconds;
   onClick?: () => void;
   color?: string;
+  id: string;
 }
 
 export const Timeline = (props: TimelineProps) => {
@@ -28,6 +29,7 @@ export const Timeline = (props: TimelineProps) => {
     totalTime,
     onClick,
     color = '#ff0000',
+    id,
   } = props;
   const containerDrag = useRef<HTMLDivElement>(null);
 
@@ -50,6 +52,11 @@ export const Timeline = (props: TimelineProps) => {
         modifiers: [
           interact.modifiers.restrictRect({
             restriction: 'parent',
+          }),
+          interact.modifiers.snap({
+            targets: [interact.snappers.grid({ x: 20, y: 20 })],
+            range: Infinity,
+            relativePoints: [{ x: 0, y: 0 }],
           }),
         ],
       })
@@ -75,9 +82,9 @@ export const Timeline = (props: TimelineProps) => {
 
   const moveElement = (event: any) => {
     const target = event.target;
-    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    const x = (parseFloat(target.getAttribute(`data-x-${id}`)) || 0) + event.dx;
     onElementMove && onElementMove(pixelToTime(x as Pixels));
-    target.setAttribute('data-x', x);
+    target.setAttribute(`data-x-${id}`, x);
   };
 
   useEffect(() => {
@@ -99,6 +106,7 @@ export const Timeline = (props: TimelineProps) => {
           maxWidth: `${timeToPixel(totalTime)}px`,
           background: color,
         }}
+        {...{ [`data-x-${id}`]: timeToPixel(startTime as Milliseconds) }}
         onClick={onClick}>
         <div className="w-7 h-7 rounded-sm flex items-center justify-center bg-white shrink-0">
           <Icon name={elementIcon[type]} className="text-black" />
