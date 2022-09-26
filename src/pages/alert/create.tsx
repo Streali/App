@@ -16,7 +16,9 @@ export const AlertCreate = () => {
   const { handleSubmit, watch, getValues, control } = useForm();
 
   const handleDeleteElement = (id: string) => {
-    setElements((prev) => prev.filter((element) => element.id !== id));
+    const allElements = [...elements];
+    const filterElements = allElements.filter((element) => element.id !== id);
+    setElements(filterElements);
   };
 
   const handleColorChange = (id: string, color: string) => {

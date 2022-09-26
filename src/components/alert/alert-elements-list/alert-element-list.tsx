@@ -23,9 +23,9 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
       <div>
         <Duration totalTime={totalTime} />
       </div>
-      {elements.map((element, index) => (
+      {[...elements].reverse().map((element, index) => (
         <div
-          key={index}
+          key={element.id}
           className="pl-4 py-2 flex gap-2 items-center border-b border-dark-400"
           style={{ width: timeToPixel(totalTime) + 171 + 'px' }}>
           <div className="flex gap-2 items-center h-12">
@@ -44,7 +44,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
           <Timeline
             type={element.type}
             id={element.id}
-            title={element.title + ' - ' + index.toString()}
+            title={element.title}
             totalTime={totalTime}
             color={element.color}
             duration={element.duration}
