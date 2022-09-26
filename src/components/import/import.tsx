@@ -33,15 +33,12 @@ export const Import = (props: ImportProps) => {
       return setStep('1');
     }
 
-    const decode = JSON.parse(await files[0].text());
     try {
-      const chatImport = schema.parse(decode);
+      const chatImport = schema.parse(JSON.parse(await files[0].text()));
       setStep('2');
-
       return chatImport;
     } catch (error) {
       if (error instanceof z.ZodError) {
-        console.log(error);
         if (error.issues[0].code === 'invalid_type') {
           toastr(ToastType.Error, 'Chat Theme Import', 'Incorrect file');
         }
@@ -55,7 +52,6 @@ export const Import = (props: ImportProps) => {
       setIsOpen(false);
       setConfirm('');
     }
-    setStep('2');
   });
 
   const handleConfirm = () => {
