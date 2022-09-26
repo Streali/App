@@ -27,7 +27,6 @@ export function File(props: FileProps) {
   const [fileName, setFileName] = useState<string[]>([]);
 
   const handleDrop = (acceptedFiles: File[]) => {
-    console.log(accept);
     setFileName(acceptedFiles.map((file) => file.name));
     onChange && onChange(acceptedFiles);
   };
