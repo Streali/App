@@ -73,6 +73,7 @@ export const Import = (props: ImportProps) => {
       onOpenChange={(open) => {
         setIsOpen(open);
         setStep('1');
+        setConfirm('');
       }}>
       <form onSubmit={onSubmit}>
         {step === '1' && (
