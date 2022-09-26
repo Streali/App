@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toastr, ToastType } from '../../components/toast/toast';
 import { ChatTheme } from '../../types/schemas/chat';
 import { apiClient } from '../../utils/axios/axios';
-import { toastr, ToastType } from '../../utils/toast/toast';
 import { queryKeys } from '../query-keys';
 
 export const useUpdateChat = () => {

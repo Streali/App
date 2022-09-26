@@ -13,6 +13,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     animation: 'fade-in-left',
   },
   name: {
+    full_width: false,
     text: {
       fontFamily: 'Rubik',
       fontSize: 16,
@@ -66,6 +67,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
   },
   message: {
+    full_width: false,
     text: {
       fontFamily: 'Rubik',
       fontSize: 16,

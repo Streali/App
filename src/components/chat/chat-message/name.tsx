@@ -10,6 +10,7 @@ export const Name = (props: NameProps) => {
   const { settings, name, badges } = props;
 
   const nameStyle: React.CSSProperties = {
+    width: settings.full_width ? '100%' : 'auto',
     fontFamily: settings.text.fontFamily,
     fontSize: settings.text.fontSize + 'px',
     fontWeight: settings.text.fontWeight,
@@ -68,7 +69,15 @@ export const Name = (props: NameProps) => {
     <div style={nameStyle} className="shrink-0">
       <div
         className="flex items-center"
-        style={{ gap: haveBadges() ? settings.badges.space + 'px' : '0px' }}>
+        style={{
+          gap: haveBadges() ? settings.badges.space + 'px' : '0px',
+          justifyContent:
+            settings.text.textAlign === 'left'
+              ? 'start'
+              : settings.text.textAlign === 'center'
+              ? 'center'
+              : 'end',
+        }}>
         {settings.badges.enabled && settings.badges.position === 'left' && badgeContent}
         {name}
         {settings.badges.enabled && settings.badges.position === 'right' && badgeContent}

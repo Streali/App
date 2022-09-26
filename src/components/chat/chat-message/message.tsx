@@ -9,6 +9,7 @@ export const Message = (props: MessageProps) => {
   const { settings, message } = props;
 
   const nameStyle: React.CSSProperties = {
+    width: settings.full_width ? '100%' : 'auto',
     fontFamily: settings.text.fontFamily,
     fontSize: settings.text.fontSize + 'px',
     fontWeight: settings.text.fontWeight,

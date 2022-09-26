@@ -19,11 +19,12 @@ export const TextStyle = (props: TextStyleProps) => {
   const { onChange, settings } = props;
 
   const [fontVariants, setFontVariants] = useState<FontVariants[]>([
-    { label: 'Thin', value: '100' },
     { label: 'Light', value: '300' },
-    { label: 'Regular', value: 'regular' },
+    { label: 'Regular', value: '400' },
     { label: 'Medium', value: '500' },
+    { label: 'Semi Bold', value: '600' },
     { label: 'Bold', value: '700' },
+    { label: 'Extra Bold', value: '800' },
     { label: 'Black', value: '900' },
   ]);
 

@@ -25,6 +25,7 @@ export const ChatThemeMessageSchema = z.object({
   margin: SpacingSchema,
   padding: SpacingSchema,
   radius: BorderRadiusSchema,
+  full_width: z.boolean(),
 });
 
 export const ChatThemeNameSchema = z.object({
@@ -36,6 +37,7 @@ export const ChatThemeNameSchema = z.object({
   padding: SpacingSchema,
   radius: BorderRadiusSchema,
   badges: BadgesSchema,
+  full_width: z.boolean(),
 });
 
 export const ChatThemeSchema = z.object({

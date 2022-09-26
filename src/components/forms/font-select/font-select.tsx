@@ -28,7 +28,12 @@ export const FontSelect = (props: FontSelectProps) => {
       onChange &&
         onChange(
           font.family,
-          variants ? variants?.map((v: string) => ({ label: convertFontWeight(v), value: v })) : []
+          variants
+            ? variants?.map((v: string) => ({
+                label: convertFontWeight(v),
+                value: v === 'regular' ? '400' : v,
+              }))
+            : []
         );
     }
   }

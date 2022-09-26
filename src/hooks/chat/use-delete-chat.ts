@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toastr, ToastType } from '../../components/toast/toast';
 import { apiClient } from '../../utils/axios/axios';
-import { toastr, ToastType } from '../../utils/toast/toast';
 import { queryKeys } from '../query-keys';
 
 export const useDeleteChat = () => {

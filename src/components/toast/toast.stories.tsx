@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ToastType } from '../../utils/toast/toast';
 import { Toaster } from 'react-hot-toast';
-import { Toast } from './toast';
+import { Toast, ToastType } from './toast';
 
 export default {
   component: Toast,
