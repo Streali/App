@@ -54,11 +54,12 @@ export const Timeline = (props: TimelineProps) => {
 
   return (
     <div
-      className="w-full h-10 bg-transparent rounded relative"
+      className="relative h-10 w-full rounded bg-transparent"
       style={{
         width: `${timeToPixel(totalTime)}px`,
       }}
-      ref={containerDrag}>
+      ref={containerDrag}
+    >
       <Draggable
         axis="x"
         disabled={disabledDrag}
@@ -68,7 +69,8 @@ export const Timeline = (props: TimelineProps) => {
           setLeft(data.x as Pixels);
           onElementMove && onElementMove(pixelToTime(data.x as Pixels));
         }}
-        scale={1}>
+        scale={1}
+      >
         <ResizableBox
           axis="x"
           width={width}
@@ -79,23 +81,26 @@ export const Timeline = (props: TimelineProps) => {
           maxConstraints={[timeToPixel(totalTime), 40]}
           handle={
             <span
-              className="bg-black w-5 h-9 absolute right-0.5 rounded top-0.5 flex items-center justify-center cursor-ew-resize"
+              className="absolute right-0.5 top-0.5 flex h-9 w-5 cursor-ew-resize items-center justify-center rounded bg-black"
               onMouseOver={() => setDisabledDrag(true)}
-              onMouseOut={() => setDisabledDrag(false)}>
+              onMouseOut={() => setDisabledDrag(false)}
+            >
               <Icon name="menu-5-line" className="text-xs" />
             </span>
           }
           onResizeStop={(e, data) => {
             onElementResize && onElementResize(pixelToTime(data.size.width as Pixels));
-          }}>
+          }}
+        >
           <div
-            className={`h-10 w-full rounded relative flex items-center px-1.5 overflow-hidden gap-2 cursor-grab`}
+            className={`relative flex h-10 w-full cursor-grab items-center gap-2 overflow-hidden rounded px-1.5`}
             style={{ background: color }}
-            onClick={onClick}>
-            <div className="w-7 h-7 rounded-sm flex items-center justify-center bg-white shrink-0">
+            onClick={onClick}
+          >
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-white">
               <Icon name={elementIcon[type]} className="text-black" />
             </div>
-            <p className="whitespace-nowrap font-bold text-sm">{title}</p>
+            <p className="whitespace-nowrap text-sm font-bold">{title}</p>
           </div>
         </ResizableBox>
       </Draggable>

@@ -10,10 +10,11 @@ export const Duration = (props: DurationProps) => {
   const { totalTime } = props;
   return (
     <div
-      className="bg-dark-400 overflow-hidden h-4 ml-[162px]"
-      style={{ width: timeToPixel(totalTime) + 1 }}>
+      className="ml-[162px] h-4 overflow-hidden bg-dark-400"
+      style={{ width: timeToPixel(totalTime) + 1 }}
+    >
       <p>
-        <img src={duration} alt="Duration timeline" className="w-[5800px] min-w-[5800px] h-4" />
+        <img src={duration} alt="Duration timeline" className="h-4 w-[5800px] min-w-[5800px]" />
       </p>
     </div>
   );

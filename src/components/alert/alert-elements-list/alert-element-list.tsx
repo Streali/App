@@ -47,19 +47,21 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
   };
 
   return (
-    <div className="w-full h-[300px] bg-dark-600 rounded-xl overflow-y-auto custom-scrollbar">
+    <div className="custom-scrollbar h-[300px] w-full overflow-y-auto rounded-xl bg-dark-600">
       <div>
         <Duration totalTime={totalTime} />
       </div>
       <DragDropContext
         onDragEnd={(result: DropResult) => onDragEnd(result)}
-        onDragStart={(start) => console.log('start', start)}>
+        onDragStart={(start) => console.log('start', start)}
+      >
         <Droppable droppableId="list">
           {(providedDroppable) => (
             <div
               className="flex flex-col gap-1"
               ref={providedDroppable.innerRef}
-              {...providedDroppable.droppableProps}>
+              {...providedDroppable.droppableProps}
+            >
               <>
                 {[...elements].reverse().map((element, index) => (
                   <Draggable draggableId={element.id} index={index} key={element.id}>
@@ -68,9 +70,10 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
                         ref={providedDraggable.innerRef}
                         {...providedDraggable.draggableProps}
                         {...providedDraggable.dragHandleProps}
-                        className="pl-4 py-2 flex gap-2 items-center border-b border-dark-400"
-                        style={{ width: timeToPixel(totalTime) + 171 + 'px' }}>
-                        <div className="flex gap-2 items-center h-12">
+                        className="flex items-center gap-2 border-b border-dark-400 py-2 pl-4"
+                        style={{ width: timeToPixel(totalTime) + 171 + 'px' }}
+                      >
+                        <div className="flex h-12 items-center gap-2">
                           <Button
                             buttonIcon="delete-bin-line"
                             color={ButtonColor.Error}

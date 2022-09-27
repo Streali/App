@@ -72,7 +72,7 @@ export const BorderRadius = (props: BorderRadiusProps) => {
         <Button
           buttonIconSVG={{ svg: IconSVG.BorderRadius, width: 20, height: 20 }}
           size={ButtonSize.Small}
-          className="!w-10 !p-0 justify-center"
+          className="!w-10 justify-center !p-0"
           onClick={() => setAllBordersRadius(false)}
         />
       </div>
@@ -85,37 +85,37 @@ export const BorderRadius = (props: BorderRadiusProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusTopLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'top_left' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('top_left')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusTopRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'top_right' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('top_right')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusBottomRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'bottom_right' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('bottom_right')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadiusBottomLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'bottom_left' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('bottom_left')}
             />
           </div>
-          <div className="flex-1 flex justify-end">
+          <div className="flex flex-1 justify-end">
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRadius, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={ButtonColor.Dark}
               onClick={() => setAllBordersRadius(true)}
             />

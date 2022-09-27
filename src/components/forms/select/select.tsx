@@ -71,7 +71,7 @@ export const Select = (props: SelectProps) => {
         menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
       />
       {errorMessage && (
-        <span className="text-xs text-error-500 mt-1.5" data-testid="input-errormessage">
+        <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
           {errorMessage}
         </span>
       )}

@@ -14,7 +14,7 @@ export const Tooltip = (props: TooltipProps) => {
       <TooltipLib.Root>
         <TooltipLib.Trigger className={triggerClassName}>{children}</TooltipLib.Trigger>
         <TooltipLib.Portal>
-          <TooltipLib.Content align="center" className="px-3 py-2 bg-black rounded-md text-xs">
+          <TooltipLib.Content align="center" className="rounded-md bg-black px-3 py-2 text-xs">
             {content}
           </TooltipLib.Content>
         </TooltipLib.Portal>

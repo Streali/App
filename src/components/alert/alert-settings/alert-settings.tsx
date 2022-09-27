@@ -18,13 +18,13 @@ export const AlertSettings = (props: AlertSettingsProps) => {
   return (
     <div className={className}>
       <form onSubmit={() => console.log('ok')}>
-        <div className="flex justify-between mb-5 items-center">
-          <h1 className="font-semibold text-4xl font-title">{title}</h1>
+        <div className="mb-5 flex items-center justify-between">
+          <h1 className="font-title text-4xl font-semibold">{title}</h1>
           <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
             Save
           </Button>
         </div>
-        <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_488px)] overflow-y-auto custom-scrollbar">
+        <div className="custom-scrollbar h-[calc(100vh_-_488px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
           <Accordion title="Title">
             <Controller
               name="title"
@@ -98,34 +98,34 @@ export const AlertSettings = (props: AlertSettingsProps) => {
             />
           </Accordion>
           <Accordion title="Elements">
-            <div className="grid gap-4 grid-cols-3">
+            <div className="grid grid-cols-3 gap-4">
               <button onClick={() => addElement('image')} type="button">
-                <div className="h-20 bg-primary-100 py-3 rounded-md flex items-center justify-center mb-2">
-                  <Icon name="image-line" className="text-primary-500 text-2xl" />
+                <div className="mb-2 flex h-20 items-center justify-center rounded-md bg-primary-100 py-3">
+                  <Icon name="image-line" className="text-2xl text-primary-500" />
                 </div>
                 <p className="text-sm font-medium">Image</p>
               </button>
               <button onClick={() => addElement('video')} type="button">
-                <div className="h-20 bg-primary-100 py-3 rounded-md flex items-center justify-center mb-2">
-                  <Icon name="film-line" className="text-primary-500 text-2xl" />
+                <div className="mb-2 flex h-20 items-center justify-center rounded-md bg-primary-100 py-3">
+                  <Icon name="film-line" className="text-2xl text-primary-500" />
                 </div>
                 <p className="text-sm font-medium">Video</p>
               </button>
               <button onClick={() => addElement('text')} type="button">
-                <div className="h-20 bg-primary-100 py-3 rounded-md flex items-center justify-center mb-2">
-                  <Icon name="text" className="text-primary-500 text-2xl" />
+                <div className="mb-2 flex h-20 items-center justify-center rounded-md bg-primary-100 py-3">
+                  <Icon name="text" className="text-2xl text-primary-500" />
                 </div>
                 <p className="text-sm font-medium">Text</p>
               </button>
               <button onClick={() => addElement('lottie')} type="button">
-                <div className="h-20 bg-primary-100 py-3 rounded-md flex items-center justify-center mb-2">
-                  <Icon name="play-fill" className="text-primary-500 text-2xl" />
+                <div className="mb-2 flex h-20 items-center justify-center rounded-md bg-primary-100 py-3">
+                  <Icon name="play-fill" className="text-2xl text-primary-500" />
                 </div>
                 <p className="text-sm font-medium">Lottie</p>
               </button>
               <button onClick={() => addElement('audio')} type="button">
-                <div className="h-20 bg-primary-100 py-3 rounded-md flex items-center justify-center mb-2">
-                  <Icon name="music-fill" className="text-primary-500 text-2xl" />
+                <div className="mb-2 flex h-20 items-center justify-center rounded-md bg-primary-100 py-3">
+                  <Icon name="music-fill" className="text-2xl text-primary-500" />
                 </div>
                 <p className="text-sm font-medium">Audio</p>
               </button>

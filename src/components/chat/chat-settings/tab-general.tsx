@@ -16,7 +16,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
   const { control } = props;
 
   return (
-    <div className="p-6 bg-dark-600 rounded-2xl h-[calc(100vh_-_208px)] overflow-y-auto custom-scrollbar">
+    <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
       <Accordion title="Title">
         <Controller
           name="title"

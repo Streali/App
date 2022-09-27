@@ -87,17 +87,19 @@ export const Color = (props: ColorProps) => {
           trigger={
             <div
               onClick={() => setShowPicker(true)}
-              className="h-10 w-10 flex items-center justify-center rounded-md bg-dark-400 cursor-pointer">
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-dark-400"
+            >
               <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
             </div>
-          }>
+          }
+        >
           <ColorPicker color={hexaToHsva(val)} onChange={(e) => onChangePickerValue(e)} />
         </Popover>
 
         {haveInput && (
           <input
             type="text"
-            className={`h-10 flex-1 border border-transparent text-xs text-white bg-dark-400 rounded-md px-4 outline-none focus:border-primary-500 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
+            className={`h-10 flex-1 rounded-md border border-transparent bg-dark-400 px-4 text-xs text-white outline-none transition focus:border-primary-500 ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
             maxLength={9}
             value={val.includes('#') ? val.toUpperCase() : `#${val.toUpperCase()}`}
             onChange={(e) => onChangeTextValue(e)}
@@ -105,7 +107,7 @@ export const Color = (props: ColorProps) => {
         )}
       </div>
       {errorMessage && (
-        <span className="text-xs text-error-500 mt-1.5" data-testid="input-errormessage">
+        <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
           {errorMessage}
         </span>
       )}

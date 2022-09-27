@@ -71,11 +71,11 @@ export const Input = (props: InputProps) => {
           name={prefixIcon}
           width={32}
           height={32}
-          className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none"
+          className="absolute bottom-1 left-1 inline-flex  h-8 items-center rounded bg-dark-500 px-2 leading-none"
         />
       )}
       {prefix && (
-        <span className="absolute bottom-1 h-8 px-2  bg-dark-500 rounded left-1 inline-flex items-center leading-none">
+        <span className="absolute bottom-1 left-1 inline-flex  h-8 items-center rounded bg-dark-500 px-2 leading-none">
           {prefix}
         </span>
       )}
@@ -85,16 +85,16 @@ export const Input = (props: InputProps) => {
           name={suffixIcon}
           width={32}
           height={32}
-          className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none"
+          className="absolute bottom-1 right-1 inline-flex h-8 items-center rounded bg-dark-500 px-2 text-xs font-bold leading-none"
         />
       )}
       {suffix && (
-        <span className="text-xs absolute bottom-1 h-8 px-2 font-bold bg-dark-500 rounded right-1 inline-flex items-center leading-none">
+        <span className="absolute bottom-1 right-1 inline-flex h-8 items-center rounded bg-dark-500 px-2 text-xs font-bold leading-none">
           {suffix}
         </span>
       )}
       <input
-        className={`h-10 w-full border border-transparent text-xs text-white bg-dark-400 rounded-lg outline-none focus:border-primary-500 transition ${
+        className={`h-10 w-full rounded-lg border border-transparent bg-dark-400 text-xs text-white outline-none transition focus:border-primary-500 ${
           prefix || prefixIcon || prefixIconSvg ? 'pl-11' : 'pl-4'
         } ${suffix || suffixIcon || suffixIconSvg ? 'pr-11' : 'pr-4'} ${
           stateClassName[state]
@@ -104,7 +104,7 @@ export const Input = (props: InputProps) => {
         {...inputProps}
       />
       {errorMessage && (
-        <span className="text-xs text-error-500 mt-1.5" data-testid="input-errormessage">
+        <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
           {errorMessage}
         </span>
       )}

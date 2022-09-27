@@ -14,7 +14,7 @@ export const AlertText = (props: AlertTextProps) => {
 
   return (
     <p
-      className="draggable-alert hover:outline hover:outline-1 hover:outline-white/30 transition-colors absolute"
+      className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,
         height: height,
@@ -22,7 +22,8 @@ export const AlertText = (props: AlertTextProps) => {
         ...settings,
       }}
       data-x={posX}
-      data-y={posY}>
+      data-y={posY}
+    >
       {text}
     </p>
   );

@@ -41,7 +41,7 @@ export const Slider = (props: SliderProps) => {
   return (
     <div className={className}>
       {label && <Label className={`mb-3.5 ${labelClassName}`}>{label}</Label>}
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <div className="flex-1">
           <SliderLib.Root
             value={val}
@@ -52,14 +52,15 @@ export const Slider = (props: SliderProps) => {
             min={min}
             max={max}
             step={step}
-            className="relative flex items-center w-full"
-            disabled={disabled}>
-            <SliderLib.Track className="bg-dark-300 grow rounded h-3">
+            className="relative flex w-full items-center"
+            disabled={disabled}
+          >
+            <SliderLib.Track className="h-3 grow rounded bg-dark-300">
               <SliderLib.Range
-                className={`absolute rounded h-full ${disabled ? 'bg-dark-300' : 'bg-primary-500'}`}
+                className={`absolute h-full rounded ${disabled ? 'bg-dark-300' : 'bg-primary-500'}`}
               />
             </SliderLib.Track>
-            <SliderLib.Thumb className={`block w-4 h-4 rounded-full outline-none bg-transparent`} />
+            <SliderLib.Thumb className={`block h-4 w-4 rounded-full bg-transparent outline-none`} />
           </SliderLib.Root>
         </div>
         {haveInput && (

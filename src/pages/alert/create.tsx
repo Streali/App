@@ -60,7 +60,7 @@ export const AlertCreate = () => {
   }, [watch, getValues]);
 
   return (
-    <div className="p-10 flex gap-10 flex-col">
+    <div className="flex flex-col gap-10 p-10">
       <div>
         <div className="w-[350px] shrink-0">
           <AlertSettings

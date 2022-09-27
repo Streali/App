@@ -38,11 +38,12 @@ export const Modal = (props: ModalProps) => {
         <div className={triggerContainerClassName}>{trigger}</div>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="w-full h-full bg-dark-500 opacity-70 fixed top-0 left-0 z-10" />
+        <Dialog.Overlay className="fixed top-0 left-0 z-10 h-full w-full bg-dark-500 opacity-70" />
         <Dialog.Content
-          className={`p-5 w-[calc(600px-48px)] max-w-[calc(100vw-48px)] bg-dark-400 rounded-md min-w-40 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-dialogFadeIn`}>
-          <div className="flex items-center justify-between w-full mb-3">
-            <Dialog.Title className="font-title font-semibold text-3xl">{title}</Dialog.Title>
+          className={`min-w-40 fixed top-1/2 left-1/2 z-20 w-[calc(600px-48px)] max-w-[calc(100vw-48px)] -translate-x-1/2 -translate-y-1/2 animate-dialogFadeIn rounded-md bg-dark-400 p-5`}
+        >
+          <div className="mb-3 flex w-full items-center justify-between">
+            <Dialog.Title className="font-title text-3xl font-semibold">{title}</Dialog.Title>
             <Dialog.Close asChild>
               <div>
                 <Button buttonIcon="close-line" size={ButtonSize.Small} color={ButtonColor.Black} />

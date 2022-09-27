@@ -52,12 +52,13 @@ export const Textarea = (props: TextareaProps) => {
     <label className={containerClassName}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <textarea
-        className={`h-40 w-full border-2 border-transparent text-sm text-white bg-dark-400 rounded-md p-4 outline-none focus:border-primary-300 transition ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${className}`}
+        className={`h-40 w-full rounded-md border-2 border-transparent bg-dark-400 p-4 text-sm text-white outline-none transition focus:border-primary-300 ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${className}`}
         data-testid="input"
         onChange={onChangeValue}
-        {...textareaProps}></textarea>
+        {...textareaProps}
+      ></textarea>
       {errorMessage && (
-        <span className="text-xs text-error-500 mt-1.5" data-testid="input-errormessage">
+        <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
           {errorMessage}
         </span>
       )}

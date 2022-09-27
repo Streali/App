@@ -45,7 +45,7 @@ export const Badges = (props: BadgesProps) => {
 
   return (
     <div className={className}>
-      <div className="flex gap-2 mb-2">
+      <div className="mb-2 flex gap-2">
         <Switch
           onChange={(checked) => handleSettingsChange('enabled', checked)}
           checked={settings?.enabled}

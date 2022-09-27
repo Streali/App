@@ -39,7 +39,8 @@ export const DnDList = (props: DnDListProps) => {
             <div
               className="flex flex-col gap-1"
               ref={providedDroppable.innerRef}
-              {...providedDroppable.droppableProps}>
+              {...providedDroppable.droppableProps}
+            >
               <>
                 {list.map((element, index) => (
                   <Draggable draggableId={element.id} index={index} key={element.id}>
@@ -48,7 +49,8 @@ export const DnDList = (props: DnDListProps) => {
                         ref={providedDraggable.innerRef}
                         {...providedDraggable.draggableProps}
                         {...providedDraggable.dragHandleProps}
-                        className="h-10 px-3 bg-dark-400 rounded-lg flex gap-3 items-center">
+                        className="flex h-10 items-center gap-3 rounded-lg bg-dark-400 px-3"
+                      >
                         <Icon name="menu-5-line" />
                         <p className="text-sm">{element.name}</p>
                       </div>

@@ -18,12 +18,13 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="flex items-center w-full px-2 gap-2">
+      <div className="flex w-full items-center gap-2 px-2">
         <div
-          className="w-4 h-4 shrink-0 rounded overflow-hidden"
+          className="h-4 w-4 shrink-0 overflow-hidden rounded"
           style={{
             backgroundColor: `${hsvaToRgbaString(color)}`,
-          }}></div>
+          }}
+        ></div>
 
         {tab === 'hex' && <TabHex color={color} onChange={(e: HsvaColor) => onChange(e)} />}
         {tab === 'rgba' && <TabRGB color={color} onChange={(e: HsvaColor) => onChange(e)} />}
@@ -33,17 +34,20 @@ export const Tabs = (props: TabsProps) => {
       <div className="flex gap-4">
         <button
           className={`${buttonStyle} ${tab === 'rgba' && buttonActiveStyle}`}
-          onClick={() => setTab('rgba')}>
+          onClick={() => setTab('rgba')}
+        >
           RGBA
         </button>
         <button
           className={`${buttonStyle} ${tab === 'hex' && buttonActiveStyle}`}
-          onClick={() => setTab('hex')}>
+          onClick={() => setTab('hex')}
+        >
           HEX
         </button>
         <button
           className={`${buttonStyle} ${tab === 'hsla' && buttonActiveStyle}`}
-          onClick={() => setTab('hsla')}>
+          onClick={() => setTab('hsla')}
+        >
           HSLA
         </button>
       </div>

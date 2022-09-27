@@ -39,16 +39,18 @@ export function File(props: FileProps) {
       maxFiles={maxFiles}
       accept={accept}
       maxSize={sizeConversion}
-      disabled={disabled}>
+      disabled={disabled}
+    >
       {({ getRootProps, getInputProps }) => (
         <section>
           <div
             {...getRootProps()}
-            className={`w-full h-40 border-2 border-dashed border-dark-300 rounded-md flex flex-col items-center justify-center cursor-pointer hover:border-primary-300 transition-colors duration-300 ${
+            className={`flex h-40 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-dark-300 transition-colors duration-300 hover:border-primary-300 ${
               dragOver ? 'border-primary-300' : ''
             } ${
-              disabled ? 'bg-dark-400 hover:border-dark-300 cursor-not-allowed' : ''
-            } ${className}`}>
+              disabled ? 'cursor-not-allowed bg-dark-400 hover:border-dark-300' : ''
+            } ${className}`}
+          >
             <input {...getInputProps()} />
             {fileName.length === 0 && (
               <>

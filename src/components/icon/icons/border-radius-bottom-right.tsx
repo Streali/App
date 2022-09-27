@@ -10,7 +10,8 @@ export const IconBorderRadiusBottomRight = (props: IconSVGProps) => {
       height={height}
       fill="none"
       viewBox="0 0 24 24"
-      className={className}>
+      className={className}
+    >
       <mask
         id="mask0_762_2296"
         style={{ maskType: 'alpha' }}
@@ -18,10 +19,12 @@ export const IconBorderRadiusBottomRight = (props: IconSVGProps) => {
         height="20"
         x="2"
         y="2"
-        maskUnits="userSpaceOnUse">
+        maskUnits="userSpaceOnUse"
+      >
         <path
           fill={fill}
-          d="M17 2H7C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5zm3 15c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10c1.654 0 3 1.346 3 3v10z"></path>
+          d="M17 2H7C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5zm3 15c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10c1.654 0 3 1.346 3 3v10z"
+        ></path>
       </mask>
       <g mask="url(#mask0_762_2296)">
         <path fill={fill} d="M11 11H22V22H11z"></path>
@@ -31,7 +34,8 @@ export const IconBorderRadiusBottomRight = (props: IconSVGProps) => {
         fillOpacity="0.5"
         fillRule="evenodd"
         d="M7 2h10c2.757 0 5 2.243 5 5v4h-2V7c0-1.654-1.346-3-3-3H7C5.346 4 4 5.346 4 7v10c0 1.654 1.346 3 3 3h4v2H7c-2.757 0-5-2.243-5-5V7c0-2.757 2.243-5 5-5z"
-        clipRule="evenodd"></path>
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 };

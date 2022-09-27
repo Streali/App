@@ -97,7 +97,7 @@ export const Border = (props: BorderProps) => {
         <Button
           buttonIconSVG={{ svg: IconSVG.Border, width: 20, height: 20 }}
           size={ButtonSize.Small}
-          className="!w-10 !p-0 justify-center"
+          className="!w-10 justify-center !p-0"
           onClick={() => setAllBorders(false)}
         />
       </div>
@@ -110,37 +110,37 @@ export const Border = (props: BorderProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderTop, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'top' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('top')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'right' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('right')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderBottom, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'bottom' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('bottom')}
             />
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'left' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('left')}
             />
           </div>
-          <div className="flex-1 flex justify-end">
+          <div className="flex flex-1 justify-end">
             <Button
               buttonIconSVG={{ svg: IconSVG.Border, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={ButtonColor.Dark}
               onClick={() => setAllBorders(true)}
             />

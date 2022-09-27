@@ -92,7 +92,7 @@ export const TextStyle = (props: TextStyleProps) => {
 
   return (
     <div className="w-full">
-      <div className="flex w-full gap-2 flex-1 mb-2 min-w-full">
+      <div className="mb-2 flex w-full min-w-full flex-1 gap-2">
         <div className="w-2/3">
           <FontSelect
             value={fontSettings.fontFamily}
@@ -103,7 +103,7 @@ export const TextStyle = (props: TextStyleProps) => {
             }}
           />
         </div>
-        <div className="flex gap-2 w-1/3">
+        <div className="flex w-1/3 gap-2">
           <div className="w-full">
             <Input
               type="number"
@@ -125,11 +125,11 @@ export const TextStyle = (props: TextStyleProps) => {
           />
         </div>
       </div>
-      <div className="flex gap-2 mb-2">
-        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3 shrink-0">
+      <div className="mb-2 flex gap-2">
+        <div className="flex h-10 w-1/3 shrink-0 gap-2 rounded-lg bg-dark-400 p-2">
           <Button
             iconLeft="underline"
-            className="h-full w-auto text-xs justify-center rounded flex-1"
+            className="h-full w-auto flex-1 justify-center rounded text-xs"
             color={
               fontSettings.textDecoration === 'underline' ? ButtonColor.Primary : ButtonColor.Black
             }
@@ -142,7 +142,7 @@ export const TextStyle = (props: TextStyleProps) => {
           />
           <Button
             iconLeft="italic"
-            className="h-full w-auto text-xs justify-center rounded flex-1"
+            className="h-full w-auto flex-1 justify-center rounded text-xs"
             color={fontSettings.fontStyle === 'italic' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => {
               const fontStyle = fontSettings.fontStyle;
@@ -162,22 +162,22 @@ export const TextStyle = (props: TextStyleProps) => {
             onChange={(value) => handleSettingsChange('fontWeight', value?.value || '')}
           />
         </div>
-        <div className="p-2 bg-dark-400 rounded-lg gap-2 flex h-10 w-1/3 shrink-0">
+        <div className="flex h-10 w-1/3 shrink-0 gap-2 rounded-lg bg-dark-400 p-2">
           <Button
             buttonIcon="align-left"
-            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
+            className="h-full w-auto flex-1 justify-center rounded px-0 text-xs"
             color={fontSettings.textAlign === 'left' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'left')}
           />
           <Button
             buttonIcon="align-center"
-            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
+            className="h-full w-auto flex-1 justify-center rounded px-0 text-xs"
             color={fontSettings.textAlign === 'center' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'center')}
           />
           <Button
             buttonIcon="align-right"
-            className="h-full w-auto text-xs justify-center rounded flex-1 px-0"
+            className="h-full w-auto flex-1 justify-center rounded px-0 text-xs"
             color={fontSettings.textAlign === 'right' ? ButtonColor.Primary : ButtonColor.Black}
             onClick={() => handleSettingsChange('textAlign', 'right')}
           />
@@ -194,14 +194,16 @@ export const TextStyle = (props: TextStyleProps) => {
             <Button
               size={ButtonSize.Micro}
               iconRight="arrow-down-s-line"
-              color={ButtonColor.Accent}>
+              color={ButtonColor.Accent}
+            >
               More
             </Button>
-          }>
+          }
+        >
           <div className="w-full">
-            <div className="flex gap-2 mb-2">
+            <div className="mb-2 flex gap-2">
               <div className="flex gap-2">
-                <div className="w-10 h-10 rounded-lg bg-black flex justify-center align-center items-center shrink-0">
+                <div className="align-center flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black">
                   <Icon name="text-spacing" />
                 </div>
                 <Input
@@ -215,7 +217,7 @@ export const TextStyle = (props: TextStyleProps) => {
                 />
               </div>
               <div className="flex gap-2">
-                <div className="w-10 h-10 rounded-lg bg-black flex justify-center align-center items-center shrink-0">
+                <div className="align-center flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black">
                   <Icon name="line-height" />
                 </div>
                 <Input
@@ -230,7 +232,7 @@ export const TextStyle = (props: TextStyleProps) => {
                 />
               </div>
             </div>
-            <p className="font-medium text-xs mb-2">Text shadow</p>
+            <p className="mb-2 text-xs font-medium">Text shadow</p>
             <Shadow
               settings={{
                 shadowOffsetX: fontSettings.textShadow.shadowOffsetX,

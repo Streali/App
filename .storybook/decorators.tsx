@@ -6,11 +6,13 @@ import React from 'react';
 const queryClient = new QueryClient();
 
 export const withDecorator: DecoratorFn = (Story) => {
-    return <QueryClientProvider client={queryClient}>
+  return (
+    <QueryClientProvider client={queryClient}>
       <MemoryRouter>
         <Routes>
           <Route path="/*" element={<Story />} />
         </Routes>
       </MemoryRouter>
-  </QueryClientProvider>;
+    </QueryClientProvider>
+  );
 };

@@ -31,7 +31,8 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
       initial={selectAnimation(settings.global.animation).initial}
       transition={selectAnimation(settings.global.animation).transition}
       className="flex w-full"
-      style={containerStyle}>
+      style={containerStyle}
+    >
       {settings.global.order.map((item, index) => (
         <React.Fragment key={index}>
           {item.id === 'name' && (

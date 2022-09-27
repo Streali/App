@@ -35,6 +35,7 @@ export const Message = (props: MessageProps) => {
     <div
       className="chat__message"
       style={nameStyle}
-      dangerouslySetInnerHTML={{ __html: message }}></div>
+      dangerouslySetInnerHTML={{ __html: message }}
+    ></div>
   );
 };

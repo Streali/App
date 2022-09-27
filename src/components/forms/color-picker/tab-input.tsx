@@ -16,7 +16,7 @@ export const TabInput = (props: TabInputProps) => {
     <label className="flex gap-0.5 text-xs">
       <label className="text-light-200">{label?.toUpperCase()}</label>
       <input
-        className={`text-left text-dark-100 font-bold appearance-none focus:text-white ${focusInputStyle} ${resetInputStyle} ${className}`}
+        className={`appearance-none text-left font-bold text-dark-100 focus:text-white ${focusInputStyle} ${resetInputStyle} ${className}`}
         {...InputProps}
       />
     </label>

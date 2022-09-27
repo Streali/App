@@ -25,7 +25,8 @@ export const Avatar = (props: AvatarProps) => {
       return (
         <span
           style={{ width: size + 'px', height: size + 'px' }}
-          className={`rounded-full bg-dark-300 flex items-center justify-center text-xs leading-none ${className}`}>
+          className={`flex items-center justify-center rounded-full bg-dark-300 text-xs leading-none ${className}`}
+        >
           {tag}
         </span>
       );

@@ -20,7 +20,7 @@ export const ChatCard = (props: ChatCardProps) => {
 
   return (
     <>
-      <div className=" flex items-center justify-center w-full h-[250px] overflow-hidden  p-6 bg-dark-600 border-2 border-dark-400 rounded-t-lg">
+      <div className=" flex h-[250px] w-full items-center justify-center overflow-hidden  rounded-t-lg border-2 border-dark-400 bg-dark-600 p-6">
         <ChatMessage
           settings={theme}
           message={{
@@ -44,14 +44,15 @@ export const ChatCard = (props: ChatCardProps) => {
           }}
         />
       </div>
-      <div className="py-3 pl-6 pr-3 bg-dark-400 rounded-b-lg flex justify-between items-center hover:bg-primary-500 transition-colors duration-200">
+      <div className="flex items-center justify-between rounded-b-lg bg-dark-400 py-3 pl-6 pr-3 transition-colors duration-200 hover:bg-primary-500">
         <h2 className="font-medium">{theme.title}</h2>
         <Popover
           open={menuOpen}
           onOpenChange={setMenuOpen}
           align="end"
           side="bottom"
-          trigger={<Button iconLeft="more-line" color={ButtonColor.Black} />}>
+          trigger={<Button iconLeft="more-line" color={ButtonColor.Black} />}
+        >
           <PopoverNavigation
             onLinkClick={() => setMenuOpen(false)}
             links={[

@@ -7,7 +7,7 @@ export const Label = (props: LabelProps) => {
   const { children, className = '' } = props;
 
   return (
-    <span className={`text-xs font-bold block mb-1.5 ${className}`} data-testid="label">
+    <span className={`mb-1.5 block text-xs font-bold ${className}`} data-testid="label">
       {children}
     </span>
   );

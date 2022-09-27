@@ -61,7 +61,7 @@ export const Spacing = (props: SpacingProps) => {
 
   if (allSpacing) {
     return (
-      <div className={`flex gap-2 w-full ${className}`}>
+      <div className={`flex w-full gap-2 ${className}`}>
         <div className="flex-1">
           <Input
             type="number"
@@ -89,7 +89,7 @@ export const Spacing = (props: SpacingProps) => {
         <Button
           buttonIconSVG={{ svg: IconSVG.Border, width: 20, height: 20 }}
           size={ButtonSize.Small}
-          className="!w-10 !p-0 justify-center"
+          className="!w-10 justify-center !p-0"
           onClick={() => setAllSpacing(false)}
           type="button"
         />
@@ -103,7 +103,7 @@ export const Spacing = (props: SpacingProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderLeft, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'left' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('left')}
               type="button"
@@ -111,7 +111,7 @@ export const Spacing = (props: SpacingProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderTop, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'top' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('top')}
               type="button"
@@ -119,7 +119,7 @@ export const Spacing = (props: SpacingProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderRight, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'right' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('right')}
               type="button"
@@ -127,17 +127,17 @@ export const Spacing = (props: SpacingProps) => {
             <Button
               buttonIconSVG={{ svg: IconSVG.BorderBottom, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={selectBorder === 'bottom' ? ButtonColor.Primary : ButtonColor.Dark}
               onClick={() => setSelectBorder('bottom')}
               type="button"
             />
           </div>
-          <div className="flex-1 flex justify-end">
+          <div className="flex flex-1 justify-end">
             <Button
               buttonIconSVG={{ svg: IconSVG.Border, width: 20, height: 20 }}
               size={ButtonSize.Small}
-              className="!w-10 !p-0 justify-center"
+              className="!w-10 justify-center !p-0"
               color={ButtonColor.Dark}
               onClick={() => setAllSpacing(true)}
               type="button"

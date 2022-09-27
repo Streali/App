@@ -28,9 +28,9 @@ export const Navbar = (props: NavbarProps) => {
   ];
 
   return (
-    <div className="h-screen w-20 bg-dark-500 border-r border-dark-300 fixed top-0 left-0 flex flex-col justify-between items-center">
+    <div className="fixed top-0 left-0 flex h-screen w-20 flex-col items-center justify-between border-r border-dark-300 bg-dark-500">
       <div>
-        <div className="w-20 h-20 bg-primary-500 flex justify-center items-center">
+        <div className="flex h-20 w-20 items-center justify-center bg-primary-500">
           <img src={Logo} alt="Logo Streali" />
         </div>
         <div className="flex flex-col gap-1 py-5 px-5">
@@ -48,7 +48,8 @@ export const Navbar = (props: NavbarProps) => {
             onOpenChange={setUserNavOpen}
             trigger={<Avatar className="cursor-pointer" size={45} src={user.avatar_url} />}
             side="right"
-            align="end">
+            align="end"
+          >
             <PopoverNavigation links={userNavigation} onLinkClick={() => setUserNavOpen(false)} />
           </Popover>
         )}
@@ -73,10 +74,11 @@ export const ButtonNav = (props: ButtonNavbarProps) => {
       side="right"
       align="center"
       trigger={
-        <div className="w-10 h-10 cursor-pointer bg-dark-500 rounded-md text-white flex justify-center items-center hover:bg-primary-100 hover:text-primary-500 transition-colors duration-200 relative">
+        <div className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-dark-500 text-white transition-colors duration-200 hover:bg-primary-100 hover:text-primary-500">
           <Icon name={icon} />
         </div>
-      }>
+      }
+    >
       <div className="flex flex-col gap-2">
         <PopoverNavigation links={items} onLinkClick={() => setNavOpen(false)} />
       </div>

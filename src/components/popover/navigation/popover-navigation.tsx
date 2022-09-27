@@ -41,22 +41,24 @@ export const PopoverNavigation = (props: PopoverNavigationProps) => {
             <Link
               to={link.link}
               onClick={onLinkClick}
-              className={`inline-flex h-7 gap-2 items-center px-2 transition-colors rounded cursor-pointer w-full ${
+              className={`inline-flex h-7 w-full cursor-pointer items-center gap-2 rounded px-2 transition-colors ${
                 colorClassName[link.color || 'primary']
-              } ${link.className}`}>
+              } ${link.className}`}
+            >
               {link.icon && <Icon name={link.icon} className="mr-1" />}
               {link.title}
             </Link>
           )}
           {link.onClick && (
             <div
-              className={`inline-flex h-7 gap-2 items-center px-2 transition-colors rounded cursor-pointer w-full ${
+              className={`inline-flex h-7 w-full cursor-pointer items-center gap-2 rounded px-2 transition-colors ${
                 colorClassName[link.color || 'primary']
               } ${link.className}`}
               onClick={(e) => {
                 link.onClick && link.onClick(e);
                 onLinkClick && onLinkClick();
-              }}>
+              }}
+            >
               {link.icon && <Icon name={link.icon} className="mr-1" />}
               {link.title}
             </div>
@@ -75,12 +77,13 @@ export const PopoverNavigation = (props: PopoverNavigationProps) => {
               }}
               trigger={
                 <div
-                  className={`inline-flex h-7 gap-2 items-center px-2 transition-colors rounded cursor-pointer w-full ${
+                  className={`inline-flex h-7 w-full cursor-pointer items-center gap-2 rounded px-2 transition-colors ${
                     colorClassName[link.color || 'primary']
                   } ${link.className}`}
                   onClick={(e) => {
                     link.onClick && link.onClick(e);
-                  }}>
+                  }}
+                >
                   {link.icon && <Icon name={link.icon} className="mr-1" />}
                   {link.title}
                 </div>

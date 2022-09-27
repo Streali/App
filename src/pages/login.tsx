@@ -14,10 +14,10 @@ export const Login = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center flex-col gap-10">
-      <div className="w-[55%] h-[60%] bg-primary-500 blur-[200px] rounded-full fixed -top-[20%] -left-[20%]"></div>
-      <div className="w-[60%] h-[15%] bg-accent-500 blur-[200px] rounded-full fixed top-[40%] -right-[40%]"></div>
-      <h1 className="font-semibold text-4xl font-title text-center">
+    <div className="flex h-screen flex-col items-center justify-center gap-10">
+      <div className="fixed -top-[20%] -left-[20%] h-[60%] w-[55%] rounded-full bg-primary-500 blur-[200px]"></div>
+      <div className="fixed top-[40%] -right-[40%] h-[15%] w-[60%] rounded-full bg-accent-500 blur-[200px]"></div>
+      <h1 className="text-center font-title text-4xl font-semibold">
         Join the best streaming
         <br />
         visual editor

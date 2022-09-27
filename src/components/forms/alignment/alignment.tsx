@@ -21,7 +21,7 @@ export const Alignment = (props: AlignmentProps) => {
   }, [value]);
 
   return (
-    <div className={`h-10 bg-dark-400 rounded-lg p-2 gap-2 flex ${className}`}>
+    <div className={`flex h-10 gap-2 rounded-lg bg-dark-400 p-2 ${className}`}>
       <Button
         buttonIcon="align-left"
         className="!h-6 flex-1 justify-center rounded"

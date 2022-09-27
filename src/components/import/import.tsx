@@ -70,7 +70,8 @@ export const Import = (props: ImportProps) => {
         setIsOpen(open);
         setStep('1');
         setConfirm('');
-      }}>
+      }}
+    >
       <form onSubmit={onSubmit}>
         {step === '1' && (
           <Controller
@@ -84,7 +85,8 @@ export const Import = (props: ImportProps) => {
                 onChange={async (value) => {
                   const parse = await onParseFile(value);
                   onChange(parse);
-                }}></File>
+                }}
+              ></File>
             )}
           />
         )}
@@ -101,15 +103,17 @@ export const Import = (props: ImportProps) => {
                   onChange={(value) => {
                     handleInputChange(value);
                     onChange(value);
-                  }}></Input>
+                  }}
+                ></Input>
               )}
             />
-            <div className="flex w-full justify-end mt-5">
+            <div className="mt-5 flex w-full justify-end">
               <Button
                 type="submit"
                 color={ButtonColor.Accent}
                 disabled={confirm.length < 3}
-                onClick={handleConfirm}>
+                onClick={handleConfirm}
+              >
                 Import
               </Button>
             </div>

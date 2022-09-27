@@ -51,7 +51,7 @@ export const ChatEdit = () => {
   }
 
   return (
-    <div className="p-10 flex gap-10">
+    <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
         <ChatSettings
           title="Edit chatbox"
@@ -61,8 +61,8 @@ export const ChatEdit = () => {
           onSave={(data) => handleSubmit(data)}
         />
       </div>
-      <div className="flex gap-10 flex-1">
-        <div className="flex-1 w-full bg-dark-600 rounded-2xl flex justify-center items-center p-10">
+      <div className="flex flex-1 gap-10">
+        <div className="flex w-full flex-1 items-center justify-center rounded-2xl bg-dark-600 p-10">
           <ChatMessage
             settings={settings}
             message={{
@@ -86,7 +86,7 @@ export const ChatEdit = () => {
             }}
           />
         </div>
-        <div className="flex-1 bg-dark-600 rounded-2xl overflow-hidden p-10 h-[calc(100vh_-_80px)] flex flex-col items-end justify-end">
+        <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
           <ChatDemo settings={settings} />
         </div>
       </div>

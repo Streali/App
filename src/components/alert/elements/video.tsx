@@ -32,13 +32,14 @@ export const AlertVideo = (props: AlertVideoProps) => {
       ref={video}
       loop={loop}
       muted
-      className="draggable-alert hover:outline hover:outline-1 hover:outline-white/30 transition-colors absolute"
+      className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,
         height: height,
         transform: `translate(${posX}px, ${posY}px)`,
       }}
       data-x={posX}
-      data-y={posY}></video>
+      data-y={posY}
+    ></video>
   );
 };

@@ -110,8 +110,9 @@ export const ChatEmbed = () => {
 
   return (
     <div
-      className="flex flex-col items-end justify-end h-screen overflow-hidden relative"
-      style={{ bottom: `-${theme?.global.space_between_messages}px` }}>
+      className="relative flex h-screen flex-col items-end justify-end overflow-hidden"
+      style={{ bottom: `-${theme?.global.space_between_messages}px` }}
+    >
       {theme &&
         messages.map((message) => (
           <ChatMessage key={message.id} settings={theme} message={message} />

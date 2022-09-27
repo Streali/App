@@ -23,7 +23,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
   return (
     <div
-      className={`color-picker flex w-56 rounded-md bg-dark-500 border-dark-300 border-2 box-border  ${className}`}>
+      className={`color-picker box-border flex w-56 rounded-md border-2 border-dark-300 bg-dark-500  ${className}`}
+    >
       <Hue
         hue={hsva.h}
         onChange={(newHue) => {

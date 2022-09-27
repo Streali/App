@@ -42,7 +42,7 @@ export const ToastUI = (props: ToastUIProps) => {
   const displayIcon = () => {
     if (icon) {
       return (
-        <div className="w-9 h-9 rounded-lg bg-dark-400 flex flex-shrink-0 items-center justify-center">
+        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-dark-400">
           <i className={`ri-${icon}`} role="img"></i>
         </div>
       );
@@ -51,12 +51,13 @@ export const ToastUI = (props: ToastUIProps) => {
     if (type !== ToastType.Default) {
       return (
         <div
-          className={`w-9 h-9 rounded flex flex-shrink-0 items-center justify-center ${
+          className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded ${
             type === ToastType.Success ? 'bg-success-500' : ''
           } ${type === ToastType.Error ? 'bg-error-500' : ''} ${
             type === ToastType.Warning ? 'bg-warning-500' : ''
-          }`}>
-          <i className={`ri-${iconToast[type]} text-white text-lg`} role="img"></i>
+          }`}
+        >
+          <i className={`ri-${iconToast[type]} text-lg text-white`} role="img"></i>
         </div>
       );
     }
@@ -65,10 +66,10 @@ export const ToastUI = (props: ToastUIProps) => {
   };
 
   return (
-    <div className={`p-3 bg-black flex gap-3 items-start w-[300px] rounded-lg`}>
+    <div className={`flex w-[300px] items-start gap-3 rounded-lg bg-black p-3`}>
       {displayIcon()}
       <div>
-        <p className="leading-none mb-0.5 font-bold">{title}</p>
+        <p className="mb-0.5 font-bold leading-none">{title}</p>
         <div className="text-sm">{content}</div>
       </div>
     </div>

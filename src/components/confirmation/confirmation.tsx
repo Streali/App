@@ -47,11 +47,12 @@ export const Confirmation = (props: ConfirmationProps) => {
       onOpenChange={(open) => {
         setIsOpen(open);
         if (!open) onConfirmationClose && onConfirmationClose();
-      }}>
+      }}
+    >
       <p>{text}</p>
       <p className="mb-3">
         {confirmText}
-        <span className="text-sm px-2 py-1 bg-dark-500 inline-flex items-center border border-dark-300 leading-none rounded-sm ml-2">
+        <span className="ml-2 inline-flex items-center rounded-sm border border-dark-300 bg-dark-500 px-2 py-1 text-sm leading-none">
           {word}
         </span>
       </p>
@@ -61,7 +62,7 @@ export const Confirmation = (props: ConfirmationProps) => {
         onChange={handleInputChange}
         state={word === confirm ? InputState.Success : InputState.Error}
       />
-      <div className="flex w-full justify-end mt-5">
+      <div className="mt-5 flex w-full justify-end">
         <Button color={ButtonColor.Error} disabled={word !== confirm} onClick={handleConfirm}>
           {textButton}
         </Button>

@@ -77,7 +77,8 @@ export const Name = (props: NameProps) => {
               : settings.text.textAlign === 'center'
               ? 'center'
               : 'end',
-        }}>
+        }}
+      >
         {settings.badges.enabled && settings.badges.position === 'left' && badgeContent}
         {name}
         {settings.badges.enabled && settings.badges.position === 'right' && badgeContent}

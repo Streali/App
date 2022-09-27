@@ -125,5 +125,5 @@ module.exports = {
       pattern: /(w|h)-(\w+\d+)*/,
     },
   ],
-  plugins: [],
+  plugins: [require('prettier-plugin-tailwindcss')],
 };

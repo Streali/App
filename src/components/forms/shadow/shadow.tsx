@@ -49,7 +49,7 @@ export const Shadow = (props: ShadowProps) => {
   }, [settings]);
 
   return (
-    <div className={`flex gap-2 w-full flex-1 min-w-full ${className}`}>
+    <div className={`flex w-full min-w-full flex-1 gap-2 ${className}`}>
       <Color
         haveInput={false}
         value={shadowSettings.shadowColor}
@@ -59,7 +59,7 @@ export const Shadow = (props: ShadowProps) => {
         type="number"
         defaultValue={0}
         suffix="px"
-        className="flex-1 w-full"
+        className="w-full flex-1"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
           handleSettingsChange('shadowOffsetX', target.valueAsNumber);
@@ -69,7 +69,7 @@ export const Shadow = (props: ShadowProps) => {
         type="number"
         defaultValue={0}
         suffix="px"
-        className="flex-1 w-full"
+        className="w-full flex-1"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
           handleSettingsChange('shadowOffsetY', target.valueAsNumber);
@@ -79,7 +79,7 @@ export const Shadow = (props: ShadowProps) => {
         type="number"
         defaultValue={0}
         suffix="px"
-        className="flex-1 w-full"
+        className="w-full flex-1"
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
           handleSettingsChange('shadowBlur', target.valueAsNumber);

@@ -74,7 +74,8 @@ export const Editor = (props: EditorProps) => {
   return (
     <div
       style={{ width, height }}
-      className="rounded-md border-2 border-dark-300 bg-dark-400 relative">
+      className="relative rounded-md border-2 border-dark-300 bg-dark-400"
+    >
       <AlertImage
         src="https://seeklogo.com/images/T/twitch-logo-4931D91F85-seeklogo.com.png"
         width={100 as Pixels}

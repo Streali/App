@@ -22,11 +22,12 @@ export const App = () => {
         <Navbar navigation={navigation} />
       )}
       <main
-        className={`min-h-screen relative ${
+        className={`relative min-h-screen ${
           !noLayout.some((path) => location.pathname.includes(path))
-            ? 'w-[calc(100%_-_80px)] ml-[80px]'
-            : 'w-screen ml-0'
-        }`}>
+            ? 'ml-[80px] w-[calc(100%_-_80px)]'
+            : 'ml-0 w-screen'
+        }`}
+      >
         <Routes>
           <Route path={'/login'} element={<Login />} />
           <Route element={<Protected />}>

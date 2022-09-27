@@ -39,8 +39,8 @@ export const ChatSettings = (props: ChatSettingsProps) => {
   return (
     <div className={className}>
       <form onSubmit={onSubmit}>
-        <div className="flex justify-between mb-5 items-center">
-          <h1 className="font-semibold text-4xl font-title">{title}</h1>
+        <div className="mb-5 flex items-center justify-between">
+          <h1 className="font-title text-4xl font-semibold">{title}</h1>
           <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
             Save
           </Button>

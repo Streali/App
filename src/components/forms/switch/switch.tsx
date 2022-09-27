@@ -29,13 +29,14 @@ export const Switch = (props: SwitchProps) => {
         checked={enabled}
         onCheckedChange={handleChange}
         className={`${enabled ? 'bg-primary-500' : 'bg-dark-300'} switch
-            relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-primary-300 focus-visible:ring-opacity-100 p-0.5`}>
+            relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent p-0.5 transition-colors duration-200 ease-in-out focus:outline-none  focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-opacity-100`}
+      >
         <SwitchLib.Thumb
           className={`${enabled ? 'translate-x-full' : 'translate-x-0'}
                 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </SwitchLib.Root>
-      {label && <Label className={`!text-sm font-normal !mb-0 ${labelClassName}`}>{label}</Label>}
+      {label && <Label className={`!mb-0 !text-sm font-normal ${labelClassName}`}>{label}</Label>}
     </div>
   );
 };
