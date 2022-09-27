@@ -1,9 +1,9 @@
+import { uid } from 'uid';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertElementsList } from '../../components/alert/alert-elements-list/alert-element-list';
 import { AlertSettings } from '../../components/alert/alert-settings/alert-settings';
 import { Milliseconds } from '../../types/types/custom';
-import { v4 as uuidv4 } from 'uuid';
 
 export const AlertCreate = () => {
   const [settings, setSettings] = useState<{ [x: string]: any }>({
@@ -72,7 +72,7 @@ export const AlertCreate = () => {
                 {
                   type,
                   title: 'test',
-                  id: uuidv4(),
+                  id: uid(),
                   color: '#ff0000',
                   duration: 1000,
                   startTime: 2000,

@@ -48,7 +48,7 @@
     "remixicon": "^2.5.0",
     "simple-tmi-emotes": "^1.1.1",
     "tmi.js": "^1.8.5",
-    "uuid": "^9.0.0",
+    "uid": "^2.0.0",
     "webfontloader": "^1.6.28",
     "zod": "^3.19.1"
   },
@@ -71,7 +71,6 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-resizable": "^3.0.3",
     "@types/tmi.js": "^1.8.1",
-    "@types/uuid": "^8.3.4",
     "@types/webfontloader": "^1.6.34",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
