@@ -12,10 +12,12 @@ export interface EditorProps {
   height: Pixels;
   onElementMove?: (x: Pixels, y: Pixels) => void;
   onElementResize?: (width: Pixels, height: Pixels) => void;
+  isHover?: (hover: boolean) => void;
+  elements: any[];
 }
 
 export const Editor = (props: EditorProps) => {
-  const { width, height, onElementMove, onElementResize } = props;
+  const { width, height, onElementMove, onElementResize, isHover, elements } = props;
 
   const initInteract = () => {
     const container = interact('.draggable-alert');
@@ -53,6 +55,7 @@ export const Editor = (props: EditorProps) => {
 
     Object.assign(event.target.dataset, { x, y });
 
+    isHover && isHover(true);
     onElementResize && onElementResize(event.rect.width, event.rect.height);
     onElementMove && onElementMove(x, y);
   };
@@ -64,6 +67,7 @@ export const Editor = (props: EditorProps) => {
     target.style.transform = `translate(${x}px, ${y}px)`;
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+    isHover && isHover(true);
     onElementMove && onElementMove(x, y);
   };
 
@@ -74,41 +78,54 @@ export const Editor = (props: EditorProps) => {
   return (
     <div
       style={{ width, height }}
-      className="relative rounded-md border-2 border-dark-300 bg-dark-400"
-    >
-      <AlertImage
-        src="https://seeklogo.com/images/T/twitch-logo-4931D91F85-seeklogo.com.png"
-        width={100 as Pixels}
-        height={100 as Pixels}
-        posX={200 as Pixels}
-        posY={200 as Pixels}
-      />
-      <AlertVideo
-        src="https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
-        play={true}
-        loop={true}
-        width={200 as Pixels}
-        height={100 as Pixels}
-        posX={50 as Pixels}
-        posY={50 as Pixels}
-      />
-      <AlertLottie
-        play={true}
-        loop
-        json={testAnimation}
-        width={300 as Pixels}
-        height={300 as Pixels}
-        posX={10 as Pixels}
-        posY={50 as Pixels}
-      />
-      <AlertText
-        text="Coucou ça va ?"
-        width={200 as Pixels}
-        height={50 as Pixels}
-        posX={50 as Pixels}
-        posY={400 as Pixels}
-        settings={{ color: 'red' }}
-      />
+      onMouseOver={() => isHover && isHover(true)}
+      onMouseLeave={() => isHover && isHover(false)}
+      className="rounded-md border-2 border-dark-300 bg-dark-400 relative">
+      {elements.map((element, index) => (
+        <div key={index}>
+          {element.type === 'text' && (
+            <AlertText
+              text="Coucou ça va ?"
+              width={200 as Pixels}
+              height={50 as Pixels}
+              posX={50 as Pixels}
+              posY={400 as Pixels}
+              settings={{ color: 'red' }}
+            />
+          )}
+          {element.type === 'image' && (
+            <AlertImage
+              src="https://seeklogo.com/images/T/twitch-logo-4931D91F85-seeklogo.com.png"
+              width={100 as Pixels}
+              height={100 as Pixels}
+              posX={200 as Pixels}
+              posY={200 as Pixels}
+            />
+          )}
+          {element.type === 'video' && (
+            <AlertVideo
+              src="https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
+              play={true}
+              loop={true}
+              width={200 as Pixels}
+              height={100 as Pixels}
+              posX={50 as Pixels}
+              posY={50 as Pixels}
+            />
+          )}
+          {element.type === 'lottie' && (
+            <AlertLottie
+              play={true}
+              loop
+              json={testAnimation}
+              width={300 as Pixels}
+              height={300 as Pixels}
+              posX={10 as Pixels}
+              posY={50 as Pixels}
+            />
+          )}
+        </div>
+      ))}
     </div>
   );
 };

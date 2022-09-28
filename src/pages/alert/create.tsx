@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertElementsList } from '../../components/alert/alert-elements-list/alert-element-list';
 import { AlertSettings } from '../../components/alert/alert-settings/alert-settings';
-import { Milliseconds } from '../../types/types/custom';
+import { Milliseconds, Pixels } from '../../types/types/custom';
+import { AlertEditorContainer } from '../../components/alert/alert-editor-container/alert-editor-container';
 
 export const AlertCreate = () => {
   const [settings, setSettings] = useState<{ [x: string]: any }>({
@@ -60,8 +61,8 @@ export const AlertCreate = () => {
   }, [watch, getValues]);
 
   return (
-    <div className="flex flex-col gap-10 p-10">
-      <div>
+    <div className="p-10 flex gap-10 flex-col">
+      <div className="flex gap-10">
         <div className="w-[350px] shrink-0">
           <AlertSettings
             title="New alert"
@@ -79,6 +80,13 @@ export const AlertCreate = () => {
                 },
               ])
             }
+          />
+        </div>
+        <div className="flex-1 ">
+          <AlertEditorContainer
+            width={settings.width}
+            height={settings.height}
+            elements={elements}
           />
         </div>
       </div>

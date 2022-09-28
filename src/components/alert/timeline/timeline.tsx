@@ -58,8 +58,7 @@ export const Timeline = (props: TimelineProps) => {
       style={{
         width: `${timeToPixel(totalTime)}px`,
       }}
-      ref={containerDrag}
-    >
+      ref={containerDrag}>
       <Draggable
         axis="x"
         disabled={disabledDrag}
@@ -69,8 +68,7 @@ export const Timeline = (props: TimelineProps) => {
           setLeft(data.x as Pixels);
           onElementMove && onElementMove(pixelToTime(data.x as Pixels));
         }}
-        scale={1}
-      >
+        scale={1}>
         <ResizableBox
           axis="x"
           width={width}
@@ -83,21 +81,18 @@ export const Timeline = (props: TimelineProps) => {
             <span
               className="absolute right-0.5 top-0.5 flex h-9 w-5 cursor-ew-resize items-center justify-center rounded bg-black"
               onMouseOver={() => setDisabledDrag(true)}
-              onMouseOut={() => setDisabledDrag(false)}
-            >
+              onMouseOut={() => setDisabledDrag(false)}>
               <Icon name="menu-5-line" className="text-xs" />
             </span>
           }
           onResizeStop={(e, data) => {
             onElementResize && onElementResize(pixelToTime(data.size.width as Pixels));
-          }}
-        >
+          }}>
           <div
             className={`relative flex h-10 w-full cursor-grab items-center gap-2 overflow-hidden rounded px-1.5`}
             style={{ background: color }}
-            onClick={onClick}
-          >
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-white">
+            onClick={onClick}>
+            <div className="w-7 h-7 rounded-sm flex items-center justify-center bg-white shrink-0">
               <Icon name={elementIcon[type]} className="text-black" />
             </div>
             <p className="whitespace-nowrap text-sm font-bold">{title}</p>
