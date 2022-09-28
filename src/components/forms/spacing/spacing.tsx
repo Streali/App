@@ -14,10 +14,10 @@ export const Spacing = (props: SpacingProps) => {
   const [allSpacing, setAllSpacing] = useState<boolean>(true);
   const [selectBorder, setSelectBorder] = useState<'left' | 'top' | 'right' | 'bottom'>('top');
   const [currentSettings, setCurrentSettings] = useState<SpacingType>({
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
+    left: settings ? settings.left : 0,
+    top: settings ? settings.top : 0,
+    right: settings ? settings.right : 0,
+    bottom: settings ? settings.bottom : 0,
   });
   const spacingPosition = ['left', 'top', 'right', 'bottom'];
 
@@ -78,7 +78,7 @@ export const Spacing = (props: SpacingProps) => {
           <Input
             type="number"
             suffix="px"
-            prefixIconSvg={IconSVG.BorderVertical}
+            prefixIconSvg={IconSVG.BorderHorizontal}
             defaultValue={currentSettings.top}
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
