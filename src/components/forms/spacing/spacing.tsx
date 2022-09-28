@@ -21,6 +21,8 @@ export const Spacing = (props: SpacingProps) => {
   });
   const spacingPosition = ['left', 'top', 'right', 'bottom'];
 
+  console.log('current', currentSettings);
+
   const handleVerticalChanges = (value: number) => {
     const newSettings = {
       ...currentSettings,
@@ -79,7 +81,7 @@ export const Spacing = (props: SpacingProps) => {
             type="number"
             suffix="px"
             prefixIconSvg={IconSVG.BorderHorizontal}
-            defaultValue={currentSettings.top}
+            defaultValue={currentSettings.left}
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
               handleHorizontalChanges(target.valueAsNumber);
