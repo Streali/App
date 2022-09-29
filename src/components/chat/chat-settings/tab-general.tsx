@@ -1,12 +1,12 @@
 import { Control, Controller } from 'react-hook-form';
 import { animationList } from '../../../utils/chat/animations';
 import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
-import { Accordion } from '../../accordion/accordion';
 import { Alignment } from '../../forms/alignment/alignment';
 import { DnDList } from '../../forms/dnd-list/dnd-list';
 import { Input } from '../../forms/input/input';
 import { Select } from '../../forms/select/select';
 import { Slider } from '../../forms/slider/slider';
+import { TabItem } from './tab-item';
 
 export interface TabGeneralProps {
   control: Control;
@@ -17,7 +17,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
-      <Accordion title="Title">
+      <TabItem title="Title">
         <Controller
           name="title"
           control={control}
@@ -34,8 +34,8 @@ export const TabGeneral = (props: TabGeneralProps) => {
             />
           )}
         />
-      </Accordion>
-      <Accordion title="Space between messages">
+      </TabItem>
+      <TabItem title="Space between messages">
         <Controller
           name="global.space_between_messages"
           control={control}
@@ -52,8 +52,8 @@ export const TabGeneral = (props: TabGeneralProps) => {
             />
           )}
         />
-      </Accordion>
-      <Accordion title="Alignment">
+      </TabItem>
+      <TabItem title="Alignment">
         <Controller
           name="global.alignment"
           control={control}
@@ -62,8 +62,8 @@ export const TabGeneral = (props: TabGeneralProps) => {
             <Alignment className="mb-3" value={value} onChange={onChange} />
           )}
         />
-      </Accordion>
-      <Accordion title="Animation">
+      </TabItem>
+      <TabItem title="Animation">
         <Controller
           name="global.animation"
           control={control}
@@ -77,8 +77,8 @@ export const TabGeneral = (props: TabGeneralProps) => {
             />
           )}
         />
-      </Accordion>
-      <Accordion title="Layout">
+      </TabItem>
+      <TabItem title="Layout">
         <Controller
           name="global.layout"
           control={control}
@@ -98,8 +98,8 @@ export const TabGeneral = (props: TabGeneralProps) => {
             />
           )}
         />
-      </Accordion>
-      <Accordion title="Order">
+      </TabItem>
+      <TabItem title="Order">
         <Controller
           name="global.order"
           control={control}
@@ -111,7 +111,7 @@ export const TabGeneral = (props: TabGeneralProps) => {
             <DnDList elements={value} onChange={onChange} />
           )}
         />
-      </Accordion>
+      </TabItem>
     </div>
   );
 };
