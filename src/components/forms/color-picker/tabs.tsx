@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { HsvaColor, hsvaToRgbaString } from '@uiw/color-convert';
 import { TabHex } from './tab-hex';
 import { TabRGB } from './tab-rgb';
@@ -11,7 +11,7 @@ export interface TabsProps {
 
 export const Tabs = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [tab, setTab] = React.useState<'hex' | 'rgba' | 'hsla'>('hex');
+  const [tab, setTab] = useState<'hex' | 'rgba' | 'hsla'>('hex');
 
   const buttonStyle = 'text-xs text-dark-100 font-bold';
   const buttonActiveStyle = 'text-white border-primary-400 border-solid border-b';

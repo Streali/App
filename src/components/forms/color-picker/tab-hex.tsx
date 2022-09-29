@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState,useEffect } from 'react';
 import { hexToHsva, hsvaToHex } from '@uiw/color-convert';
 import { ChangeEvent } from 'react';
 import { TabsProps } from './tabs';
@@ -11,7 +11,7 @@ export interface HexaColor {
 
 export const TabHex = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [hexa, setHexa] = React.useState<{hex: string, a:number}>({ hex: hsvaToHex(color), a: color.a });
+  const [hexa, setHexa] = useState<{hex: string, a:number}>({ hex: hsvaToHex(color), a: color.a });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'hex') {
@@ -25,7 +25,7 @@ export const TabHex = (props: TabsProps) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setHexa({ hex: hsvaToHex(color), a: color.a });
   },[color])
 

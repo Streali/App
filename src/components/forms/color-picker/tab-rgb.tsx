@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { useState,useEffect } from 'react';
 import { RgbaColor, rgbaToHsva, hsvaToRgba } from '@uiw/color-convert';
 import { TabsProps } from './tabs';
 import { TabInput } from './tab-input';
 
 export const TabRGB = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [rgba, setRgba] = React.useState<RgbaColor>(hsvaToRgba(color));
+  const [rgba, setRgba] = useState<RgbaColor>(hsvaToRgba(color));
 
   const inputStyle = 'w-8';
 
@@ -24,7 +24,7 @@ export const TabRGB = (props: TabsProps) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setRgba(hsvaToRgba(color));
   }, [color]);
 

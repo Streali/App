@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { useState,useEffect } from 'react';
 import { HslaColor, hslaToHsva, hsvaToHsla } from '@uiw/color-convert';
 import { TabsProps } from './tabs';
 import { TabInput } from './tab-input';
 
 export const TabHSL = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [hsla, setHsla] = React.useState<HslaColor>(hsvaToHsla(color));
+  const [hsla, setHsla] = useState<HslaColor>(hsvaToHsla(color));
 
   const inputStyle = 'w-8';
 
@@ -24,7 +24,7 @@ export const TabHSL = (props: TabsProps) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setHsla(hsvaToHsla(color));
   }, [color]);
 
