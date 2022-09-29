@@ -17,17 +17,18 @@ export const App = () => {
 
   return (
     <>
-      <MinWidthWindow />
       {!noLayout.some((path) => location.pathname.includes(path)) && (
-        <Navbar navigation={navigation} />
+        <>
+          <MinWidthWindow />
+          <Navbar navigation={navigation} />
+        </>
       )}
       <main
         className={`relative min-h-screen ${
           !noLayout.some((path) => location.pathname.includes(path))
             ? 'ml-[80px] w-[calc(100%_-_80px)]'
             : 'ml-0 w-screen'
-        }`}
-      >
+        }`}>
         <Routes>
           <Route path={'/login'} element={<Login />} />
           <Route element={<Protected />}>
