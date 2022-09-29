@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HslaColor, hslaToHsva, hsvaToHsla } from '@uiw/color-convert';
 import { TabsProps } from './tabs';
-import { TabInput } from './tab-input';
+import { TabInput } from '../../tabs/tab-input';
 
 export const TabHSL = (props: TabsProps) => {
   const { color, onChange } = props;

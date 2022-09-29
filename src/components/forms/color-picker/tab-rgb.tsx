@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RgbaColor, rgbaToHsva, hsvaToRgba } from '@uiw/color-convert';
 import { TabsProps } from './tabs';
-import { TabInput } from './tab-input';
+import { TabInput } from '../../tabs/tab-input';
 
 export const TabRGB = (props: TabsProps) => {
   const { color, onChange } = props;
