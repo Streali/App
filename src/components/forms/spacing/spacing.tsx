@@ -21,8 +21,6 @@ export const Spacing = (props: SpacingProps) => {
   });
   const spacingPosition = ['left', 'top', 'right', 'bottom'];
 
-  console.log('current', currentSettings);
-
   const handleVerticalChanges = (value: number) => {
     const newSettings = {
       ...currentSettings,
