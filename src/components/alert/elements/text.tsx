@@ -7,10 +7,11 @@ export interface AlertTextProps {
   height: Pixels;
   posX: Pixels;
   posY: Pixels;
+  id: string;
 }
 
 export const AlertText = (props: AlertTextProps) => {
-  const { settings, width, height, posX, posY } = props;
+  const { settings, width, height, posX, posY, id } = props;
 
   useEffect(() => {
     (async () => {
@@ -51,6 +52,7 @@ export const AlertText = (props: AlertTextProps) => {
       }}
       data-x={posX}
       data-y={posY}
+      data-id={id}
     >
       {settings.is_dynamic ? settings.dynamic_content : settings.content}
     </p>

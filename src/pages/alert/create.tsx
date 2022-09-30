@@ -5,7 +5,11 @@ import { AlertSettings } from '../../components/alert/alert-settings/alert-setti
 import { Milliseconds } from '../../types/types/custom';
 import { AlertEditorContainer } from '../../components/alert/alert-editor-container/alert-editor-container';
 import { AlertElementSettings } from '../../components/alert/alert-element-settings/alert-element-settings';
-import { defaultTextElementSettings } from '../../utils/alert/default-element-settings';
+import {
+  defaultImageElementSettings,
+  defaultLottieElementSettings,
+  defaultTextElementSettings,
+} from '../../utils/alert/default-element-settings';
 
 export const AlertCreate = () => {
   const [settings, setSettings] = useState<{ [x: string]: any }>({
@@ -74,6 +78,12 @@ export const AlertCreate = () => {
               if (type === 'text') {
                 setElements((prev) => [...prev, defaultTextElementSettings()]);
               }
+              if (type === 'image') {
+                setElements((prev) => [...prev, defaultImageElementSettings()]);
+              }
+              if (type === 'lottie') {
+                setElements((prev) => [...prev, defaultLottieElementSettings()]);
+              }
             }}
           />
         </div>
@@ -82,6 +92,35 @@ export const AlertCreate = () => {
             width={settings.width}
             height={settings.height}
             elements={elements}
+            onElementMove={(id, x, y) => {
+              setElements((prev) =>
+                prev.map((element) => {
+                  if (element.id === id) {
+                    return {
+                      ...element,
+                      posX: Math.round(x),
+                      posY: Math.round(y),
+                    };
+                  }
+                  return element;
+                })
+              );
+            }}
+            onElementResize={(id, width, height) => {
+              setElements((prev) =>
+                prev.map((element) => {
+                  if (element.id === id) {
+                    return {
+                      ...element,
+                      width: Math.round(width),
+                      height: Math.round(height),
+                    };
+                  }
+                  return element;
+                })
+              );
+            }}
+            onElementClick={(id) => setSelectedElement(id)}
           />
         </div>
         {selectedElement && (

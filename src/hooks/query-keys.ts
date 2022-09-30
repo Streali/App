@@ -4,4 +4,5 @@ export const queryKeys = {
   googleFont: () => ['googleFont'],
   chat: (id?: string) => ['chat', id],
   chats: () => ['chats'],
+  lottie: () => ['lottie'],
 };

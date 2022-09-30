@@ -1,6 +1,8 @@
 import Lottie from 'lottie-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLottieJson } from '../../../hooks/elements/use-lottie-json';
 import { Pixels } from '../../../types/types/custom';
+import { testAnimation } from '../../../utils/lottie/test-lottie-animation';
 
 export interface AlertLottieProps {
   play: boolean;
@@ -10,34 +12,41 @@ export interface AlertLottieProps {
   height: Pixels;
   posX: Pixels;
   posY: Pixels;
+  id: string;
 }
 
 export const AlertLottie = (props: AlertLottieProps) => {
-  const { play, json, loop, width, height, posX, posY } = props;
+  const { play, json, loop, width, height, posX, posY, id } = props;
 
   const animation = useRef<any>(null);
+  const { data: animationData } = useLottieJson(json);
 
   useEffect(() => {
-    if (play) {
-      animation.current.play();
-    } else {
-      animation.current.stop();
+    if (animationData && play) {
+      animation.current?.play();
     }
-  }, [play, loop, json]);
+  }, [json]);
+
+  // return <p>{JSON.stringify(animationData)}</p>;
 
   return (
-    <Lottie
-      className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
-      animationData={json}
-      loop={loop}
-      lottieRef={animation}
-      style={{
-        width: width,
-        height: height,
-        transform: `translate(${posX}px, ${posY}px)`,
-      }}
-      data-x={posX}
-      data-y={posY}
-    />
+    <>
+      {animationData && (
+        <Lottie
+          className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
+          animationData={animationData}
+          loop={loop}
+          lottieRef={animation}
+          style={{
+            width: width,
+            height: height,
+            transform: `translate(${posX}px, ${posY}px)`,
+          }}
+          data-x={posX}
+          data-y={posY}
+          data-id={id}
+        />
+      )}
+    </>
   );
 };

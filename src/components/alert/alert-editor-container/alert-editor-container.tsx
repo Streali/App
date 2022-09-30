@@ -8,10 +8,13 @@ export interface AlertEditorContainerProps {
   width: Pixels;
   height: Pixels;
   elements: any[];
+  onElementMove?: (id: string, x: Pixels, y: Pixels) => void;
+  onElementResize?: (id: string, width: Pixels, height: Pixels) => void;
+  onElementClick?: (id: string) => void;
 }
 
 export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
-  const { width, height, elements } = props;
+  const { width, height, elements, onElementMove, onElementResize, onElementClick } = props;
 
   const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -50,6 +53,9 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
                 height={height}
                 isHover={(hover) => setIsHover(hover)}
                 elements={elements}
+                onElementMove={onElementMove}
+                onElementResize={onElementResize}
+                onElementClick={onElementClick}
               />
             </TransformComponent>
           </>

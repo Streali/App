@@ -10,14 +10,16 @@ import AlertImage from '../elements/image';
 export interface EditorProps {
   width: Pixels;
   height: Pixels;
-  onElementMove?: (x: Pixels, y: Pixels) => void;
-  onElementResize?: (width: Pixels, height: Pixels) => void;
+  onElementMove?: (id: string, x: Pixels, y: Pixels) => void;
+  onElementResize?: (id: string, width: Pixels, height: Pixels) => void;
   isHover?: (hover: boolean) => void;
   elements: any[];
+  onElementClick?: (id: string) => void;
 }
 
 export const Editor = (props: EditorProps) => {
-  const { width, height, onElementMove, onElementResize, isHover, elements } = props;
+  const { width, height, onElementMove, onElementResize, isHover, elements, onElementClick } =
+    props;
 
   const initInteract = () => {
     const container = interact('.draggable-alert');
@@ -43,6 +45,7 @@ export const Editor = (props: EditorProps) => {
 
   const resizeElement = (event: any) => {
     let { x, y } = event.target.dataset;
+    const id = event.target.getAttribute('data-id');
 
     x = (parseFloat(x) || 0) + event.deltaRect.left;
     y = (parseFloat(y) || 0) + event.deltaRect.top;
@@ -56,19 +59,20 @@ export const Editor = (props: EditorProps) => {
     Object.assign(event.target.dataset, { x, y });
 
     isHover && isHover(true);
-    onElementResize && onElementResize(event.rect.width, event.rect.height);
-    onElementMove && onElementMove(x, y);
+    onElementResize && onElementResize(id, event.rect.width, event.rect.height);
+    onElementMove && onElementMove(id, x, y);
   };
 
   const moveElement = (event: any) => {
     const target = event.target;
     const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
     const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    const id = target.getAttribute('data-id');
     target.style.transform = `translate(${x}px, ${y}px)`;
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
     isHover && isHover(true);
-    onElementMove && onElementMove(x, y);
+    onElementMove && onElementMove(id, x, y);
   };
 
   useEffect(() => {
@@ -80,10 +84,10 @@ export const Editor = (props: EditorProps) => {
       style={{ width, height }}
       onMouseOver={() => isHover && isHover(true)}
       onMouseLeave={() => isHover && isHover(false)}
-      className="relative rounded-md border-2 border-dark-300 bg-dark-400"
+      className="relative border-2 border-dark-300 bg-dark-400"
     >
-      {elements.map((element) => (
-        <div key={element.id}>
+      {[...elements].reverse().map((element) => (
+        <div key={element.id} onClick={() => onElementClick?.(element.id)}>
           {element.type === 'text' && (
             <AlertText
               width={element.width}
@@ -91,20 +95,22 @@ export const Editor = (props: EditorProps) => {
               posX={element.posX}
               posY={element.posY}
               settings={element.settings}
+              id={element.id}
             />
           )}
           {element.type === 'image' && (
             <AlertImage
-              src="https://seeklogo.com/images/T/twitch-logo-4931D91F85-seeklogo.com.png"
-              width={100 as Pixels}
-              height={100 as Pixels}
-              posX={200 as Pixels}
-              posY={200 as Pixels}
+              id={element.id}
+              src={element.settings.url}
+              width={element.width}
+              height={element.height}
+              posX={element.posX}
+              posY={element.posY}
             />
           )}
           {element.type === 'video' && (
             <AlertVideo
-              src="https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
+              src={element.settings.url}
               play={true}
               loop={true}
               width={200 as Pixels}
@@ -115,13 +121,14 @@ export const Editor = (props: EditorProps) => {
           )}
           {element.type === 'lottie' && (
             <AlertLottie
-              play={true}
+              play
               loop
-              json={testAnimation}
-              width={300 as Pixels}
-              height={300 as Pixels}
-              posX={10 as Pixels}
-              posY={50 as Pixels}
+              json={element.settings.url}
+              width={element.width}
+              height={element.height}
+              posX={element.posX}
+              posY={element.posY}
+              id={element.id}
             />
           )}
         </div>

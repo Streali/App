@@ -47,7 +47,7 @@ export const FontSelect = (props: FontSelectProps) => {
       defaultValue={{ label: value, value: value }}
       placeholder="Select font"
       options={
-        fonts
+        fonts && fonts.length > 0
           ? fonts.map((font: GoogleFontsFamily) => {
               return {
                 label: font.family,

@@ -6,24 +6,26 @@ export interface AlertImageProps {
   height: Pixels;
   posX: Pixels;
   posY: Pixels;
+  id: string;
 }
 
 export const AlertImage = (props: AlertImageProps) => {
-  const { src, width, height, posX, posY } = props;
+  const { src, width, height, posX, posY, id } = props;
 
   return (
-    <img
-      className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
-      src={src}
-      alt="img"
+    <div
+      className="draggable-alert absolute z-[9999] block transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,
         height: height,
         transform: `translate(${posX}px, ${posY}px)`,
       }}
+      data-id={id}
       data-x={posX}
       data-y={posY}
-    />
+    >
+      <img src={src} alt="img" className="h-full w-full object-cover" />
+    </div>
   );
 };
 export default AlertImage;

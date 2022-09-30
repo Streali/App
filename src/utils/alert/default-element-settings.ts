@@ -58,3 +58,42 @@ export const defaultTextElementSettings = () => {
     },
   };
 };
+
+export const defaultImageElementSettings = () => {
+  return {
+    type: 'image',
+    id: uid(),
+    title: 'Image element title',
+    color: '#00ff00',
+    posX: 0,
+    posY: 0,
+    width: 100,
+    height: 100,
+    duration: 1000,
+    start_titme: 0,
+    settings: {
+      url: 'https://avatars.githubusercontent.com/u/109690726?s=200&v=4',
+      animation_in: 'none',
+      animation_out: 'none',
+    },
+  };
+};
+
+export const defaultLottieElementSettings = () => {
+  return {
+    type: 'lottie',
+    id: uid(),
+    title: 'Lottie element title',
+    color: '#000ff0',
+    posX: 0,
+    posY: 0,
+    width: 100,
+    height: 100,
+    duration: 1000,
+    start_titme: 0,
+    settings: {
+      url: 'https://assets10.lottiefiles.com/packages/lf20_nwttxjmp.json',
+      texts: [],
+    },
+  };
+};

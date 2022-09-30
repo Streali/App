@@ -1,6 +1,8 @@
 import { useEffect, useState, memo } from 'react';
 import { TabItem } from '../../chat/chat-settings/tab-item';
 import { Input } from '../../forms/input/input';
+import { ImageSettings } from './image-settings';
+import { LottieSettings } from './lottie-settings';
 import { TextSettings } from './text-settings';
 
 export interface AlertElementSettingsProps {
@@ -31,8 +33,26 @@ export const AlertElementSettings = memo(function AlertElementSettings(
           }}
         />
       </TabItem>
+      <TabItem title="Dimension">
+        <div className="mb-3 flex gap-3">
+          <Input value={currentElement.width} label="Width" disabled suffix="px" />
+          <Input value={currentElement.height} label="Height" disabled suffix="px" />
+        </div>
+      </TabItem>
+      <TabItem title="Position">
+        <div className="mb-3 flex gap-3">
+          <Input value={currentElement.posX} label="X" disabled suffix="px" />
+          <Input value={currentElement.posY} label="Y" disabled suffix="px" />
+        </div>
+      </TabItem>
       {currentElement.type === 'text' && (
         <TextSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+      )}
+      {currentElement.type === 'image' && (
+        <ImageSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+      )}
+      {currentElement.type === 'lottie' && (
+        <LottieSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
       )}
     </div>
   );
