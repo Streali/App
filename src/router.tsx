@@ -22,16 +22,19 @@ export const chatRouter: RouteObject[] = [
     path: '/chat/:id/edit',
     element: <ChatEdit />,
   },
-  {
-    path: '/chat/:id/embed',
-    element: <ChatEmbed />,
-  },
 ];
 
 export const alertRoutes: RouteObject[] = [
   {
     path: '/alert/create',
     element: <AlertCreate />,
+  },
+];
+
+export const embedRoutes: RouteObject[] = [
+  {
+    path: '/chat/:id/embed',
+    element: <ChatEmbed />,
   },
 ];
 
