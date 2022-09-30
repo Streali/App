@@ -1,7 +1,7 @@
 import { IconSVGProps } from '../icon';
 
 export const IconBorderRadiusTopRight = (props: IconSVGProps) => {
-  const { width = 24, height = 24, className = '', fill = '#fff' } = props;
+  const { width = 24, height = 24, className = '', fill = '#fff', ...SVGProps } = props;
 
   return (
     <svg
@@ -11,6 +11,7 @@ export const IconBorderRadiusTopRight = (props: IconSVGProps) => {
       fill="none"
       viewBox="0 0 24 24"
       className={className}
+      {...SVGProps}
     >
       <mask
         id="mask0_762_2289"

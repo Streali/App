@@ -26,14 +26,14 @@ export enum IconSVG {
   BorderRadiusBottomLeft = 'border-radius-bottom-left',
 }
 
-export interface IconSVGProps {
+export interface IconSVGProps extends React.ComponentPropsWithoutRef<'svg'> {
   width?: number;
   height?: number;
   className?: string;
   fill?: string;
 }
 
-export interface IconProps {
+export interface IconProps extends React.ComponentPropsWithoutRef<'i'> {
   name?: string;
   className?: string;
   svg?: IconSVG;
@@ -43,7 +43,16 @@ export interface IconProps {
 }
 
 export const Icon = (props: IconProps) => {
-  const { name, className = '', svg, width, height, fill } = props;
+  const {
+    name,
+    className = '',
+    svg,
+    width,
+    height,
+    fill,
+    'aria-label': ariaLabel,
+    ...otherProps
+  } = props;
 
   const svgIcon = {
     [IconSVG.Border]: (
@@ -93,5 +102,12 @@ export const Icon = (props: IconProps) => {
     return svgIcon[svg];
   }
 
-  return <i className={`ri-${name} ${className}`} role="img"></i>;
+  return (
+    <i
+      className={`ri-${name} ${className}`}
+      role="img"
+      aria-label={ariaLabel || name}
+      {...otherProps}
+    ></i>
+  );
 };

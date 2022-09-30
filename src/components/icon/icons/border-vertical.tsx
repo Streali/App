@@ -1,7 +1,7 @@
 import { IconSVGProps } from '../icon';
 
 export const IconBorderVertical = (props: IconSVGProps) => {
-  const { width = 24, height = 24, className = '', fill = '#fff' } = props;
+  const { width = 24, height = 24, className = '', fill = '#fff', ...SVGProps } = props;
 
   return (
     <svg
@@ -11,6 +11,7 @@ export const IconBorderVertical = (props: IconSVGProps) => {
       fill="none"
       viewBox="0 0 24 24"
       className={className}
+      {...SVGProps}
     >
       <g fill={fill} clipPath="url(#clip0_809_1897)">
         <path d="M21 5V3H3v2h18zM21 21v-2H3v2h18zM21 17v-2h-2v2h2zM21 13v-2h-2v2h2zM17 13v-2h-2v2h2zM13 13v-2h-2v2h2zM13 9V7h-2v2h2zM13 17v-2h-2v2h2zM9 13v-2H7v2h2zM5 13v-2H3v2h2zM5 17v-2H3v2h2zM5 9V7H3v2h2zM21 9V7h-2v2h2z"></path>

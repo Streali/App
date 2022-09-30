@@ -1,7 +1,7 @@
 import { IconSVGProps } from '../icon';
 
 export const IconBorderLeft = (props: IconSVGProps) => {
-  const { width = 24, height = 24, className = '', fill = '#fff' } = props;
+  const { width = 24, height = 24, className = '', fill = '#fff', ...SVGProps } = props;
 
   return (
     <svg
@@ -11,6 +11,7 @@ export const IconBorderLeft = (props: IconSVGProps) => {
       fill="none"
       viewBox="0 0 20 20"
       className={className}
+      {...SVGProps}
     >
       <path
         fill={fill}
