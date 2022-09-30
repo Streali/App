@@ -73,6 +73,10 @@ export const Color = (props: ColorProps) => {
     };
   };
 
+  React.useEffect(() => {
+    setVal(value);
+  }, [value]);
+
   return (
     <label className={`relative block ${containerClassName}`} ref={input}>
       {label && <Label className={labelClassName}>{label}</Label>}

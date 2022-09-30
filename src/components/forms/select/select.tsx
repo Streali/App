@@ -67,7 +67,7 @@ export const Select = (props: SelectProps) => {
         placeholder={placeholder ? placeholder : 'Select...'}
         data-testid="select"
         isDisabled={disabled}
-        defaultValue={defaultValue}
+        value={defaultValue}
         menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
       />
       {errorMessage && (

@@ -14,6 +14,7 @@ export interface AlertElementsListProps {
   onStartChange?: (id: string, startTime: Milliseconds) => void;
   onDurationChange?: (id: string, duration: Milliseconds) => void;
   onOrderChange?: (elements: any[]) => void;
+  onElementClick?: (id: string) => void;
 }
 
 export const AlertElementsList = (props: AlertElementsListProps) => {
@@ -25,6 +26,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
     onDurationChange,
     onStartChange,
     onOrderChange,
+    onElementClick,
   } = props;
 
   const onDragEnd = (result: DropResult) => {
@@ -88,6 +90,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
                           />
                           <Color
                             haveInput={false}
+                            value={element.color}
                             onColorChange={(value) =>
                               onColorChange && onColorChange(element.id, value)
                             }
@@ -107,6 +110,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
                           onElementResize={(duration) =>
                             onDurationChange && onDurationChange(element.id, duration)
                           }
+                          onClick={() => onElementClick && onElementClick(element.id)}
                         />
                       </div>
                     )}

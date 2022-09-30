@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Pixels } from '../../../types/types/custom';
 import interact from 'interactjs';
 import { AlertText } from '../elements/text';
@@ -73,24 +73,24 @@ export const Editor = (props: EditorProps) => {
 
   useEffect(() => {
     initInteract();
-  }, []);
+  }, [elements]);
 
   return (
     <div
       style={{ width, height }}
       onMouseOver={() => isHover && isHover(true)}
       onMouseLeave={() => isHover && isHover(false)}
-      className="rounded-md border-2 border-dark-300 bg-dark-400 relative">
-      {elements.map((element, index) => (
-        <div key={index}>
+      className="relative rounded-md border-2 border-dark-300 bg-dark-400"
+    >
+      {elements.map((element) => (
+        <div key={element.id}>
           {element.type === 'text' && (
             <AlertText
-              text="Coucou ça va ?"
-              width={200 as Pixels}
-              height={50 as Pixels}
-              posX={50 as Pixels}
-              posY={400 as Pixels}
-              settings={{ color: 'red' }}
+              width={element.width}
+              height={element.height}
+              posX={element.posX}
+              posY={element.posY}
+              settings={element.settings}
             />
           )}
           {element.type === 'image' && (

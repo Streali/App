@@ -1,10 +1,11 @@
-import { uid } from 'uid';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertElementsList } from '../../components/alert/alert-elements-list/alert-element-list';
 import { AlertSettings } from '../../components/alert/alert-settings/alert-settings';
-import { Milliseconds, Pixels } from '../../types/types/custom';
+import { Milliseconds } from '../../types/types/custom';
 import { AlertEditorContainer } from '../../components/alert/alert-editor-container/alert-editor-container';
+import { AlertElementSettings } from '../../components/alert/alert-element-settings/alert-element-settings';
+import { defaultTextElementSettings } from '../../utils/alert/default-element-settings';
 
 export const AlertCreate = () => {
   const [settings, setSettings] = useState<{ [x: string]: any }>({
@@ -14,11 +15,13 @@ export const AlertCreate = () => {
     duration: 5000,
   });
   const [elements, setElements] = useState<any[]>([]);
+  const [selectedElement, setSelectedElement] = useState<string | null>(null);
   const { handleSubmit, watch, getValues, control } = useForm();
 
   const handleDeleteElement = (id: string) => {
     const allElements = [...elements];
     const filterElements = allElements.filter((element) => element.id !== id);
+    if (filterElements.length === 0) setSelectedElement(null);
     setElements(filterElements);
   };
 
@@ -61,34 +64,56 @@ export const AlertCreate = () => {
   }, [watch, getValues]);
 
   return (
-    <div className="p-10 flex gap-10 flex-col">
+    <div className="flex flex-col gap-10 p-10">
       <div className="flex gap-10">
         <div className="w-[350px] shrink-0">
           <AlertSettings
             title="New alert"
             control={control}
-            addElement={(type) =>
-              setElements([
-                ...elements,
-                {
-                  type,
-                  title: 'test',
-                  id: uid(),
-                  color: '#ff0000',
-                  duration: 1000,
-                  startTime: 2000,
-                },
-              ])
-            }
+            addElement={(type) => {
+              if (type === 'text') {
+                setElements((prev) => [...prev, defaultTextElementSettings()]);
+              }
+            }}
           />
         </div>
-        <div className="flex-1 ">
+        <div className="flex-1">
           <AlertEditorContainer
             width={settings.width}
             height={settings.height}
             elements={elements}
           />
         </div>
+        {selectedElement && (
+          <div className="w-[400px] shrink-0">
+            <AlertElementSettings
+              element={elements.find((element) => element.id === selectedElement)}
+              onSettingsChange={(key, settings) => {
+                setElements((prev) =>
+                  prev.map((element) => {
+                    if (element.id === selectedElement) {
+                      return {
+                        ...element,
+                        settings: { ...element.settings, [key]: settings },
+                      };
+                    }
+                    return element;
+                  })
+                );
+              }}
+              onTitleChange={(title) => {
+                setElements((prev) =>
+                  prev.map((element) => {
+                    if (element.id === selectedElement) {
+                      return { ...element, title };
+                    }
+                    return element;
+                  })
+                );
+              }}
+            />
+          </div>
+        )}
       </div>
       <div>
         <AlertElementsList
@@ -98,6 +123,10 @@ export const AlertCreate = () => {
           onColorChange={handleColorChange}
           onDurationChange={handleDurationChange}
           onStartChange={handleStartChange}
+          onElementClick={(id) => {
+            console.log(id);
+            setSelectedElement(id);
+          }}
         />
       </div>
     </div>

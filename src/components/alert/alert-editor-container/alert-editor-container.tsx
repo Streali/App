@@ -16,14 +16,15 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
 
   return (
-    <div className="bg-black rounded-2xl h-[524px] overflow-hidden relative">
+    <div className="relative h-[524px] overflow-hidden rounded-2xl bg-black">
       <TransformWrapper
         initialScale={0.5}
         minScale={0.2}
         maxScale={10}
         centerOnInit
         limitToBounds={false}
-        panning={{ disabled: isHover }}>
+        panning={{ disabled: isHover }}
+      >
         {({ zoomIn, zoomOut, resetTransform }) => (
           <>
             <div className="absolute top-2 left-2 z-10 flex gap-2">

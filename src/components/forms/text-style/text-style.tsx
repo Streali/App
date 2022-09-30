@@ -107,7 +107,7 @@ export const TextStyle = (props: TextStyleProps) => {
           <div className="w-full">
             <Input
               type="number"
-              defaultValue={fontSettings.fontSize}
+              value={fontSettings.fontSize}
               className="w-full !px-3"
               suffix="px"
               onChange={(e) => {
