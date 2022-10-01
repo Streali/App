@@ -1,9 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Navbar } from './navbar';
 
 export default {
   title: 'Navbar',
   component: Navbar,
+  args: {
+    navigation: [],
+  },
 } as ComponentMeta<typeof Navbar>;
 
 export const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
