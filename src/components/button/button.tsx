@@ -17,7 +17,7 @@ export enum ButtonSize {
   Micro = 'micro',
 }
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   color?: ButtonColor;
   size?: ButtonSize;
   children?: React.ReactNode;
@@ -48,6 +48,7 @@ export const Button = (props: ButtonProps) => {
     onClick,
     className = '',
     type = 'button',
+    ...otherProps
   } = props;
 
   const colorChoose = {
@@ -104,7 +105,7 @@ export const Button = (props: ButtonProps) => {
   }
 
   return (
-    <button onClick={onClick} className={defineClassName} type={type}>
+    <button onClick={onClick} className={defineClassName} type={type} {...otherProps}>
       {buttonContent}
     </button>
   );
