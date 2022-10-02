@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/navbar/navbar';
 import { routes } from './router';
 import { navigation, noLayout } from './navigation';
@@ -32,19 +33,24 @@ export const App = () => {
             : 'ml-0 w-screen'
         }`}
       >
-        }`}
-      >
-        {!online && (
-          <div className="relative bg-red-600">
-            <div className="mx-auto max-w-7xl py-2 px-3 sm:px-6 lg:px-8">
-              <div className="sm:px-16 sm:text-center">
-                <p className="font-medium text-white">
-                  You appears to be offline. Please check your network.
-                </p>
+        <AnimatePresence>
+          {!online && (
+            <motion.div
+              className="absolute top-0 w-full bg-red-600"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
+                <div className="sm:px-16 sm:text-center">
+                  <p className="font-medium text-white">
+                    You appears to be offline. Please check your network.
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
         <Routes>
           <Route path={'/login'} element={<Login />} />
           {embedRoutes.map((route, index) => (
