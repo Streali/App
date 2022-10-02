@@ -19,12 +19,13 @@ export interface AlertElementSettingsProps {
   element?: AlertElement;
   onTitleChange?: (title: string) => void;
   onSettingsChange?: (key: string, settings: unknown) => void;
+  onPositionChange?: (position: 'width' | 'height' | 'posX' | 'posY', value: number) => void;
 }
 
 export const AlertElementSettings = memo(function AlertElementSettings(
   props: AlertElementSettingsProps
 ) {
-  const { element, onTitleChange, onSettingsChange } = props;
+  const { element, onTitleChange, onSettingsChange, onPositionChange } = props;
   const [currentElement, setCurrentElement] = useState(element);
 
   useEffect(() => {
@@ -49,14 +50,50 @@ export const AlertElementSettings = memo(function AlertElementSettings(
       </TabItem>
       <TabItem title="Dimension">
         <div className="mb-3 flex gap-3">
-          <Input value={currentElement.width} label="Width" disabled suffix="px" />
-          <Input value={currentElement.height} label="Height" disabled suffix="px" />
+          <Input
+            value={currentElement.width}
+            type="number"
+            label="Width"
+            suffix="px"
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              onPositionChange && onPositionChange('width', target.valueAsNumber);
+            }}
+          />
+          <Input
+            value={currentElement.height}
+            label="Height"
+            type="number"
+            suffix="px"
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              onPositionChange && onPositionChange('height', target.valueAsNumber);
+            }}
+          />
         </div>
       </TabItem>
       <TabItem title="Position">
         <div className="mb-3 flex gap-3">
-          <Input value={currentElement.posX} label="X" disabled suffix="px" />
-          <Input value={currentElement.posY} label="Y" disabled suffix="px" />
+          <Input
+            value={currentElement.posX}
+            label="X"
+            type="number"
+            suffix="px"
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              onPositionChange && onPositionChange('posX', target.valueAsNumber);
+            }}
+          />
+          <Input
+            value={currentElement.posY}
+            label="Y"
+            type="number"
+            suffix="px"
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              onPositionChange && onPositionChange('posY', target.valueAsNumber);
+            }}
+          />
         </div>
       </TabItem>
       {currentElement.type === 'text' && (

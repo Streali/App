@@ -153,6 +153,19 @@ export const AlertCreate = () => {
                   })
                 );
               }}
+              onPositionChange={(position, value) => {
+                setElements((prev) =>
+                  prev.map((element) => {
+                    if (element.id === selectedElement) {
+                      return {
+                        ...element,
+                        [position]: value,
+                      };
+                    }
+                    return element;
+                  })
+                );
+              }}
               onTitleChange={(title) => {
                 setElements((prev) =>
                   prev.map((element) => {
