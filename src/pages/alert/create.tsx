@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertElementsList } from '../../components/alert/alert-elements-list/alert-element-list';
 import { AlertSettings } from '../../components/alert/alert-settings/alert-settings';
-import { Milliseconds } from '../../types/types/custom';
+import { Milliseconds, Pixels } from '../../types/types/custom';
 import { AlertEditorContainer } from '../../components/alert/alert-editor-container/alert-editor-container';
 import { AlertElementSettings } from '../../components/alert/alert-element-settings/alert-element-settings';
 import {
@@ -12,17 +12,22 @@ import {
   defaultTextElementSettings,
   defaultVideoElementSettings,
 } from '../../utils/alert/default-element-settings';
+import { AlertElements, AlertTheme } from '../../types/schemas/alert';
 
 export const AlertCreate = () => {
-  const [settings, setSettings] = useState<{ [x: string]: any }>({
+  const [settings, setSettings] = useState<AlertTheme>({
+    id: '1',
     title: 'Test new alert',
+    type: 'subscribe',
     width: 500,
     height: 500,
     duration: 5000,
+    elements: [],
+    user_id: '1',
   });
-  const [elements, setElements] = useState<any[]>([]);
+  const [elements, setElements] = useState<AlertElements>([]);
   const [selectedElement, setSelectedElement] = useState<string | null>(null);
-  const { handleSubmit, watch, getValues, control } = useForm();
+  const { watch, getValues, control } = useForm();
 
   const handleDeleteElement = (id: string) => {
     const allElements = [...elements];
@@ -65,7 +70,7 @@ export const AlertCreate = () => {
   };
 
   useEffect(() => {
-    const subscription = watch((value) => setSettings(value));
+    const subscription = watch((value) => setSettings(value as AlertTheme));
     return () => subscription.unsubscribe();
   }, [watch, getValues]);
 
@@ -97,8 +102,8 @@ export const AlertCreate = () => {
         </div>
         <div className="flex-1">
           <AlertEditorContainer
-            width={settings.width}
-            height={settings.height}
+            width={settings.width as Pixels}
+            height={settings.height as Pixels}
             elements={elements}
             onElementMove={(id, x, y) => {
               setElements((prev) =>
@@ -137,7 +142,7 @@ export const AlertCreate = () => {
               element={elements.find((element) => element.id === selectedElement)}
               onSettingsChange={(key, settings) => {
                 setElements((prev) =>
-                  prev.map((element) => {
+                  prev.map((element: any) => {
                     if (element.id === selectedElement) {
                       return {
                         ...element,
@@ -165,7 +170,7 @@ export const AlertCreate = () => {
       <div>
         <AlertElementsList
           elements={elements}
-          totalTime={settings.duration}
+          totalTime={settings.duration as Milliseconds}
           onDeleteElement={handleDeleteElement}
           onColorChange={handleColorChange}
           onDurationChange={handleDurationChange}

@@ -1,11 +1,9 @@
 import { useRef } from 'react';
-import { useEffect } from 'react';
-import { Pixels } from '../../../types/types/custom';
+import { AlertElementVideoSettings } from '../../../types/schemas/alert';
+import type { Pixels } from '../../../types/types/custom';
 
 export interface AlertVideoProps {
-  src: string;
-  muted: boolean;
-  loop: boolean;
+  settings: AlertElementVideoSettings;
   width: Pixels;
   height: Pixels;
   posX: Pixels;
@@ -14,16 +12,16 @@ export interface AlertVideoProps {
 }
 
 export const AlertVideo = (props: AlertVideoProps) => {
-  const { src, loop, width, height, posX, posY, muted, id } = props;
+  const { width, height, posX, posY, id, settings } = props;
   const video = useRef<HTMLVideoElement>(null);
 
   return (
     <video
-      src={src}
+      src={settings.url}
       ref={video}
-      loop={loop}
+      loop={settings.loop}
       autoPlay
-      muted={muted}
+      muted={settings.muted}
       className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,

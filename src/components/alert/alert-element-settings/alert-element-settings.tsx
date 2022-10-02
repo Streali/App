@@ -1,4 +1,12 @@
 import { useEffect, useState, memo } from 'react';
+import {
+  AlertElement,
+  AlertElementAudioSettings,
+  AlertElementImageSettings,
+  AlertElementLottieSettings,
+  AlertElementTextSettings,
+  AlertElementVideoSettings,
+} from '../../../types/schemas/alert';
 import { TabItem } from '../../chat/chat-settings/tab-item';
 import { Input } from '../../forms/input/input';
 import { AudioSettings } from './audio-settings';
@@ -8,9 +16,9 @@ import { TextSettings } from './text-settings';
 import { VideoSettings } from './video-settings';
 
 export interface AlertElementSettingsProps {
-  element: any;
+  element?: AlertElement;
   onTitleChange?: (title: string) => void;
-  onSettingsChange?: (key: string, settings: any) => void;
+  onSettingsChange?: (key: string, settings: unknown) => void;
 }
 
 export const AlertElementSettings = memo(function AlertElementSettings(
@@ -22,6 +30,10 @@ export const AlertElementSettings = memo(function AlertElementSettings(
   useEffect(() => {
     setCurrentElement(element);
   }, [element]);
+
+  if (!currentElement) {
+    return <p>Error</p>;
+  }
 
   return (
     <div className="custom-scrollbar h-[524px] w-full overflow-y-auto rounded-2xl bg-dark-600 p-5">
@@ -48,19 +60,34 @@ export const AlertElementSettings = memo(function AlertElementSettings(
         </div>
       </TabItem>
       {currentElement.type === 'text' && (
-        <TextSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+        <TextSettings
+          settings={currentElement.settings as AlertElementTextSettings}
+          onSettingsChange={onSettingsChange}
+        />
       )}
       {currentElement.type === 'image' && (
-        <ImageSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+        <ImageSettings
+          settings={currentElement.settings as AlertElementImageSettings}
+          onSettingsChange={onSettingsChange}
+        />
       )}
       {currentElement.type === 'lottie' && (
-        <LottieSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+        <LottieSettings
+          settings={currentElement.settings as AlertElementLottieSettings}
+          onSettingsChange={onSettingsChange}
+        />
       )}
       {currentElement.type === 'video' && (
-        <VideoSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+        <VideoSettings
+          settings={currentElement.settings as AlertElementVideoSettings}
+          onSettingsChange={onSettingsChange}
+        />
       )}
       {currentElement.type === 'audio' && (
-        <AudioSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+        <AudioSettings
+          settings={currentElement.settings as AlertElementAudioSettings}
+          onSettingsChange={onSettingsChange}
+        />
       )}
     </div>
   );

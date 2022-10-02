@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AlertElementTextSettings } from '../../../types/schemas/alert';
 import { dynamicAlertContentValues } from '../../../utils/alert/dynamic-content-values';
 import { TabItem } from '../../chat/chat-settings/tab-item';
 import { BorderRadius } from '../../forms/border-radius/border-radius';
@@ -12,8 +13,8 @@ import { Switch } from '../../forms/switch/switch';
 import { TextStyle } from '../../forms/text-style/text-style';
 
 export interface TextSettingsProps {
-  settings: any;
-  onSettingsChange?: (key: string, settings: any) => void;
+  settings: AlertElementTextSettings;
+  onSettingsChange?: (key: string, settings: unknown) => void;
 }
 
 export const TextSettings = (props: TextSettingsProps) => {

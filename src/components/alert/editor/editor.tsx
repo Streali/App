@@ -6,6 +6,14 @@ import { AlertLottie } from '../elements/lottie';
 import { AlertVideo } from '../elements/video';
 import AlertImage from '../elements/image';
 import { AlertAudio } from '../elements/audio';
+import type {
+  AlertElementAudioSettings,
+  AlertElementImageSettings,
+  AlertElementLottieSettings,
+  AlertElements,
+  AlertElementTextSettings,
+  AlertElementVideoSettings,
+} from '../../../types/schemas/alert';
 
 export interface EditorProps {
   width: Pixels;
@@ -13,7 +21,7 @@ export interface EditorProps {
   onElementMove?: (id: string, x: Pixels, y: Pixels) => void;
   onElementResize?: (id: string, width: Pixels, height: Pixels) => void;
   isHover?: (hover: boolean) => void;
-  elements: any[];
+  elements: AlertElements;
   onElementClick?: (id: string) => void;
 }
 
@@ -90,55 +98,46 @@ export const Editor = (props: EditorProps) => {
         <div key={element.id} onClick={() => onElementClick?.(element.id)}>
           {element.type === 'text' && (
             <AlertText
-              width={element.width}
-              height={element.height}
-              posX={element.posX}
-              posY={element.posY}
-              settings={element.settings}
+              width={element.width as Pixels}
+              height={element.height as Pixels}
+              posX={element.posX as Pixels}
+              posY={element.posY as Pixels}
+              settings={element.settings as AlertElementTextSettings}
               id={element.id}
             />
           )}
           {element.type === 'image' && (
             <AlertImage
               id={element.id}
-              src={element.settings.url}
-              width={element.width}
-              height={element.height}
-              posX={element.posX}
-              posY={element.posY}
+              settings={element.settings as AlertElementImageSettings}
+              width={element.width as Pixels}
+              height={element.height as Pixels}
+              posX={element.posX as Pixels}
+              posY={element.posY as Pixels}
             />
           )}
           {element.type === 'video' && (
             <AlertVideo
-              muted={element.settings.muted}
-              src={element.settings.url}
-              loop={element.settings.loop}
-              width={element.width}
-              height={element.height}
-              posX={element.posX}
-              posY={element.posY}
+              settings={element.settings as AlertElementVideoSettings}
+              width={element.width as Pixels}
+              height={element.height as Pixels}
+              posX={element.posX as Pixels}
+              posY={element.posY as Pixels}
               id={element.id}
             />
           )}
           {element.type === 'lottie' && (
             <AlertLottie
-              play
-              loop
-              json={element.settings.url}
-              width={element.width}
-              height={element.height}
-              posX={element.posX}
-              posY={element.posY}
+              settings={element.settings as AlertElementLottieSettings}
+              width={element.width as Pixels}
+              height={element.height as Pixels}
+              posX={element.posX as Pixels}
+              posY={element.posY as Pixels}
               id={element.id}
             />
           )}
           {element.type === 'audio' && (
-            <AlertAudio
-              src={element.settings.url}
-              muted={element.settings.muted}
-              loop={element.settings.loop}
-              id={element.id}
-            />
+            <AlertAudio settings={element.settings as AlertElementAudioSettings} id={element.id} />
           )}
         </div>
       ))}

@@ -1,12 +1,11 @@
-import Lottie from 'lottie-react';
+import Lottie, { LottieRef } from 'lottie-react';
 import { useEffect, useRef } from 'react';
 import { useLottieJson } from '../../../hooks/elements/use-lottie-json';
-import { Pixels } from '../../../types/types/custom';
+import type { AlertElementLottieSettings } from '../../../types/schemas/alert';
+import type { Pixels } from '../../../types/types/custom';
 
 export interface AlertLottieProps {
-  play: boolean;
-  json: any;
-  loop: boolean;
+  settings: AlertElementLottieSettings;
   width: Pixels;
   height: Pixels;
   posX: Pixels;
@@ -15,18 +14,16 @@ export interface AlertLottieProps {
 }
 
 export const AlertLottie = (props: AlertLottieProps) => {
-  const { play, json, loop, width, height, posX, posY, id } = props;
+  const { width, height, posX, posY, id, settings } = props;
 
   const animation = useRef<any>(null);
-  const { data: animationData } = useLottieJson(json);
+  const { data: animationData } = useLottieJson(settings.url);
 
   useEffect(() => {
-    if (animationData && play) {
+    if (animationData) {
       animation.current?.play();
     }
-  }, [json]);
-
-  // return <p>{JSON.stringify(animationData)}</p>;
+  }, [settings]);
 
   return (
     <>
@@ -34,7 +31,6 @@ export const AlertLottie = (props: AlertLottieProps) => {
         <Lottie
           className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
           animationData={animationData}
-          loop={loop}
           lottieRef={animation}
           style={{
             width: width,

@@ -1,23 +1,22 @@
 import { useRef } from 'react';
+import { AlertElementAudioSettings } from '../../../types/schemas/alert';
 
-export interface AlertVideoProps {
-  src: string;
-  muted: boolean;
-  loop: boolean;
+export interface AlertAudioProps {
+  settings: AlertElementAudioSettings;
   id: string;
 }
 
-export const AlertAudio = (props: AlertVideoProps) => {
-  const { src, loop, muted, id } = props;
+export const AlertAudio = (props: AlertAudioProps) => {
+  const { settings, id } = props;
   const audio = useRef<HTMLAudioElement>(null);
 
   return (
     <audio
-      src={src}
+      src={settings.url}
       ref={audio}
-      loop={loop}
+      loop={settings.loop}
       autoPlay
-      muted={muted}
+      muted={settings.muted}
       className="absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: 0,

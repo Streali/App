@@ -1,6 +1,13 @@
+import {
+  AlertTextElement,
+  AlertImageElement,
+  AlertLottieElement,
+  AlertVideoElement,
+  AlertAudioElement,
+} from './../../types/schemas/alert';
 import { uid } from 'uid';
 
-export const defaultTextElementSettings = () => {
+export const defaultTextElementSettings = (): AlertTextElement => {
   return {
     type: 'text',
     id: uid(),
@@ -11,7 +18,7 @@ export const defaultTextElementSettings = () => {
     width: 200,
     height: 100,
     duration: 1000,
-    start_titme: 0,
+    start_time: 0,
     settings: {
       content: 'Text element content',
       is_dynamic: false,
@@ -59,7 +66,7 @@ export const defaultTextElementSettings = () => {
   };
 };
 
-export const defaultImageElementSettings = () => {
+export const defaultImageElementSettings = (): AlertImageElement => {
   return {
     type: 'image',
     id: uid(),
@@ -70,16 +77,14 @@ export const defaultImageElementSettings = () => {
     width: 100,
     height: 100,
     duration: 1000,
-    start_titme: 0,
+    start_time: 0,
     settings: {
       url: 'https://avatars.githubusercontent.com/u/109690726?s=200&v=4',
-      animation_in: 'none',
-      animation_out: 'none',
     },
   };
 };
 
-export const defaultLottieElementSettings = () => {
+export const defaultLottieElementSettings = (): AlertLottieElement => {
   return {
     type: 'lottie',
     id: uid(),
@@ -90,14 +95,14 @@ export const defaultLottieElementSettings = () => {
     width: 100,
     height: 100,
     duration: 1000,
-    start_titme: 0,
+    start_time: 0,
     settings: {
       url: 'https://assets10.lottiefiles.com/packages/lf20_nwttxjmp.json',
     },
   };
 };
 
-export const defaultVideoElementSettings = () => {
+export const defaultVideoElementSettings = (): AlertVideoElement => {
   return {
     type: 'video',
     id: uid(),
@@ -108,7 +113,7 @@ export const defaultVideoElementSettings = () => {
     width: 100,
     height: 100,
     duration: 1000,
-    start_titme: 0,
+    start_time: 0,
     settings: {
       url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
       muted: true,
@@ -117,7 +122,7 @@ export const defaultVideoElementSettings = () => {
   };
 };
 
-export const defaultAudioElementSettings = () => {
+export const defaultAudioElementSettings = (): AlertAudioElement => {
   return {
     type: 'audio',
     id: uid(),
@@ -128,7 +133,7 @@ export const defaultAudioElementSettings = () => {
     width: 0,
     height: 0,
     duration: 1000,
-    start_titme: 0,
+    start_time: 0,
     settings: {
       url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
       muted: true,

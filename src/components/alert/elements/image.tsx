@@ -1,7 +1,8 @@
-import { Pixels } from '../../../types/types/custom';
+import type { AlertElementImageSettings } from '../../../types/schemas/alert';
+import type { Pixels } from '../../../types/types/custom';
 
 export interface AlertImageProps {
-  src: string;
+  settings: AlertElementImageSettings;
   width: Pixels;
   height: Pixels;
   posX: Pixels;
@@ -10,7 +11,7 @@ export interface AlertImageProps {
 }
 
 export const AlertImage = (props: AlertImageProps) => {
-  const { src, width, height, posX, posY, id } = props;
+  const { settings, width, height, posX, posY, id } = props;
 
   return (
     <div
@@ -24,7 +25,7 @@ export const AlertImage = (props: AlertImageProps) => {
       data-x={posX}
       data-y={posY}
     >
-      <img src={src} alt="img" className="h-full w-full object-cover" />
+      <img src={settings.url} alt="img" className="h-full w-full object-cover" />
     </div>
   );
 };

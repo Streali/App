@@ -5,15 +5,16 @@ import { Color } from '../../forms/color/color';
 import { Duration } from '../duration/duration';
 import { Timeline } from '../timeline/timeline';
 import { DragDropContext, DropResult, Droppable, Draggable } from '@hello-pangea/dnd';
+import { AlertElements } from '../../../types/schemas/alert';
 
 export interface AlertElementsListProps {
-  elements: any[];
+  elements: AlertElements;
   totalTime: Milliseconds;
   onDeleteElement?: (id: string) => void;
   onColorChange?: (id: string, color: string) => void;
   onStartChange?: (id: string, startTime: Milliseconds) => void;
   onDurationChange?: (id: string, duration: Milliseconds) => void;
-  onOrderChange?: (elements: any[]) => void;
+  onOrderChange?: (elements: AlertElements) => void;
   onElementClick?: (id: string) => void;
 }
 
@@ -102,8 +103,8 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
                           title={element.title}
                           totalTime={totalTime}
                           color={element.color}
-                          duration={element.duration}
-                          startTime={element.startTime}
+                          duration={element.duration as Milliseconds}
+                          startTime={element.start_time as Milliseconds}
                           onElementMove={(startTime) =>
                             onStartChange && onStartChange(element.id, startTime)
                           }

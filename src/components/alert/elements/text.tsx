@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import type { AlertElementTextSettings } from '../../../types/schemas/alert';
 import { Pixels } from '../../../types/types/custom';
 
 export interface AlertTextProps {
-  settings: any;
+  settings: AlertElementTextSettings;
   width: Pixels;
   height: Pixels;
   posX: Pixels;

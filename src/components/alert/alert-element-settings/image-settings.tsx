@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { AlertElementImageSettings } from '../../../types/schemas/alert';
 import { Button, ButtonColor, ButtonSize } from '../../button/button';
 import { TabItem } from '../../chat/chat-settings/tab-item';
 import { File } from '../../forms/file/file';
 import { Input } from '../../forms/input/input';
 
 export interface ImageSettingsProps {
-  settings: any;
-  onSettingsChange?: (key: string, settings: any) => void;
+  settings: AlertElementImageSettings;
+  onSettingsChange?: (key: string, settings: unknown) => void;
 }
 
 export const ImageSettings = (props: ImageSettingsProps) => {

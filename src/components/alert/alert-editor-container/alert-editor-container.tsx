@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import { AlertElements } from '../../../types/schemas/alert';
 import { Pixels } from '../../../types/types/custom';
 import { Button, ButtonSize } from '../../button/button';
 import { Editor } from '../editor/editor';
@@ -7,7 +8,7 @@ import { Editor } from '../editor/editor';
 export interface AlertEditorContainerProps {
   width: Pixels;
   height: Pixels;
-  elements: any[];
+  elements: AlertElements;
   onElementMove?: (id: string, x: Pixels, y: Pixels) => void;
   onElementResize?: (id: string, width: Pixels, height: Pixels) => void;
   onElementClick?: (id: string) => void;
