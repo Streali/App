@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Milliseconds, Pixels } from '../../../types/types/custom';
 import interact from 'interactjs';
 import { AlertText } from '../elements/text';
 import { AlertLottie } from '../elements/lottie';
 import { AlertVideo } from '../elements/video';
-import AlertImage from '../elements/image';
+import { AlertImage } from '../elements/image';
 import { AlertAudio } from '../elements/audio';
 import type {
   AlertElementAudioSettings,

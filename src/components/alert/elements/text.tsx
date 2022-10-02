@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import type { AlertElementTextSettings } from '../../../types/schemas/alert';
-import { Pixels } from '../../../types/types/custom';
+import type { Pixels } from '../../../types/types/custom';
 
 export interface AlertTextProps {
   settings: AlertElementTextSettings;
@@ -9,10 +9,11 @@ export interface AlertTextProps {
   posX: Pixels;
   posY: Pixels;
   id: string;
+  lock?: boolean;
 }
 
 export const AlertText = (props: AlertTextProps) => {
-  const { settings, width, height, posX, posY, id } = props;
+  const { settings, width, height, posX, posY, id, lock = false } = props;
 
   useEffect(() => {
     (async () => {
@@ -27,7 +28,9 @@ export const AlertText = (props: AlertTextProps) => {
 
   return (
     <p
-      className="draggable-alert absolute hover:outline hover:outline-1 hover:outline-white/30"
+      className={`absolute  ${
+        !lock && 'draggable-alert hover:outline hover:outline-1 hover:outline-white/30'
+      }`}
       style={{
         width: width,
         height: height,

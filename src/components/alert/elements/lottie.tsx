@@ -11,10 +11,11 @@ export interface AlertLottieProps {
   posX: Pixels;
   posY: Pixels;
   id: string;
+  lock?: boolean;
 }
 
 export const AlertLottie = (props: AlertLottieProps) => {
-  const { width, height, posX, posY, id, settings } = props;
+  const { width, height, posX, posY, id, settings, lock = false } = props;
 
   const animation = useRef<any>(null);
   const { data: animationData } = useLottieJson(settings.url);
@@ -29,7 +30,10 @@ export const AlertLottie = (props: AlertLottieProps) => {
     <>
       {animationData && (
         <Lottie
-          className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
+          className={`absolute block ${
+            !lock &&
+            'draggable-alert transition-colors hover:outline hover:outline-1 hover:outline-white/30'
+          }`}
           animationData={animationData}
           lottieRef={animation}
           style={{

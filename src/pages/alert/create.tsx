@@ -105,6 +105,7 @@ export const AlertCreate = () => {
           <AlertEditorContainer
             width={settings.width as Pixels}
             height={settings.height as Pixels}
+            totalTime={settings.duration as Milliseconds}
             elements={elements}
             timestamp={timestamp}
             onElementMove={(id, x, y) => {

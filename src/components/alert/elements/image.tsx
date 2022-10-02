@@ -8,14 +8,18 @@ export interface AlertImageProps {
   posX: Pixels;
   posY: Pixels;
   id: string;
+  lock?: boolean;
 }
 
 export const AlertImage = (props: AlertImageProps) => {
-  const { settings, width, height, posX, posY, id } = props;
+  const { settings, width, height, posX, posY, id, lock = false } = props;
 
   return (
     <div
-      className="draggable-alert absolute block transition-colors hover:outline hover:outline-1 hover:outline-white/30"
+      className={`absolute block  ${
+        !lock &&
+        'draggable-alert transition-colors hover:outline hover:outline-1 hover:outline-white/30'
+      }`}
       style={{
         width: width,
         height: height,
@@ -29,4 +33,3 @@ export const AlertImage = (props: AlertImageProps) => {
     </div>
   );
 };
-export default AlertImage;
