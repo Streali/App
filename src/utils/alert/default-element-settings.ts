@@ -116,3 +116,24 @@ export const defaultVideoElementSettings = () => {
     },
   };
 };
+
+export const defaultAudioElementSettings = () => {
+  return {
+    type: 'audio',
+    id: uid(),
+    title: 'Audio element title',
+    color: '#4837de',
+    posX: 0,
+    posY: 0,
+    width: 0,
+    height: 0,
+    duration: 1000,
+    start_titme: 0,
+    settings: {
+      url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
+      muted: true,
+      loop: false,
+      volume: 50,
+    },
+  };
+};

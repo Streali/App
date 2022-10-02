@@ -5,6 +5,7 @@ import { AlertText } from '../elements/text';
 import { AlertLottie } from '../elements/lottie';
 import { AlertVideo } from '../elements/video';
 import AlertImage from '../elements/image';
+import { AlertAudio } from '../elements/audio';
 
 export interface EditorProps {
   width: Pixels;
@@ -85,7 +86,7 @@ export const Editor = (props: EditorProps) => {
       onMouseLeave={() => isHover && isHover(false)}
       className="relative border-2 border-dark-300 bg-dark-400"
     >
-      {[...elements].reverse().map((element) => (
+      {elements.map((element) => (
         <div key={element.id} onClick={() => onElementClick?.(element.id)}>
           {element.type === 'text' && (
             <AlertText
@@ -128,6 +129,14 @@ export const Editor = (props: EditorProps) => {
               height={element.height}
               posX={element.posX}
               posY={element.posY}
+              id={element.id}
+            />
+          )}
+          {element.type === 'audio' && (
+            <AlertAudio
+              src={element.settings.url}
+              muted={element.settings.muted}
+              loop={element.settings.loop}
               id={element.id}
             />
           )}

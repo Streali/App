@@ -1,6 +1,7 @@
 import { useEffect, useState, memo } from 'react';
 import { TabItem } from '../../chat/chat-settings/tab-item';
 import { Input } from '../../forms/input/input';
+import { AudioSettings } from './audio-settings';
 import { ImageSettings } from './image-settings';
 import { LottieSettings } from './lottie-settings';
 import { TextSettings } from './text-settings';
@@ -57,6 +58,9 @@ export const AlertElementSettings = memo(function AlertElementSettings(
       )}
       {currentElement.type === 'video' && (
         <VideoSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
+      )}
+      {currentElement.type === 'audio' && (
+        <AudioSettings settings={currentElement.settings} onSettingsChange={onSettingsChange} />
       )}
     </div>
   );
