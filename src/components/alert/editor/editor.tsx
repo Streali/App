@@ -23,10 +23,11 @@ export interface EditorProps {
   isHover?: (hover: boolean) => void;
   elements: AlertElements;
   onElementClick?: (id: string) => void;
+  zoom: number;
 }
 
 export const Editor = (props: EditorProps) => {
-  const { width, height, onElementMove, onElementResize, isHover, elements, onElementClick } =
+  const { width, height, onElementMove, onElementResize, isHover, elements, onElementClick, zoom } =
     props;
 
   const initInteract = () => {
@@ -51,36 +52,46 @@ export const Editor = (props: EditorProps) => {
       });
   };
 
-  const resizeElement = (event: any) => {
-    let { x, y } = event.target.dataset;
+  const resizeElement = (event: Interact.ResizeEvent) => {
+    const { x, y } = event.target.dataset;
     const id = event.target.getAttribute('data-id');
 
-    x = (parseFloat(x) || 0) + event.deltaRect.left;
-    y = (parseFloat(y) || 0) + event.deltaRect.top;
+    if (event.deltaRect && x && y && id) {
+      const newX = (parseFloat(x) || 0) + event.deltaRect.left;
+      const newY = (parseFloat(y) || 0) + event.deltaRect.top;
 
-    Object.assign(event.target.style, {
-      width: `${event.rect.width}px`,
-      height: `${event.rect.height}px`,
-      transform: `translate(${x}px, ${y}px)`,
-    });
+      const width = event.rect.width;
+      const height = event.rect.height;
 
-    Object.assign(event.target.dataset, { x, y });
+      event.target.style.width = `${width}px`;
+      event.target.style.height = `${height}px`;
+      event.target.style.transform = `translate(${newX}px, ${newY}px)`;
 
-    isHover && isHover(true);
-    onElementResize && onElementResize(id, event.rect.width, event.rect.height);
-    onElementMove && onElementMove(id, x, y);
+      event.target.setAttribute('data-x', newX.toString());
+      event.target.setAttribute('data-y', newY.toString());
+
+      isHover && isHover(true);
+      onElementResize &&
+        onElementResize(id, event.rect.width as Pixels, event.rect.height as Pixels);
+      onElementMove && onElementMove(id, newX as Pixels, newY as Pixels);
+    }
   };
 
-  const moveElement = (event: any) => {
+  const moveElement = (event: Interact.DragEvent) => {
     const target = event.target;
-    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    const dataX = target.getAttribute('data-x');
+    const dataY = target.getAttribute('data-y');
     const id = target.getAttribute('data-id');
-    target.style.transform = `translate(${x}px, ${y}px)`;
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-    isHover && isHover(true);
-    onElementMove && onElementMove(id, x, y);
+
+    if (dataX && dataY && id) {
+      const x = (parseFloat(dataX) || 0) + event.dx / zoom;
+      const y = (parseFloat(dataY) || 0) + event.dy / zoom;
+      target.style.transform = `translate(${x}px, ${y}px)`;
+      target.setAttribute('data-x', x.toString());
+      target.setAttribute('data-y', y.toString());
+      isHover && isHover(true);
+      onElementMove && onElementMove(id, x as Pixels, y as Pixels);
+    }
   };
 
   useEffect(() => {

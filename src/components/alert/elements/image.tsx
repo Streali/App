@@ -15,7 +15,7 @@ export const AlertImage = (props: AlertImageProps) => {
 
   return (
     <div
-      className="draggable-alert absolute z-[9999] block transition-colors hover:outline hover:outline-1 hover:outline-white/30"
+      className="draggable-alert absolute block transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,
         height: height,

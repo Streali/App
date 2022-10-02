@@ -18,6 +18,7 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
   const { width, height, elements, onElementMove, onElementResize, onElementClick } = props;
 
   const [isHover, setIsHover] = useState<boolean>(false);
+  const [zoom, setZoom] = useState<number>(0.5);
 
   return (
     <div className="relative h-[524px] overflow-hidden rounded-2xl bg-black">
@@ -26,6 +27,7 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
         minScale={0.2}
         maxScale={10}
         centerOnInit
+        onZoom={(ref) => setZoom(ref.state.scale)}
         limitToBounds={false}
         panning={{ disabled: isHover }}
       >
@@ -57,6 +59,7 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
                 onElementMove={onElementMove}
                 onElementResize={onElementResize}
                 onElementClick={onElementClick}
+                zoom={zoom}
               />
             </TransformComponent>
           </>
