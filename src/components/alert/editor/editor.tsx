@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Pixels } from '../../../types/types/custom';
 import interact from 'interactjs';
 import { AlertText } from '../elements/text';
-import { testAnimation } from '../../../utils/lottie/test-lottie-animation';
 import { AlertLottie } from '../elements/lottie';
 import { AlertVideo } from '../elements/video';
 import AlertImage from '../elements/image';
@@ -110,13 +109,14 @@ export const Editor = (props: EditorProps) => {
           )}
           {element.type === 'video' && (
             <AlertVideo
+              muted={element.settings.muted}
               src={element.settings.url}
-              play={true}
-              loop={true}
-              width={200 as Pixels}
-              height={100 as Pixels}
-              posX={50 as Pixels}
-              posY={50 as Pixels}
+              loop={element.settings.loop}
+              width={element.width}
+              height={element.height}
+              posX={element.posX}
+              posY={element.posY}
+              id={element.id}
             />
           )}
           {element.type === 'lottie' && (

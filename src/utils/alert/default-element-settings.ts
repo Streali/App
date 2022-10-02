@@ -93,7 +93,26 @@ export const defaultLottieElementSettings = () => {
     start_titme: 0,
     settings: {
       url: 'https://assets10.lottiefiles.com/packages/lf20_nwttxjmp.json',
-      texts: [],
+    },
+  };
+};
+
+export const defaultVideoElementSettings = () => {
+  return {
+    type: 'video',
+    id: uid(),
+    title: 'Video element title',
+    color: '#0cbff0',
+    posX: 0,
+    posY: 0,
+    width: 100,
+    height: 100,
+    duration: 1000,
+    start_titme: 0,
+    settings: {
+      url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
+      muted: true,
+      loop: false,
     },
   };
 };

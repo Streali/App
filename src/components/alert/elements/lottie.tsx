@@ -1,8 +1,7 @@
 import Lottie from 'lottie-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLottieJson } from '../../../hooks/elements/use-lottie-json';
 import { Pixels } from '../../../types/types/custom';
-import { testAnimation } from '../../../utils/lottie/test-lottie-animation';
 
 export interface AlertLottieProps {
   play: boolean;

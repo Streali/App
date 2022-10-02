@@ -9,6 +9,7 @@ import {
   defaultImageElementSettings,
   defaultLottieElementSettings,
   defaultTextElementSettings,
+  defaultVideoElementSettings,
 } from '../../utils/alert/default-element-settings';
 
 export const AlertCreate = () => {
@@ -83,6 +84,9 @@ export const AlertCreate = () => {
               }
               if (type === 'lottie') {
                 setElements((prev) => [...prev, defaultLottieElementSettings()]);
+              }
+              if (type === 'video') {
+                setElements((prev) => [...prev, defaultVideoElementSettings()]);
               }
             }}
           />

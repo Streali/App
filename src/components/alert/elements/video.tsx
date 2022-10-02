@@ -4,34 +4,26 @@ import { Pixels } from '../../../types/types/custom';
 
 export interface AlertVideoProps {
   src: string;
-  play: boolean;
+  muted: boolean;
   loop: boolean;
   width: Pixels;
   height: Pixels;
   posX: Pixels;
   posY: Pixels;
+  id: string;
 }
 
 export const AlertVideo = (props: AlertVideoProps) => {
-  const { src, play, loop, width, height, posX, posY } = props;
+  const { src, loop, width, height, posX, posY, muted, id } = props;
   const video = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (video.current) {
-      if (play) {
-        video.current.play();
-      } else {
-        video.current.pause();
-      }
-    }
-  }, [play, loop]);
 
   return (
     <video
       src={src}
       ref={video}
       loop={loop}
-      muted
+      autoPlay
+      muted={muted}
       className="draggable-alert absolute transition-colors hover:outline hover:outline-1 hover:outline-white/30"
       style={{
         width: width,
@@ -40,6 +32,7 @@ export const AlertVideo = (props: AlertVideoProps) => {
       }}
       data-x={posX}
       data-y={posY}
+      data-id={id}
     ></video>
   );
 };
