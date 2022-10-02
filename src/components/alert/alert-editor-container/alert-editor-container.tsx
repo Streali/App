@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { AlertElements } from '../../../types/schemas/alert';
-import { Pixels } from '../../../types/types/custom';
+import { Milliseconds, Pixels } from '../../../types/types/custom';
 import { Button, ButtonSize } from '../../button/button';
 import { Editor } from '../editor/editor';
 
@@ -9,13 +9,15 @@ export interface AlertEditorContainerProps {
   width: Pixels;
   height: Pixels;
   elements: AlertElements;
+  timestamp: Milliseconds;
   onElementMove?: (id: string, x: Pixels, y: Pixels) => void;
   onElementResize?: (id: string, width: Pixels, height: Pixels) => void;
   onElementClick?: (id: string) => void;
 }
 
 export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
-  const { width, height, elements, onElementMove, onElementResize, onElementClick } = props;
+  const { width, height, elements, onElementMove, onElementResize, onElementClick, timestamp } =
+    props;
 
   const [isHover, setIsHover] = useState<boolean>(false);
   const [zoom, setZoom] = useState<number>(0.5);
@@ -54,6 +56,7 @@ export const AlertEditorContainer = (props: AlertEditorContainerProps) => {
               <Editor
                 width={width}
                 height={height}
+                timestamp={timestamp}
                 isHover={(hover) => setIsHover(hover)}
                 elements={elements}
                 onElementMove={onElementMove}

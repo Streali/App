@@ -27,6 +27,7 @@ export const AlertCreate = () => {
   });
   const [elements, setElements] = useState<AlertElements>([]);
   const [selectedElement, setSelectedElement] = useState<string | null>(null);
+  const [timestamp, setTimestamp] = useState<Milliseconds>(0 as Milliseconds);
   const { watch, getValues, control } = useForm();
 
   const handleDeleteElement = (id: string) => {
@@ -62,7 +63,7 @@ export const AlertCreate = () => {
     setElements((prev) =>
       prev.map((element) => {
         if (element.id === id) {
-          return { ...element, startTime };
+          return { ...element, start_time: startTime };
         }
         return element;
       })
@@ -105,6 +106,7 @@ export const AlertCreate = () => {
             width={settings.width as Pixels}
             height={settings.height as Pixels}
             elements={elements}
+            timestamp={timestamp}
             onElementMove={(id, x, y) => {
               setElements((prev) =>
                 prev.map((element) => {
@@ -189,9 +191,9 @@ export const AlertCreate = () => {
           onDurationChange={handleDurationChange}
           onStartChange={handleStartChange}
           onElementClick={(id) => {
-            console.log(id);
             setSelectedElement(id);
           }}
+          onTimestampChange={setTimestamp}
         />
       </div>
     </div>

@@ -16,6 +16,7 @@ export interface AlertElementsListProps {
   onDurationChange?: (id: string, duration: Milliseconds) => void;
   onOrderChange?: (elements: AlertElements) => void;
   onElementClick?: (id: string) => void;
+  onTimestampChange?: (timestamp: Milliseconds) => void;
 }
 
 export const AlertElementsList = (props: AlertElementsListProps) => {
@@ -28,10 +29,10 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
     onStartChange,
     onOrderChange,
     onElementClick,
+    onTimestampChange,
   } = props;
 
   const onDragEnd = (result: DropResult) => {
-    console.log('end', result);
     const { destination, source } = result;
 
     if (!destination) {
@@ -52,12 +53,12 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
   return (
     <div className="custom-scrollbar h-[300px] w-full overflow-y-auto rounded-xl bg-dark-600">
       <div>
-        <Duration totalTime={totalTime} />
+        <Duration
+          totalTime={totalTime}
+          onTimestampeChange={(timestamp) => onTimestampChange?.(timestamp)}
+        />
       </div>
-      <DragDropContext
-        onDragEnd={(result: DropResult) => onDragEnd(result)}
-        onDragStart={(start) => console.log('start', start)}
-      >
+      <DragDropContext onDragEnd={(result: DropResult) => onDragEnd(result)}>
         <Droppable droppableId="list">
           {(providedDroppable) => (
             <div
