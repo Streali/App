@@ -7,6 +7,7 @@ import { AlertVideo } from '../elements/video';
 import { AlertImage } from '../elements/image';
 import { AlertAudio } from '../elements/audio';
 import type {
+  AlertElement,
   AlertElementAudioSettings,
   AlertElementImageSettings,
   AlertElementLottieSettings,
@@ -25,6 +26,66 @@ export interface EditorProps {
   onElementClick?: (id: string) => void;
   zoom: number;
   timestamp: Milliseconds;
+}
+
+function renderAlertElement(element: AlertElement) {
+  if (element.type === 'text') {
+    return (
+      <AlertText
+        id={element.id}
+        settings={element.settings as AlertElementTextSettings}
+        width={element.width}
+        height={element.height}
+        posX={element.posX}
+        posY={element.posY}
+      />
+    );
+  }
+
+  if (element.type === 'image') {
+    return (
+      <AlertImage
+        id={element.id}
+        settings={element.settings as AlertElementImageSettings}
+        width={element.width}
+        height={element.height}
+        posX={element.posX}
+        posY={element.posY}
+      />
+    );
+  }
+
+  if (element.type === 'video') {
+    return (
+      <AlertVideo
+        id={element.id}
+        settings={element.settings as AlertElementVideoSettings}
+        width={element.width}
+        height={element.height}
+        posX={element.posX}
+        posY={element.posY}
+      />
+    );
+  }
+
+  if (element.type === 'lottie') {
+    return (
+      <AlertLottie
+        id={element.id}
+        settings={element.settings as AlertElementLottieSettings}
+        width={element.width}
+        height={element.height}
+        posX={element.posX}
+        posY={element.posY}
+      />
+    );
+  }
+
+  if (element.type === 'audio') {
+    return <AlertAudio id={element.id} settings={element.settings as AlertElementAudioSettings} />;
+  }
+
+  throw new Error(`Unknown alert element type ${element.type}`);
 }
 
 export const Editor = (props: EditorProps) => {
@@ -117,56 +178,9 @@ export const Editor = (props: EditorProps) => {
     >
       {elements.map((element) => (
         <div key={element.id} onClick={() => onElementClick?.(element.id)}>
-          {timestamp >= element.start_time && timestamp <= element.start_time + element.duration && (
-            <>
-              {element.type === 'text' && (
-                <AlertText
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  settings={element.settings as AlertElementTextSettings}
-                  id={element.id}
-                />
-              )}
-              {element.type === 'image' && (
-                <AlertImage
-                  id={element.id}
-                  settings={element.settings as AlertElementImageSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                />
-              )}
-              {element.type === 'video' && (
-                <AlertVideo
-                  settings={element.settings as AlertElementVideoSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  id={element.id}
-                />
-              )}
-              {element.type === 'lottie' && (
-                <AlertLottie
-                  settings={element.settings as AlertElementLottieSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  id={element.id}
-                />
-              )}
-              {element.type === 'audio' && (
-                <AlertAudio
-                  settings={element.settings as AlertElementAudioSettings}
-                  id={element.id}
-                />
-              )}
-            </>
-          )}
+          {timestamp >= element.start_time &&
+            timestamp <= element.start_time + element.duration &&
+            renderAlertElement(element)}
         </div>
       ))}
     </div>

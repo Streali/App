@@ -55,7 +55,7 @@ export const AlertElementsList = (props: AlertElementsListProps) => {
       <div>
         <Duration
           totalTime={totalTime}
-          onTimestampeChange={(timestamp) => onTimestampChange?.(timestamp)}
+          onTimestampChange={(timestamp) => onTimestampChange?.(timestamp)}
         />
       </div>
       <DragDropContext onDragEnd={(result: DropResult) => onDragEnd(result)}>

@@ -14,6 +14,14 @@ import {
 } from '../../utils/alert/default-element-settings';
 import { AlertElements, AlertTheme } from '../../types/schemas/alert';
 
+const elementSettingsMap = {
+  text: defaultTextElementSettings,
+  image: defaultImageElementSettings,
+  video: defaultVideoElementSettings,
+  audio: defaultAudioElementSettings,
+  lottie: defaultLottieElementSettings,
+};
+
 export const AlertCreate = () => {
   const [settings, setSettings] = useState<AlertTheme>({
     id: '1',
@@ -83,21 +91,13 @@ export const AlertCreate = () => {
             title="New alert"
             control={control}
             addElement={(type) => {
-              if (type === 'text') {
-                setElements((prev) => [...prev, defaultTextElementSettings()]);
+              const defaultElementSettings = elementSettingsMap[type];
+
+              if (!defaultElementSettings) {
+                throw new Error(`No default settings for element type ${type}`);
               }
-              if (type === 'image') {
-                setElements((prev) => [...prev, defaultImageElementSettings()]);
-              }
-              if (type === 'lottie') {
-                setElements((prev) => [...prev, defaultLottieElementSettings()]);
-              }
-              if (type === 'video') {
-                setElements((prev) => [...prev, defaultVideoElementSettings()]);
-              }
-              if (type === 'audio') {
-                setElements((prev) => [...prev, defaultAudioElementSettings()]);
-              }
+
+              setElements((prev) => [...prev, defaultElementSettings()]);
             }}
           />
         </div>
@@ -114,8 +114,8 @@ export const AlertCreate = () => {
                   if (element.id === id) {
                     return {
                       ...element,
-                      posX: Math.round(x),
-                      posY: Math.round(y),
+                      posX: Math.round(x) as Pixels,
+                      posY: Math.round(y) as Pixels,
                     };
                   }
                   return element;
@@ -128,8 +128,8 @@ export const AlertCreate = () => {
                   if (element.id === id) {
                     return {
                       ...element,
-                      width: Math.round(width),
-                      height: Math.round(height),
+                      width: Math.round(width) as Pixels,
+                      height: Math.round(height) as Pixels,
                     };
                   }
                   return element;

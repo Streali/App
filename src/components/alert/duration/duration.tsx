@@ -6,18 +6,18 @@ import { useState } from 'react';
 
 export interface DurationProps {
   totalTime: Milliseconds;
-  onTimestampeChange: (timestamp: Milliseconds) => void;
+  onTimestampChange: (timestamp: Milliseconds) => void;
 }
 
 export const Duration = (props: DurationProps) => {
-  const { totalTime, onTimestampeChange } = props;
+  const { totalTime, onTimestampChange } = props;
 
   const [timestamp, setTimestamp] = useState<number[]>([0]);
 
   const handleTimestampChange = (value: number[]) => {
     setTimestamp(value);
     const timestampToMilliseconds = (timestamp[0] * totalTime) / 100;
-    onTimestampeChange(timestampToMilliseconds as Milliseconds);
+    onTimestampChange(timestampToMilliseconds as Milliseconds);
   };
 
   return (

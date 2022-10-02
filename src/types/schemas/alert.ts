@@ -1,3 +1,4 @@
+import * as z from 'zod';
 import {
   ShadowSchema,
   BorderRadiusSchema,
@@ -5,18 +6,18 @@ import {
   SpacingSchema,
   BorderSettingsSchema,
 } from './components';
-import * as z from 'zod';
+import type { Milliseconds, Pixels } from '../types/custom';
 
 export const AlertElementGlobalSchema = z.object({
   type: z.enum(['text', 'image', 'video', 'lottie', 'audio']),
   id: z.string(),
   title: z.string(),
   color: z.string(),
-  posX: z.number(),
-  posY: z.number(),
-  width: z.number(),
-  height: z.number(),
-  duration: z.number(),
+  posX: z.number().transform((v) => v as Pixels),
+  posY: z.number().transform((v) => v as Pixels),
+  width: z.number().transform((v) => v as Pixels),
+  height: z.number().transform((v) => v as Pixels),
+  duration: z.number().transform((v) => v as Milliseconds),
   start_time: z.number(),
 });
 
