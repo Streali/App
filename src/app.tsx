@@ -1,15 +1,17 @@
 import { Navbar } from './components/navbar/navbar';
-import { embedRoutes, routes } from './router';
+import { routes } from './router';
 import { navigation, noLayout } from './navigation';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useAuthCheck } from './hooks/auth/use-auth-check';
+import { useAuthCheck } from './hooks/auth/useAuthCheck';
 import { Protected } from './components/protect/protected';
 import { Login } from './pages/login';
 import { MinWidthWindow } from './components/min-width-window/min-width-window';
+import { useOnline } from './hooks/layouts/useOnline';
 
 export const App = () => {
   const { status } = useAuthCheck();
   const location = useLocation();
+  const online = useOnline();
 
   if (status === 'loading') {
     return <div>Loading...</div>;
@@ -30,6 +32,19 @@ export const App = () => {
             : 'ml-0 w-screen'
         }`}
       >
+        }`}
+      >
+        {!online && (
+          <div className="relative bg-red-600">
+            <div className="mx-auto max-w-7xl py-2 px-3 sm:px-6 lg:px-8">
+              <div className="sm:px-16 sm:text-center">
+                <p className="font-medium text-white">
+                  You appears to be offline. Please check your network.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
         <Routes>
           <Route path={'/login'} element={<Login />} />
           {embedRoutes.map((route, index) => (
