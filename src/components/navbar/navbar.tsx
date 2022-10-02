@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useAuthUser } from '../../hooks/auth/useAuthUser';
-import { useLogout } from '../../hooks/auth/useLogout';
+import { useAuthUser } from '../../hooks/auth/use-auth-user';
+import { useLogout } from '../../hooks/auth/use-logout';
 import { Avatar } from '../avatar/avatar';
 import { Icon } from '../icon/icon';
 import { PopoverLink, PopoverNavigation } from '../popover/navigation/popover-navigation';

@@ -1,4 +1,4 @@
-import { useAuthCheck } from '../../hooks/auth/useAuthCheck';
+import { useAuthCheck } from '../../hooks/auth/use-auth-check';
 import { Navigate, Outlet } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types

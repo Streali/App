@@ -2,7 +2,7 @@ import { Navbar } from './components/navbar/navbar';
 import { routes } from './router';
 import { navigation, noLayout } from './navigation';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useAuthCheck } from './hooks/auth/useAuthCheck';
+import { useAuthCheck } from './hooks/auth/use-auth-check';
 import { Protected } from './components/protect/protected';
 import { Login } from './pages/login';
 import { MinWidthWindow } from './components/min-width-window/min-width-window';
@@ -28,7 +28,8 @@ export const App = () => {
           !noLayout.some((path) => location.pathname.includes(path))
             ? 'ml-[80px] w-[calc(100%_-_80px)]'
             : 'ml-0 w-screen'
-        }`}>
+        }`}
+      >
         <Routes>
           <Route path={'/login'} element={<Login />} />
           <Route element={<Protected />}>
