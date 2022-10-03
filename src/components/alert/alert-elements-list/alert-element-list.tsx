@@ -1,5 +1,4 @@
 import { DragDropContext, DropResult, Droppable, Draggable } from '@hello-pangea/dnd';
-
 import { Duration } from '~/components/alert/duration/duration';
 import { Timeline } from '~/components/alert/timeline/timeline';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
