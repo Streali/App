@@ -1,7 +1,7 @@
+import './accordion.scss';
 import * as AccordionLib from '@radix-ui/react-accordion';
 import { Icon } from '~/components/icon/icon';
 import type { ReactNode } from 'react';
-import './accordion.scss';
 
 export interface AccordionProps {
   className?: string;
