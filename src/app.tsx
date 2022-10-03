@@ -7,7 +7,7 @@ import { useAuthCheck } from './hooks/auth/useAuthCheck';
 import { Protected } from './components/protect/protected';
 import { Login } from './pages/login';
 import { MinWidthWindow } from './components/min-width-window/min-width-window';
-import { useOnline } from './hooks/layouts/useOnline';
+import { useOnline } from './hooks/layouts/use-online';
 
 export const App = () => {
   const { status } = useAuthCheck();
