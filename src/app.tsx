@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/navbar/navbar';
-import { routes } from './router';
+import { embedRoutes, routes } from './router';
 import { navigation, noLayout } from './navigation';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useAuthCheck } from './hooks/auth/useAuthCheck';
+import { useAuthCheck } from './hooks/auth/use-auth-check';
 import { Protected } from './components/protect/protected';
 import { Login } from './pages/login';
 import { MinWidthWindow } from './components/min-width-window/min-width-window';
