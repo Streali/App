@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { BorderSettingsType } from '../../../types/schemas/components';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { IconSVG } from '../../icon/icon';
-import { Color } from '../color/color';
-import { Input } from '../input/input';
-import { Select } from '../select/select';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Color } from '~/components/forms/color/color';
+import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { IconSVG } from '~/components/icon/icon';
+import type { BorderSettingsType } from '~/types/schemas/components';
 
 export interface BorderProps {
   className?: string;

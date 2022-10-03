@@ -1,10 +1,10 @@
+import './chat-message.scss';
+import { motion } from 'framer-motion';
 import React, { memo } from 'react';
-import { ChatTheme, TwitchMessage } from '../../../types/schemas/chat';
+import { selectAnimation } from '~/utils/chat/animations';
 import { Message } from './message';
 import { Name } from './name';
-import { motion } from 'framer-motion';
-import { selectAnimation } from '../../../utils/chat/animations';
-import './chat-message.scss';
+import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';
 
 export interface ChatMessageProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;

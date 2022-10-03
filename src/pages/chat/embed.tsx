@@ -1,10 +1,10 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useChat } from '../../hooks/chat/use-chat';
-import { TwitchMessage } from '../../types/schemas/chat';
-import tmi from 'tmi.js';
 import { EmoteOptions, parse } from 'simple-tmi-emotes';
-import { ChatMessage } from '../../components/chat/chat-message/chat-message';
+import tmi from 'tmi.js';
+import { ChatMessage } from '~/components/chat/chat-message/chat-message';
+import { useChat } from '~/hooks/chat/use-chat';
+import type { TwitchMessage } from '~/types/schemas/chat';
 
 export const ChatEmbed = () => {
   const [messages, setMessages] = useState<TwitchMessage[]>([]);

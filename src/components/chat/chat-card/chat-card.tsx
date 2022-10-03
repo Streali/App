@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useDeleteChat } from '../../../hooks/chat/use-delete-chat';
-import { useExportChatTheme } from '../../../hooks/chat/use-export-chat';
-import { ChatTheme } from '../../../types/schemas/chat';
-import { Button, ButtonColor } from '../../button/button';
-import { PopoverNavigation } from '../../popover/navigation/popover-navigation';
-import { Popover } from '../../popover/popover';
-import { toastr, ToastType } from '../../toast/toast';
-import { ChatMessage } from '../chat-message/chat-message';
+import { Button, ButtonColor } from '~/components/button/button';
+import { ChatMessage } from '~/components/chat/chat-message/chat-message';
+import { PopoverNavigation } from '~/components/popover/navigation/popover-navigation';
+import { Popover } from '~/components/popover/popover';
+import { toastr, ToastType } from '~/components/toast/toast';
+import { useDeleteChat } from '~/hooks/chat/use-delete-chat';
+import { useExportChatTheme } from '~/hooks/chat/use-export-chat';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export interface ChatCardProps {
   theme: ChatTheme;

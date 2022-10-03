@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Label } from '../label/label';
+import { useState } from 'react';
+import { Label } from '~/components/forms/label/label';
+import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 
 export enum TextareaState {
   Normal = 'normal',
@@ -7,14 +8,14 @@ export enum TextareaState {
   Success = 'success',
 }
 
-export interface TextareaProps extends React.ComponentPropsWithoutRef<'textarea'> {
+export interface TextareaProps extends ComponentPropsWithoutRef<'textarea'> {
   label?: string;
   className?: string;
   labelClassName?: string;
   containerClassName?: string;
   state?: TextareaState;
   errorMessage?: string;
-  onChange?: (event: React.ChangeEvent) => void;
+  onChange?: (event: ChangeEvent) => void;
 }
 
 export const Textarea = (props: TextareaProps) => {
@@ -42,7 +43,7 @@ export const Textarea = (props: TextareaProps) => {
 
   const disabledClassName = textareaProps.disabled ? '!bg-dark-400' : '';
 
-  const onChangeValue = (event: React.ChangeEvent) => {
+  const onChangeValue = (event: ChangeEvent) => {
     const { value } = event.target as HTMLTextAreaElement;
     setVal(value);
     onChange && onChange(event);

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import { ChatMessage } from './chat-message';
 
 export default {

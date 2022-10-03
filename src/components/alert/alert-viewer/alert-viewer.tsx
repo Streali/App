@@ -1,4 +1,9 @@
 import { useEffect, useState } from 'react';
+import { AlertAudio } from '~/components/alert/elements/audio';
+import { AlertImage } from '~/components/alert/elements/image';
+import { AlertLottie } from '~/components/alert/elements/lottie';
+import { AlertText } from '~/components/alert/elements/text';
+import { AlertVideo } from '~/components/alert/elements/video';
 import type {
   AlertElementAudioSettings,
   AlertElementImageSettings,
@@ -6,13 +11,8 @@ import type {
   AlertElements,
   AlertElementTextSettings,
   AlertElementVideoSettings,
-} from '../../../types/schemas/alert';
-import type { Milliseconds, Pixels } from '../../../types/types/custom';
-import { AlertAudio } from '../elements/audio';
-import { AlertImage } from '../elements/image';
-import { AlertLottie } from '../elements/lottie';
-import { AlertText } from '../elements/text';
-import { AlertVideo } from '../elements/video';
+} from '~/types/schemas/alert';
+import type { Milliseconds, Pixels } from '~/types/types/custom';
 
 export interface AlertViewerProps {
   width: Pixels;

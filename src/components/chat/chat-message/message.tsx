@@ -1,4 +1,4 @@
-import { MessageChat } from '../../../types/schemas/chat';
+import type { MessageChat } from '~/types/schemas/chat';
 
 export interface MessageProps {
   settings: MessageChat;

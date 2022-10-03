@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button } from '../button/button';
+import { useState } from 'react';
+import { Button } from '~/components/button/button';
 import { Popover } from './popover';
-import React from 'react';
 
 export default {
   component: Popover,
@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 const Template: ComponentStory<typeof Popover> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div style={{ width: 'fit-content' }}>
       <Popover {...args} open={isOpen} onOpenChange={setIsOpen}>

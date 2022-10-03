@@ -10,6 +10,7 @@ import { IconBorderRadiusBottomLeft } from './icons/border-radius_bottom-left';
 import { IconBorderRight } from './icons/border-right';
 import { IconBorderTop } from './icons/border-top';
 import { IconBorderVertical } from './icons/border-vertical';
+import type { ComponentPropsWithoutRef } from 'react';
 
 export enum IconSVG {
   Border = 'border',
@@ -26,14 +27,14 @@ export enum IconSVG {
   BorderRadiusBottomLeft = 'border-radius-bottom-left',
 }
 
-export interface IconSVGProps extends React.ComponentPropsWithoutRef<'svg'> {
+export interface IconSVGProps extends ComponentPropsWithoutRef<'svg'> {
   width?: number;
   height?: number;
   className?: string;
   fill?: string;
 }
 
-export interface IconProps extends React.ComponentPropsWithoutRef<'i'> {
+export interface IconProps extends ComponentPropsWithoutRef<'i'> {
   name?: string;
   className?: string;
   svg?: IconSVG;

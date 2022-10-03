@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Button, ButtonColor } from '../button/button';
-import { File } from '../forms/file/file';
-import { Input, InputState } from '../forms/input/input';
-import { Modal } from '../modal/modal';
-import { toastr, ToastType } from '../toast/toast';
+import { Button, ButtonColor } from '~/components/button/button';
+import { File } from '~/components/forms/file/file';
+import { Input, InputState } from '~/components/forms/input/input';
+import { Modal } from '~/components/modal/modal';
+import { toastr, ToastType } from '~/components/toast/toast';
+import type { ChangeEvent, ReactNode } from 'react';
 
 export interface ImportProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   title: string;
   text: string;
   schema: z.AnyZodObject;
@@ -23,7 +24,7 @@ export const Import = (props: ImportProps) => {
   const [confirm, setConfirm] = useState('');
   const [step, setStep] = useState('1');
 
-  const handleInputChange = (e: React.ChangeEvent) => {
+  const handleInputChange = (e: ChangeEvent) => {
     setConfirm((e.target as HTMLInputElement).value);
   };
 

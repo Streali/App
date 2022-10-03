@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AlertElementsList } from '../../components/alert/alert-elements-list/alert-element-list';
-import { AlertSettings } from '../../components/alert/alert-settings/alert-settings';
-import { Milliseconds, Pixels } from '../../types/types/custom';
-import { AlertEditorContainer } from '../../components/alert/alert-editor-container/alert-editor-container';
-import { AlertElementSettings } from '../../components/alert/alert-element-settings/alert-element-settings';
+import { AlertEditorContainer } from '~/components/alert/alert-editor-container/alert-editor-container';
+import { AlertElementSettings } from '~/components/alert/alert-element-settings/alert-element-settings';
+import { AlertElementsList } from '~/components/alert/alert-elements-list/alert-element-list';
+import { AlertSettings } from '~/components/alert/alert-settings/alert-settings';
 import {
   defaultAudioElementSettings,
   defaultImageElementSettings,
   defaultLottieElementSettings,
   defaultTextElementSettings,
   defaultVideoElementSettings,
-} from '../../utils/alert/default-element-settings';
-import { AlertElements, AlertTheme } from '../../types/schemas/alert';
+} from '~/utils/alert/default-element-settings';
+import type { AlertElements, AlertTheme } from '~/types/schemas/alert';
+import type { Milliseconds, Pixels } from '~/types/types/custom';
 
 const elementSettingsMap = {
   text: defaultTextElementSettings,

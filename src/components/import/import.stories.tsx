@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ChatExportThemeSchema } from '../../types/schemas/chat';
-import { Button } from '../button/button';
+import { Button } from '~/components/button/button';
+import { ChatExportThemeSchema } from '~/types/schemas/chat';
 import { Import } from './import';
 
 export default {

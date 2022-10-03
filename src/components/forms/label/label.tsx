@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
+
 export interface LabelProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

@@ -6,7 +6,7 @@ import {
   SpacingSchema,
   BorderSettingsSchema,
 } from './components';
-import type { Milliseconds, Pixels } from '../types/custom';
+import type { Milliseconds, Pixels } from '~/types/types/custom';
 
 export const AlertElementGlobalSchema = z.object({
   type: z.enum(['text', 'image', 'video', 'lottie', 'audio']),

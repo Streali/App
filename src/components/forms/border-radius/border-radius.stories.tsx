@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { BorderRadiusType } from '../../../types/schemas/components';
-import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import { BorderRadius } from './border-radius';
+import type { BorderRadiusType } from '~/types/schemas/components';
 
 export default {
   component: BorderRadius,

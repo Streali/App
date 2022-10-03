@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { AlertElementVideoSettings } from '../../../types/schemas/alert';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { TabItem } from '../../chat/chat-settings/tab-item';
-import { File } from '../../forms/file/file';
-import { Input } from '../../forms/input/input';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { File } from '~/components/forms/file/file';
+import { Input } from '~/components/forms/input/input';
+import type { AlertElementVideoSettings } from '~/types/schemas/alert';
 
 export interface VideoSettingsProps {
   settings: AlertElementVideoSettings;

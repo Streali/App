@@ -1,6 +1,7 @@
 import * as TabsLib from '@radix-ui/react-tabs';
 import { useState } from 'react';
-import { Button, ButtonColor, ButtonSize } from '../button/button';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import type { ReactNode } from 'react';
 
 export interface TabsProps {
   content: TabProps[];
@@ -8,7 +9,7 @@ export interface TabsProps {
 
 export interface TabProps {
   title: string;
-  content: React.ReactNode;
+  content: ReactNode;
   disabled?: boolean;
 }
 

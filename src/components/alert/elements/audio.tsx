@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { AlertElementAudioSettings } from '../../../types/schemas/alert';
+import type { AlertElementAudioSettings } from '~/types/schemas/alert';
 
 export interface AlertAudioProps {
   settings: AlertElementAudioSettings;

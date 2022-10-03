@@ -1,11 +1,11 @@
-import { TabProps, Tabs } from '../../tabs/tabs';
-import { TabGeneral } from './tab-general';
-import { useForm, FieldValues } from 'react-hook-form';
-import { TabName } from './tab-name';
-import { TabMessage } from './tab-message';
-import { Button, ButtonColor } from '../../button/button';
 import { useEffect } from 'react';
-import { ChatTheme } from '../../../types/schemas/chat';
+import { useForm, FieldValues } from 'react-hook-form';
+import { Button, ButtonColor } from '~/components/button/button';
+import { TabProps, Tabs } from '~/components/tabs/tabs';
+import { TabGeneral } from './tab-general';
+import { TabMessage } from './tab-message';
+import { TabName } from './tab-name';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export interface ChatSettingsProps {
   className?: string;

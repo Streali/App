@@ -1,15 +1,16 @@
-import { NameChat, TwitchBadge } from '../../../types/schemas/chat';
+import type { CSSProperties, ReactNode } from 'react';
+import type { NameChat, TwitchBadge } from '~/types/schemas/chat';
 
 export interface NameProps {
   settings: NameChat;
-  name: React.ReactNode;
+  name: ReactNode;
   badges: TwitchBadge;
 }
 
 export const Name = (props: NameProps) => {
   const { settings, name, badges } = props;
 
-  const nameStyle: React.CSSProperties = {
+  const nameStyle: CSSProperties = {
     width: settings.full_width ? '100%' : 'auto',
     fontFamily: settings.text.fontFamily,
     fontSize: settings.text.fontSize + 'px',
@@ -32,7 +33,7 @@ export const Name = (props: NameProps) => {
     borderRadius: `${settings.radius.top_left}px ${settings.radius.top_right}px ${settings.radius.bottom_right}px ${settings.radius.bottom_left}px`,
   };
 
-  const badgesStyle: React.CSSProperties = {
+  const badgesStyle: CSSProperties = {
     gap: settings.badges.space_between + 'px',
   };
 

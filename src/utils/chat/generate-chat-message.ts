@@ -1,5 +1,5 @@
-import { TwitchMessage } from './../../types/schemas/chat';
 import chance from 'chance';
+import type { TwitchMessage } from '~/types/schemas/chat';
 
 export const randomMessages = [
   'Hello',

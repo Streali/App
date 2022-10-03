@@ -1,10 +1,11 @@
-import { Button } from '../button/button';
 import toast from 'react-hot-toast';
+import { Button } from '~/components/button/button';
+import type { ReactNode } from 'react';
 
 export interface ToastProps {
   type?: ToastType;
   title: string;
-  content?: React.ReactNode;
+  content?: ReactNode;
 }
 
 export enum ToastType {

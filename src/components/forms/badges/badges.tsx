@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { BadgesType } from '../../../types/schemas/components';
-import { Input } from '../input/input';
-import { Select } from '../select/select';
-import { Switch } from '../switch/switch';
+import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { Switch } from '~/components/forms/switch/switch';
+import type { BadgesType } from '~/types/schemas/components';
 
 export interface BadgesProps {
   className?: string;

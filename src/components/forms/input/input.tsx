@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Icon, IconSVG } from '../../icon/icon';
-import { Label } from '../label/label';
 import './input.scss';
+import { useState } from 'react';
+import { Label } from '~/components/forms/label/label';
+import { Icon, IconSVG } from '~/components/icon/icon';
+import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 
 export enum InputState {
   Normal = 'normal',
@@ -9,14 +10,14 @@ export enum InputState {
   Success = 'success',
 }
 
-export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
+export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
   className?: string;
   labelClassName?: string;
   containerClassName?: string;
   state?: InputState;
   errorMessage?: string;
-  onChange?: (event: React.ChangeEvent) => void;
+  onChange?: (event: ChangeEvent) => void;
   prefixIconSvg?: IconSVG;
   prefixIcon?: string;
   prefix?: string;
@@ -56,7 +57,7 @@ export const Input = (props: InputProps) => {
 
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
-  const onChangeValue = (event: React.ChangeEvent) => {
+  const onChangeValue = (event: ChangeEvent) => {
     const { value } = event.target as HTMLInputElement;
     setVal(value);
     onChange && onChange(event);

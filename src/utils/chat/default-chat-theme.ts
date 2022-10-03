@@ -1,4 +1,4 @@
-import { ChatTheme } from '../../types/schemas/chat';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   title: 'Chat theme title',

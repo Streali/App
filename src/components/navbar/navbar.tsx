@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useAuthUser } from '../../hooks/auth/use-auth-user';
-import { useLogout } from '../../hooks/auth/use-logout';
-import { Avatar } from '../avatar/avatar';
-import { Icon } from '../icon/icon';
-import { PopoverLink, PopoverNavigation } from '../popover/navigation/popover-navigation';
-import { Popover } from '../popover/popover';
-import Logo from '../../assets/logo.svg';
+import Logo from '~/assets/logo.svg';
+import { Avatar } from '~/components/avatar/avatar';
+import { Icon } from '~/components/icon/icon';
+import { PopoverLink, PopoverNavigation } from '~/components/popover/navigation/popover-navigation';
+import { Popover } from '~/components/popover/popover';
+import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useLogout } from '~/hooks/auth/use-logout';
 
 export interface NavbarProps {
   navigation: { icon: string; items: PopoverLink[] }[];

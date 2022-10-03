@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { ChatTheme } from '../../types/schemas/chat';
-import { apiClient } from '../../utils/axios/axios';
-import { queryKeys } from '../query-keys';
+import { queryKeys } from '~/hooks/query-keys';
+import { ChatTheme } from '~/types/schemas/chat';
+import { apiClient } from '~/utils/axios/axios';
 
 export interface UseUserChatThemes {
   data?: ChatTheme[] | undefined | null;

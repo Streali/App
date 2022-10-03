@@ -1,12 +1,12 @@
-import { ChatMessage } from '../../components/chat/chat-message/chat-message';
-import { ChatSettings } from '../../components/chat/chat-settings/chat-settings';
-import { defaultChatTheme } from '../../utils/chat/default-chat-theme';
 import { useEffect, useState } from 'react';
-import { ChatTheme } from '../../types/schemas/chat';
-import { ChatDemo } from '../../components/chat/chat-demo/chat-demo';
-import { useCreateChat } from '../../hooks/chat/use-create-chat';
 import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
+import { ChatMessage } from '~/components/chat/chat-message/chat-message';
+import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
+import { useCreateChat } from '~/hooks/chat/use-create-chat';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatCreate = () => {
   const [settings, setSettings] = useState(defaultChatTheme);

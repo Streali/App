@@ -1,9 +1,9 @@
-import { RouteObject } from 'react-router-dom';
-import { AlertCreate } from './pages/alert/create';
-import { ChatCreate } from './pages/chat/create';
-import { ChatEdit } from './pages/chat/edit';
-import { ChatEmbed } from './pages/chat/embed';
-import { ChatLibrary } from './pages/chat/library';
+import { AlertCreate } from '~/pages/alert/create';
+import { ChatCreate } from '~/pages/chat/create';
+import { ChatEdit } from '~/pages/chat/edit';
+import { ChatEmbed } from '~/pages/chat/embed';
+import { ChatLibrary } from '~/pages/chat/library';
+import type { RouteObject } from 'react-router-dom';
 
 export const chatRouter: RouteObject[] = [
   {

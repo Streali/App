@@ -1,7 +1,8 @@
 import * as TooltipLib from '@radix-ui/react-tooltip';
+import type { ReactNode } from 'react';
 
 export interface TooltipProps {
-  children: React.ReactNode;
+  children: ReactNode;
   content: string;
   triggerClassName?: string;
 }

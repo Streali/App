@@ -1,11 +1,11 @@
 import { Control, Controller } from 'react-hook-form';
-import { animationList } from '../../../utils/chat/animations';
-import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
-import { Alignment } from '../../forms/alignment/alignment';
-import { DnDList } from '../../forms/dnd-list/dnd-list';
-import { Input } from '../../forms/input/input';
-import { Select } from '../../forms/select/select';
-import { Slider } from '../../forms/slider/slider';
+import { Alignment } from '~/components/forms/alignment/alignment';
+import { DnDList } from '~/components/forms/dnd-list/dnd-list';
+import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { Slider } from '~/components/forms/slider/slider';
+import { animationList } from '~/utils/chat/animations';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import { TabItem } from './tab-item';
 
 export interface TabGeneralProps {

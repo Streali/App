@@ -1,7 +1,8 @@
-import { Label } from '../label/label';
 import './checkbox.scss';
+import { Label } from '~/components/forms/label/label';
+import type { ComponentPropsWithoutRef } from 'react';
 
-export interface CheckboxProps extends React.ComponentPropsWithoutRef<'input'> {
+export interface CheckboxProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
   labelClassName?: string;
 }

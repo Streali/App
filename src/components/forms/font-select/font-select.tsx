@@ -1,7 +1,7 @@
 import { SingleValue } from 'react-select';
-import { GoogleFontsFamily, useGoogleFont } from '../../../hooks/fonts/use-google-font';
-import { convertFontWeight } from '../../../utils/fonts/convert-weight';
-import { Select } from '../select/select';
+import { Select } from '~/components/forms/select/select';
+import { GoogleFontsFamily, useGoogleFont } from '~/hooks/fonts/use-google-font';
+import { convertFontWeight } from '~/utils/fonts/convert-weight';
 
 export interface FontVariants {
   label: string;

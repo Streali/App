@@ -1,4 +1,6 @@
-export interface TabInputProps extends React.ComponentPropsWithoutRef<'input'> {
+import type { ComponentPropsWithoutRef } from 'react';
+
+export interface TabInputProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
   className?: string;
 }
@@ -7,7 +9,7 @@ export const TabInput = (props: TabInputProps) => {
   const { label, className = '', ...InputProps } = props;
 
   const resetInputStyle =
-    'bg-transparent border-transparent appareance-none focus:outline-none focus:shadow-outline ';
+    'bg-transparent border-transparent appearance-none focus:outline-none focus:shadow-outline ';
 
   const focusInputStyle =
     'focus:text-white border-b border-transparent focus:border-primary-400 focus:border-solid focus:border-b';

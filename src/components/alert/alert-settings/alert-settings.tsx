@@ -1,9 +1,9 @@
-import { Button, ButtonColor } from '../../button/button';
 import { Control, Controller } from 'react-hook-form';
-import { Accordion } from '../../accordion/accordion';
-import { Input } from '../../forms/input/input';
-import { Icon } from '../../icon/icon';
-import { Slider } from '../../forms/slider/slider';
+import { Accordion } from '~/components/accordion/accordion';
+import { Button, ButtonColor } from '~/components/button/button';
+import { Input } from '~/components/forms/input/input';
+import { Slider } from '~/components/forms/slider/slider';
+import { Icon } from '~/components/icon/icon';
 
 export interface AlertSettingsProps {
   className?: string;

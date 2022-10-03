@@ -1,12 +1,12 @@
-import { ChatMessage } from '../../components/chat/chat-message/chat-message';
-import { ChatSettings } from '../../components/chat/chat-settings/chat-settings';
 import { useEffect, useState } from 'react';
-import { ChatTheme } from '../../types/schemas/chat';
-import { ChatDemo } from '../../components/chat/chat-demo/chat-demo';
 import { FieldValues } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useChat } from '../../hooks/chat/use-chat';
-import { useUpdateChat } from '../../hooks/chat/use-update-chat';
+import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
+import { ChatMessage } from '~/components/chat/chat-message/chat-message';
+import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
+import { useChat } from '~/hooks/chat/use-chat';
+import { useUpdateChat } from '~/hooks/chat/use-update-chat';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatEdit = () => {
   const [settings, setSettings] = useState<ChatTheme | null>(null);

@@ -1,4 +1,4 @@
-import Logo from '../../assets/logo.svg';
+import Logo from '~/assets/logo.svg';
 
 export const MinWidthWindow = () => {
   return (

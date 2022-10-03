@@ -1,12 +1,12 @@
-import * as React from 'react';
 import { hexToHsva } from '@uiw/color-convert';
-import { useRef, useState } from 'react';
-import { InputState } from '../input/input';
-import { Label } from '../label/label';
-import { ColorPicker } from '../color-picker/color-picker';
-import { Popover } from '../../popover/popover';
+import { useRef, useState, useEffect } from 'react';
+import { ColorPicker } from '~/components/forms/color-picker/color-picker';
+import { InputState } from '~/components/forms/input/input';
+import { Label } from '~/components/forms/label/label';
+import { Popover } from '~/components/popover/popover';
+import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 
-export interface ColorProps extends React.ComponentPropsWithoutRef<'input'> {
+export interface ColorProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
   labelClassName?: string;
   containerClassName?: string;
@@ -49,7 +49,7 @@ export const Color = (props: ColorProps) => {
 
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
-  const onChangeTextValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
     setVal(e.target.value);
   };
 
@@ -73,7 +73,7 @@ export const Color = (props: ColorProps) => {
     };
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setVal(value);
   }, [value]);
 

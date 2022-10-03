@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ChatTheme, TwitchMessage } from '../../../types/schemas/chat';
-import { generateTwitchMessage } from '../../../utils/chat/generate-chat-message';
-import { ChatMessage } from '../chat-message/chat-message';
+import { ChatMessage } from '~/components/chat/chat-message/chat-message';
+import { generateTwitchMessage } from '~/utils/chat/generate-chat-message';
+import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';
 
 export interface ChatDemoProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;

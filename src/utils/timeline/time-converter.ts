@@ -1,4 +1,4 @@
-import { Milliseconds, Pixels } from '../../types/types/custom';
+import type { Milliseconds, Pixels } from '~/types/types/custom';
 
 export const timeToPixel = (time: Milliseconds) => {
   return ((time / 10) * 2) as Pixels;

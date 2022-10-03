@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Button, ButtonColor } from '../button/button';
-import { Modal } from '../modal/modal';
-import { Input, InputState } from '../forms/input/input';
+import { useState } from 'react';
+import { Button, ButtonColor } from '~/components/button/button';
+import { Input, InputState } from '~/components/forms/input/input';
+import { Modal } from '~/components/modal/modal';
+import type { ChangeEvent, ReactNode } from 'react';
 
 export interface ConfirmationProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   title: string;
   text: string;
   word: string;
@@ -28,7 +29,7 @@ export const Confirmation = (props: ConfirmationProps) => {
   const [confirm, setConfirm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent) => {
+  const handleInputChange = (e: ChangeEvent) => {
     setConfirm((e.target as HTMLInputElement).value);
   };
 

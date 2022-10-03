@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix",
+    "lint:fix": "eslint --fix .",
     "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
     "prepare": "husky install",
     "postinstall": "husky install"
@@ -80,6 +80,7 @@
     "babel-loader": "^8.2.5",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.8",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",

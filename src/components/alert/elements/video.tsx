@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { AlertElementVideoSettings } from '../../../types/schemas/alert';
-import type { Pixels } from '../../../types/types/custom';
+import type { AlertElementVideoSettings } from '~/types/schemas/alert';
+import type { Pixels } from '~/types/types/custom';
 
 export interface AlertVideoProps {
   settings: AlertElementVideoSettings;

@@ -1,19 +1,19 @@
 import { useEffect, useState, memo } from 'react';
-import {
+import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { Input } from '~/components/forms/input/input';
+import { AudioSettings } from './audio-settings';
+import { ImageSettings } from './image-settings';
+import { LottieSettings } from './lottie-settings';
+import { TextSettings } from './text-settings';
+import { VideoSettings } from './video-settings';
+import type {
   AlertElement,
   AlertElementAudioSettings,
   AlertElementImageSettings,
   AlertElementLottieSettings,
   AlertElementTextSettings,
   AlertElementVideoSettings,
-} from '../../../types/schemas/alert';
-import { TabItem } from '../../chat/chat-settings/tab-item';
-import { Input } from '../../forms/input/input';
-import { AudioSettings } from './audio-settings';
-import { ImageSettings } from './image-settings';
-import { LottieSettings } from './lottie-settings';
-import { TextSettings } from './text-settings';
-import { VideoSettings } from './video-settings';
+} from '~/types/schemas/alert';
 
 export interface AlertElementSettingsProps {
   element?: AlertElement;

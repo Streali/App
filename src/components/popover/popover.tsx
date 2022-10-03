@@ -1,11 +1,12 @@
 import * as PopoverLib from '@radix-ui/react-popover';
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
 export interface PopoverProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   align?: 'start' | 'center' | 'end';
   side?: 'top' | 'right' | 'bottom' | 'left';
-  children: React.ReactNode;
+  children: ReactNode;
   open: boolean;
   onOpenChange?: (open: boolean) => void;
   width?: string;

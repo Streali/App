@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, ButtonColor } from '../../button/button';
+import { Button, ButtonColor } from '~/components/button/button';
 
 export interface AlignmentProps {
   className?: string;

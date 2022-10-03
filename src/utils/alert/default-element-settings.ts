@@ -1,12 +1,12 @@
-import {
+import { uid } from 'uid';
+import type {
   AlertTextElement,
   AlertImageElement,
   AlertLottieElement,
   AlertVideoElement,
   AlertAudioElement,
-} from './../../types/schemas/alert';
-import { uid } from 'uid';
-import type { Color, Milliseconds, Pixels } from '../../types/types/custom';
+} from '~/types/schemas/alert';
+import type { Color, Milliseconds, Pixels } from '~/types/types/custom';
 
 export const defaultTextElementSettings = (): AlertTextElement => {
   return {

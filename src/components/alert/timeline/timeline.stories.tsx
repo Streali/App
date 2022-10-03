@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Milliseconds } from '../../../types/types/custom';
 import { Timeline } from './timeline';
+import type { Milliseconds } from '~/types/types/custom';
 
 export default {
   component: Timeline,

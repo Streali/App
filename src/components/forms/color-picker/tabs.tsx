@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { HsvaColor, hsvaToRgbaString } from '@uiw/color-convert';
+import { useState } from 'react';
 import { TabHex } from './tab-hex';
-import { TabRGB } from './tab-rgb';
 import { TabHSL } from './tab-hsl';
+import { TabRGB } from './tab-rgb';
 
 export interface TabsProps {
   color: HsvaColor;

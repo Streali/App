@@ -1,11 +1,12 @@
-import { Milliseconds } from '../../../types/types/custom';
-import { timeToPixel } from '../../../utils/timeline/time-converter';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { Color } from '../../forms/color/color';
-import { Duration } from '../duration/duration';
-import { Timeline } from '../timeline/timeline';
 import { DragDropContext, DropResult, Droppable, Draggable } from '@hello-pangea/dnd';
-import { AlertElements } from '../../../types/schemas/alert';
+
+import { Duration } from '~/components/alert/duration/duration';
+import { Timeline } from '~/components/alert/timeline/timeline';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Color } from '~/components/forms/color/color';
+import { timeToPixel } from '~/utils/timeline/time-converter';
+import type { AlertElements } from '~/types/schemas/alert';
+import type { Milliseconds } from '~/types/types/custom';
 
 export interface AlertElementsListProps {
   elements: AlertElements;

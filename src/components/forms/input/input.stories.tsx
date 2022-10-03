@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { IconSVG } from '../../icon/icon';
+import { IconSVG } from '~/components/icon/icon';
 import { Input, InputState } from './input';
 
 export default {

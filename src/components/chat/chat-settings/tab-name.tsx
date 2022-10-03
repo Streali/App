@@ -1,13 +1,13 @@
 import { Control, Controller } from 'react-hook-form';
-import { defaultChatTheme } from '../../../utils/chat/default-chat-theme';
-import { Badges } from '../../forms/badges/badges';
-import { BorderRadius } from '../../forms/border-radius/border-radius';
-import { Border } from '../../forms/border/border';
-import { Color } from '../../forms/color/color';
-import { Shadow } from '../../forms/shadow/shadow';
-import { Spacing } from '../../forms/spacing/spacing';
-import { Switch } from '../../forms/switch/switch';
-import { TextStyle } from '../../forms/text-style/text-style';
+import { Badges } from '~/components/forms/badges/badges';
+import { BorderRadius } from '~/components/forms/border-radius/border-radius';
+import { Border } from '~/components/forms/border/border';
+import { Color } from '~/components/forms/color/color';
+import { Shadow } from '~/components/forms/shadow/shadow';
+import { Spacing } from '~/components/forms/spacing/spacing';
+import { Switch } from '~/components/forms/switch/switch';
+import { TextStyle } from '~/components/forms/text-style/text-style';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import { TabItem } from './tab-item';
 
 export interface TabGeneralProps {

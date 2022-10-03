@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { queryKeys } from '../query-keys';
+import { queryKeys } from '~/hooks/query-keys';
 
 export const useLottieJson = (url: string) => {
   return useQuery(

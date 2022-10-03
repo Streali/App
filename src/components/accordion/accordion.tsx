@@ -1,5 +1,5 @@
 import * as AccordionLib from '@radix-ui/react-accordion';
-import { Icon } from '../icon/icon';
+import { Icon } from '~/components/icon/icon';
 import './accordion.scss';
 
 export interface AccordionProps {

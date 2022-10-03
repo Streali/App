@@ -1,7 +1,8 @@
-import { Label } from '../label/label';
 import './radio.scss';
+import { Label } from '~/components/forms/label/label';
+import type { ComponentPropsWithoutRef } from 'react';
 
-export interface RadioProps extends React.ComponentPropsWithoutRef<'input'> {
+export interface RadioProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
   labelClassName?: string;
 }

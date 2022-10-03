@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { apiClient } from '../../utils/axios/axios';
-import { queryKeys } from '../query-keys';
-import { AuthCheckSchema } from '../../types/schemas/auth';
+import { queryKeys } from '~/hooks/query-keys';
+import { AuthCheckSchema } from '~/types/schemas/auth';
+import { apiClient } from '~/utils/axios/axios';
 
 export const useAuthCheck = () => {
   return useQuery(

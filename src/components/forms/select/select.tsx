@@ -1,7 +1,7 @@
+import './select.scss';
 import { useState } from 'react';
 import ReactSelect, { SingleValue } from 'react-select';
-import { Label } from '../label/label';
-import './select.scss';
+import { Label } from '~/components/forms/label/label';
 
 export enum SelectState {
   Normal = 'normal',

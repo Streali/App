@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { AlertElementTextSettings } from '../../../types/schemas/alert';
-import { dynamicAlertContentValues } from '../../../utils/alert/dynamic-content-values';
-import { TabItem } from '../../chat/chat-settings/tab-item';
-import { BorderRadius } from '../../forms/border-radius/border-radius';
-import { Border } from '../../forms/border/border';
-import { Color } from '../../forms/color/color';
-import { Input } from '../../forms/input/input';
-import { Select } from '../../forms/select/select';
-import { Shadow } from '../../forms/shadow/shadow';
-import { Spacing } from '../../forms/spacing/spacing';
-import { Switch } from '../../forms/switch/switch';
-import { TextStyle } from '../../forms/text-style/text-style';
+import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { BorderRadius } from '~/components/forms/border-radius/border-radius';
+import { Border } from '~/components/forms/border/border';
+import { Color } from '~/components/forms/color/color';
+import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { Shadow } from '~/components/forms/shadow/shadow';
+import { Spacing } from '~/components/forms/spacing/spacing';
+import { Switch } from '~/components/forms/switch/switch';
+import { TextStyle } from '~/components/forms/text-style/text-style';
+import { dynamicAlertContentValues } from '~/utils/alert/dynamic-content-values';
+import type { AlertElementTextSettings } from '~/types/schemas/alert';
 
 export interface TextSettingsProps {
   settings: AlertElementTextSettings;

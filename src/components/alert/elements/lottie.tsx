@@ -1,8 +1,8 @@
-import Lottie, { LottieRef } from 'lottie-react';
+import Lottie from 'lottie-react';
 import { useEffect, useRef } from 'react';
-import { useLottieJson } from '../../../hooks/elements/use-lottie-json';
-import type { AlertElementLottieSettings } from '../../../types/schemas/alert';
-import type { Pixels } from '../../../types/types/custom';
+import { useLottieJson } from '~/hooks/elements/use-lottie-json';
+import type { AlertElementLottieSettings } from '~/types/schemas/alert';
+import type { Pixels } from '~/types/types/custom';
 
 export interface AlertLottieProps {
   settings: AlertElementLottieSettings;

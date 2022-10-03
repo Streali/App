@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from '../button/button';
+import { Button } from '~/components/button/button';
 import { Modal } from './modal';
 
 export default {

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Pixels } from '../../../types/types/custom';
 import { Editor } from './editor';
+import type { Pixels } from '~/types/types/custom';
 
 export default {
   component: Editor,

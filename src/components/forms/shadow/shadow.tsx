@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ShadowType } from '../../../types/schemas/components';
-import { Color } from '../color/color';
-import { Input } from '../input/input';
+import { Color } from '~/components/forms/color/color';
+import { Input } from '~/components/forms/input/input';
+import type { ShadowType } from '~/types/schemas/components';
 
 export interface ShadowProps {
   onChange?: (settings: ShadowType) => void;

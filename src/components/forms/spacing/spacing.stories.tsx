@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Spacing } from './spacing';
-import { SpacingType } from '../../../types/schemas/components';
+import type { SpacingType } from '~/types/schemas/components';
 
 export default {
   component: Spacing,

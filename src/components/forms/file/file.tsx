@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import Dropzone from 'react-dropzone';
-import { Button, ButtonSize } from '../../button/button';
-import { toastr, ToastType } from '../../toast/toast';
-
-export interface FileProps {
-  onChange?: (files: File[]) => void;
-  maxFiles?: number;
-  maxSize?: number;
-  accept?: { [key: string]: string[] };
-  disabled?: boolean;
-  className?: string;
-}
+import { Button, ButtonSize } from '~/components/button/button';
+import { toastr, ToastType } from '~/components/toast/toast';
 
 export interface FileProps {
   onChange?: (files: File[]) => void;

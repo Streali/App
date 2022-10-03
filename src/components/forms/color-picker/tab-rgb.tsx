@@ -1,7 +1,8 @@
-import { useState,useEffect } from 'react';
 import { RgbaColor, rgbaToHsva, hsvaToRgba } from '@uiw/color-convert';
+import { useState, useEffect } from 'react';
+import { TabInput } from '~/components/tabs/tab-input';
 import { TabsProps } from './tabs';
-import { TabInput } from '../../tabs/tab-input';
+import type { ChangeEvent } from 'react';
 
 export const TabRGB = (props: TabsProps) => {
   const { color, onChange } = props;
@@ -9,7 +10,7 @@ export const TabRGB = (props: TabsProps) => {
 
   const inputStyle = 'w-8';
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name !== 'a') {
       const value = e.target.value !== '' ? parseInt(e.target.value) : 0;
       const newHsla: RgbaColor = {

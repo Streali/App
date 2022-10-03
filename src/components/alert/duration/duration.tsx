@@ -1,8 +1,8 @@
-import { Milliseconds } from '../../../types/types/custom';
-import { timeToPixel } from '../../../utils/timeline/time-converter';
-import duration from '../../../assets/duration.svg';
 import * as SliderLib from '@radix-ui/react-slider';
 import { useState } from 'react';
+import duration from '~/assets/duration.svg';
+import { timeToPixel } from '~/utils/timeline/time-converter';
+import type { Milliseconds } from '~/types/types/custom';
 
 export interface DurationProps {
   totalTime: Milliseconds;

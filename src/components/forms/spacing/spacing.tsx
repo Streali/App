@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { SpacingType } from '../../../types/schemas/components';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { IconSVG } from '../../icon/icon';
-import { Input } from '../input/input';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Input } from '~/components/forms/input/input';
+import { IconSVG } from '~/components/icon/icon';
+import type { SpacingType } from '~/types/schemas/components';
+
 export interface SpacingProps {
   className?: string;
   onChange?: (settings: SpacingType) => void;

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
-import { Button } from '../components/button/button';
-import { useAuthCheck } from '../hooks/auth/use-auth-check';
+import { Button } from '~/components/button/button';
+import { useAuthCheck } from '~/hooks/auth/use-auth-check';
 
 export const Login = () => {
   const { data, status } = useAuthCheck();

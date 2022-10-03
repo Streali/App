@@ -1,13 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Navbar } from './components/navbar/navbar';
-import { embedRoutes, routes } from './router';
-import { navigation, noLayout } from './navigation';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useAuthCheck } from './hooks/auth/use-auth-check';
-import { Protected } from './components/protect/protected';
-import { Login } from './pages/login';
-import { MinWidthWindow } from './components/min-width-window/min-width-window';
-import { useOnline } from './hooks/layouts/use-online';
+import { MinWidthWindow } from '~/components/min-width-window/min-width-window';
+import { Navbar } from '~/components/navbar/navbar';
+import { Protected } from '~/components/protect/protected';
+import { useAuthCheck } from '~/hooks/auth/use-auth-check';
+import { useOnline } from '~/hooks/layouts/use-online';
+import { navigation, noLayout } from '~/navigation';
+import { Login } from '~/pages/login';
+import { embedRoutes, routes } from '~/router';
 
 export const App = () => {
   const { status } = useAuthCheck();

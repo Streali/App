@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { TextStyleType } from '../../../types/schemas/components';
-import { convertFontWeight } from '../../../utils/fonts/convert-weight';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { Icon } from '../../icon/icon';
-import { Popover } from '../../popover/popover';
-import { Color } from '../color/color';
-import { FontSelect, FontVariants } from '../font-select/font-select';
-import { Input } from '../input/input';
-import { Select } from '../select/select';
-import { Shadow } from '../shadow/shadow';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Color } from '~/components/forms/color/color';
+import { FontSelect, FontVariants } from '~/components/forms/font-select/font-select';
+import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { Shadow } from '~/components/forms/shadow/shadow';
+import { Icon } from '~/components/icon/icon';
+import { Popover } from '~/components/popover/popover';
+import { convertFontWeight } from '~/utils/fonts/convert-weight';
+import type { TextStyleType } from '~/types/schemas/components';
 
 export interface TextStyleProps {
   onChange?: (settings: TextStyleType) => void;

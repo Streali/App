@@ -1,5 +1,5 @@
-import type { AlertElementImageSettings } from '../../../types/schemas/alert';
-import type { Pixels } from '../../../types/types/custom';
+import type { AlertElementImageSettings } from '~/types/schemas/alert';
+import type { Pixels } from '~/types/types/custom';
 
 export interface AlertImageProps {
   settings: AlertElementImageSettings;

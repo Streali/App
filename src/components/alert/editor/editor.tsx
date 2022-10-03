@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { Milliseconds, Pixels } from '../../../types/types/custom';
 import interact from 'interactjs';
-import { AlertText } from '../elements/text';
-import { AlertLottie } from '../elements/lottie';
-import { AlertVideo } from '../elements/video';
-import { AlertImage } from '../elements/image';
-import { AlertAudio } from '../elements/audio';
+import { useEffect } from 'react';
+import { AlertAudio } from '~/components/alert/elements/audio';
+import { AlertImage } from '~/components/alert/elements/image';
+import { AlertLottie } from '~/components/alert/elements/lottie';
+import { AlertText } from '~/components/alert/elements/text';
+import { AlertVideo } from '~/components/alert/elements/video';
+import { Milliseconds, Pixels } from '~/types/types/custom';
 import type {
   AlertElement,
   AlertElementAudioSettings,
@@ -14,7 +14,7 @@ import type {
   AlertElements,
   AlertElementTextSettings,
   AlertElementVideoSettings,
-} from '../../../types/schemas/alert';
+} from '~/types/schemas/alert';
 
 export interface EditorProps {
   width: Pixels;

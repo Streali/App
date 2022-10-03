@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Confirmation } from '../../confirmation/confirmation';
-import { Icon } from '../../icon/icon';
+import { Confirmation } from '~/components/confirmation/confirmation';
+import { Icon } from '~/components/icon/icon';
+import type { MouseEvent } from 'react';
 
 export interface PopoverLink {
   icon?: string;
@@ -8,7 +9,7 @@ export interface PopoverLink {
   link?: string;
   color?: 'primary' | 'dark' | 'error';
   className?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
   confirm?: {
     title: string;
     text: string;

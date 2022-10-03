@@ -1,11 +1,12 @@
 import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Button, ButtonColor } from '../../components/button/button';
-import { ChatCard } from '../../components/chat/chat-card/chat-card';
-import { Import } from '../../components/import/import';
-import { useCreateChat } from '../../hooks/chat/use-create-chat';
-import { useUserChat } from '../../hooks/chat/use-user-chat';
-import { ChatExportThemeSchema, ChatTheme } from '../../types/schemas/chat';
+import { Button, ButtonColor } from '~/components/button/button';
+import { ChatCard } from '~/components/chat/chat-card/chat-card';
+import { Import } from '~/components/import/import';
+import { useCreateChat } from '~/hooks/chat/use-create-chat';
+import { useUserChat } from '~/hooks/chat/use-user-chat';
+import { ChatExportThemeSchema } from '~/types/schemas/chat';
+import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatLibrary = () => {
   const { data, isLoading } = useUserChat();

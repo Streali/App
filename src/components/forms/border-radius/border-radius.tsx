@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { BorderRadiusType } from '../../../types/schemas/components';
-import { Button, ButtonColor, ButtonSize } from '../../button/button';
-import { IconSVG } from '../../icon/icon';
-import { Input } from '../input/input';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Input } from '~/components/forms/input/input';
+import { IconSVG } from '~/components/icon/icon';
+import type { BorderRadiusType } from '~/types/schemas/components';
+
 export interface BorderRadiusProps {
   className?: string;
   onChange?: (settings: BorderRadiusType) => void;

@@ -1,13 +1,14 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
-import { Button, ButtonColor, ButtonSize } from '../button/button';
+import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import type { ReactNode } from 'react';
 
 export interface ModalProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   triggerContainerClassName?: string;
   title: string;
-  children: React.ReactNode;
-  buttons?: React.ReactNode;
+  children: ReactNode;
+  buttons?: ReactNode;
   open: boolean;
   onOpenChange?: (open: boolean) => void;
 }

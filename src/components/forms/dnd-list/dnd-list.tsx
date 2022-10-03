@@ -1,7 +1,9 @@
-import { Icon } from '../../icon/icon';
-import { DragDropContext, DropResult, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { useState } from 'react';
-import { OrderType } from '../../../types/schemas/components';
+import { Icon } from '~/components/icon/icon';
+import type { DropResult } from '@hello-pangea/dnd';
+import type { OrderType } from '~/types/schemas/components';
+
 export interface DnDListProps {
   className?: string;
   elements: OrderType;

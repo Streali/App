@@ -1,8 +1,8 @@
-import * as z from 'zod';
 import { useQuery } from '@tanstack/react-query';
-import { queryKeys } from '../query-keys';
-import { apiClient } from '../../utils/axios/axios';
-import { ChatThemeSchema } from '../../types/schemas/chat';
+import * as z from 'zod';
+import { queryKeys } from '~/hooks/query-keys';
+import { ChatThemeSchema } from '~/types/schemas/chat';
+import { apiClient } from '~/utils/axios/axios';
 
 export const useChat = (themeId: string) => {
   return useQuery(
