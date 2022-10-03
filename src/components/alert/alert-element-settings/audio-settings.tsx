@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { File } from '~/components/forms/file/file';

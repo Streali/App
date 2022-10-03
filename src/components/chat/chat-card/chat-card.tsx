@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button, ButtonColor } from '~/components/button/button';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { PopoverNavigation } from '~/components/popover/navigation/popover-navigation';

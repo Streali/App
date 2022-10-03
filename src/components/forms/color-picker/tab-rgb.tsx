@@ -1,5 +1,4 @@
 import { RgbaColor, rgbaToHsva, hsvaToRgba } from '@uiw/color-convert';
-import { useState, useEffect } from 'react';
 import { TabInput } from '~/components/tabs/tab-input';
 import { TabsProps } from './tabs';
 import type { ChangeEvent } from 'react';

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { Color } from '~/components/forms/color/color';
 import { FontSelect, FontVariants } from '~/components/forms/font-select/font-select';

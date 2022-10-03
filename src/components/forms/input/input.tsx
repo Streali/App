@@ -1,5 +1,4 @@
 import './input.scss';
-import { useState } from 'react';
 import { Label } from '~/components/forms/label/label';
 import { Icon, IconSVG } from '~/components/icon/icon';
 import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';

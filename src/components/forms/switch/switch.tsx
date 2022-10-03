@@ -1,6 +1,5 @@
 import './switch.scss';
 import * as SwitchLib from '@radix-ui/react-switch';
-import { useState } from 'react';
 import { Label } from '~/components/forms/label/label';
 
 export interface SwitchProps {

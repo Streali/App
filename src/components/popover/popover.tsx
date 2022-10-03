@@ -1,5 +1,4 @@
 import * as PopoverLib from '@radix-ui/react-popover';
-import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
 export interface PopoverProps {

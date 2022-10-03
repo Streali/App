@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Dropzone from 'react-dropzone';
 import { Button, ButtonSize } from '~/components/button/button';
 import { toastr, ToastType } from '~/components/toast/toast';

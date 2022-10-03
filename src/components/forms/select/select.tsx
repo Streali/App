@@ -1,5 +1,4 @@
 import './select.scss';
-import { useState } from 'react';
 import ReactSelect, { SingleValue } from 'react-select';
 import { Label } from '~/components/forms/label/label';
 

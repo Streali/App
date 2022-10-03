@@ -1,5 +1,4 @@
 import * as SliderLib from '@radix-ui/react-slider';
-import { useEffect, useState } from 'react';
 import { Input } from '~/components/forms/input/input';
 import { Label } from '~/components/forms/label/label';
 

@@ -1,5 +1,4 @@
 import { hexToHsva } from '@uiw/color-convert';
-import { useRef, useState, useEffect } from 'react';
 import { ColorPicker } from '~/components/forms/color-picker/color-picker';
 import { InputState } from '~/components/forms/input/input';
 import { Label } from '~/components/forms/label/label';

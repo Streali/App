@@ -1,5 +1,4 @@
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import { useState } from 'react';
 import { Icon } from '~/components/icon/icon';
 import type { DropResult } from '@hello-pangea/dnd';
 import type { OrderType } from '~/types/schemas/components';

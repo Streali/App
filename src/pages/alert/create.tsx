@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertEditorContainer } from '~/components/alert/alert-editor-container/alert-editor-container';
 import { AlertElementSettings } from '~/components/alert/alert-element-settings/alert-element-settings';

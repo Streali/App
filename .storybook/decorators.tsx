@@ -1,7 +1,6 @@
 import { DecoratorFn } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import React from 'react';
 
 const queryClient = new QueryClient();
 

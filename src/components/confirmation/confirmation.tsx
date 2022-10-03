@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button, ButtonColor } from '~/components/button/button';
 import { Input, InputState } from '~/components/forms/input/input';
 import { Modal } from '~/components/modal/modal';

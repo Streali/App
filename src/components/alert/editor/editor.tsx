@@ -1,5 +1,4 @@
 import interact from 'interactjs';
-import { useEffect } from 'react';
 import { AlertAudio } from '~/components/alert/elements/audio';
 import { AlertImage } from '~/components/alert/elements/image';
 import { AlertLottie } from '~/components/alert/elements/lottie';

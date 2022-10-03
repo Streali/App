@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { MinWidthWindow } from '~/components/min-width-window/min-width-window';
 import { Navbar } from '~/components/navbar/navbar';
 import { Protected } from '~/components/protect/protected';

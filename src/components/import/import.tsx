@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button, ButtonColor } from '~/components/button/button';

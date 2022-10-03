@@ -1,5 +1,4 @@
 import * as SliderLib from '@radix-ui/react-slider';
-import { useState } from 'react';
 import duration from '~/assets/duration.svg';
 import { timeToPixel } from '~/utils/timeline/time-converter';
 import type { Milliseconds } from '~/types/types/custom';

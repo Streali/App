@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { FieldValues } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
 import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';

@@ -1,5 +1,4 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useEffect, useState } from 'react';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import type { ReactNode } from 'react';
 

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { generateTwitchMessage } from '~/utils/chat/generate-chat-message';
 import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';

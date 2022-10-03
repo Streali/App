@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import type { AlertElementTextSettings } from '~/types/schemas/alert';
 import type { Pixels } from '~/types/types/custom';
 

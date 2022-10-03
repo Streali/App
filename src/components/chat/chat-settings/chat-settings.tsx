@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { Button, ButtonColor } from '~/components/button/button';
 import { TabProps, Tabs } from '~/components/tabs/tabs';

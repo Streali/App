@@ -2,7 +2,6 @@ import './color-picker.scss';
 import { HsvaColor, rgbaStringToHsva, color as colorResult } from '@uiw/color-convert';
 import Hue from '@uiw/react-color-hue';
 import Saturation from '@uiw/react-color-saturation';
-import { useEffect, useState } from 'react';
 import { Pointer } from './pointer';
 import { Tabs } from './tabs';
 

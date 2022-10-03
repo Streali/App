@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Color } from '~/components/forms/color/color';
 import { Input } from '~/components/forms/input/input';
 import type { ShadowType } from '~/types/schemas/components';

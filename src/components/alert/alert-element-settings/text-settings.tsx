@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { BorderRadius } from '~/components/forms/border-radius/border-radius';
 import { Border } from '~/components/forms/border/border';

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
 import { Icon } from '~/components/icon/icon';

@@ -1,9 +1,10 @@
 import './chat-message.scss';
 import { motion } from 'framer-motion';
-import React, { memo } from 'react';
+import { Fragment } from 'react';
 import { selectAnimation } from '~/utils/chat/animations';
 import { Message } from './message';
 import { Name } from './name';
+import type { CSSProperties } from 'react';
 import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';
 
 export interface ChatMessageProps {
@@ -14,7 +15,7 @@ export interface ChatMessageProps {
 export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
   const { settings, message } = props;
 
-  const containerStyle: React.CSSProperties = {
+  const containerStyle: CSSProperties = {
     flexDirection: settings.global.layout === 'stack' ? 'column' : 'row',
     alignItems:
       settings.global.alignment === 'left'
@@ -34,7 +35,7 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
       style={containerStyle}
     >
       {settings.global.order.map((item, index) => (
-        <React.Fragment key={index}>
+        <Fragment key={index}>
           {item.id === 'name' && (
             <Name
               key={item.id}
@@ -46,7 +47,7 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
           {item.id === 'message' && (
             <Message key={item.id} settings={settings.message} message={message.message} />
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
     </motion.div>
   );

@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import type { AlertElementVideoSettings } from '~/types/schemas/alert';
 import type { Pixels } from '~/types/types/custom';
 

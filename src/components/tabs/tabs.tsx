@@ -1,5 +1,4 @@
 import * as TabsLib from '@radix-ui/react-tabs';
-import { useState } from 'react';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import type { ReactNode } from 'react';
 

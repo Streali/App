@@ -1,5 +1,3 @@
-import { useState, useMemo, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { EmoteOptions, parse } from 'simple-tmi-emotes';
 import tmi from 'tmi.js';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';

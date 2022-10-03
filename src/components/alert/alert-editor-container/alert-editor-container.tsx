@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { AlertViewer } from '~/components/alert/alert-viewer/alert-viewer';
 import { Editor } from '~/components/alert/editor/editor';
