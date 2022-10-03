@@ -33,7 +33,7 @@ export const Toast = (props: ToastProps) => {
 export interface ToastUIProps {
   type: ToastType;
   title?: string;
-  content?: React.ReactNode;
+  content?: ReactNode;
   icon?: string;
 }
 
@@ -77,7 +77,7 @@ export const ToastUI = (props: ToastUIProps) => {
   );
 };
 
-export const toastr = (type: ToastType, title: string, content?: React.ReactNode) => {
+export const toastr = (type: ToastType, title: string, content?: ReactNode) => {
   toast(<ToastUI type={type} title={title} content={content} />, {
     duration: 4000,
     position: 'top-right',

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Icon, IconProps } from '~/components/icon/icon';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export enum ButtonColor {
   Primary = 'primary',
@@ -17,10 +18,10 @@ export enum ButtonSize {
   Micro = 'micro',
 }
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   color?: ButtonColor;
   size?: ButtonSize;
-  children?: React.ReactNode;
+  children?: ReactNode;
   disabled?: boolean;
   iconLeft?: string;
   iconRight?: string;
@@ -28,7 +29,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   buttonIconSVG?: IconProps;
   link?: string;
   external?: boolean;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
 }

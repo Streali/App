@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { MessageChat } from '~/types/schemas/chat';
 
 export interface MessageProps {
@@ -8,7 +9,7 @@ export interface MessageProps {
 export const Message = (props: MessageProps) => {
   const { settings, message } = props;
 
-  const nameStyle: React.CSSProperties = {
+  const nameStyle: CSSProperties = {
     width: settings.full_width ? '100%' : 'auto',
     fontFamily: settings.text.fontFamily,
     fontSize: settings.text.fontSize + 'px',
