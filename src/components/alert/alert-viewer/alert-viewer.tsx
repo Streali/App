@@ -82,6 +82,11 @@ export const AlertViewer = (props: AlertViewerProps) => {
                 posX={element.posX as Pixels}
                 posY={element.posY as Pixels}
                 id={element.id}
+                animation_in={element.animation_in || 'none'}
+                animation_out={element.animation_out || 'none'}
+                timestamp={timestamp}
+                start_time={element.start_time as Milliseconds}
+                duration={element.duration}
                 lock
               />
             )}
@@ -92,6 +97,9 @@ export const AlertViewer = (props: AlertViewerProps) => {
                 height={element.height as Pixels}
                 posX={element.posX as Pixels}
                 posY={element.posY as Pixels}
+                timestamp={timestamp}
+                start_time={element.start_time as Milliseconds}
+                duration={element.duration}
                 id={element.id}
                 lock
               />

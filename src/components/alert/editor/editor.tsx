@@ -78,6 +78,11 @@ function renderAlertElement(
         height={element.height}
         posX={element.posX}
         posY={element.posY}
+        animation_in={element.animation_in || 'none'}
+        animation_out={element.animation_out || 'none'}
+        timestamp={timestamp}
+        start_time={start_time}
+        duration={duration}
       />
     );
   }
@@ -91,6 +96,9 @@ function renderAlertElement(
         height={element.height}
         posX={element.posX}
         posY={element.posY}
+        timestamp={timestamp}
+        start_time={start_time}
+        duration={duration}
       />
     );
   }

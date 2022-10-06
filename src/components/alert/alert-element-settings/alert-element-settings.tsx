@@ -98,7 +98,9 @@ export const AlertElementSettings = memo(function AlertElementSettings(
           />
         </div>
       </TabItem>
-      {(currentElement.type === 'text' || currentElement.type === 'image') && (
+      {(currentElement.type === 'text' ||
+        currentElement.type === 'image' ||
+        currentElement.type === 'video') && (
         <TabItem title="Animation">
           <div className="mb-3 flex gap-3">
             <div className="flex-1">

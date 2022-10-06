@@ -1,7 +1,7 @@
 import Lottie from 'lottie-react';
 import { useLottieJson } from '~/hooks/elements/use-lottie-json';
 import type { AlertElementLottieSettings } from '~/types/schemas/alert';
-import type { Pixels } from '~/types/types/custom';
+import type { Milliseconds, Pixels } from '~/types/types/custom';
 
 export interface AlertLottieProps {
   settings: AlertElementLottieSettings;
@@ -11,10 +11,24 @@ export interface AlertLottieProps {
   posY: Pixels;
   id: string;
   lock?: boolean;
+  timestamp: Milliseconds;
+  start_time: Milliseconds;
+  duration: Milliseconds;
 }
 
 export const AlertLottie = (props: AlertLottieProps) => {
-  const { width, height, posX, posY, id, settings, lock = false } = props;
+  const {
+    width,
+    height,
+    posX,
+    posY,
+    id,
+    settings,
+    lock = false,
+    timestamp,
+    start_time,
+    duration,
+  } = props;
 
   const animation = useRef<any>(null);
   const { data: animationData } = useLottieJson(settings.url);
@@ -27,7 +41,7 @@ export const AlertLottie = (props: AlertLottieProps) => {
 
   return (
     <>
-      {animationData && (
+      {timestamp >= start_time && timestamp <= start_time + duration && animationData && (
         <Lottie
           className={`absolute block ${
             !lock &&
