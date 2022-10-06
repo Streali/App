@@ -50,29 +50,27 @@ export const AlertVideo = (props: AlertVideoProps) => {
   return (
     <AnimatePresence>
       {timestamp >= start_time && timestamp <= start_time + duration && (
-        <motion.video
-          variants={animationVariants}
-          initial="initial"
-          animate="in"
-          exit="out"
-          src={settings.url}
-          ref={video}
-          loop={settings.loop}
-          autoPlay
-          muted={settings.muted}
-          className={`absolute block  ${
-            !lock &&
-            'draggable-alert transition-colors hover:outline hover:outline-1 hover:outline-white/30'
-          }`}
-          style={{
-            width: width,
-            height: height,
-            transform: `translate(${posX}px, ${posY}px)`,
-          }}
-          data-x={posX}
-          data-y={posY}
-          data-id={id}
-        ></motion.video>
+        <motion.div variants={animationVariants} initial="initial" animate="in" exit="out">
+          <video
+            src={settings.url}
+            ref={video}
+            autoPlay
+            muted
+            loop
+            className={`absolute block  ${
+              !lock &&
+              'draggable-alert transition-colors hover:outline hover:outline-1 hover:outline-white/30'
+            }`}
+            style={{
+              width: width,
+              height: height,
+              transform: `translate(${posX}px, ${posY}px)`,
+            }}
+            data-x={posX}
+            data-y={posY}
+            data-id={id}
+          ></video>
+        </motion.div>
       )}
     </AnimatePresence>
   );

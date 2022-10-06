@@ -122,7 +122,7 @@ export const defaultVideoElementSettings = (): AlertVideoElement => {
     animation_in: 'none',
     animation_out: 'none',
     settings: {
-      url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
+      url: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
       muted: true,
       loop: false,
     },

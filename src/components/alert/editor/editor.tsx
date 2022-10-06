@@ -131,6 +131,8 @@ export const Editor = (props: EditorProps) => {
     timestamp,
   } = props;
 
+  const [shift, setShift] = useState<boolean>(false);
+
   const initInteract = () => {
     const container = interact('.draggable-alert');
 
@@ -163,9 +165,22 @@ export const Editor = (props: EditorProps) => {
 
       const width = event.rect.width;
       const height = event.rect.height;
+      const ratio = width / height;
 
-      event.target.style.width = `${width}px`;
-      event.target.style.height = `${height}px`;
+      if (shift && event.edges) {
+        // keep ratio
+        if (event.edges.left || event.edges.right) {
+          event.target.style.width = `${width}px`;
+          event.target.style.height = `${height * ratio}px`;
+        } else if (event.edges.top || event.edges.bottom) {
+          event.target.style.width = `${width * ratio}px`;
+          event.target.style.height = `${height}px`;
+        }
+      } else {
+        event.target.style.width = `${width}px`;
+        event.target.style.height = `${height}px`;
+      }
+
       event.target.style.transform = `translate(${newX}px, ${newY}px)`;
 
       event.target.setAttribute('data-x', newX.toString());
@@ -195,8 +210,27 @@ export const Editor = (props: EditorProps) => {
     }
   };
 
+  const handleShiftKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Shift') {
+      setShift(true);
+    }
+  };
+
+  const handleShiftKeyUp = (event: KeyboardEvent) => {
+    if (event.key === 'Shift') {
+      setShift(false);
+    }
+  };
+
   useEffect(() => {
     initInteract();
+    document.addEventListener('keydown', handleShiftKeyDown);
+    document.addEventListener('keyup', (e) => handleShiftKeyUp(e));
+
+    return () => {
+      document.removeEventListener('keydown', handleShiftKeyDown);
+      document.removeEventListener('keyup', handleShiftKeyUp);
+    };
   }, [elements]);
 
   return (
