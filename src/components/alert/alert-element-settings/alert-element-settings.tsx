@@ -1,5 +1,7 @@
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
+import { Select } from '~/components/forms/select/select';
+import { animationList } from '~/utils/chat/animations';
 import { AudioSettings } from './audio-settings';
 import { ImageSettings } from './image-settings';
 import { LottieSettings } from './lottie-settings';
@@ -19,12 +21,13 @@ export interface AlertElementSettingsProps {
   onTitleChange?: (title: string) => void;
   onSettingsChange?: (key: string, settings: unknown) => void;
   onPositionChange?: (position: 'width' | 'height' | 'posX' | 'posY', value: number) => void;
+  onAnimationChange?: (position: 'in' | 'out', animation: string) => void;
 }
 
 export const AlertElementSettings = memo(function AlertElementSettings(
   props: AlertElementSettingsProps
 ) {
-  const { element, onTitleChange, onSettingsChange, onPositionChange } = props;
+  const { element, onTitleChange, onSettingsChange, onPositionChange, onAnimationChange } = props;
   const [currentElement, setCurrentElement] = useState(element);
 
   useEffect(() => {
@@ -95,6 +98,38 @@ export const AlertElementSettings = memo(function AlertElementSettings(
           />
         </div>
       </TabItem>
+      {(currentElement.type === 'text' || currentElement.type === 'image') && (
+        <TabItem title="Animation">
+          <div className="mb-3 flex gap-3">
+            <div className="flex-1">
+              <Select
+                className="w-full"
+                label="Animation In"
+                options={animationList}
+                defaultValue={animationList.find(
+                  (anim) => anim.value === currentElement.animation_in
+                )}
+                onChange={(value) =>
+                  onAnimationChange && onAnimationChange('in', value?.value || 'none')
+                }
+              />
+            </div>
+            <div className="flex-1">
+              <Select
+                className="w-full"
+                label="Animation Out"
+                options={animationList}
+                defaultValue={animationList.find(
+                  (anim) => anim.value === currentElement.animation_out
+                )}
+                onChange={(value) =>
+                  onAnimationChange && onAnimationChange('out', value?.value || 'none')
+                }
+              />
+            </div>
+          </div>
+        </TabItem>
+      )}
       {currentElement.type === 'text' && (
         <TextSettings
           settings={currentElement.settings as AlertElementTextSettings}

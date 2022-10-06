@@ -3,6 +3,7 @@ export const none = {
     x: 0,
     y: 0,
     opacity: 1,
+    rotate: 0,
   },
   initial: {
     x: 0,
@@ -10,28 +11,49 @@ export const none = {
     opacity: 1,
   },
   transition: {
-    duration: 0,
+    duration: 0.3,
   },
 };
 
 export const fadeInLeft = {
   animate: {
     x: 0,
+    y: 0,
     opacity: 1,
+    rotate: 0,
   },
   initial: {
-    x: -100,
+    x: '-100px',
     opacity: 0,
   },
   transition: {
     duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
+    damping: 8,
+  },
+};
+
+export const fadeInLeftOut = {
+  animate: {
+    x: '-50px',
+    opacity: 0,
+  },
+  transition: {
+    duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
   },
 };
 
 export const fadeInRight = {
   animate: {
     x: 0,
+    y: 0,
     opacity: 1,
+    rotate: 0,
   },
   initial: {
     x: 100,
@@ -42,11 +64,25 @@ export const fadeInRight = {
   },
 };
 
+export const fadeInRightOut = {
+  animate: {
+    x: '50px',
+    opacity: 0,
+  },
+  transition: {
+    duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
+  },
+};
+
 export const fadeInUp = {
   animate: {
-    y: 0,
     x: 0,
+    y: 0,
     opacity: 1,
+    rotate: 0,
   },
   initial: {
     y: 100,
@@ -58,11 +94,26 @@ export const fadeInUp = {
   },
 };
 
+export const fadeInUpOut = {
+  animate: {
+    x: '0px',
+    y: '-50px',
+    opacity: 0,
+  },
+  transition: {
+    duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
+  },
+};
+
 export const fadeInBottom = {
   animate: {
-    y: 0,
     x: 0,
+    y: 0,
     opacity: 1,
+    rotate: 0,
   },
   initial: {
     y: -50,
@@ -74,15 +125,45 @@ export const fadeInBottom = {
   },
 };
 
-export const ThreeSixtyNoScope = {
+export const fadeInBottomOut = {
   animate: {
-    rotate: 360,
-  },
-  initial: {
-    rotate: 0,
+    x: '0px',
+    y: '50px',
+    opacity: 0,
   },
   transition: {
     duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
+  },
+};
+
+export const ThreeSixtyNoScope = {
+  animate: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    rotate: 0,
+  },
+  initial: {
+    rotate: 360,
+  },
+  transition: {
+    duration: 0.3,
+  },
+};
+
+export const ThreeSixtyNoScopeOut = {
+  animate: {
+    rotate: -360,
+    opacity: 0,
+  },
+  transition: {
+    duration: 0.3,
+    stiffness: 100,
+    ease: 'easeInOut',
+    type: 'spring',
   },
 };
 
@@ -102,6 +183,25 @@ export const selectAnimation = (animation: string) => {
       return ThreeSixtyNoScope;
     default:
       return fadeInLeft;
+  }
+};
+
+export const selectAnimationOut = (animation: string) => {
+  switch (animation) {
+    case 'none':
+      return none;
+    case 'fade-in-left':
+      return fadeInLeftOut;
+    case 'fade-in-right':
+      return fadeInRightOut;
+    case 'fade-in-up':
+      return fadeInUpOut;
+    case 'fade-in-bottom':
+      return fadeInBottomOut;
+    case '360-no-scope':
+      return ThreeSixtyNoScopeOut;
+    default:
+      return fadeInLeftOut;
   }
 };
 

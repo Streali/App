@@ -19,14 +19,14 @@ export const AlertElementGlobalSchema = z.object({
   height: z.number().transform((v) => v as Pixels),
   duration: z.number().transform((v) => v as Milliseconds),
   start_time: z.number(),
+  animation_in: z.optional(z.string()),
+  animation_out: z.optional(z.string()),
 });
 
 export const AlertElementTextSettingsSchema = z.object({
   content: z.string(),
   is_dynamic: z.boolean(),
   dynamic_content: z.string(),
-  animation_in: z.string(),
-  animation_out: z.string(),
   shadow: ShadowSchema,
   border: BorderSettingsSchema,
   background: z.string(),

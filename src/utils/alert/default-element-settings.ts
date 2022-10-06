@@ -20,12 +20,12 @@ export const defaultTextElementSettings = (): AlertTextElement => {
     height: 100 as Pixels,
     duration: 1000 as Milliseconds,
     start_time: 0,
+    animation_in: 'none',
+    animation_out: 'none',
     settings: {
       content: 'Text element content',
       is_dynamic: false,
       dynamic_content: 'pseudo',
-      animation_in: 'none',
-      animation_out: 'none',
       shadow: {
         shadowColor: '#000000',
         shadowOffsetX: 0,
@@ -79,6 +79,8 @@ export const defaultImageElementSettings = (): AlertImageElement => {
     height: 100 as Pixels,
     duration: 1000 as Milliseconds,
     start_time: 0,
+    animation_in: 'none',
+    animation_out: 'none',
     settings: {
       url: 'https://avatars.githubusercontent.com/u/109690726?s=200&v=4',
     },
@@ -97,6 +99,8 @@ export const defaultLottieElementSettings = (): AlertLottieElement => {
     height: 100 as Pixels,
     duration: 1000 as Milliseconds,
     start_time: 0,
+    animation_in: 'none',
+    animation_out: 'none',
     settings: {
       url: 'https://assets10.lottiefiles.com/packages/lf20_nwttxjmp.json',
     },
@@ -115,6 +119,8 @@ export const defaultVideoElementSettings = (): AlertVideoElement => {
     height: 100 as Pixels,
     duration: 1000 as Milliseconds,
     start_time: 0,
+    animation_in: 'none',
+    animation_out: 'none',
     settings: {
       url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
       muted: true,
@@ -135,9 +141,11 @@ export const defaultAudioElementSettings = (): AlertAudioElement => {
     height: 0 as Pixels,
     duration: 1000 as Milliseconds,
     start_time: 0,
+    animation_in: 'none',
+    animation_out: 'none',
     settings: {
       url: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
-      muted: true,
+      muted: false,
       loop: false,
       volume: 50,
     },

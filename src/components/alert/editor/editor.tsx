@@ -27,7 +27,12 @@ export interface EditorProps {
   timestamp: Milliseconds;
 }
 
-function renderAlertElement(element: AlertElement) {
+function renderAlertElement(
+  element: AlertElement,
+  timestamp: Milliseconds,
+  start_time: Milliseconds,
+  duration: Milliseconds
+) {
   if (element.type === 'text') {
     return (
       <AlertText
@@ -37,6 +42,11 @@ function renderAlertElement(element: AlertElement) {
         height={element.height}
         posX={element.posX}
         posY={element.posY}
+        animation_in={element.animation_in || 'none'}
+        animation_out={element.animation_out || 'none'}
+        timestamp={timestamp}
+        start_time={start_time}
+        duration={duration}
       />
     );
   }
@@ -50,6 +60,11 @@ function renderAlertElement(element: AlertElement) {
         height={element.height}
         posX={element.posX}
         posY={element.posY}
+        animation_in={element.animation_in || 'none'}
+        animation_out={element.animation_out || 'none'}
+        timestamp={timestamp}
+        start_time={start_time}
+        duration={duration}
       />
     );
   }
@@ -81,7 +96,15 @@ function renderAlertElement(element: AlertElement) {
   }
 
   if (element.type === 'audio') {
-    return <AlertAudio id={element.id} settings={element.settings as AlertElementAudioSettings} />;
+    return (
+      <AlertAudio
+        id={element.id}
+        settings={element.settings as AlertElementAudioSettings}
+        timestamp={timestamp}
+        start_time={start_time}
+        duration={duration}
+      />
+    );
   }
 
   throw new Error(`Unknown alert element type ${element.type}`);
@@ -177,9 +200,12 @@ export const Editor = (props: EditorProps) => {
     >
       {elements.map((element) => (
         <div key={element.id} onClick={() => onElementClick?.(element.id)}>
-          {timestamp >= element.start_time &&
-            timestamp <= element.start_time + element.duration &&
-            renderAlertElement(element)}
+          {renderAlertElement(
+            element,
+            timestamp,
+            element.start_time as Milliseconds,
+            element.duration
+          )}
         </div>
       ))}
     </div>

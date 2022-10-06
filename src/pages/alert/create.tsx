@@ -178,6 +178,16 @@ export const AlertCreate = () => {
                   })
                 );
               }}
+              onAnimationChange={(position, animation) => {
+                setElements((prev) =>
+                  prev.map((element) => {
+                    if (element.id === selectedElement) {
+                      return { ...element, [`animation_${position}`]: animation };
+                    }
+                    return element;
+                  })
+                );
+              }}
             />
           </div>
         )}

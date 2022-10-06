@@ -41,60 +41,71 @@ export const AlertViewer = (props: AlertViewerProps) => {
     <div className="relative overflow-hidden bg-transparent" style={{ width, height }}>
       {elements.map((element) => (
         <div key={element.id}>
-          {timestamp >= element.start_time && timestamp <= element.start_time + element.duration && (
-            <>
-              {element.type === 'text' && (
-                <AlertText
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  settings={element.settings as AlertElementTextSettings}
-                  id={element.id}
-                  lock
-                />
-              )}
-              {element.type === 'image' && (
-                <AlertImage
-                  id={element.id}
-                  settings={element.settings as AlertElementImageSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  lock
-                />
-              )}
-              {element.type === 'video' && (
-                <AlertVideo
-                  settings={element.settings as AlertElementVideoSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  id={element.id}
-                  lock
-                />
-              )}
-              {element.type === 'lottie' && (
-                <AlertLottie
-                  settings={element.settings as AlertElementLottieSettings}
-                  width={element.width as Pixels}
-                  height={element.height as Pixels}
-                  posX={element.posX as Pixels}
-                  posY={element.posY as Pixels}
-                  id={element.id}
-                  lock
-                />
-              )}
-              {element.type === 'audio' && (
-                <AlertAudio
-                  settings={element.settings as AlertElementAudioSettings}
-                  id={element.id}
-                />
-              )}
-            </>
-          )}
+          <>
+            {element.type === 'text' && (
+              <AlertText
+                width={element.width as Pixels}
+                height={element.height as Pixels}
+                posX={element.posX as Pixels}
+                posY={element.posY as Pixels}
+                settings={element.settings as AlertElementTextSettings}
+                id={element.id}
+                lock
+                animation_in={element.animation_in || 'none'}
+                animation_out={element.animation_out || 'none'}
+                timestamp={timestamp}
+                start_time={element.start_time as Milliseconds}
+                duration={element.duration}
+              />
+            )}
+            {element.type === 'image' && (
+              <AlertImage
+                id={element.id}
+                settings={element.settings as AlertElementImageSettings}
+                width={element.width as Pixels}
+                height={element.height as Pixels}
+                posX={element.posX as Pixels}
+                posY={element.posY as Pixels}
+                animation_in={element.animation_in || 'none'}
+                animation_out={element.animation_out || 'none'}
+                timestamp={timestamp}
+                start_time={element.start_time as Milliseconds}
+                duration={element.duration}
+                lock
+              />
+            )}
+            {element.type === 'video' && (
+              <AlertVideo
+                settings={element.settings as AlertElementVideoSettings}
+                width={element.width as Pixels}
+                height={element.height as Pixels}
+                posX={element.posX as Pixels}
+                posY={element.posY as Pixels}
+                id={element.id}
+                lock
+              />
+            )}
+            {element.type === 'lottie' && (
+              <AlertLottie
+                settings={element.settings as AlertElementLottieSettings}
+                width={element.width as Pixels}
+                height={element.height as Pixels}
+                posX={element.posX as Pixels}
+                posY={element.posY as Pixels}
+                id={element.id}
+                lock
+              />
+            )}
+            {element.type === 'audio' && (
+              <AlertAudio
+                settings={element.settings as AlertElementAudioSettings}
+                id={element.id}
+                timestamp={timestamp}
+                start_time={element.start_time as Milliseconds}
+                duration={element.duration}
+              />
+            )}
+          </>
         </div>
       ))}
     </div>
