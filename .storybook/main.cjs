@@ -1,4 +1,5 @@
 const tsconfigPaths = require('vite-tsconfig-paths').default;
+const AutoImport = require('unplugin-auto-import/vite');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -20,7 +21,12 @@ module.exports = {
       /** @see https://github.com/aleclarson/vite-tsconfig-paths */
       tsconfigPaths()
     );
-
+    config.plugins.push(
+      AutoImport({
+        imports: ['react', 'react-router-dom'],
+        dts: './src/auto-imports.d.ts',
+      })
+    );
     return config;
   },
 };
