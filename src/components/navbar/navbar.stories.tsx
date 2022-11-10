@@ -13,6 +13,10 @@ export const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...arg
 
 const navigation = [
   {
+    icon: 'book-2-line',
+    link: '/',
+  },
+  {
     icon: 'home-line',
     items: [
       {
@@ -30,5 +34,5 @@ const navigation = [
 
 export const Primary = Template.bind({});
 Primary.args = {
-  navigation: navigation,
+  navigation,
 };

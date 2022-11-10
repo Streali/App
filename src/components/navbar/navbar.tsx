@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '~/assets/logo.svg';
 import { Avatar } from '~/components/avatar/avatar';
 import { Icon } from '~/components/icon/icon';
@@ -6,8 +7,34 @@ import { Popover } from '~/components/popover/popover';
 import { useAuthUser } from '~/hooks/auth/use-auth-user';
 import { useLogout } from '~/hooks/auth/use-logout';
 
+type NavigationItem = {
+  icon: string;
+  link: string;
+};
+
+type PopoverNavigationItem = {
+  icon: string;
+  items: PopoverLink[];
+};
+
 export interface NavbarProps {
-  navigation: { icon: string; items: PopoverLink[] }[];
+  navigation: Array<NavigationItem | PopoverNavigationItem>;
+}
+
+function renderItem(item: NavigationItem | PopoverNavigationItem, index: number) {
+  if ('items' in item) {
+    return (
+      <div key={index}>
+        <PopoverButtonNavbar icon={item.icon} items={item.items} />
+      </div>
+    );
+  }
+
+  return (
+    <div key={index}>
+      <ButtonNavbar icon={item.icon} link={item.link} />
+    </div>
+  );
 }
 
 export const Navbar = (props: NavbarProps) => {
@@ -33,11 +60,7 @@ export const Navbar = (props: NavbarProps) => {
           <img src={Logo} alt="Logo Streali" />
         </div>
         <div className="flex flex-col gap-1 py-5 px-5">
-          {navigation.map((item, index) => (
-            <div key={index}>
-              <ButtonNav icon={item.icon} items={item.items} />
-            </div>
-          ))}
+          {navigation.map((item, index) => renderItem(item, index))}
         </div>
       </div>
       <div className="flex flex-shrink-0 p-4">
@@ -59,10 +82,28 @@ export const Navbar = (props: NavbarProps) => {
 
 export interface ButtonNavbarProps {
   icon: string;
+  link: string;
+}
+
+export interface PopoverButtonNavbarProps {
+  icon: string;
   items: PopoverLink[];
 }
 
-export const ButtonNav = (props: ButtonNavbarProps) => {
+export const ButtonNavbar = (props: ButtonNavbarProps) => {
+  const { icon, link } = props;
+
+  return (
+    <Link
+      to={link}
+      className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-dark-500 text-white transition-colors duration-200 hover:bg-primary-100 hover:text-primary-500"
+    >
+      <Icon name={icon} />
+    </Link>
+  );
+};
+
+export const PopoverButtonNavbar = (props: PopoverButtonNavbarProps) => {
   const { icon, items } = props;
   const [navOpen, setNavOpen] = useState(false);
 
