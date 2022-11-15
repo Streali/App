@@ -2,6 +2,17 @@ interface EventProps {
   className?: string;
 }
 
+const eventTemplate = (type: string) => {
+  switch (type) {
+    case '10':
+      return (
+        <p>
+          <span></span> as followed you
+        </p>
+      );
+  }
+};
+
 export const Event = (props: EventProps) => {
   return (
     <div className="flex h-10 w-full items-center border-b border-dark-300 bg-dark-400">
