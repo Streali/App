@@ -14,8 +14,10 @@ import { useAuthUser } from './hooks/auth/use-auth-user';
 export const App = () => {
   const { status } = useAuthCheck();
   const location = useLocation();
+  const navigate = useNavigate();
   const online = useOnline();
   const { data: user } = useAuthUser();
+  const redirect = localStorage.getItem('redirectPath');
 
   useEffect(() => {
     if (
@@ -28,6 +30,11 @@ export const App = () => {
         email: user.email,
         name: user.username,
       });
+    }
+
+    if (redirect) {
+      localStorage.removeItem('redirectPath');
+      navigate(redirect);
     }
   }, []);
 
