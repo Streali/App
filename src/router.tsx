@@ -4,12 +4,13 @@ import { ChatCreate } from '~/pages/chat/create';
 import { ChatEdit } from '~/pages/chat/edit';
 import { ChatEmbed } from '~/pages/chat/embed';
 import { ChatLibrary } from '~/pages/chat/library';
+import { Dashboard } from './pages/dashboard';
 import type { RouteObject } from 'react-router-dom';
 
 export const chatRouter: RouteObject[] = [
   {
     path: '/',
-    element: <ChatLibrary />,
+    element: <Dashboard />,
   },
   {
     path: '/chats/create',

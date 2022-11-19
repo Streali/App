@@ -68,7 +68,7 @@ export const Button = (props: ButtonProps) => {
   const sizeChoose = {
     [ButtonSize.Normal]: 'h-12 rounded-lg px-4',
     [ButtonSize.Big]: 'h-14 rounded-lg px-4',
-    [ButtonSize.Small]: 'h-10 rounded-lg px-3',
+    [ButtonSize.Small]: 'h-10 rounded-lg px-3 text-sm',
     [ButtonSize.Very_Small]: 'h-8 rounded-lg px-3 text-sm',
     [ButtonSize.Micro]: '!h-6 rounded px-2 text-xs !rounded-full gap-1',
   };

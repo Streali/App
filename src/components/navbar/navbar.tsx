@@ -58,9 +58,9 @@ export const Navbar = (props: NavbarProps) => {
   return (
     <div className="fixed top-0 left-0 flex h-screen w-20 flex-col items-center justify-between border-r border-dark-300 bg-dark-500">
       <div>
-        <div className="flex h-20 w-20 items-center justify-center bg-primary-500">
+        <Link to="/" className="flex h-20 w-20 items-center justify-center bg-primary-500">
           <img src={Logo} alt="Logo Streali" />
-        </div>
+        </Link>
         <div className="flex flex-col gap-1 py-5 px-5">
           {navigation.map((item, index) => renderItem(item, index))}
         </div>
