@@ -11,5 +11,14 @@ const Template: ComponentStory<typeof Event> = (args) => <Event {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  className: '',
+  event: {
+    id: '123',
+    createdAt: '2021-01-01T00:00:00.000Z',
+    type: 10,
+    payload: {
+      displayName: 'WillTraore',
+      username: 'willtraore',
+      providerId: '1234',
+    },
+  },
 };

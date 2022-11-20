@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import LogRocket from 'logrocket';
 import { Route, Routes } from 'react-router-dom';
 import { MinWidthWindow } from '~/components/min-width-window/min-width-window';
 import { Navbar } from '~/components/navbar/navbar';
@@ -8,7 +9,6 @@ import { useOnline } from '~/hooks/layouts/use-online';
 import { navigation, noLayout } from '~/navigation';
 import { Login } from '~/pages/login';
 import { embedRoutes, routes } from '~/router';
-import LogRocket from 'logrocket';
 import { useAuthUser } from './hooks/auth/use-auth-user';
 
 export const App = () => {

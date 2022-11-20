@@ -18,6 +18,11 @@ export const alertKeys = {
   detail: (id: string) => [...alertKeys.details(), id],
 } as const;
 
+export const eventKeys = {
+  root: ['event'],
+  lists: () => [...eventKeys.root, 'lists'],
+} as const;
+
 export const queryKeys = {
   lottie: (url?: string) => ['lottie', url],
   googleFont: () => ['googleFont'],

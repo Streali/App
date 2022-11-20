@@ -1,7 +1,9 @@
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
+import { Event } from '~/components/event/event';
 import { Checkbox } from '~/components/forms/checkbox/checkbox';
 import { toastr, ToastType } from '~/components/toast/toast';
 import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useUserEvent } from '~/hooks/event/use-user-events';
 
 const listEvents = [
   {
@@ -45,6 +47,9 @@ const listEvents = [
 export const Dashboard = () => {
   const [eventChecked, setEventChecked] = useState<{ label: string; checked: boolean }[]>([]);
   const { data: user } = useAuthUser();
+  const { data: events } = useUserEvent();
+
+  console.log(events);
 
   const handleEventChecked = (label: string, value: boolean) => {
     const currentList = [...eventChecked].map((item) => {
@@ -114,6 +119,12 @@ export const Dashboard = () => {
               />
             ))}
           </div>
+        </div>
+
+        <div className="flex-1">
+          {events?.map((event) => (
+            <Event key={event.id} event={event} />
+          ))}
         </div>
       </div>
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col gap-10">
