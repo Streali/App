@@ -23,7 +23,7 @@ export const Switch = (props: SwitchProps) => {
   };
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`switch flex items-center gap-3 ${className}`}>
       <SwitchLib.Root
         checked={enabled}
         onCheckedChange={handleChange}
