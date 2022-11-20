@@ -13,7 +13,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   event: {
     id: '123',
-    createdAt: '2021-01-01T00:00:00.000Z',
+    created_at: '2021-01-01T00:00:00.000Z',
     type: 10,
     payload: {
       displayName: 'WillTraore',
