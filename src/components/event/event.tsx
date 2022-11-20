@@ -12,6 +12,7 @@ import {
   GoalBeginEvent,
   GoalEndEvent,
 } from '~/types/schemas/event';
+import { HumanDate } from '~/utils/date/human-date';
 import { SubscribeTierToText } from '~/utils/event/subscribe-tier-to-text';
 import './event.scss';
 
@@ -101,6 +102,7 @@ export const Event = (props: EventProps) => {
         <span className="inline-flex h-full items-center border-r border-dark-300 px-3 text-xxs font-bold uppercase text-white">
           {EventTypeText[event.type]}
         </span>
+        <div className=" shrink-0 pl-2 text-xs text-dark-100">{HumanDate(event.created_at)}</div>
         <div className="px-3 text-sm">
           {EventTypeMessage[event.type](event.payload as unknown as any)}
         </div>

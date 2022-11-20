@@ -17,4 +17,4 @@ export const navigation: NavigationItems = [
   // },
 ];
 
-export const noLayout = ['/login', '/embed'];
+export const noLayout = ['/login', '/embed', '/events'];

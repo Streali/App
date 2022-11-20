@@ -4,7 +4,8 @@ import { ChatCreate } from '~/pages/chat/create';
 import { ChatEdit } from '~/pages/chat/edit';
 import { ChatEmbed } from '~/pages/chat/embed';
 import { ChatLibrary } from '~/pages/chat/library';
-import { Dashboard } from './pages/dashboard';
+import { Dashboard } from '~/pages/dashboard';
+import { Events } from '~/pages/events';
 import type { RouteObject } from 'react-router-dom';
 
 export const chatRouter: RouteObject[] = [
@@ -38,6 +39,10 @@ export const alertRoutes: RouteObject[] = [
 ];
 
 export const embedRoutes: RouteObject[] = [
+  {
+    path: '/events',
+    element: <Events />,
+  },
   {
     path: '/chats/:id/embed',
     element: <ChatEmbed />,
