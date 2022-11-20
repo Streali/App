@@ -9,47 +9,67 @@ const listEvents = [
   {
     label: 'Follow',
     checked: true,
+    type: 10,
+  },
+  {
+    label: 'Bits',
+    checked: true,
+    type: 20,
   },
   {
     label: 'Subscribe',
     checked: true,
+    type: 30,
   },
   {
     label: 'Subscription Gift',
     checked: true,
+    type: 31,
   },
   {
     label: 'Raid',
     checked: true,
+    type: 40,
   },
   {
     label: 'Hype Train Begin',
     checked: true,
+    type: 50,
   },
   {
     label: 'Hype Train Progress',
     checked: true,
+    type: 51,
   },
   {
     label: 'Hype Train End',
     checked: true,
+    type: 52,
   },
   {
     label: 'Goal Begin',
     checked: true,
+    type: 60,
   },
   {
     label: 'Goal End',
     checked: true,
+    type: 61,
   },
 ];
 
+type EventCheck = {
+  label: string;
+  checked: boolean;
+  type: number;
+};
+
 export const Dashboard = () => {
-  const [eventChecked, setEventChecked] = useState<{ label: string; checked: boolean }[]>([]);
+  const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const { data: user } = useAuthUser();
   const { data: events } = useUserEvent();
 
-  console.log(events);
+  const checkedEvents: EventCheck[] = eventChecked.filter((e) => e.checked);
 
   const handleEventChecked = (label: string, value: boolean) => {
     const currentList = [...eventChecked].map((item) => {
@@ -108,7 +128,7 @@ export const Dashboard = () => {
             Select all
           </Button>
           <div className="flex flex-wrap gap-3">
-            {eventChecked.map((event) => (
+            {eventChecked.map((event: EventCheck) => (
               <Checkbox
                 key={event.label}
                 label={event.label}
@@ -122,9 +142,11 @@ export const Dashboard = () => {
         </div>
 
         <div className="flex-1">
-          {events?.map((event) => (
-            <Event key={event.id} event={event} />
-          ))}
+          {events?.map((event) => {
+            if (checkedEvents.find((e) => e.type === event.type)) {
+              return <Event key={event.id} event={event} />;
+            }
+          })}
         </div>
       </div>
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col gap-10">
