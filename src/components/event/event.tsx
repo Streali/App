@@ -1,6 +1,6 @@
 import {
   EventType,
-  Event as EventTypes,
+  BaseEvent,
   FollowEvent,
   CheerEvent,
   SubscribeEvent,
@@ -17,20 +17,20 @@ import { SubscribeTierToText } from '~/utils/event/subscribe-tier-to-text';
 import './event.scss';
 
 interface EventProps {
-  event: EventTypes;
+  event: BaseEvent;
 }
 
 const EventTypeText: Record<typeof EventType[keyof typeof EventType], string> = {
-  [EventType.Follow]: 'Follow',
-  [EventType.Cheer]: 'Cheer',
-  [EventType.Subscribe]: 'Subscribe',
-  [EventType.SubscriptionGift]: 'Subscription Gift',
-  [EventType.Raid]: 'Raid',
-  [EventType.HypeTrainBegin]: 'Hype Train Begin',
-  [EventType.HypeTrainProgress]: 'Hype Train Progress',
-  [EventType.HypeTrainEnd]: 'Hype Train End',
-  [EventType.GoalBegin]: 'Goal Begin',
-  [EventType.GoalEnd]: 'Goal End',
+  [EventType.Follow]: '💜',
+  [EventType.Cheer]: '💰',
+  [EventType.Subscribe]: '🔔',
+  [EventType.SubscriptionGift]: '🎁',
+  [EventType.Raid]: '📢',
+  [EventType.HypeTrainBegin]: '🚂',
+  [EventType.HypeTrainProgress]: '🚂',
+  [EventType.HypeTrainEnd]: '🚂',
+  [EventType.GoalBegin]: '🎯',
+  [EventType.GoalEnd]: '🎯',
 };
 
 const EventTypeMessage = {
@@ -42,7 +42,7 @@ const EventTypeMessage = {
   [EventType.Cheer]: (event: CheerEvent) => (
     <p>
       <strong className="font-bold">{event.isAnonymous ? 'Anonymous' : event.displayName}</strong>{' '}
-      as cheered <strong>{event.bits} bits.</strong>.
+      as cheered <strong>{event.bits} bits</strong>.
     </p>
   ),
   [EventType.Subscribe]: (event: SubscribeEvent) => (
@@ -98,25 +98,27 @@ export const Event = (props: EventProps) => {
   const { event } = props;
   return (
     <>
-      <div className="flex w-full items-center border-b border-dark-300 bg-dark-400 py-2 first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-b-0">
-        <span className="inline-flex h-full items-center border-r border-dark-300 px-3 text-xxs font-bold uppercase text-white">
+      <div className="flex w-full items-center divide-x divide-dark-300 border-b border-dark-300 bg-dark-400 py-2 first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-b-0">
+        <span className="inline-flex h-full items-center px-3 text-xxs font-bold uppercase text-white">
           {EventTypeText[event.type]}
         </span>
-        <div className=" shrink-0 pl-2 text-xs text-dark-100">{HumanDate(event.created_at)}</div>
-        <div className="px-3 text-sm">
-          {EventTypeMessage[event.type](event.payload as unknown as any)}
+        <div className="w-9 shrink-0 text-center text-xs text-dark-100">
+          {HumanDate(event.created_at)}
+        </div>
+        <div className="px-3 text-xs">
+          {EventTypeMessage[event.type](event.payload as any)}
+          {'message' in event.payload && (
+            <div className="mt-1 text-light-200">
+              <p
+                className="event inline w-full text-xs"
+                dangerouslySetInnerHTML={{
+                  __html: `"${event.payload.message.replaceAll(':scale:', '1.0')}"`,
+                }}
+              ></p>
+            </div>
+          )}
         </div>
       </div>
-      {event.payload.message && (
-        <div className="bg-dark-600 py-2 px-3">
-          <p
-            className="event inline w-full text-xs"
-            dangerouslySetInnerHTML={{
-              __html: event.payload.message.replaceAll(':scale:', '1.0'),
-            }}
-          ></p>
-        </div>
-      )}
     </>
   );
 };

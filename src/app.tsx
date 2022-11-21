@@ -27,7 +27,7 @@ export const App = () => {
       import.meta.env.DEV
     ) {
       LogRocket.identify(user.id, user);
-      LogRocket.init(import.meta.env.LOGROCKET_APP_ID);
+      LogRocket.init(import.meta.env.VITE_LOGROCKET_APP_ID);
     }
 
     if (redirect) {

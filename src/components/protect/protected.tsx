@@ -6,8 +6,6 @@ export const Protected = ({ redirectPath = '/login' }) => {
   const { data, status } = useAuthCheck();
   const location = useLocation();
 
-  localStorage.setItem('redirectPath', location.pathname);
-
   if (status === 'loading') {
     return <div className="flex h-full w-full items-center justify-center">Loading...</div>;
   }
@@ -15,6 +13,8 @@ export const Protected = ({ redirectPath = '/login' }) => {
   if (data?.authenticated) {
     return <Outlet />;
   }
+
+  localStorage.setItem('redirectPath', location.pathname);
 
   return <Navigate to={redirectPath} replace />;
 };

@@ -38,15 +38,18 @@ export const alertRoutes: RouteObject[] = [
   },
 ];
 
-export const embedRoutes: RouteObject[] = [
+export const eventRoutes: RouteObject[] = [
   {
     path: '/events',
     element: <Events />,
   },
+];
+
+export const embedRoutes: RouteObject[] = [
   {
     path: '/chats/:id/embed',
     element: <ChatEmbed />,
   },
 ];
 
-export const routes: RouteObject[] = [...chatRouter /*...alertRoutes*/];
+export const routes: RouteObject[] = [...chatRouter, ...eventRoutes /*...alertRoutes*/];

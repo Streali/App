@@ -3,7 +3,9 @@ import { Event } from '~/components/event/event';
 import { Checkbox } from '~/components/forms/checkbox/checkbox';
 import { toastr, ToastType } from '~/components/toast/toast';
 import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useEventSource } from '~/hooks/core/use-event-source';
 import { useUserEvent } from '~/hooks/event/use-user-events';
+import { BaseEvent } from '~/types/schemas/event';
 
 const listEvents = [
   {
@@ -66,8 +68,22 @@ type EventCheck = {
 
 export const Dashboard = () => {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
+  const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: user } = useAuthUser();
   const { data: events } = useUserEvent();
+  const eventSource = useEventSource<BaseEvent>({
+    onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
+  });
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    const close = eventSource.listen([`/users/${user.id}/events`]);
+
+    return () => close();
+  }, [user]);
 
   const checkedEvents: EventCheck[] = eventChecked.filter((e) => e.checked);
 
@@ -109,6 +125,12 @@ export const Dashboard = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (events) {
+      setAllEvents(events);
+    }
+  }, [events]);
+
   return (
     <div className="grid grid-cols-2 gap-10 p-10">
       <div>
@@ -142,7 +164,7 @@ export const Dashboard = () => {
         </div>
 
         <div className="custom-scrollbar max-h-[calc(100vh_-_367px)] flex-1 overflow-y-auto rounded-lg pr-2">
-          {events
+          {allEvents
             ?.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
             .map((event) => {
               if (checkedEvents.find((e) => e.type === event.type)) {

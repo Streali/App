@@ -144,4 +144,4 @@ export type HypeTrainProgressEvent = z.infer<typeof HypeTrainProgressEventSchema
 export type HypeTrainEndEvent = z.infer<typeof HypeTrainEndEventSchema>;
 export type GoalBeginEvent = z.infer<typeof GoalBeginEventSchema>;
 export type GoalEndEvent = z.infer<typeof GoalEndEventSchema>;
-export type Event = z.infer<typeof EventSchema>;
+export type BaseEvent = z.infer<typeof EventSchema>;

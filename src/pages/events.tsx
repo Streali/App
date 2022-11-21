@@ -2,7 +2,10 @@ import { Accordion } from '~/components/accordion/accordion';
 import { Button, ButtonSize } from '~/components/button/button';
 import { Event } from '~/components/event/event';
 import { Checkbox } from '~/components/forms/checkbox/checkbox';
+import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useEventSource } from '~/hooks/core/use-event-source';
 import { useUserEvent } from '~/hooks/event/use-user-events';
+import { BaseEvent } from '~/types/schemas/event';
 
 type EventCheck = {
   label: string;
@@ -65,7 +68,12 @@ const listEvents = [
 
 export const Events = () => {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
+  const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: events } = useUserEvent();
+  const { data: user } = useAuthUser();
+  const eventSource = useEventSource<BaseEvent>({
+    onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
+  });
 
   const checkedEvents: EventCheck[] = eventChecked.filter((e) => e.checked);
 
@@ -98,6 +106,22 @@ export const Events = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (events) {
+      setAllEvents(events);
+    }
+  }, [events]);
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    const close = eventSource.listen([`/users/${user.id}/events`]);
+
+    return () => close();
+  }, [user]);
+
   return (
     <div className="p-5">
       <Accordion title="Filters">
@@ -121,7 +145,7 @@ export const Events = () => {
       </Accordion>
 
       <div className="flex-1">
-        {events
+        {allEvents
           ?.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
           .map((event) => {
             if (checkedEvents.find((e) => e.type === event.type)) {

@@ -1,5 +1,4 @@
 export const SubscribeTierToText = (tier: 'prime' | '1000' | '2000' | '3000') => {
-  console.log(tier);
   switch (tier) {
     case 'prime':
       return 'Prime';
