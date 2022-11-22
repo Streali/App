@@ -1,0 +1,44 @@
+.autocomplete {
+  border: none;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+}
+
+.autocomplete__control {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  .autocomplete__input,
+  .autocomplete__highlighter {
+    padding: 11px 16px;
+    border-radius: 8px;
+    background-color: theme('colors.dark.400');
+
+    &:focus {
+      outline: 1px solid theme('colors.primary.500');
+    }
+  }
+}
+
+.autocomplete__suggestions {
+  border-radius: 4px;
+  border-color: theme('colors.dark.300');
+  background-color: theme('colors.dark.400');
+  box-shadow: 0 0 0 1px theme('colors.dark.500');
+  overflow: hidden;
+
+  .autocomplete__suggestions__list {
+    background-color: theme('colors.dark.400');
+    .autocomplete__suggestions__item {
+      padding: 11px 16px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+
+      &--focused {
+        background-color: theme('colors.dark.200');
+      }
+    }
+  }
+}
