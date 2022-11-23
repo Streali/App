@@ -1,5 +1,12 @@
-import { Editor, EditorState, EditorProps } from 'draft-js';
-import { ChangeEvent } from 'react';
+import {
+  Editor,
+  EditorState,
+  EditorProps,
+  CompositeDecorator,
+  ContentBlock,
+  DraftComponent,
+} from 'draft-js';
+import { ReactNode } from 'react';
 import { InputState } from '../input/input';
 import { Label } from '../label/label';
 import './autocomplete-input.scss';
@@ -7,6 +14,7 @@ import './autocomplete-input.scss';
 interface Option {
   trigger: string;
   color?: string;
+  optionClass?: string;
   options: {
     id: string | number;
     display: string;
@@ -25,6 +33,40 @@ export interface AutocompleteInputProps extends EditorProps {
   disabled?: boolean;
 }
 
+const findWithRegex = (
+  regex: RegExp,
+  contentBlock: ContentBlock,
+  callback: (start: number, end: number) => void
+) => {
+  const text = contentBlock.getText();
+  let matchArr, start;
+  while ((matchArr = regex.exec(text)) !== null) {
+    start = matchArr.index;
+    callback(start, start + matchArr[0].length);
+  }
+};
+
+const strategies = (options: Option[]) => {
+  return options.map((option) => {
+    const regex = new RegExp(`\\B(\\${option.trigger}[a-zA-Z]+\\b)(?!;)`, 'g');
+    const { color, optionClass } = option;
+    return {
+      strategy: (contentBlock: ContentBlock, callback: (start: number, end: number) => void) =>
+        findWithRegex(regex, contentBlock, callback),
+      component: (props: { children: ReactNode }) => {
+        return (
+          <span
+            className={`font-bold ${!color && 'text-primary-500'} ${option.optionClass}`}
+            style={{ color }}
+          >
+            {props.children}
+          </span>
+        );
+      },
+    };
+  });
+};
+
 export const AutocompleteInput = (props: AutocompleteInputProps) => {
   const {
     label,
@@ -37,7 +79,12 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
     options,
     ...inputProps
   } = props;
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+
+  const decorator = new CompositeDecorator([...strategies(options)]);
+
+  console.log(decorator);
+
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty(decorator));
   const [isFocused, setIsFocused] = useState(false);
 
   const stateClassName = {
