@@ -41,6 +41,7 @@ Primary.args = {
     },
     {
       trigger: '#',
+      color: '#ff0000',
       options: [
         {
           id: '1',
