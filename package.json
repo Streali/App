@@ -43,6 +43,7 @@
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.39.5",
     "react-hot-toast": "^2.4.0",
+    "react-mentions": "^4.4.7",
     "react-moveable": "^0.41.1",
     "react-resizable": "^3.0.4",
     "react-router-dom": "^6.4.3",

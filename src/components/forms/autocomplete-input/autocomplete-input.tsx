@@ -1,11 +1,10 @@
 import {
-  Editor,
-  EditorState,
-  EditorProps,
-  CompositeDecorator,
-  ContentBlock,
-  DraftComponent,
-} from 'draft-js';
+  MentionsInput,
+  Mention,
+  SuggestionDataItem,
+  MentionsInputProps,
+  OnChangeHandlerFunc,
+} from 'react-mentions';
 import { ReactNode } from 'react';
 import { InputState } from '../input/input';
 import { Label } from '../label/label';
@@ -13,63 +12,25 @@ import './autocomplete-input.scss';
 
 interface Option {
   trigger: string;
-  color?: string;
-  optionClass?: string;
-  options: {
-    id: string | number;
-    display: string;
-  }[];
+  options: SuggestionDataItem[];
 }
 
-export interface AutocompleteInputProps extends EditorProps {
+export interface AutocompleteInputProps extends MentionsInputProps {
   label?: string;
+  value: string;
   className?: string;
   labelClassName?: string;
   containerClassName?: string;
   state?: InputState;
   errorMessage?: string;
-  onChange: (event: EditorState) => void;
   options: Option[];
   disabled?: boolean;
 }
 
-const findWithRegex = (
-  regex: RegExp,
-  contentBlock: ContentBlock,
-  callback: (start: number, end: number) => void
-) => {
-  const text = contentBlock.getText();
-  let matchArr, start;
-  while ((matchArr = regex.exec(text)) !== null) {
-    start = matchArr.index;
-    callback(start, start + matchArr[0].length);
-  }
-};
-
-const strategies = (options: Option[]) => {
-  return options.map((option) => {
-    const regex = new RegExp(`\\B(\\${option.trigger}[a-zA-Z]+\\b)(?!;)`, 'g');
-    const { color, optionClass } = option;
-    return {
-      strategy: (contentBlock: ContentBlock, callback: (start: number, end: number) => void) =>
-        findWithRegex(regex, contentBlock, callback),
-      component: (props: { children: ReactNode }) => {
-        return (
-          <span
-            className={`font-bold ${!color && 'text-primary-500'} ${option.optionClass}`}
-            style={{ color }}
-          >
-            {props.children}
-          </span>
-        );
-      },
-    };
-  });
-};
-
 export const AutocompleteInput = (props: AutocompleteInputProps) => {
   const {
     label,
+    value = '',
     labelClassName = '',
     className = '',
     containerClassName = '',
@@ -80,11 +41,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
     ...inputProps
   } = props;
 
-  const decorator = new CompositeDecorator([...strategies(options)]);
-
-  console.log(decorator);
-
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty(decorator));
+  const [currentValue, setCurrentValue] = useState(value);
   const [isFocused, setIsFocused] = useState(false);
 
   const stateClassName = {
@@ -94,15 +51,13 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
   };
 
   const haveValueClassName =
-    editorState.getCurrentContent().getPlainText().length > 0 && state === InputState.Normal
-      ? `!border-primary-500`
-      : '';
+    value.length > 0 && state === InputState.Normal ? `!border-primary-500` : '';
 
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
-  const handleChange = (state: EditorState) => {
-    setEditorState(state);
-    onChange(state);
+  const handleChange: OnChangeHandlerFunc = (target, newValue, newPlainText, mentions) => {
+    setCurrentValue(newValue);
+    onChange!(target, newValue, newPlainText, mentions);
   };
 
   const inputContainerClassName = `w-full cursor-text rounded-lg bg-dark-400 text-xs text-white py-[11px] px-4 transition border border-transparent ${
@@ -113,13 +68,18 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
     <label className={`relative block ${containerClassName}`}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <div className={inputContainerClassName}>
-        <Editor
-          {...inputProps}
-          editorState={editorState}
-          onChange={(e) => handleChange(e)}
+        <MentionsInput
+          className="autocomplete"
+          value={currentValue}
+          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-        />
+          {...inputProps}
+        >
+          {options!.map((option) => (
+            <Mention key={option.trigger} trigger={option.trigger} data={option.options} />
+          ))}
+        </MentionsInput>
       </div>
       {errorMessage && (
         <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
