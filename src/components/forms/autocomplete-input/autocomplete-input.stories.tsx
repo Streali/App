@@ -24,7 +24,8 @@ Primary.args = {
   label: 'Autocomplete Input',
   placeholder: 'Enter some text here',
   errorMessage: '',
-  onChange: (e) => console.log(e.getCurrentContent().getPlainText()),
+  onChange: (target, newValue, newPlainText, mentions) =>
+    console.log(target, newValue, newPlainText, mentions),
   options: [
     {
       trigger: '@',
@@ -41,7 +42,6 @@ Primary.args = {
     },
     {
       trigger: '#',
-      color: '#ff0000',
       options: [
         {
           id: '1',
