@@ -1,0 +1,50 @@
+.autocomplete {
+  border: none;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+
+  &__control {
+    textarea {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &__highlighter {
+    margin-left: -1px;
+
+    strong {
+      font-weight: 600;
+      text-align: center;
+      background-color: theme('colors.primary.500');
+      border-radius: 2px;
+    }
+  }
+
+  &__suggestions {
+    background-color: theme('colors.dark.600') !important;
+    border-radius: theme('borderRadius.md');
+    padding: theme('spacing.3');
+
+    &__list {
+      background-color: theme('colors.dark.600');
+    }
+
+    &__item {
+      padding: 0 theme('spacing.3') !important;
+      min-height: theme('spacing.8') !important;
+      height: theme('spacing.8') !important;
+      font-size: theme('fontSize.xs') !important;
+      border-radius: theme('borderRadius.DEFAULT') !important;
+      display: flex;
+      justify-content: center !important;
+      align-items: center !important;
+      &--focused {
+        background-color: theme('colors.dark.400');
+      }
+    }
+  }
+}
