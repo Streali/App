@@ -15,7 +15,7 @@ interface Option {
   options: SuggestionDataItem[];
 }
 
-export interface AutocompleteInputProps extends MentionsInputProps {
+export interface AutocompleteInputProps extends Omit<MentionsInputProps, 'children'> {
   label?: string;
   value: string;
   className?: string;
@@ -57,7 +57,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
 
   const handleChange: OnChangeHandlerFunc = (target, newValue, newPlainText, mentions) => {
     setCurrentValue(newValue);
-    onChange!(target, newValue, newPlainText, mentions);
+    onChange?.(target, newValue, newPlainText, mentions);
   };
 
   const inputContainerClassName = `w-full cursor-text rounded-lg bg-dark-400 text-xs text-white py-[11px] px-4 transition border border-transparent ${
@@ -76,8 +76,13 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
           onBlur={() => setIsFocused(false)}
           {...inputProps}
         >
-          {options!.map((option) => (
-            <Mention key={option.trigger} trigger={option.trigger} data={option.options} />
+          {options?.map((option) => (
+            <Mention
+              key={option.trigger}
+              trigger={option.trigger}
+              data={option.options}
+              markup={'{{__display__}}'}
+            />
           ))}
         </MentionsInput>
       </div>
