@@ -1,0 +1,15 @@
+[cmdk-dialog] {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[cmdk-overlay] {
+  background-color: theme('colors.dark.500');
+  position: fixed;
+  inset: 0;
+  opacity: 0.5;
+  z-index: -10;
+}

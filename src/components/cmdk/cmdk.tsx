@@ -1,5 +1,7 @@
+import { Overlay } from '@radix-ui/react-dialog';
 import { Command, useCommandState } from 'cmdk';
 import { Icon, IconSVG } from '../icon/icon';
+import './cmdk.scss';
 
 interface Command {
   name: string;
@@ -58,7 +60,7 @@ export const Cmdk = (props: CmdkProps) => {
         placeholder="Search for apps and commands"
         className="w-full bg-transparent px-4 py-2 placeholder:text-light-300 focus-visible:outline-none"
       />
-      <Command.List className="mt-3 w-full border-t border-dark-400 px-2 pt-3">
+      <Command.List className="custom-scrollbar mt-3 max-h-[400px] min-h-[200px] w-full overflow-y-scroll border-t border-dark-400 px-2 pt-3">
         <Command.Empty className="flex h-16 items-center justify-center text-sm text-dark-100">
           No results found.
         </Command.Empty>
@@ -73,7 +75,7 @@ export const Cmdk = (props: CmdkProps) => {
               <Command.Item
                 key={command.name}
                 onSelect={() => handleClick(command)}
-                className={`-mx-2 flex h-10 select-none items-center rounded-lg px-3 text-sm text-white transition-colors duration-100 ease-in hover:bg-dark-400 ${
+                className={`-mx-2 flex h-10 cursor-pointer select-none items-center rounded-lg px-3 text-sm text-white transition-colors duration-100 ease-in hover:bg-dark-400 ${
                   index ? 'mt-1' : 'mt-2'
                 }`}
               >

@@ -52,5 +52,46 @@ Primary.args = {
         },
       ],
     },
+    {
+      label: 'Fruits',
+      commands: [
+        {
+          name: 'Apple',
+          description: 'Example',
+          iconName: 'chat-1-line',
+          link: '/test',
+        },
+        {
+          name: 'Banana',
+          iconName: 'bubble-chart-line',
+          action: () => console.log('banana'),
+        },
+        {
+          name: 'Cherry',
+          iconName: 'attachment-line',
+          action: () => {},
+        },
+      ],
+    },
+    {
+      label: 'Numbers',
+      commands: [
+        {
+          name: 'One',
+          iconName: 'number-1',
+          action: () => {},
+        },
+        {
+          name: 'Two',
+          iconName: 'number-2',
+          action: () => {},
+        },
+        {
+          name: 'Three',
+          iconName: 'number-3',
+          action: () => {},
+        },
+      ],
+    },
   ],
 };
