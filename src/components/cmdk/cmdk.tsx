@@ -52,7 +52,7 @@ export const Cmdk = (props: CmdkProps) => {
   return (
     <Command.Dialog
       open={open}
-      className="w-full max-w-[640px] rounded-lg border border-dark-300 bg-dark-600 py-2"
+      className="w-full max-w-[640px] rounded-lg border border-dark-300 bg-dark-600 py-2 shadow-xl"
       onOpenChange={setOpen}
       label="Global Command Menu"
     >
