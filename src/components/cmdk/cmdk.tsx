@@ -52,7 +52,7 @@ export const Cmdk = (props: CmdkProps) => {
   return (
     <Command.Dialog
       open={open}
-      className="w-full max-w-[640px] rounded-lg border border-dark-300 bg-dark-600 py-2 shadow-xl"
+      className="-mt-40 w-full max-w-[640px] rounded-lg border border-dark-300 bg-dark-600 py-2 shadow-xl"
       onOpenChange={setOpen}
       label="Global Command Menu"
     >
@@ -60,7 +60,7 @@ export const Cmdk = (props: CmdkProps) => {
         placeholder="Search for apps and commands"
         className="w-full bg-transparent px-4 py-2 placeholder:text-light-300 focus-visible:outline-none"
       />
-      <Command.List className="custom-scrollbar mt-3 max-h-[400px] min-h-[200px] w-full overflow-y-scroll border-t border-dark-400 px-2 pt-3">
+      <Command.List className="custom-scrollbar mt-3 h-80 w-full overflow-y-scroll border-t border-dark-400 px-2 pt-3">
         <Command.Empty className="flex h-16 items-center justify-center text-sm text-dark-100">
           No results found.
         </Command.Empty>
