@@ -4,6 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 [cmdk-overlay] {
