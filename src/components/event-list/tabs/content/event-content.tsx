@@ -1,18 +1,11 @@
 import { Control } from 'react-hook-form';
-import { SuggestionDataItem } from 'react-mentions';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Tabs, TabProps } from '~/components/tabs/tabs';
 import ContainerContent from './container-content';
 import MessageContent from './message-content';
 import NameContent from './name-content';
 
-const EventContent = (props: {
-  control: Control;
-  id: string;
-  defaultContent: string;
-  defaultName: string;
-  options: SuggestionDataItem[];
-}) => {
+const EventContent = (props: { control: Control; id: string }) => {
   const tabs: TabProps[] = [
     {
       title: 'Container',
@@ -20,20 +13,11 @@ const EventContent = (props: {
     },
     {
       title: 'Name',
-      content: (
-        <NameContent control={props.control} id={props.id} defaultContent={props.defaultName} />
-      ),
+      content: <NameContent control={props.control} id={props.id} />,
     },
     {
       title: 'Message',
-      content: (
-        <MessageContent
-          control={props.control}
-          id={props.id}
-          defaultContent={props.defaultContent}
-          autocompleteOptions={props.options}
-        />
-      ),
+      content: <MessageContent control={props.control} id={props.id} />,
     },
   ];
 

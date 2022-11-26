@@ -46,7 +46,12 @@ export const Modal = (props: ModalProps) => {
             <Dialog.Title className="font-title text-3xl font-semibold">{title}</Dialog.Title>
             <Dialog.Close asChild>
               <div>
-                <Button buttonIcon="close-line" size={ButtonSize.Small} color={ButtonColor.Black} />
+                <Button
+                  buttonIcon="close-line"
+                  size={ButtonSize.Small}
+                  color={ButtonColor.Black}
+                  onClick={() => setIsOpen(false)}
+                />
               </div>
             </Dialog.Close>
           </div>

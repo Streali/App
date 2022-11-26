@@ -1,14 +1,14 @@
-import { Control } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 import { SuggestionDataItem } from 'react-mentions';
 import { SingleValue } from 'react-select';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { AutocompleteInput } from '~/components/forms/autocomplete-input/autocomplete-input';
+import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
-import EventContent from './content/event-content';
 
-interface TabEventsProps {
+type TabTextsProps = {
   control: Control;
-  setValue: (name: string, value: unknown) => void;
-}
+};
 
 type EventObject = {
   follow: string | SuggestionDataItem[];
@@ -93,8 +93,8 @@ const EventNameDefault = {
   goal_end: 'Goal End',
 };
 
-const TabEvents = (props: TabEventsProps) => {
-  const { control, setValue } = props;
+const TabTexts = (props: TabTextsProps) => {
+  const { control } = props;
   const [selectedTab, setSelectedTab] = useState<
     | 'follow'
     | 'cheer'
@@ -106,6 +106,13 @@ const TabEvents = (props: TabEventsProps) => {
     | 'goal_begin'
     | 'goal_end'
   >('follow');
+
+  const autocomplete = [
+    {
+      trigger: '#',
+      options: eventAutocompleteOptions[selectedTab] as SuggestionDataItem[],
+    },
+  ];
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
@@ -132,22 +139,45 @@ const TabEvents = (props: TabEventsProps) => {
             }
           }}
         />
+        {eventSelect.map(
+          (event) =>
+            event.value === selectedTab && (
+              <TabItem title="Texts" key={event.value}>
+                <Controller
+                  name={`events.texts.${event.value}.name`}
+                  control={control}
+                  defaultValue={EventNameDefault[selectedTab]}
+                  render={({ field: { onChange, value } }) => (
+                    <Input
+                      value={value}
+                      label="Event name"
+                      onChange={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        onChange(target.value);
+                      }}
+                      className="mb-3"
+                    />
+                  )}
+                />
+                <Controller
+                  name={`events.texts.${event.value}.message`}
+                  control={control}
+                  defaultValue={eventDefaultMessages[selectedTab] as string}
+                  render={({ field: { onChange, value } }) => (
+                    <AutocompleteInput
+                      options={autocomplete}
+                      value={value}
+                      onChange={(e) => onChange(e.target.value)}
+                      label="Event message"
+                    />
+                  )}
+                />
+              </TabItem>
+            )
+        )}
       </TabItem>
-      {eventSelect.map(
-        (event) =>
-          event.value === selectedTab && (
-            <EventContent
-              key={event.value}
-              control={control}
-              id={selectedTab}
-              defaultContent={eventDefaultMessages[selectedTab] as string}
-              defaultName={EventNameDefault[selectedTab]}
-              options={eventAutocompleteOptions[selectedTab] as SuggestionDataItem[]}
-            />
-          )
-      )}
     </div>
   );
 };
 
-export default TabEvents;
+export default TabTexts;

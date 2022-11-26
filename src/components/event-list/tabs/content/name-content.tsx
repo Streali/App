@@ -3,34 +3,16 @@ import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { BorderRadius } from '~/components/forms/border-radius/border-radius';
 import { Border } from '~/components/forms/border/border';
 import { Color } from '~/components/forms/color/color';
-import { Input } from '~/components/forms/input/input';
 import { Shadow } from '~/components/forms/shadow/shadow';
 import { Spacing } from '~/components/forms/spacing/spacing';
 import { TextStyle } from '~/components/forms/text-style/text-style';
 
-const NameContent = (props: { id: string; control: Control; defaultContent: string }) => {
+const NameContent = (props: { id: string; control: Control }) => {
   return (
     <div>
-      <TabItem title="Text">
-        <Controller
-          name={`events.${props.id}.name.content`}
-          control={props.control}
-          defaultValue={props.defaultContent}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              value={value}
-              onChange={(e) => {
-                const target = e.target as HTMLInputElement;
-                onChange(target.value);
-              }}
-              className="mb-3"
-            />
-          )}
-        />
-      </TabItem>
       <TabItem title="Text style">
         <Controller
-          name={`events.${props.id}.name.text_style`}
+          name={`events.styles.${props.id}.name.text_style`}
           control={props.control}
           defaultValue={{
             fontFamily: 'Rubik',
@@ -56,7 +38,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Background">
         <Controller
-          name={`events.${props.id}.name.background`}
+          name={`events.styles.${props.id}.name.background`}
           control={props.control}
           defaultValue={'#00000000'}
           render={({ field: { onChange, value } }) => (
@@ -66,7 +48,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Box border">
         <Controller
-          name={`events.${props.id}.name.border`}
+          name={`events.styles.${props.id}.name.border`}
           control={props.control}
           defaultValue={''}
           render={({ field: { onChange, value } }) => (
@@ -76,7 +58,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Box Shadow">
         <Controller
-          name={`events.${props.id}.name.shadow`}
+          name={`events.styles.${props.id}.name.shadow`}
           control={props.control}
           defaultValue={{
             shadowColor: '#000000',
@@ -91,7 +73,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Outer margin">
         <Controller
-          name={`events.${props.id}.name.margin`}
+          name={`events.styles.${props.id}.name.margin`}
           control={props.control}
           defaultValue={{
             top: 0,
@@ -106,7 +88,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Inner margin">
         <Controller
-          name={`events.${props.id}.name.padding`}
+          name={`events.styles.${props.id}.name.padding`}
           control={props.control}
           defaultValue={{
             top: 0,
@@ -121,7 +103,7 @@ const NameContent = (props: { id: string; control: Control; defaultContent: stri
       </TabItem>
       <TabItem title="Border radius">
         <Controller
-          name={`events.${props.id}.name.radius`}
+          name={`events.styles.${props.id}.name.radius`}
           control={props.control}
           defaultValue={{
             top_left: 4,

@@ -2,6 +2,9 @@ import { Control, Controller } from 'react-hook-form';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
+import { Slider } from '~/components/forms/slider/slider';
+import { Switch } from '~/components/forms/switch/switch';
+import { animationList } from '~/utils/chat/animations';
 
 interface TabGeneralProps {
   control: Control;
@@ -19,8 +22,9 @@ const eventTypeList = [
   { value: '61', label: 'Goal End' },
 ];
 
-export const TabGeneral = (props: TabGeneralProps) => {
+const TabGeneral = (props: TabGeneralProps) => {
   const { control } = props;
+  const [deleteEvent, setDeleteEvent] = useState(true);
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
@@ -58,6 +62,77 @@ export const TabGeneral = (props: TabGeneralProps) => {
           )}
         />
       </TabItem>
+      <TabItem title="Animation in">
+        <Controller
+          name="animation_in"
+          control={control}
+          defaultValue={animationList[1]}
+          render={({ field: { onChange, value } }) => (
+            <Select
+              options={animationList}
+              defaultValue={value}
+              onChange={onChange}
+              className="mb-3"
+            />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Delete event after time">
+        <Controller
+          name="delete_event"
+          control={control}
+          defaultValue={true}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              className="mb-3"
+              onChange={(checked) => {
+                onChange(checked);
+                setDeleteEvent(checked);
+              }}
+            />
+          )}
+        />
+      </TabItem>
+      {deleteEvent && (
+        <>
+          <TabItem title="Duration before delete">
+            <Controller
+              name="duration_before_delete"
+              control={control}
+              defaultValue={7000}
+              render={({ field: { onChange, value } }) => (
+                <Slider
+                  min={0}
+                  max={60}
+                  step={1}
+                  value={[value / 1000]}
+                  haveInput
+                  inputSuffix="s"
+                  onChange={(value) => onChange(value[0] * 1000)}
+                />
+              )}
+            />
+          </TabItem>
+          <TabItem title="Animation out">
+            <Controller
+              name="animation_in"
+              control={control}
+              defaultValue={animationList[2]}
+              render={({ field: { onChange, value } }) => (
+                <Select
+                  options={animationList}
+                  defaultValue={value}
+                  onChange={onChange}
+                  className="mb-3"
+                />
+              )}
+            />
+          </TabItem>
+        </>
+      )}
     </div>
   );
 };
+
+export default TabGeneral;

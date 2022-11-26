@@ -1,19 +1,26 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import { Button, ButtonColor } from '../button/button';
 import { TabProps, Tabs } from '../tabs/tabs';
-import TabEvents from './tabs/tab-events';
-import { TabGeneral } from './tabs/tab-general';
+import TabGeneral from './tabs/tab-general';
+import TabStyles from './tabs/tab-styles';
+import TabTexts from './tabs/tab-texts';
 
 export const EventListSettings = () => {
-  const { handleSubmit, control, setValue } = useForm();
+  const { handleSubmit, control, setValue, formState } = useForm();
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
-    { title: 'Events', content: <TabEvents control={control} setValue={setValue} /> },
+    { title: 'Texts', content: <TabTexts control={control} /> },
+    {
+      title: 'Styles',
+      content: <TabStyles control={control} setValue={setValue} />,
+    },
   ];
 
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    console.log(theme);
+    if (formState.isDirty) {
+      console.log(theme);
+    }
   });
 
   return (
@@ -21,7 +28,12 @@ export const EventListSettings = () => {
       <form onSubmit={onSubmit}>
         <div className="mb-5 flex items-center justify-between">
           <h1 className="font-title text-4xl font-semibold">Event list</h1>
-          <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
+          <Button
+            type="submit"
+            iconLeft="save-line"
+            color={ButtonColor.Accent}
+            disabled={!formState.isDirty}
+          >
             Save
           </Button>
         </div>
