@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: slideUpFade 150ms ease-in;
 
   &:focus,
   &:focus-visible {
@@ -12,9 +13,18 @@
 }
 
 [cmdk-overlay] {
-  background-color: theme('colors.dark.500');
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   inset: 0;
-  opacity: 0.5;
   z-index: -10;
+  animation: fadeIn 150ms ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
