@@ -1,5 +1,4 @@
-import { Overlay } from '@radix-ui/react-dialog';
-import { Command, useCommandState } from 'cmdk';
+import { Command } from 'cmdk';
 import { Icon, IconSVG } from '../icon/icon';
 import './cmdk.scss';
 
