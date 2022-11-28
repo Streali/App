@@ -6,7 +6,7 @@ import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
 
 export const EventListSettings = () => {
-  const { handleSubmit, control, setValue, formState } = useForm();
+  const { handleSubmit, control, setValue } = useForm();
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
@@ -18,9 +18,7 @@ export const EventListSettings = () => {
   ];
 
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    if (formState.isDirty) {
-      console.log(theme);
-    }
+    console.log(theme);
   });
 
   return (
@@ -28,12 +26,7 @@ export const EventListSettings = () => {
       <form onSubmit={onSubmit}>
         <div className="mb-5 flex items-center justify-between">
           <h1 className="font-title text-4xl font-semibold">Event list</h1>
-          <Button
-            type="submit"
-            iconLeft="save-line"
-            color={ButtonColor.Accent}
-            disabled={!formState.isDirty}
-          >
+          <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
             Save
           </Button>
         </div>

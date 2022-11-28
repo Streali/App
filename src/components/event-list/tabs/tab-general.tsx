@@ -12,7 +12,7 @@ interface TabGeneralProps {
 
 const eventTypeList = [
   { value: '10', label: 'Follow' },
-  { value: '20', label: 'Cheer' },
+  { value: '20', label: 'Bits' },
   { value: '30', label: 'Subscribe' },
   { value: '31', label: 'Subscription Gift' },
   { value: '40', label: 'Raid' },
@@ -58,6 +58,24 @@ const TabGeneral = (props: TabGeneralProps) => {
               onChange={onChange}
               className="mb-3"
               multiple
+            />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Space between events">
+        <Controller
+          name="events_spacing"
+          control={control}
+          defaultValue={12}
+          render={({ field: { onChange, value } }) => (
+            <Slider
+              min={0}
+              max={100}
+              step={1}
+              value={[value]}
+              haveInput
+              inputSuffix="px"
+              onChange={(value) => onChange(value[0])}
             />
           )}
         />

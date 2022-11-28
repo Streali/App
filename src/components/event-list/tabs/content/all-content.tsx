@@ -5,6 +5,7 @@ import { Border } from '~/components/forms/border/border';
 import { Color } from '~/components/forms/color/color';
 import { Shadow } from '~/components/forms/shadow/shadow';
 import { Spacing } from '~/components/forms/spacing/spacing';
+import { Switch } from '~/components/forms/switch/switch';
 import { TextStyle } from '~/components/forms/text-style/text-style';
 import { TabProps, Tabs } from '~/components/tabs/tabs';
 
@@ -36,6 +37,16 @@ const AllContent = (props: { control: Control }) => {
 const Container = (props: { control: Control }) => {
   return (
     <div>
+      <TabItem title="Fullwidth">
+        <Controller
+          name={`events.all.container.full_width`}
+          control={props.control}
+          defaultValue={true}
+          render={({ field: { onChange, value } }) => (
+            <Switch checked={value} onChange={onChange} className="mb-3" />
+          )}
+        />
+      </TabItem>
       <TabItem title="Background">
         <Controller
           name={`events.styles.all.container.background`}
