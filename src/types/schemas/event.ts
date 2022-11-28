@@ -1,4 +1,4 @@
-import * as z from 'zod';
+import { z } from 'zod';
 
 export const EventType = {
   Follow: 10,
@@ -43,14 +43,14 @@ export const CheerEventSchema = z.object({
   isAnonymous: z.boolean(),
 });
 
-export const SubscribeEventSchema = z.object({
+export const SubscriptionMessageEventSchema = z.object({
   displayName: z.string(),
   username: z.string(),
   providerId: z.string(),
   cumulativeMonths: z.number(),
   durationMonths: z.number(),
   streakMonths: z.number().nullable(),
-  message: z.string(),
+  message: z.string().nullable(),
   tier: z.nativeEnum(SubscriptionTier),
 });
 
@@ -122,7 +122,7 @@ export const EventSchema = z.object({
   type: z.nativeEnum(EventType),
   payload: z.union([
     CheerEventSchema,
-    SubscribeEventSchema,
+    SubscriptionMessageEventSchema,
     SubscriptionGiftEventSchema,
     RaidEventSchema,
     HypeTrainBeginEventSchema,
@@ -136,7 +136,7 @@ export const EventSchema = z.object({
 
 export type FollowEvent = z.infer<typeof FollowEventSchema>;
 export type CheerEvent = z.infer<typeof CheerEventSchema>;
-export type SubscribeEvent = z.infer<typeof SubscribeEventSchema>;
+export type SubscriptionMessageEvent = z.infer<typeof SubscriptionMessageEventSchema>;
 export type SubscriptionGiftEvent = z.infer<typeof SubscriptionGiftEventSchema>;
 export type RaidEvent = z.infer<typeof RaidEventSchema>;
 export type HypeTrainBeginEvent = z.infer<typeof HypeTrainBeginEventSchema>;

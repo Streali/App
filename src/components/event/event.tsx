@@ -3,7 +3,7 @@ import {
   BaseEvent,
   FollowEvent,
   CheerEvent,
-  SubscribeEvent,
+  SubscriptionMessageEvent,
   SubscriptionGiftEvent,
   RaidEvent,
   HypeTrainBeginEvent,
@@ -45,7 +45,7 @@ const EventTypeMessage = {
       cheered <strong>{event.bits} bits</strong>.
     </p>
   ),
-  [EventType.Subscribe]: (event: SubscribeEvent) => (
+  [EventType.Subscribe]: (event: SubscriptionMessageEvent) => (
     <p>
       <strong className="font-bold">{event.displayName}</strong> subscribed with{' '}
       <strong>{SubscribeTierToText(event.tier)} tier</strong>.
@@ -96,6 +96,7 @@ const EventTypeMessage = {
 
 export const Event = (props: EventProps) => {
   const { event } = props;
+
   return (
     <>
       <div className="flex w-full items-center divide-x divide-dark-300 border-b border-dark-300 bg-dark-400 py-2 first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-b-0">
@@ -107,7 +108,7 @@ export const Event = (props: EventProps) => {
         </div>
         <div className="px-3 text-xs">
           {EventTypeMessage[event.type](event.payload as any)}
-          {'message' in event.payload && (
+          {'message' in event.payload && event.payload.message && (
             <div className="mt-1 text-light-200">
               <p
                 className="event inline w-full text-xs"
