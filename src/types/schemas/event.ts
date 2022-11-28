@@ -92,7 +92,7 @@ export const HypeTrainEndEventSchema = z.object({
   level: z.number(),
   total: z.number(),
   topContributions: z.array(z.record(z.string(), z.string().or(z.number()))),
-  lastContribution: z.record(z.string(), z.string().or(z.number())),
+  lastContribution: z.record(z.string(), z.string().or(z.number())).optional(),
   startedAt: z.string(),
   expiresAt: z.string(),
   cooldownEndsAt: z.string(),
