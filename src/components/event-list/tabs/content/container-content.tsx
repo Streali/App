@@ -26,7 +26,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
           control={props.control}
           defaultValue={'#00000000'}
           render={({ field: { onChange, value } }) => (
-            <Color value={value} onChange={onChange} containerClassName="mb-3" />
+            <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
           )}
         />
       </TabItem>

@@ -1,12 +1,21 @@
 import { FieldValues, useForm } from 'react-hook-form';
+import { EventList } from '~/types/schemas/event-list';
+import { defaultEventListTheme } from '~/utils/event-list/default-event-list-theme';
 import { Button, ButtonColor } from '../button/button';
 import { TabProps, Tabs } from '../tabs/tabs';
 import TabGeneral from './tabs/tab-general';
 import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
 
-export const EventListSettings = () => {
-  const { handleSubmit, control, setValue } = useForm();
+type EventListSettingsProps = {
+  onThemeChange: (theme: EventList) => void;
+};
+
+export const EventListSettings = (props: EventListSettingsProps) => {
+  const { onThemeChange } = props;
+  const { handleSubmit, control, setValue, watch } = useForm({
+    defaultValues: defaultEventListTheme as FieldValues,
+  });
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
@@ -20,6 +29,11 @@ export const EventListSettings = () => {
   const onSubmit = handleSubmit((theme: FieldValues) => {
     console.log(theme);
   });
+
+  useEffect(() => {
+    const subscription = watch((value) => onThemeChange(value as EventList));
+    return () => subscription.unsubscribe();
+  }, [watch, onThemeChange]);
 
   return (
     <div>

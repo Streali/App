@@ -8,6 +8,7 @@ import { Spacing } from '~/components/forms/spacing/spacing';
 import { Switch } from '~/components/forms/switch/switch';
 import { TextStyle } from '~/components/forms/text-style/text-style';
 import { TabProps, Tabs } from '~/components/tabs/tabs';
+import { defaultEventListTheme } from '~/utils/event-list/default-event-list-theme';
 
 const AllContent = (props: { control: Control }) => {
   const tabs: TabProps[] = [
@@ -51,9 +52,9 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.background`}
           control={props.control}
-          defaultValue={'#00000000'}
+          defaultValue={defaultEventListTheme.events.styles.all.container.background}
           render={({ field: { onChange, value } }) => (
-            <Color value={value} onChange={onChange} containerClassName="mb-3" />
+            <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
           )}
         />
       </TabItem>
@@ -61,7 +62,7 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.border`}
           control={props.control}
-          defaultValue={''}
+          defaultValue={defaultEventListTheme.events.styles.all.container.border}
           render={({ field: { onChange, value } }) => (
             <Border className="mb-3" onChange={onChange} settings={value} />
           )}
@@ -71,12 +72,7 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.shadow`}
           control={props.control}
-          defaultValue={{
-            shadowColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.container.shadow}
           render={({ field: { onChange, value } }) => (
             <Shadow settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -86,12 +82,7 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.margin`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.container.margin}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -101,12 +92,7 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.padding`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.container.padding}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -116,12 +102,7 @@ const Container = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.container.radius`}
           control={props.control}
-          defaultValue={{
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.container.radius}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -138,23 +119,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.text_style`}
           control={props.control}
-          defaultValue={{
-            fontFamily: 'Rubik',
-            fontSize: 16,
-            fontWeight: '700',
-            color: '#000000',
-            textAlign: 'left',
-            textDecoration: 'none',
-            fontStyle: 'normal',
-            letterSpacing: 0,
-            lineHeight: 100,
-            textShadow: {
-              shadowOffsetX: 0,
-              shadowOffsetY: 0,
-              shadowBlur: 0,
-              shadowColor: '#000000',
-            },
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.name.text_style}
           render={({ field: { onChange, value } }) => (
             <TextStyle onChange={onChange} settings={value} />
           )}
@@ -164,7 +129,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.background`}
           control={props.control}
-          defaultValue={'#00000000'}
+          defaultValue={defaultEventListTheme.events.styles.all.name.background}
           render={({ field: { onChange, value } }) => (
             <Color value={value} onChange={onChange} containerClassName="mb-3" />
           )}
@@ -174,7 +139,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.border`}
           control={props.control}
-          defaultValue={''}
+          defaultValue={defaultEventListTheme.events.styles.all.name.border}
           render={({ field: { onChange, value } }) => (
             <Border className="mb-3" onChange={onChange} settings={value} />
           )}
@@ -184,12 +149,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.shadow`}
           control={props.control}
-          defaultValue={{
-            shadowColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.name.shadow}
           render={({ field: { onChange, value } }) => (
             <Shadow settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -199,12 +159,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.margin`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.name.margin}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -214,12 +169,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.padding`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.name.padding}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -229,12 +179,7 @@ const Name = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.name.radius`}
           control={props.control}
-          defaultValue={{
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.name.radius}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -251,23 +196,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.text_style`}
           control={props.control}
-          defaultValue={{
-            fontFamily: 'Rubik',
-            fontSize: 16,
-            fontWeight: '700',
-            color: '#000000',
-            textAlign: 'left',
-            textDecoration: 'none',
-            fontStyle: 'normal',
-            letterSpacing: 0,
-            lineHeight: 100,
-            textShadow: {
-              shadowOffsetX: 0,
-              shadowOffsetY: 0,
-              shadowBlur: 0,
-              shadowColor: '#000000',
-            },
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.message.text_style}
           render={({ field: { onChange, value } }) => (
             <TextStyle onChange={onChange} settings={value} />
           )}
@@ -277,7 +206,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.background`}
           control={props.control}
-          defaultValue={'#00000000'}
+          defaultValue={defaultEventListTheme.events.styles.all.message.background}
           render={({ field: { onChange, value } }) => (
             <Color value={value} onChange={onChange} containerClassName="mb-3" />
           )}
@@ -287,7 +216,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.border`}
           control={props.control}
-          defaultValue={''}
+          defaultValue={defaultEventListTheme.events.styles.all.message.border}
           render={({ field: { onChange, value } }) => (
             <Border className="mb-3" onChange={onChange} settings={value} />
           )}
@@ -297,12 +226,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.shadow`}
           control={props.control}
-          defaultValue={{
-            shadowColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.message.shadow}
           render={({ field: { onChange, value } }) => (
             <Shadow settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -312,12 +236,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.margin`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.message.margin}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -327,12 +246,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.padding`}
           control={props.control}
-          defaultValue={{
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.message.padding}
           render={({ field: { onChange, value } }) => (
             <Spacing settings={value} onChange={onChange} className="mb-3" />
           )}
@@ -342,12 +256,7 @@ const Message = (props: { control: Control }) => {
         <Controller
           name={`events.styles.all.message.radius`}
           control={props.control}
-          defaultValue={{
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
-          }}
+          defaultValue={defaultEventListTheme.events.styles.all.message.radius}
           render={({ field: { onChange, value } }) => (
             <BorderRadius settings={value} onChange={onChange} className="mb-3" />
           )}

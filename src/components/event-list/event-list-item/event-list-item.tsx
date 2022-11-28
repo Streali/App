@@ -2,6 +2,8 @@ import { EventList } from '~/types/schemas/event-list';
 
 type EventListItemProps = {
   theme: EventList;
+  name: string;
+  message: string;
   type:
     | 'follow'
     | 'cheer'
@@ -15,11 +17,12 @@ type EventListItemProps = {
 };
 
 const EventListItem = (props: EventListItemProps) => {
-  const { theme, type } = props;
+  const { theme, type, name, message } = props;
 
   const computedType = theme.events.modify_all ? 'all' : type;
 
   const containerStyle = {
+    width: theme.events.styles[computedType].container ? '100%' : 'auto',
     backgroundColor: theme.events.styles[computedType].container.background,
     borderTop: `${theme.events.styles[computedType].container.border.top.width}px ${theme.events.styles[computedType].container.border.top.style} ${theme.events.styles[computedType].container.border.top.color}`,
     borderRight: `${theme.events.styles[computedType].container.border.right.width}px ${theme.events.styles[computedType].container.border.right.style} ${theme.events.styles[computedType].container.border.right.color}`,
@@ -82,9 +85,9 @@ const EventListItem = (props: EventListItemProps) => {
   };
 
   return (
-    <div style={containerStyle} className="flex">
-      <div style={nameStyle}>Name</div>
-      <div style={messageStyle}>Message</div>
+    <div style={containerStyle} className="inline-flex">
+      <div style={nameStyle}>{name}</div>
+      <div style={messageStyle}>{message}</div>
     </div>
   );
 };
