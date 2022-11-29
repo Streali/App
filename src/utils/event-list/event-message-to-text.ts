@@ -56,7 +56,7 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
     const payload = event.payload as RaidEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
-      .replaceAll('{{viewers}}', payload.viewers.toString());
+      .replaceAll('{{amount}}', payload.viewers.toString());
   }
 
   if (event.type === '52') {
