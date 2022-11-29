@@ -12,7 +12,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
     <div>
       <TabItem title="Fullwidth">
         <Controller
-          name={`events.${props.id}.container.full_width`}
+          name={`events.styles.${props.id}.container.full_width`}
           control={props.control}
           defaultValue={true}
           render={({ field: { onChange, value } }) => (
@@ -22,7 +22,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Background">
         <Controller
-          name={`events.${props.id}.container.background`}
+          name={`events.styles.${props.id}.container.background`}
           control={props.control}
           defaultValue={'#00000000'}
           render={({ field: { onChange, value } }) => (
@@ -32,7 +32,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Box border">
         <Controller
-          name={`events.${props.id}.container.border`}
+          name={`events.styles.${props.id}.container.border`}
           control={props.control}
           defaultValue={''}
           render={({ field: { onChange, value } }) => (
@@ -42,7 +42,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Box Shadow">
         <Controller
-          name={`events.${props.id}.container.shadow`}
+          name={`events.styles.${props.id}.container.shadow`}
           control={props.control}
           defaultValue={{
             shadowColor: '#000000',
@@ -57,7 +57,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Outer margin">
         <Controller
-          name={`events.${props.id}.container.margin`}
+          name={`events.styles.${props.id}.container.margin`}
           control={props.control}
           defaultValue={{
             top: 0,
@@ -72,7 +72,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Inner margin">
         <Controller
-          name={`events.${props.id}.container.padding`}
+          name={`events.styles.${props.id}.container.padding`}
           control={props.control}
           defaultValue={{
             top: 0,
@@ -87,7 +87,7 @@ const ContainerContent = (props: { id: string; control: Control }) => {
       </TabItem>
       <TabItem title="Border radius">
         <Controller
-          name={`events.${props.id}.container.radius`}
+          name={`events.styles.${props.id}.container.radius`}
           control={props.control}
           defaultValue={{
             top_left: 4,

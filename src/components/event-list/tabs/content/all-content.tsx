@@ -40,7 +40,7 @@ const Container = (props: { control: Control }) => {
     <div>
       <TabItem title="Fullwidth">
         <Controller
-          name={`events.all.container.full_width`}
+          name={`events.styles.all.container.full_width`}
           control={props.control}
           defaultValue={true}
           render={({ field: { onChange, value } }) => (

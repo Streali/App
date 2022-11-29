@@ -1,6 +1,7 @@
 import { Control, Controller } from 'react-hook-form';
 import { SingleValue } from 'react-select';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { Alignment } from '~/components/forms/alignment/alignment';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
 import { Slider } from '~/components/forms/slider/slider';
@@ -60,6 +61,16 @@ const TabGeneral = (props: TabGeneralProps) => {
               className="mb-3"
               multiple
             />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Alignment">
+        <Controller
+          name="alignment"
+          control={control}
+          defaultValue={'right'}
+          render={({ field: { onChange, value } }) => (
+            <Alignment value={value} onChange={onChange} className="mb-3" />
           )}
         />
       </TabItem>

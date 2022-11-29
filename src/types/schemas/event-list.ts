@@ -86,6 +86,7 @@ export const EventListSchema = z.object({
       label: z.string(),
     })
   ),
+  alignment: z.enum(['left', 'center', 'right']),
   events_spacing: z.number(),
   animation_in: z.string(),
   animation_out: z.optional(z.string()),

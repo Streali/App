@@ -40,7 +40,8 @@ export const defaultEventListTheme: EventList = {
       label: 'Goal End',
     },
   ],
-  events_spacing: 26,
+  alignment: 'right',
+  events_spacing: 8,
   animation_in: 'fade-in-left',
   delete_event: true,
   duration_before_delete: 7000,
@@ -90,10 +91,26 @@ export const defaultEventListTheme: EventList = {
           full_width: true,
           background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -110,7 +127,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -124,7 +141,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -140,10 +157,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -154,27 +187,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -190,10 +223,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -204,14 +253,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -224,12 +273,28 @@ export const defaultEventListTheme: EventList = {
       follow: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -246,7 +311,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -260,7 +325,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -276,10 +341,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -290,27 +371,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -326,10 +407,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -340,14 +437,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -360,12 +457,28 @@ export const defaultEventListTheme: EventList = {
       cheer: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -382,7 +495,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -396,7 +509,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -412,10 +525,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -426,27 +555,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -462,10 +591,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -476,14 +621,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -496,12 +641,28 @@ export const defaultEventListTheme: EventList = {
       subscribe: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -518,7 +679,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -532,7 +693,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -548,10 +709,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -562,27 +739,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -598,10 +775,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -612,14 +805,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -632,12 +825,28 @@ export const defaultEventListTheme: EventList = {
       subscription_gift: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -654,7 +863,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -668,7 +877,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -684,10 +893,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -698,27 +923,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -734,10 +959,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -748,14 +989,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -768,12 +1009,28 @@ export const defaultEventListTheme: EventList = {
       raid: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -790,7 +1047,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -804,7 +1061,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -820,10 +1077,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -834,27 +1107,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -870,10 +1143,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -884,14 +1173,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -904,12 +1193,28 @@ export const defaultEventListTheme: EventList = {
       hype_train_begin: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -926,7 +1231,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -940,7 +1245,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -956,10 +1261,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -970,27 +1291,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1006,10 +1327,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1020,14 +1357,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -1040,12 +1377,28 @@ export const defaultEventListTheme: EventList = {
       hype_train_end: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1062,7 +1415,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -1076,7 +1429,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1092,10 +1445,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1106,27 +1475,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1142,10 +1511,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1156,14 +1541,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -1176,12 +1561,28 @@ export const defaultEventListTheme: EventList = {
       goal_begin: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1198,7 +1599,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -1212,7 +1613,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1228,10 +1629,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1242,27 +1659,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1278,10 +1695,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1292,14 +1725,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -1312,12 +1745,28 @@ export const defaultEventListTheme: EventList = {
       goal_end: {
         container: {
           full_width: true,
-          background: '#00000000',
+          background: '#ffffff',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1334,7 +1783,7 @@ export const defaultEventListTheme: EventList = {
           padding: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           radius: {
@@ -1348,7 +1797,7 @@ export const defaultEventListTheme: EventList = {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '600',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1364,10 +1813,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 1,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1378,27 +1843,27 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
-            top_left: 4,
-            top_right: 4,
-            bottom_right: 4,
-            bottom_left: 4,
+            top_left: 0,
+            top_right: 0,
+            bottom_right: 0,
+            bottom_left: 0,
           },
         },
         message: {
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
-            fontWeight: '700',
+            fontWeight: '400',
             color: '#000000',
             textAlign: 'left',
             textDecoration: 'none',
@@ -1414,10 +1879,26 @@ export const defaultEventListTheme: EventList = {
           },
           background: '#00000000',
           border: {
-            top: { color: '#000000', width: 1, style: 'solid' },
-            right: { color: '#000000', width: 1, style: 'solid' },
-            bottom: { color: '#000000', width: 1, style: 'solid' },
-            left: { color: '#000000', width: 1, style: 'solid' },
+            top: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            right: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            bottom: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
+            left: {
+              color: '#000000',
+              width: 0,
+              style: 'solid',
+            },
           },
           shadow: {
             shadowColor: '#000000',
@@ -1428,14 +1909,14 @@ export const defaultEventListTheme: EventList = {
           margin: {
             top: 0,
             right: 0,
-            bottom: 8,
+            bottom: 0,
             left: 0,
           },
           padding: {
-            top: 0,
-            right: 0,
-            bottom: 8,
-            left: 0,
+            top: 12,
+            right: 12,
+            bottom: 12,
+            left: 12,
           },
           radius: {
             top_left: 4,
@@ -1447,4 +1928,5 @@ export const defaultEventListTheme: EventList = {
       },
     },
   },
+  animation_out: 'fade-in-right',
 };

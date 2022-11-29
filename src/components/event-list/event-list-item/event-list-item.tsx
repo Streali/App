@@ -28,7 +28,7 @@ const EventListItem = (props: EventListItemProps) => {
   const computedType = theme.events.modify_all ? 'all' : type;
 
   const containerStyle = {
-    width: theme.events.styles[computedType].container ? '100%' : 'auto',
+    width: theme.events.styles[computedType].container.full_width ? '100%' : 'auto',
     backgroundColor: theme.events.styles[computedType].container.background,
     borderTop: `${theme.events.styles[computedType].container.border.top.width}px ${theme.events.styles[computedType].container.border.top.style} ${theme.events.styles[computedType].container.border.top.color}`,
     borderRight: `${theme.events.styles[computedType].container.border.right.width}px ${theme.events.styles[computedType].container.border.right.style} ${theme.events.styles[computedType].container.border.right.color}`,
@@ -39,6 +39,12 @@ const EventListItem = (props: EventListItemProps) => {
     borderRadius: `${theme.events.styles[computedType].container.radius.top_left}px ${theme.events.styles[computedType].container.radius.top_right}px ${theme.events.styles[computedType].container.radius.bottom_right}px ${theme.events.styles[computedType].container.radius.bottom_left}px`,
     boxShadow: `${theme.events.styles[computedType].container.shadow.shadowOffsetX}px ${theme.events.styles[computedType].container.shadow.shadowOffsetY}px ${theme.events.styles[computedType].container.shadow.shadowBlur}px ${theme.events.styles[computedType].container.shadow.shadowColor}`,
     marginBottom: `${theme.events_spacing}px`,
+    alignSelf:
+      theme.alignment === 'left'
+        ? 'flex-start'
+        : theme.alignment === 'right'
+        ? 'flex-end'
+        : ('center' as 'flex-start' | 'flex-end' | 'center'),
   };
 
   const nameStyle = {
@@ -106,15 +112,13 @@ const EventListItem = (props: EventListItemProps) => {
       }),
   };
 
-  console.log(animationVariants);
-
   useEffect(() => {
     if (theme.delete_event) {
       setTimeout(() => {
         setDisplay(false);
       }, theme.duration_before_delete);
     }
-  }, [theme]);
+  }, []);
 
   const content = (
     <motion.div

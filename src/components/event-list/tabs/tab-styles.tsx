@@ -39,7 +39,7 @@ const TabStyles = (props: TabEventsProps) => {
     | 'goal_begin'
     | 'goal_end'
   >('follow');
-  const [modifyAllEvents, setModifyAllEvents] = useState(true);
+  const [modifyAllEvents, setModifyAllEvents] = useState(control._formValues.events.modify_all);
   const [applyAll, setApplyAll] = useState(false);
 
   const handleApplyAll = () => {
