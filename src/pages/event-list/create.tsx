@@ -1,4 +1,4 @@
-import { SingleValue } from 'react-select';
+import EventListDemo from '~/components/event-list/event-list-demo';
 import EventListItem from '~/components/event-list/event-list-item/event-list-item';
 import { EventListSettings } from '~/components/event-list/event-list-settings';
 import { Select } from '~/components/forms/select/select';
@@ -107,6 +107,9 @@ export const EventListCreate = () => {
           }
           event={fakeEvent(selectEvent.value)}
         />
+      </div>
+      <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
+        <EventListDemo theme={theme} />
       </div>
     </div>
   );
