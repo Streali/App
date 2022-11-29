@@ -24,6 +24,7 @@ type EventListItemProps = {
 const EventListItem = (props: EventListItemProps) => {
   const { theme, type, name, message, event } = props;
   const [display, setDisplay] = useState(true);
+  const container = useRef<HTMLDivElement>(null);
 
   const computedType = theme.events.modify_all ? 'all' : type;
 
@@ -70,6 +71,22 @@ const EventListItem = (props: EventListItemProps) => {
     padding: `${theme.events.styles[computedType].name.padding.top}px ${theme.events.styles[computedType].name.padding.right}px ${theme.events.styles[computedType].name.padding.bottom}px ${theme.events.styles[computedType].name.padding.left}px`,
     borderRadius: `${theme.events.styles[computedType].name.radius.top_left}px ${theme.events.styles[computedType].name.radius.top_right}px ${theme.events.styles[computedType].name.radius.bottom_right}px ${theme.events.styles[computedType].name.radius.bottom_left}px`,
     boxShadow: `${theme.events.styles[computedType].name.shadow.shadowOffsetX}px ${theme.events.styles[computedType].name.shadow.shadowOffsetY}px ${theme.events.styles[computedType].name.shadow.shadowBlur}px ${theme.events.styles[computedType].name.shadow.shadowColor}`,
+  };
+
+  const accentStyle = {
+    fontFamily: theme.events.styles[computedType].message.accent.fontFamily,
+    fontSize: theme.events.styles[computedType].message.accent.fontSize + 'px',
+    fontWeight: theme.events.styles[computedType].message.accent.fontWeight,
+    color: theme.events.styles[computedType].message.accent.color,
+    textAlign: theme.events.styles[computedType].message.accent.textAlign as
+      | 'left'
+      | 'center'
+      | 'right',
+    textDecoration: theme.events.styles[computedType].message.accent.textDecoration,
+    fontStyle: theme.events.styles[computedType].message.accent.fontStyle,
+    letterSpacing: theme.events.styles[computedType].message.accent.letterSpacing + 'px',
+    lineHeight: theme.events.styles[computedType].message.accent.lineHeight + '%',
+    textShadow: `${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetX}px ${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetY}px ${theme.events.styles[computedType].message.accent.textShadow.shadowBlur}px ${theme.events.styles[computedType].message.accent.textShadow.shadowColor}`,
   };
 
   const messageStyle = {
@@ -120,6 +137,28 @@ const EventListItem = (props: EventListItemProps) => {
     }
   }, []);
 
+  useLayoutEffect(() => {
+    if (container && container.current) {
+      const spans = container.current.querySelectorAll('span');
+      spans.forEach((span) => {
+        span.style.color = theme.events.styles[computedType].message.accent.color;
+        span.style.fontFamily = theme.events.styles[computedType].message.accent.fontFamily;
+        span.style.fontSize = theme.events.styles[computedType].message.accent.fontSize + 'px';
+        span.style.fontWeight = theme.events.styles[computedType].message.accent.fontWeight;
+        span.style.textAlign = theme.events.styles[computedType].message.accent.textAlign as
+          | 'left'
+          | 'center'
+          | 'right';
+        span.style.textDecoration = theme.events.styles[computedType].message.accent.textDecoration;
+        span.style.fontStyle = theme.events.styles[computedType].message.accent.fontStyle;
+        span.style.letterSpacing =
+          theme.events.styles[computedType].message.accent.letterSpacing + 'px';
+        span.style.lineHeight = theme.events.styles[computedType].message.accent.lineHeight + '%';
+        span.style.textShadow = `${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetX}px ${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetY}px ${theme.events.styles[computedType].message.accent.textShadow.shadowBlur}px ${theme.events.styles[computedType].message.accent.textShadow.shadowColor}`;
+      });
+    }
+  }, [theme]);
+
   const content = (
     <motion.div
       variants={animationVariants}
@@ -127,10 +166,14 @@ const EventListItem = (props: EventListItemProps) => {
       animate="in"
       exit="out"
       style={containerStyle}
+      ref={container}
       className="inline-flex"
     >
       <div style={nameStyle}>{name}</div>
-      <div style={messageStyle}>{EventMessageToText(message, event)}</div>
+      <div
+        style={messageStyle}
+        dangerouslySetInnerHTML={{ __html: EventMessageToText(message, event, accentStyle) }}
+      ></div>
     </motion.div>
   );
 

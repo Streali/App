@@ -145,6 +145,15 @@ const TabTexts = (props: TabTextsProps) => {
           (event) =>
             event.value === selectedTab && (
               <TabItem title="Texts" key={event.value}>
+                <div className="mb-3 rounded bg-dark-500 p-3 text-sm">
+                  <p className="mb-3">
+                    For the message, you can use # to add a dynamic text and surround your a word
+                    with ** to make it accent.
+                  </p>
+                  <span className="rounded border border-dark-300 bg-dark-400 px-3 py-1 text-xs">
+                    Ex: #pseudo follow the **channel**!
+                  </span>
+                </div>
                 <Controller
                   name={`events.texts.${event.value}.name`}
                   control={control}

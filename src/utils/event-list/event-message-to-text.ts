@@ -1,3 +1,4 @@
+import CSS from 'csstype';
 import {
   BaseEvent,
   CheerEvent,
@@ -11,10 +12,18 @@ import {
 } from '~/types/schemas/event';
 import { SubscribeTierToText } from '~/utils/event/subscribe-tier-to-text';
 
-export const EventMessageToText = (message: string, event: BaseEvent) => {
+export const EventMessageToText = (
+  message: string,
+  event: BaseEvent,
+  accentStyle: CSS.Properties
+) => {
+  const regex = /\*\*(.*?)\*\*/g;
+
   if (event.type === '10') {
     const payload = event.payload as FollowEvent;
-    return message.replaceAll('{{pseudo}}', payload.displayName);
+    return message
+      .replaceAll('{{pseudo}}', payload.displayName)
+      .replaceAll(regex, `<span style=${accentStyle}>$1</span>`);
   }
 
   if (event.type === '20') {
@@ -24,7 +33,8 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
         '{{pseudo}}',
         payload.isAnonymous ? 'Anonymous' : payload.displayName ? payload.displayName : 'Unknown'
       )
-      .replaceAll('{{amount}}', payload.bits.toString());
+      .replaceAll('{{amount}}', payload.bits.toString())
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '30') {
@@ -34,7 +44,8 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
       .replaceAll('{{tier}}', SubscribeTierToText(payload.tier))
       .replaceAll('{{months}}', payload.cumulativeMonths.toString())
       .replaceAll('{{streak}}', payload.streakMonths ? payload.streakMonths.toString() : '1')
-      .replaceAll('{{duration}}', payload.durationMonths.toString());
+      .replaceAll('{{duration}}', payload.durationMonths.toString())
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '31') {
@@ -49,19 +60,30 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
         '{{cumulative}}',
         payload.cumulativeTotal ? payload.cumulativeTotal.toString() : '1'
       )
-      .replaceAll('{{tier}}', SubscribeTierToText(payload.tier));
+      .replaceAll('{{tier}}', SubscribeTierToText(payload.tier))
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '40') {
     const payload = event.payload as RaidEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
-      .replaceAll('{{amount}}', payload.viewers.toString());
+      .replaceAll('{{amount}}', payload.viewers.toString())
+      .replaceAll(regex, '<span>$1</span>');
+  }
+
+  if (event.type === '50') {
+    const payload = event.payload as HypeTrainEndEvent;
+    return message
+      .replaceAll('{{level}}', payload.level.toString())
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '52') {
     const payload = event.payload as HypeTrainEndEvent;
-    return message.replaceAll('{{level}}', payload.level.toString());
+    return message
+      .replaceAll('{{level}}', payload.level.toString())
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '60') {
@@ -69,7 +91,8 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
     return message
       .replaceAll('{{amount}}', payload.currentAmount.toString())
       .replaceAll('{{target}}', payload.targetAmount.toString())
-      .replaceAll('{{type}}', payload.type);
+      .replaceAll('{{type}}', payload.type)
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   if (event.type === '62') {
@@ -77,7 +100,8 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
     return message
       .replaceAll('{{amount}}', payload.currentAmount.toString())
       .replaceAll('{{target}}', payload.targetAmount.toString())
-      .replaceAll('{{type}}', payload.type);
+      .replaceAll('{{type}}', payload.type)
+      .replaceAll(regex, '<span>$1</span>');
   }
 
   return message;

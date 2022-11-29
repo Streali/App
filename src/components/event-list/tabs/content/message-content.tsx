@@ -21,6 +21,16 @@ const MessageContent = (props: { id: string; control: Control }) => {
           )}
         />
       </TabItem>
+      <TabItem title="Accent text style">
+        <Controller
+          name={`events.styles.${props.id}.message.accent`}
+          control={props.control}
+          defaultValue={defaultEventListTheme.events.styles.all.message.text_style}
+          render={({ field: { onChange, value } }) => (
+            <TextStyle onChange={onChange} settings={value} />
+          )}
+        />
+      </TabItem>
       <TabItem title="Background">
         <Controller
           name={`events.styles.${props.id}.message.background`}

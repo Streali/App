@@ -19,6 +19,7 @@ export const EventListContainerStylesSchema = z.object({
 
 export const EventListMessageStylesSchema = z.object({
   text_style: TextStyleSchema,
+  accent: TextStyleSchema,
   background: z.string(),
   border: BorderSettingsSchema,
   margin: SpacingSchema,
