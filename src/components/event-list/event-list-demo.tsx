@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
@@ -46,7 +47,7 @@ const EventListDemo = (props: EventListDemoProps) => {
   return (
     <>
       {events.map((event: BaseEvent) => (
-        <div key={event.id} className="w-full">
+        <AnimatePresence key={event.id}>
           <EventListItem
             theme={theme}
             name={
@@ -91,7 +92,7 @@ const EventListDemo = (props: EventListDemoProps) => {
                 | 'goal_end'
             }
           />
-        </div>
+        </AnimatePresence>
       ))}
     </>
   );

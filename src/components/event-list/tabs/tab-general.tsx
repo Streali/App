@@ -1,4 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
+import { SingleValue } from 'react-select';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
@@ -84,12 +85,15 @@ const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="animation_in"
           control={control}
-          defaultValue={animationList[1]}
+          defaultValue={animationList[1].value}
           render={({ field: { onChange, value } }) => (
             <Select
               options={animationList}
-              defaultValue={value}
-              onChange={onChange}
+              defaultValue={animationList.find((item) => item.value === value)}
+              onChange={(value) => {
+                const v = value as SingleValue<{ label: string; value: string }>;
+                onChange(v?.value);
+              }}
               className="mb-3"
             />
           )}
@@ -134,14 +138,17 @@ const TabGeneral = (props: TabGeneralProps) => {
           </TabItem>
           <TabItem title="Animation out">
             <Controller
-              name="animation_in"
+              name="animation_out"
               control={control}
               defaultValue={animationList[2]}
               render={({ field: { onChange, value } }) => (
                 <Select
                   options={animationList}
-                  defaultValue={value}
-                  onChange={onChange}
+                  defaultValue={animationList.find((item) => item.value === value)}
+                  onChange={(value) => {
+                    const v = value as SingleValue<{ label: string; value: string }>;
+                    onChange(v?.value);
+                  }}
                   className="mb-3"
                 />
               )}

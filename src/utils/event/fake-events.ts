@@ -4,7 +4,7 @@ export const fakeEvent = (type: string): BaseEvent => {
   switch (type) {
     case '10':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '10',
         payload: {
@@ -15,7 +15,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '20':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '20',
         payload: {
@@ -28,7 +28,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '30':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '30',
         payload: {
@@ -43,7 +43,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '31':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '31',
         payload: {
@@ -58,7 +58,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '40':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '40',
         payload: {
@@ -70,7 +70,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '50':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '50',
         payload: {
@@ -84,7 +84,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '52':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '52',
         payload: {
@@ -98,7 +98,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '60':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '60',
         payload: {
@@ -111,7 +111,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     case '62':
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '60',
         payload: {
@@ -124,7 +124,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       };
     default:
       return {
-        id: '1234567890',
+        id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
         type: '10',
         payload: {

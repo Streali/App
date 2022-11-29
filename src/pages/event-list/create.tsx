@@ -51,6 +51,11 @@ export const EventListCreate = () => {
         | 'Goal End'
     ];
 
+  const themeDemo = {
+    ...theme,
+    delete_event: false,
+  };
+
   return (
     <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
@@ -64,7 +69,7 @@ export const EventListCreate = () => {
           className="w-[200px]"
         />
         <EventListItem
-          theme={theme}
+          theme={themeDemo}
           type={
             type as
               | 'follow'
