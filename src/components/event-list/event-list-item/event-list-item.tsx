@@ -1,9 +1,12 @@
+import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
+import { EventMessageToText } from '~/utils/event-list/event-message-to-text';
 
 type EventListItemProps = {
   theme: EventList;
   name: string;
   message: string;
+  event: BaseEvent;
   type:
     | 'follow'
     | 'cheer'
@@ -17,7 +20,7 @@ type EventListItemProps = {
 };
 
 const EventListItem = (props: EventListItemProps) => {
-  const { theme, type, name, message } = props;
+  const { theme, type, name, message, event } = props;
 
   const computedType = theme.events.modify_all ? 'all' : type;
 
@@ -87,7 +90,7 @@ const EventListItem = (props: EventListItemProps) => {
   return (
     <div style={containerStyle} className="inline-flex">
       <div style={nameStyle}>{name}</div>
-      <div style={messageStyle}>{message}</div>
+      <div style={messageStyle}>{EventMessageToText(message, event)}</div>
     </div>
   );
 };

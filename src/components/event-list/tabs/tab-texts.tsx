@@ -73,10 +73,12 @@ const eventAutocompleteOptions: EventObject = {
   hype_train_end: [{ id: 'level', display: 'level' }],
   goal_begin: [
     { id: 'amount', display: 'amount' },
+    { id: 'target', display: 'target amount' },
     { id: 'type', display: 'type' },
   ],
   goal_end: [
     { id: 'amount', display: 'amount' },
+    { id: 'target', display: 'target amount' },
     { id: 'type', display: 'type' },
   ],
 };
