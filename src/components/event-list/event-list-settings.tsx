@@ -6,6 +6,7 @@ import { TabProps, Tabs } from '../tabs/tabs';
 import TabGeneral from './tabs/tab-general';
 import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
+import { useCreateEventList } from '~/hooks/event-list/use-create-event-list';
 
 type EventListSettingsProps = {
   onThemeChange: (theme: EventList) => void;
@@ -16,6 +17,7 @@ export const EventListSettings = (props: EventListSettingsProps) => {
   const { handleSubmit, control, setValue, watch } = useForm({
     defaultValues: defaultEventListTheme as FieldValues,
   });
+  const { mutate: saveTheme } = useCreateEventList();
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
@@ -27,7 +29,7 @@ export const EventListSettings = (props: EventListSettingsProps) => {
   ];
 
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    console.log(theme);
+    saveTheme(theme);
   });
 
   useEffect(() => {
