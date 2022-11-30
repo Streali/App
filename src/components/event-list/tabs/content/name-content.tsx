@@ -1,3 +1,4 @@
+import { Switch } from '@radix-ui/react-switch';
 import { Control, Controller } from 'react-hook-form';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { BorderRadius } from '~/components/forms/border-radius/border-radius';
@@ -11,6 +12,16 @@ import { defaultEventListTheme } from '~/utils/event-list/default-event-list-the
 const NameContent = (props: { id: string; control: Control }) => {
   return (
     <div>
+      <TabItem title="Hide the name">
+        <Controller
+          name={`events.styles.${props.id}.name.hide`}
+          control={props.control}
+          defaultValue={defaultEventListTheme.events.styles.all.name.hide}
+          render={({ field: { onChange, value } }) => (
+            <Switch onChange={onChange} checked={value} className="mb-3" />
+          )}
+        />
+      </TabItem>
       <TabItem title="Text style">
         <Controller
           name={`events.styles.${props.id}.name.text_style`}

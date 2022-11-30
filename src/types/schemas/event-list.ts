@@ -29,6 +29,7 @@ export const EventListMessageStylesSchema = z.object({
 });
 
 export const EventListNameStylesSchema = z.object({
+  hide: z.boolean(),
   text_style: TextStyleSchema,
   background: z.string(),
   border: BorderSettingsSchema,

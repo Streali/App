@@ -138,6 +138,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -339,6 +340,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -540,6 +542,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -741,6 +744,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -942,6 +946,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -1143,6 +1148,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -1344,6 +1350,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -1545,6 +1552,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -1746,6 +1754,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,
@@ -1947,6 +1956,7 @@ export const defaultEventListTheme: EventList = {
           },
         },
         name: {
+          hide: false,
           text_style: {
             fontFamily: 'Rubik',
             fontSize: 16,

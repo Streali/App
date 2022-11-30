@@ -1,11 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
 import { toastr, ToastType } from '~/components/toast/toast';
+import { EventList } from '~/types/schemas/event-list';
 import { apiClient } from '~/utils/axios/axios';
 
-type CreateEventListParams = {};
-
 export function useCreateEventList() {
-  return useMutation(async (params: CreateEventListParams) => {
+  return useMutation(async (params: EventList) => {
     const { data } = await apiClient.post('/event-lists', params);
 
     toastr(

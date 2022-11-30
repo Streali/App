@@ -115,6 +115,16 @@ const Container = (props: { control: Control }) => {
 const Name = (props: { control: Control }) => {
   return (
     <div>
+      <TabItem title="Hide the name">
+        <Controller
+          name={`events.styles.all.name.hide`}
+          control={props.control}
+          defaultValue={defaultEventListTheme.events.styles.all.name.hide}
+          render={({ field: { onChange, value } }) => (
+            <Switch onChange={onChange} checked={value} className="mb-3" />
+          )}
+        />
+      </TabItem>
       <TabItem title="Text style">
         <Controller
           name={`events.styles.all.name.text_style`}
