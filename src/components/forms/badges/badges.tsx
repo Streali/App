@@ -1,3 +1,4 @@
+import { SingleValue } from 'react-select';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
 import { Switch } from '~/components/forms/switch/switch';
@@ -54,7 +55,10 @@ export const Badges = (props: BadgesProps) => {
             options={badgesPositionOptions}
             className="w-full"
             defaultValue={badgesPositionOptions.find((pos) => pos.value === settings?.position)}
-            onChange={(option) => handleSettingsChange('position', option?.value || 'left')}
+            onChange={(value) => {
+              const v = value as SingleValue<{ value: string; label: string }>;
+              handleSettingsChange('position', v?.value || 'left');
+            }}
           />
         </div>
         <div className="flex-1">
@@ -62,7 +66,10 @@ export const Badges = (props: BadgesProps) => {
             options={badgesStyleOptions}
             className="w-full"
             defaultValue={badgesStyleOptions.find((style) => style.value === settings?.style)}
-            onChange={(option) => handleSettingsChange('style', option?.value || 'twitch')}
+            onChange={(value) => {
+              const v = value as SingleValue<{ value: string; label: string }>;
+              handleSettingsChange('style', v?.value || 'twitch');
+            }}
           />
         </div>
       </div>

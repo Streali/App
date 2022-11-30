@@ -1,3 +1,4 @@
+import { SingleValue } from 'react-select';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
@@ -111,9 +112,10 @@ export const AlertElementSettings = memo(function AlertElementSettings(
                 defaultValue={animationList.find(
                   (anim) => anim.value === currentElement.animation_in
                 )}
-                onChange={(value) =>
-                  onAnimationChange && onAnimationChange('in', value?.value || 'none')
-                }
+                onChange={(value) => {
+                  const v = value as SingleValue<{ value: string; label: string }>;
+                  onAnimationChange && onAnimationChange('in', v?.value || 'none');
+                }}
               />
             </div>
             <div className="flex-1">
@@ -124,9 +126,10 @@ export const AlertElementSettings = memo(function AlertElementSettings(
                 defaultValue={animationList.find(
                   (anim) => anim.value === currentElement.animation_out
                 )}
-                onChange={(value) =>
-                  onAnimationChange && onAnimationChange('out', value?.value || 'none')
-                }
+                onChange={(value) => {
+                  const v = value as SingleValue<{ value: string; label: string }>;
+                  onAnimationChange && onAnimationChange('out', v?.value || 'none');
+                }}
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
+import { SingleValue } from 'react-select';
 import { Alignment } from '~/components/forms/alignment/alignment';
 import { DnDList } from '~/components/forms/dnd-list/dnd-list';
 import { Input } from '~/components/forms/input/input';
@@ -71,7 +72,10 @@ export const TabGeneral = (props: TabGeneralProps) => {
           render={({ field: { onChange, value } }) => (
             <Select
               defaultValue={animationList.find((item) => item.value === value)}
-              onChange={(value) => onChange(value?.value)}
+              onChange={(value) => {
+                const v = value as SingleValue<{ value: string; label: string }>;
+                onChange(v?.value);
+              }}
               className="mb-3"
               options={animationList}
             />
@@ -89,7 +93,10 @@ export const TabGeneral = (props: TabGeneralProps) => {
                 label: value[0].toUpperCase() + value.substring(1),
                 value: value,
               }}
-              onChange={(value) => onChange(value?.value)}
+              onChange={(value) => {
+                const v = value as SingleValue<{ value: string; label: string }>;
+                onChange(v?.value);
+              }}
               className="mb-3"
               options={[
                 { label: 'Stack', value: 'stack' },

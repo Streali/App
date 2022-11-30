@@ -1,4 +1,4 @@
-import { Control, Controller } from 'react-hook-form';
+import { SingleValue } from 'react-select';
 import { Button, ButtonColor } from '~/components/button/button';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
@@ -55,7 +55,10 @@ export const AlertSettings = (props: AlertSettingsProps) => {
           <Select
             defaultValue={alertSize.find((item) => item.value === alertDimension)}
             options={alertSize}
-            onChange={(value) => onSettingsChange('size', value?.value || '1 / 1')}
+            onChange={(value) => {
+              const v = value as SingleValue<{ value: string; label: string }>;
+              onSettingsChange('size', v?.value || '1 / 1');
+            }}
             className="mb-3"
           />
         </TabItem>

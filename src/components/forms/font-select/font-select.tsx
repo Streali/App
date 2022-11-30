@@ -42,7 +42,9 @@ export const FontSelect = (props: FontSelectProps) => {
     <Select
       label={label}
       className={className}
-      onChange={handleFontChange}
+      onChange={(value) => {
+        handleFontChange(value as SingleValue<{ value: string; label: string }>);
+      }}
       disabled={disabled}
       defaultValue={{ label: value, value: value }}
       placeholder="Select font"

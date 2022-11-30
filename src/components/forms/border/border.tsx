@@ -1,3 +1,4 @@
+import { SingleValue } from 'react-select';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { Color } from '~/components/forms/color/color';
 import { Input } from '~/components/forms/input/input';
@@ -90,7 +91,10 @@ export const Border = (props: BorderProps) => {
               }
             }
             className="w-full"
-            onChange={(value) => handleAllChanges('style', value?.value || 'solid')}
+            onChange={(value) => {
+              const v = value as SingleValue<{ value: string; label: string }>;
+              handleAllChanges('style', v?.value || 'solid');
+            }}
           />
         </div>
         <Button
@@ -178,7 +182,10 @@ export const Border = (props: BorderProps) => {
                       }
                     }
                     className="w-full"
-                    onChange={(value) => handleChanges('style', value?.value || 'solid')}
+                    onChange={(value) => {
+                      const v = value as SingleValue<{ value: string; label: string }>;
+                      handleChanges('style', v?.value || 'solid');
+                    }}
                   />
                 </div>
               </div>

@@ -1,3 +1,4 @@
+import { SingleValue } from 'react-select';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { Color } from '~/components/forms/color/color';
 import { FontSelect, FontVariants } from '~/components/forms/font-select/font-select';
@@ -158,7 +159,10 @@ export const TextStyle = (props: TextStyleProps) => {
               label: convertFontWeight(fontSettings.fontWeight),
               value: fontSettings.fontWeight,
             }}
-            onChange={(value) => handleSettingsChange('fontWeight', value?.value || '')}
+            onChange={(value) => {
+              const v = value as SingleValue<{ value: string; label: string }>;
+              handleSettingsChange('fontWeight', v?.value || '');
+            }}
           />
         </div>
         <div className="flex h-10 w-1/3 shrink-0 gap-2 rounded-lg bg-dark-400 p-2">
