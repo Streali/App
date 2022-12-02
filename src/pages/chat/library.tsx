@@ -42,7 +42,7 @@ export const ChatLibrary = () => {
         </div>
       </div>
       {!isLoading && data && (
-        <div className="grid grid-cols-3 grid-rows-3 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {data &&
             data.length > 0 &&
             data?.map((theme: ChatTheme) => (

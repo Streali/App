@@ -8,15 +8,10 @@ import { EventList, EventListResponse, EventListSchema } from '~/types/schemas/e
 
 const EventListLibrary = () => {
   const { data, isLoading } = useUserEventList();
-  const navigate = useNavigate();
   const { mutate: createEventList } = useCreateEventList();
 
   const handleSubmit = (theme: FieldValues) => {
-    createEventList(theme.import as EventList, {
-      onSuccess: () => {
-        navigate('/chats');
-      },
-    });
+    createEventList(theme.import as EventList);
   };
 
   if (isLoading) {
@@ -34,8 +29,8 @@ const EventListLibrary = () => {
                 Import theme
               </Button>
             }
-            title={'Import Chat Theme'}
-            text={'Chat Theme Title'}
+            title={'Import Event list Theme'}
+            text={'Event list title'}
             schema={EventListSchema}
             onSave={handleSubmit}
           />
@@ -45,7 +40,7 @@ const EventListLibrary = () => {
         </div>
       </div>
       {!isLoading && data && (
-        <div className="grid grid-cols-3 grid-rows-3 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {data &&
             data.length > 0 &&
             data?.map((theme: EventListResponse) => (

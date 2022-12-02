@@ -1,4 +1,5 @@
 import { useDeleteEventList } from '~/hooks/event-list/use-delete-event-list';
+import { useExportEventList } from '~/hooks/event-list/use-export-event-list';
 import { EventList } from '~/types/schemas/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
 import { Button, ButtonColor } from '../button/button';
@@ -18,6 +19,7 @@ const EventListCard = (props: EventListCardProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { mutate: deleteEventList } = useDeleteEventList();
+  const { mutate: exportEventList } = useExportEventList();
 
   theme.delete_event = false;
 
@@ -62,6 +64,13 @@ const EventListCard = (props: EventListCardProps) => {
                   );
                 },
                 icon: 'file-copy-line',
+              },
+              {
+                title: 'Export',
+                onClick: () => {
+                  exportEventList(theme);
+                },
+                icon: 'file-code-line',
               },
               {
                 title: 'Delete',

@@ -17,7 +17,7 @@ export interface ImportProps {
 }
 
 export const Import = (props: ImportProps) => {
-  const { trigger, title, schema, onSave, onConfirm } = props;
+  const { trigger, title, schema, onSave, onConfirm, text } = props;
   const { handleSubmit, control } = useForm({});
   const [isOpen, setIsOpen] = useState(false);
   const [confirm, setConfirm] = useState('');
@@ -98,7 +98,7 @@ export const Import = (props: ImportProps) => {
               render={({ field: { onChange } }) => (
                 <Input
                   type="text"
-                  label="Chat Theme Title"
+                  label={text}
                   state={confirm.length > 3 ? InputState.Success : InputState.Error}
                   onChange={(value) => {
                     handleInputChange(value);
