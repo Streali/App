@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
-import { selectAnimation, selectAnimationOut } from '~/utils/chat/animations';
+import { selectAnimation, selectAnimationOut } from '~/utils/common/animations';
 import { EventMessageToText } from '~/utils/event-list/event-message-to-text';
 
 type EventListItemProps = {

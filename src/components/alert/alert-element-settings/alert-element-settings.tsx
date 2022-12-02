@@ -2,7 +2,7 @@ import { SingleValue } from 'react-select';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
-import { animationList } from '~/utils/chat/animations';
+import { animationList } from '~/utils/common/animations';
 import { AudioSettings } from './audio-settings';
 import { ImageSettings } from './image-settings';
 import { LottieSettings } from './lottie-settings';

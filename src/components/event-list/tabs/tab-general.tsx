@@ -6,7 +6,7 @@ import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
 import { Slider } from '~/components/forms/slider/slider';
 import { Switch } from '~/components/forms/switch/switch';
-import { animationList } from '~/utils/chat/animations';
+import { animationList } from '~/utils/common/animations';
 
 interface TabGeneralProps {
   control: Control;

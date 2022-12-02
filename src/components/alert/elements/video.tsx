@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { selectAnimation, selectAnimationOut } from '~/utils/chat/animations';
+import { selectAnimation, selectAnimationOut } from '~/utils/common/animations';
 import type { AlertElementVideoSettings } from '~/types/schemas/alert';
 import type { Milliseconds, Pixels } from '~/types/types/custom';
 

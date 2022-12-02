@@ -5,8 +5,8 @@ import { DnDList } from '~/components/forms/dnd-list/dnd-list';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
 import { Slider } from '~/components/forms/slider/slider';
-import { animationList } from '~/utils/chat/animations';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
+import { animationList } from '~/utils/common/animations';
 import { TabItem } from './tab-item';
 
 export interface TabGeneralProps {

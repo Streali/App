@@ -28,10 +28,10 @@ export const fadeInLeft = {
   },
   transition: {
     duration: 0.3,
-    stiffness: 100,
-    ease: 'easeInOut',
-    type: 'spring',
-    damping: 8,
+    //stiffness: 100,
+    //ease: 'easeInOut',
+    //type: 'spring',
+    //damping: 8,
   },
 };
 
@@ -209,6 +209,14 @@ export const animationList = [
   {
     label: 'None',
     value: 'none',
+  },
+  {
+    label: 'Fade In',
+    value: 'fade-in',
+  },
+  {
+    label: 'Fade Out',
+    value: 'fade-out',
   },
   {
     label: 'Fade In Left',

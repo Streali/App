@@ -1,7 +1,7 @@
 import './chat-message.scss';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
-import { selectAnimation } from '~/utils/chat/animations';
+import { selectAnimation } from '~/utils/common/animations';
 import { Message } from './message';
 import { Name } from './name';
 import type { CSSProperties } from 'react';
