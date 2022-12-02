@@ -49,6 +49,7 @@ const EventListItem = (props: EventListItemProps) => {
   };
 
   const nameStyle = {
+    display: theme.events.styles[computedType].name.hide ? 'none' : 'block',
     fontFamily: theme.events.styles[computedType].name.text_style.fontFamily,
     fontSize: theme.events.styles[computedType].name.text_style.fontSize + 'px',
     fontWeight: theme.events.styles[computedType].name.text_style.fontWeight,

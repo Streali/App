@@ -23,6 +23,13 @@ export const eventKeys = {
   lists: () => [...eventKeys.root, 'lists'],
 } as const;
 
+export const eventListKeys = {
+  root: ['event-list'],
+  lists: () => [...eventListKeys.root, 'lists'],
+  details: () => [...eventListKeys.root, 'details'],
+  detail: (id: string) => [...eventListKeys.details(), id],
+} as const;
+
 export const queryKeys = {
   lottie: (url?: string) => ['lottie', url],
   googleFont: () => ['googleFont'],

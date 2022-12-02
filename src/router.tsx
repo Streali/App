@@ -8,6 +8,7 @@ import { Dashboard } from '~/pages/dashboard';
 import { Events } from '~/pages/events';
 import type { RouteObject } from 'react-router-dom';
 import { EventListCreate } from './pages/event-list/create';
+import EventListLibrary from './pages/event-list/library';
 
 export const chatRouter: RouteObject[] = [
   {
@@ -48,8 +49,12 @@ export const eventRoutes: RouteObject[] = [
 
 export const eventListRoutes: RouteObject[] = [
   {
-    path: '/event-list/create',
+    path: '/event-lists/create',
     element: <EventListCreate />,
+  },
+  {
+    path: '/event-lists',
+    element: <EventListLibrary />,
   },
 ];
 

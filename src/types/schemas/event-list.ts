@@ -78,9 +78,6 @@ export const EventListItemSchema = z.object({
 });
 
 export const EventListSchema = z.object({
-  id: z.optional(z.string()),
-  username: z.ostring(),
-  twitch: z.ostring(),
   title: z.string(),
   events_activate: z.array(
     z.object({
@@ -97,6 +94,14 @@ export const EventListSchema = z.object({
   events: EventListItemSchema,
 });
 
+export const EventListResponseSchema = z.object({
+  id: z.string(),
+  created_at: z.string(),
+  updated_at: z.string(),
+  theme: EventListSchema,
+  user_id: z.string(),
+});
+
 export type EventList = z.infer<typeof EventListSchema>;
 export type EventListContainerStyles = z.infer<typeof EventListContainerStylesSchema>;
 export type EventListMessageStyles = z.infer<typeof EventListMessageStylesSchema>;
@@ -104,3 +109,4 @@ export type EventListNameStyles = z.infer<typeof EventListNameStylesSchema>;
 export type EventListStyles = z.infer<typeof EventListStylesSchema>;
 export type EventListTexts = z.infer<typeof EventListTextsSchema>;
 export type EventListItem = z.infer<typeof EventListItemSchema>;
+export type EventListResponse = z.infer<typeof EventListResponseSchema>;

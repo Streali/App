@@ -1,23 +1,18 @@
-import { FieldValues, useForm } from 'react-hook-form';
-import { EventList } from '~/types/schemas/event-list';
-import { defaultEventListTheme } from '~/utils/event-list/default-event-list-theme';
+import { Control } from 'react-hook-form';
 import { Button, ButtonColor } from '../button/button';
 import { TabProps, Tabs } from '../tabs/tabs';
 import TabGeneral from './tabs/tab-general';
 import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
-import { useCreateEventList } from '~/hooks/event-list/use-create-event-list';
 
 type EventListSettingsProps = {
-  onThemeChange: (theme: EventList) => void;
+  control: Control;
+  setValue: (name: string, value: unknown) => void;
+  onSubmit: () => void;
 };
 
 export const EventListSettings = (props: EventListSettingsProps) => {
-  const { onThemeChange } = props;
-  const { handleSubmit, control, setValue, watch } = useForm({
-    defaultValues: defaultEventListTheme as FieldValues,
-  });
-  const { mutate: saveTheme } = useCreateEventList();
+  const { control, setValue, onSubmit } = props;
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
@@ -27,15 +22,6 @@ export const EventListSettings = (props: EventListSettingsProps) => {
       content: <TabStyles control={control} setValue={setValue} />,
     },
   ];
-
-  const onSubmit = handleSubmit((theme: FieldValues) => {
-    saveTheme(theme);
-  });
-
-  useEffect(() => {
-    const subscription = watch((value) => onThemeChange(value as EventList));
-    return () => subscription.unsubscribe();
-  }, [watch, onThemeChange]);
 
   return (
     <div>
