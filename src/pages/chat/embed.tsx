@@ -1,5 +1,6 @@
-import { EmoteOptions, parse } from 'simple-tmi-emotes';
 import tmi from 'tmi.js';
+import { motion } from 'framer-motion';
+import { EmoteOptions, parse } from 'simple-tmi-emotes';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { useChat } from '~/hooks/chat/use-chat';
 import type { TwitchMessage } from '~/types/schemas/chat';
@@ -113,7 +114,9 @@ export const ChatEmbed = () => {
     >
       {theme &&
         messages.map((message) => (
-          <ChatMessage key={message.id} settings={theme} message={message} />
+          <motion.div key={message.id} className="w-full" layout>
+            <ChatMessage settings={theme} message={message} />
+          </motion.div>
         ))}
     </div>
   );

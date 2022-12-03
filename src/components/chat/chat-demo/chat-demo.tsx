@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { generateTwitchMessage } from '~/utils/chat/generate-chat-message';
 import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';
@@ -27,9 +28,9 @@ export const ChatDemo = (props: ChatDemoProps) => {
   return (
     <>
       {messages.map((message: TwitchMessage) => (
-        <div key={message.id} className="w-full">
+        <motion.div key={message.id} className="w-full" layout>
           <ChatMessage settings={settings} message={message} />
-        </div>
+        </motion.div>
       ))}
     </>
   );
