@@ -175,11 +175,10 @@ export const Dashboard = () => {
       </div>
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col gap-10">
         <iframe
-          src={`https://player.twitch.tv/?channel=${user?.username}&parent=${window.location.hostname}`}
-          frameBorder="0"
-          allowFullScreen
-          scrolling="no"
+          src={`https://player.twitch.tv/?channel=${user?.username}&parent=${window.location.hostname}&muted=true&autoplay=false`}
           className="aspect-video w-full rounded-lg"
+          allowFullScreen
+          loading="lazy"
         ></iframe>
         <iframe
           className="w-full flex-1 rounded-lg"
