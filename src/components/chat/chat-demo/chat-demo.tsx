@@ -28,7 +28,11 @@ export const ChatDemo = (props: ChatDemoProps) => {
   return (
     <>
       {messages.map((message: TwitchMessage) => (
-        <motion.div key={message.id} className="w-full" layout>
+        <motion.div
+          key={message.id}
+          className="w-full"
+          layout={settings.global.animation !== 'none'}
+        >
           <ChatMessage settings={settings} message={message} />
         </motion.div>
       ))}

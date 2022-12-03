@@ -114,7 +114,11 @@ export const ChatEmbed = () => {
     >
       {theme &&
         messages.map((message) => (
-          <motion.div key={message.id} className="w-full" layout>
+          <motion.div
+            key={message.id}
+            className="w-full"
+            layout={theme.global.animation !== 'none'}
+          >
             <ChatMessage settings={theme} message={message} />
           </motion.div>
         ))}
