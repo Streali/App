@@ -8,6 +8,7 @@ import { Dashboard } from '~/pages/dashboard';
 import { Events } from '~/pages/events';
 import { EventListCreate } from './pages/event-list/create';
 import { EventListEdit } from './pages/event-list/edit';
+import { EventListEmbed } from './pages/event-list/embed';
 import EventListLibrary from './pages/event-list/library';
 import type { RouteObject } from 'react-router-dom';
 
@@ -67,6 +68,10 @@ export const embedRoutes: RouteObject[] = [
   {
     path: '/chats/:id/embed',
     element: <ChatEmbed />,
+  },
+  {
+    path: '/event-lists/:id/embed',
+    element: <EventListEmbed />,
   },
 ];
 

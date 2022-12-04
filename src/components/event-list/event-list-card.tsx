@@ -30,7 +30,7 @@ const EventListCard = (props: EventListCardProps) => {
           theme={theme}
           name={'Follow'}
           message={'**Bertrand** follow the channel!'}
-          event={fakeEvent('10')}
+          event={fakeEvent(10)}
           type="follow"
         />
       </div>

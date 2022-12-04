@@ -9,15 +9,15 @@ import { defaultEventListTheme } from '~/utils/event-list/default-event-list-the
 import { fakeEvent } from '~/utils/event/fake-events';
 
 const eventSelect = [
-  { value: '10', label: 'Follow' },
-  { value: '20', label: 'Bits' },
-  { value: '30', label: 'Subscribe' },
-  { value: '31', label: 'Subscription Gift' },
-  { value: '40', label: 'Raid' },
-  { value: '50', label: 'Hype Train Begin' },
-  { value: '52', label: 'Hype Train End' },
-  { value: '60', label: 'Goal Begin' },
-  { value: '62', label: 'Goal End' },
+  { value: 10, label: 'Follow' },
+  { value: 20, label: 'Bits' },
+  { value: 30, label: 'Subscribe' },
+  { value: 31, label: 'Subscription Gift' },
+  { value: 40, label: 'Raid' },
+  { value: 50, label: 'Hype Train Begin' },
+  { value: 52, label: 'Hype Train End' },
+  { value: 60, label: 'Goal Begin' },
+  { value: 62, label: 'Goal End' },
 ];
 
 const eventType = {
@@ -34,8 +34,8 @@ const eventType = {
 
 export const EventListCreate = () => {
   const [theme, setTheme] = useState<EventList>(defaultEventListTheme);
-  const [selectEvent, setSelectEvent] = useState<{ label: string; value: string }>({
-    value: '10',
+  const [selectEvent, setSelectEvent] = useState<{ label: string; value: number }>({
+    value: 10,
     label: 'Follow',
   });
 
@@ -140,6 +140,11 @@ export const EventListCreate = () => {
     }
   }, [theme]);
 
+  const selectEventChoice = {
+    label: selectEvent.label,
+    value: selectEvent.value.toString(),
+  };
+
   return (
     <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
@@ -147,9 +152,18 @@ export const EventListCreate = () => {
       </div>
       <div className="flex w-full flex-1 flex-col items-end justify-center gap-6 rounded-2xl bg-dark-600 p-10">
         <Select
-          options={eventSelect}
-          defaultValue={selectEvent}
-          onChange={(value) => setSelectEvent(value as { label: string; value: string })}
+          options={eventSelect.map((event) => {
+            return { label: event.label, value: event.value.toString() };
+          })}
+          defaultValue={selectEventChoice}
+          onChange={(value) => {
+            const v = value as { label: string; value: string };
+            const change = {
+              label: v.label,
+              value: parseInt(v.value),
+            };
+            setSelectEvent(change);
+          }}
           className="w-[200px]"
         />
         <EventListItem

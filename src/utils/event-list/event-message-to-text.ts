@@ -12,21 +12,17 @@ import {
 } from '~/types/schemas/event';
 import { SubscribeTierToText } from '~/utils/event/subscribe-tier-to-text';
 
-export const EventMessageToText = (
-  message: string,
-  event: BaseEvent,
-  accentStyle: CSS.Properties
-) => {
+export const EventMessageToText = (message: string, event: BaseEvent) => {
   const regex = /\*\*(.*?)\*\*/g;
 
-  if (event.type === '10') {
+  if (event.type === 10) {
     const payload = event.payload as FollowEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
-      .replaceAll(regex, `<span style=${accentStyle}>$1</span>`);
+      .replaceAll(regex, `<span>$1</span>`);
   }
 
-  if (event.type === '20') {
+  if (event.type === 20) {
     const payload = event.payload as CheerEvent;
     return message
       .replaceAll(
@@ -37,7 +33,7 @@ export const EventMessageToText = (
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '30') {
+  if (event.type === 30) {
     const payload = event.payload as SubscribeEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
@@ -48,7 +44,7 @@ export const EventMessageToText = (
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '31') {
+  if (event.type === 31) {
     const payload = event.payload as SubscriptionGiftEvent;
     return message
       .replaceAll(
@@ -64,7 +60,7 @@ export const EventMessageToText = (
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '40') {
+  if (event.type === 40) {
     const payload = event.payload as RaidEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
@@ -72,21 +68,21 @@ export const EventMessageToText = (
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '50') {
+  if (event.type === 50) {
     const payload = event.payload as HypeTrainEndEvent;
     return message
       .replaceAll('{{level}}', payload.level.toString())
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '52') {
+  if (event.type === 52) {
     const payload = event.payload as HypeTrainEndEvent;
     return message
       .replaceAll('{{level}}', payload.level.toString())
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '60') {
+  if (event.type === 60) {
     const payload = event.payload as GoalBeginEvent;
     return message
       .replaceAll('{{amount}}', payload.currentAmount.toString())
@@ -95,7 +91,7 @@ export const EventMessageToText = (
       .replaceAll(regex, '<span>$1</span>');
   }
 
-  if (event.type === '62') {
+  if (event.type === 62) {
     const payload = event.payload as GoalEndEvent;
     return message
       .replaceAll('{{amount}}', payload.currentAmount.toString())

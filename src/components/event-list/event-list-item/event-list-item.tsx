@@ -74,22 +74,6 @@ const EventListItem = (props: EventListItemProps) => {
     boxShadow: `${theme.events.styles[computedType].name.shadow.shadowOffsetX}px ${theme.events.styles[computedType].name.shadow.shadowOffsetY}px ${theme.events.styles[computedType].name.shadow.shadowBlur}px ${theme.events.styles[computedType].name.shadow.shadowColor}`,
   };
 
-  const accentStyle = {
-    fontFamily: theme.events.styles[computedType].message.accent.fontFamily,
-    fontSize: theme.events.styles[computedType].message.accent.fontSize + 'px',
-    fontWeight: theme.events.styles[computedType].message.accent.fontWeight,
-    color: theme.events.styles[computedType].message.accent.color,
-    textAlign: theme.events.styles[computedType].message.accent.textAlign as
-      | 'left'
-      | 'center'
-      | 'right',
-    textDecoration: theme.events.styles[computedType].message.accent.textDecoration,
-    fontStyle: theme.events.styles[computedType].message.accent.fontStyle,
-    letterSpacing: theme.events.styles[computedType].message.accent.letterSpacing + 'px',
-    lineHeight: theme.events.styles[computedType].message.accent.lineHeight + '%',
-    textShadow: `${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetX}px ${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetY}px ${theme.events.styles[computedType].message.accent.textShadow.shadowBlur}px ${theme.events.styles[computedType].message.accent.textShadow.shadowColor}`,
-  };
-
   const messageStyle = {
     fontFamily: theme.events.styles[computedType].message.text_style.fontFamily,
     fontSize: theme.events.styles[computedType].message.text_style.fontSize + 'px',
@@ -158,7 +142,7 @@ const EventListItem = (props: EventListItemProps) => {
         span.style.textShadow = `${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetX}px ${theme.events.styles[computedType].message.accent.textShadow.shadowOffsetY}px ${theme.events.styles[computedType].message.accent.textShadow.shadowBlur}px ${theme.events.styles[computedType].message.accent.textShadow.shadowColor}`;
       });
     }
-  }, [theme]);
+  }, [theme, container]);
 
   const content = (
     <motion.div
@@ -168,12 +152,13 @@ const EventListItem = (props: EventListItemProps) => {
       exit="out"
       style={containerStyle}
       ref={container}
+      layout
       className="inline-flex"
     >
       <div style={nameStyle}>{name}</div>
       <div
         style={messageStyle}
-        dangerouslySetInnerHTML={{ __html: EventMessageToText(message, event, accentStyle) }}
+        dangerouslySetInnerHTML={{ __html: EventMessageToText(message, event) }}
       ></div>
     </motion.div>
   );

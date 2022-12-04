@@ -10,18 +10,18 @@ type EventListDemoProps = {
 };
 
 const eventType = {
-  '10': 'follow',
-  '20': 'cheer',
-  '30': 'subscribe',
-  '31': 'subscription_gift',
-  '40': 'raid',
-  '50': 'hype_train_begin',
-  '52': 'hype_train_end',
-  '60': 'goal_begin',
-  '62': 'goal_end',
+  10: 'follow',
+  20: 'cheer',
+  30: 'subscribe',
+  31: 'subscription_gift',
+  40: 'raid',
+  50: 'hype_train_begin',
+  52: 'hype_train_end',
+  60: 'goal_begin',
+  62: 'goal_end',
 };
 
-const choiceEvent = ['10', '20', '30', '31', '40', '50', '52', '60', '62'];
+const choiceEvent = [10, 20, 30, 31, 40, 50, 52, 60, 62];
 
 const EventListDemo = (props: EventListDemoProps) => {
   const { theme } = props;

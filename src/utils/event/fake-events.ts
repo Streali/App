@@ -1,23 +1,23 @@
 import { BaseEvent } from '~/types/schemas/event';
 
-export const fakeEvent = (type: string): BaseEvent => {
+export const fakeEvent = (type: number): BaseEvent => {
   switch (type) {
-    case '10':
+    case 10:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '10',
+        type: 10,
         payload: {
           displayName: 'Bertrand',
           username: 'bertrand',
           providerId: 'twitch',
         },
       };
-    case '20':
+    case 20:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '20',
+        type: 20,
         payload: {
           displayName: 'Fabrice',
           username: 'fabrice',
@@ -26,11 +26,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           isAnonymous: false,
         },
       };
-    case '30':
+    case 30:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '30',
+        type: 30,
         payload: {
           displayName: 'Bruno',
           username: 'bruno',
@@ -41,11 +41,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           durationMonths: 1,
         },
       };
-    case '31':
+    case 31:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '31',
+        type: 31,
         payload: {
           displayName: 'Roger',
           username: 'roger',
@@ -56,11 +56,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           isAnonymous: false,
         },
       };
-    case '40':
+    case 40:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '40',
+        type: 40,
         payload: {
           displayName: 'Franck',
           username: 'franck',
@@ -68,11 +68,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           viewers: 1,
         },
       };
-    case '50':
+    case 50:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '50',
+        type: 50,
         payload: {
           displayName: 'José',
           username: 'josé',
@@ -82,11 +82,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           total: 1,
         },
       };
-    case '52':
+    case 52:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '52',
+        type: 52,
         payload: {
           displayName: 'David',
           username: 'david',
@@ -96,11 +96,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           total: 1,
         },
       };
-    case '60':
+    case 60:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '60',
+        type: 60,
         payload: {
           type: 'subscription',
           description: 'Pseudo subscribed!',
@@ -109,11 +109,11 @@ export const fakeEvent = (type: string): BaseEvent => {
           startedAt: '2021-01-01T00:00:00Z',
         },
       };
-    case '62':
+    case 62:
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '60',
+        type: 60,
         payload: {
           type: 'subscription',
           description: 'Pseudo subscribed!',
@@ -126,7 +126,7 @@ export const fakeEvent = (type: string): BaseEvent => {
       return {
         id: Math.random().toString(36).slice(2, 7),
         created_at: '2021-01-01T00:00:00Z',
-        type: '10',
+        type: 10,
         payload: {
           displayName: 'Fabrice',
           username: 'fabrice',

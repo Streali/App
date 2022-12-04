@@ -9,15 +9,15 @@ import { EventList, EventListResponse } from '~/types/schemas/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
 
 const eventSelect = [
-  { value: '10', label: 'Follow' },
-  { value: '20', label: 'Bits' },
-  { value: '30', label: 'Subscribe' },
-  { value: '31', label: 'Subscription Gift' },
-  { value: '40', label: 'Raid' },
-  { value: '50', label: 'Hype Train Begin' },
-  { value: '52', label: 'Hype Train End' },
-  { value: '60', label: 'Goal Begin' },
-  { value: '62', label: 'Goal End' },
+  { value: 10, label: 'Follow' },
+  { value: 20, label: 'Bits' },
+  { value: 30, label: 'Subscribe' },
+  { value: 31, label: 'Subscription Gift' },
+  { value: 40, label: 'Raid' },
+  { value: 50, label: 'Hype Train Begin' },
+  { value: 52, label: 'Hype Train End' },
+  { value: 60, label: 'Goal Begin' },
+  { value: 62, label: 'Goal End' },
 ];
 
 const eventType = {
@@ -159,7 +159,9 @@ export const EventListEdit = () => {
       </div>
       <div className="flex w-full flex-1 flex-col items-end justify-center gap-6 rounded-2xl bg-dark-600 p-10">
         <Select
-          options={eventSelect}
+          options={eventSelect.map((event) => {
+            return { label: event.label, value: event.value.toString() };
+          })}
           defaultValue={selectEvent}
           onChange={(value) => setSelectEvent(value as { label: string; value: string })}
           className="w-[200px]"
@@ -206,7 +208,7 @@ export const EventListEdit = () => {
                 | 'goal_end'
             ].message
           }
-          event={fakeEvent(selectEvent.value)}
+          event={fakeEvent(parseInt(selectEvent.value))}
         />
       </div>
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
