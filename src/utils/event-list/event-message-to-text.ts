@@ -1,14 +1,13 @@
-import CSS from 'csstype';
 import {
   BaseEvent,
   CheerEvent,
   FollowEvent,
-  SubscribeEvent,
   SubscriptionGiftEvent,
   RaidEvent,
   HypeTrainEndEvent,
   GoalBeginEvent,
   GoalEndEvent,
+  SubscriptionMessageEvent,
 } from '~/types/schemas/event';
 import { SubscribeTierToText } from '~/utils/event/subscribe-tier-to-text';
 
@@ -34,7 +33,7 @@ export const EventMessageToText = (message: string, event: BaseEvent) => {
   }
 
   if (event.type === 30) {
-    const payload = event.payload as SubscribeEvent;
+    const payload = event.payload as SubscriptionMessageEvent;
     return message
       .replaceAll('{{pseudo}}', payload.displayName)
       .replaceAll('{{tier}}', SubscribeTierToText(payload.tier))

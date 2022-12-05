@@ -7,7 +7,6 @@ import {
   SubscriptionGiftEvent,
   RaidEvent,
   HypeTrainBeginEvent,
-  HypeTrainProgressEvent,
   HypeTrainEndEvent,
   GoalBeginEvent,
   GoalEndEvent,
@@ -27,7 +26,6 @@ const EventTypeText: Record<typeof EventType[keyof typeof EventType], string> = 
   [EventType.SubscriptionGift]: '🎁',
   [EventType.Raid]: '📢',
   [EventType.HypeTrainBegin]: '🚂',
-  [EventType.HypeTrainProgress]: '🚂',
   [EventType.HypeTrainEnd]: '🚂',
   [EventType.GoalBegin]: '🎯',
   [EventType.GoalEnd]: '🎯',
@@ -66,12 +64,6 @@ const EventTypeMessage = {
   [EventType.HypeTrainBegin]: (event: HypeTrainBeginEvent) => (
     <p>
       A new hype train has started with <strong className="font-bold">{event.total}%</strong>.
-    </p>
-  ),
-  [EventType.HypeTrainProgress]: (event: HypeTrainProgressEvent) => (
-    <p>
-      The hype train is now at level <strong className="font-bold">{event.level}</strong> with{' '}
-      <strong>{event.progress}%</strong>.
     </p>
   ),
   [EventType.HypeTrainEnd]: (event: HypeTrainEndEvent) => (

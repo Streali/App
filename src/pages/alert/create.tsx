@@ -45,12 +45,12 @@ export function AlertCreate() {
             setAlertTitle(target.value);
           }}
         />
-        <Select
+        {/* <Select
           label="Type"
           options={alertTypes}
           defaultValue={alertType as { value: string; label: string }}
           onChange={(value) => setAlertType(value)}
-        />
+        /> */}
         <div className="mt-3 flex w-full justify-end">
           <Button onClick={handleAlertCreate} color={ButtonColor.Primary}>
             Create alert
