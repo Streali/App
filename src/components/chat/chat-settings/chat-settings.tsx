@@ -5,6 +5,7 @@ import { TabGeneral } from './tab-general';
 import { TabMessage } from './tab-message';
 import { TabName } from './tab-name';
 import type { ChatTheme } from '~/types/schemas/chat';
+import { TabContainer } from './tab-container';
 
 export interface ChatSettingsProps {
   className?: string;
@@ -22,6 +23,7 @@ export const ChatSettings = (props: ChatSettingsProps) => {
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
+    { title: 'Container', content: <TabContainer control={control} /> },
     { title: 'Name', content: <TabName control={control} /> },
     { title: 'Message', content: <TabMessage control={control} /> },
   ];

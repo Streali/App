@@ -29,6 +29,16 @@ export const ChatThemeGlobalSchema = z.object({
   animation: z.string(),
 });
 
+export const ChatThemeContainerSchema = z.object({
+  background: z.string(),
+  shadow: ShadowSchema,
+  border: BorderSettingsSchema,
+  margin: SpacingSchema,
+  padding: SpacingSchema,
+  radius: BorderRadiusSchema,
+  full_width: z.boolean(),
+});
+
 export const ChatThemeMessageSchema = z.object({
   text: TextStyleSchema,
   background: z.string(),
@@ -56,6 +66,7 @@ export const ChatThemeSchema = z.object({
   id: z.string(),
   title: z.string(),
   global: ChatThemeGlobalSchema,
+  container: ChatThemeContainerSchema,
   message: ChatThemeMessageSchema,
   name: ChatThemeNameSchema,
   user_id: z.string(),
@@ -85,6 +96,7 @@ const TwitchMessageSchema = z.object({
 
 export const ChatExportThemeSchema = z.object({
   global: ChatThemeGlobalSchema,
+  container: ChatThemeContainerSchema,
   message: ChatThemeMessageSchema,
   name: ChatThemeNameSchema,
 });
@@ -94,4 +106,5 @@ export type ChatTheme = z.infer<typeof ChatThemeSchema>;
 export type NameChat = z.infer<typeof ChatThemeNameSchema>;
 export type GlobalChat = z.infer<typeof ChatThemeGlobalSchema>;
 export type MessageChat = z.infer<typeof ChatThemeMessageSchema>;
+export type ContainerChat = z.infer<typeof ChatThemeContainerSchema>;
 export type TwitchBadge = z.infer<typeof TwitchBadgeSchema>;

@@ -12,6 +12,40 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     ],
     animation: 'fade-in-left',
   },
+  container: {
+    full_width: false,
+    background: '#ffffff00',
+    shadow: {
+      shadowColor: '#000000',
+      shadowOffsetX: 0,
+      shadowOffsetY: 0,
+      shadowBlur: 0,
+    },
+    border: {
+      top: { color: '#00000000', width: 0, style: 'solid' },
+      right: { color: '#00000000', width: 0, style: 'solid' },
+      bottom: { color: '#00000000', width: 0, style: 'solid' },
+      left: { color: '#00000000', width: 0, style: 'solid' },
+    },
+    margin: {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    },
+    padding: {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    },
+    radius: {
+      top_left: 0,
+      top_right: 0,
+      bottom_right: 0,
+      bottom_left: 0,
+    },
+  },
   name: {
     full_width: false,
     text: {
