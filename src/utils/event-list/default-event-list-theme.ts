@@ -49,39 +49,39 @@ export const defaultEventListTheme: EventList = {
     texts: {
       follow: {
         name: 'Follow',
-        message: '**{{pseudo}}** follow the channel!',
+        message: '**{{pseudo}}** followed the channel!',
       },
       cheer: {
         name: 'Bits',
-        message: '**{{pseudo}}** donate **{{amount}}** bits!',
+        message: '**{{pseudo}}** donated **{{amount}}** bits!',
       },
       subscribe: {
         name: 'Subscribe',
-        message: '**{{pseudo}}** subscribe the channel with **{{tier}}**!',
+        message: '**{{pseudo}}** subscribed the channel with **{{tier}}**!',
       },
       subscription_gift: {
         name: 'Subscription Gift',
-        message: '**{{pseudo}}** gift **{{amount}}** subscription!',
+        message: '**{{pseudo}}** gifted **{{amount}}** subscription!',
       },
       raid: {
         name: 'Raid',
-        message: '**{{pseudo}}** raid the channel with **{{amount}}** viewers!',
+        message: '**{{pseudo}}** raided the channel with **{{amount}}** viewers!',
       },
       hype_train_begin: {
         name: 'Hype Train Begin',
-        message: 'Hype train begin with **{{level}}** level!',
+        message: 'Hype train a with **{{level}}** level!',
       },
       hype_train_end: {
         name: 'Hype Train End',
-        message: 'Hype train end with **{{level}}** level!',
+        message: 'Hype train ended with **{{level}}** level!',
       },
       goal_begin: {
         name: 'Goal Begin',
-        message: 'Goal begin with **{{amount}} {{type}}**!',
+        message: 'Goal began with **{{amount}} {{type}}**!',
       },
       goal_end: {
         name: 'Goal End',
-        message: 'Goal end with **{{amount}} {{type}}**!',
+        message: 'Goal ended with **{{amount}} {{type}}**!',
       },
     },
     modify_all: true,

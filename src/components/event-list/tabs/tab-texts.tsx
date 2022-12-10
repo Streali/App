@@ -110,7 +110,7 @@ const TabTexts = (props: TabTextsProps) => {
                     with ** to make it accent.
                   </p>
                   <span className="rounded border border-dark-300 bg-dark-400 px-3 py-1 text-xs">
-                    Ex: #pseudo follow the **channel**!
+                    Ex: #pseudo followed the **channel**!
                   </span>
                 </div>
 
