@@ -6,6 +6,9 @@ import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from '~/app';
+import { setupSentry } from '~/boot/sentry';
+
+setupSentry();
 
 const queryClient = new QueryClient({
   defaultOptions: {
