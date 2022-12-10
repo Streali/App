@@ -27,15 +27,15 @@ const eventSelectOptions = Array.from(EventTypeDict.values())
   .filter((item) => item.value !== EventTypeSlug[EventType.HypeTrainProgress]);
 
 const eventDefaultMessages: EventObject = {
-  follow: '{{pseudo}} follow the channel!',
-  cheer: '{{pseudo}} donate {{amount}} bits!',
-  subscribe: '{{pseudo}} subscribe the channel with {{tier}}!',
-  subscription_gift: '{{pseudo}} gift {{amount}} subscription!',
-  raid: '{{pseudo}} raid the channel with {{amount}} viewers!',
-  hype_train_begin: 'Hype train begin with {{level}} level!',
-  hype_train_end: 'Hype train end with {{level}} level!',
-  goal_begin: 'Goal begin with {{amount}} {{type}}!',
-  goal_end: 'Goal end with {{amount}} {{type}}!',
+  follow: '{{pseudo}} followed the channel!',
+  cheer: '{{pseudo}} donated {{amount}} bits!',
+  subscribe: '{{pseudo}} subscribed the channel with {{tier}}!',
+  subscription_gift: '{{pseudo}} gifted {{amount}} subscription!',
+  raid: '{{pseudo}} raided the channel with {{amount}} viewers!',
+  hype_train_begin: 'Hype train began with {{level}} level!',
+  hype_train_end: 'Hype train ended with {{level}} level!',
+  goal_begin: 'Goal began with {{amount}} {{type}}!',
+  goal_end: 'Goal ended with {{amount}} {{type}}!',
 };
 
 const eventAutocompleteOptions: EventObject = {
