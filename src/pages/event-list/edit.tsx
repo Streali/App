@@ -23,17 +23,16 @@ export const EventListEdit = () => {
   });
 
   const { data, status } = useEventList(id!);
+  const { handleSubmit, control, setValue, watch, reset } = useForm();
 
   useEffect(() => {
     if (!data) return;
 
     setTheme(data.theme);
+    reset(data.theme);
   }, [data]);
 
   const navigate = useNavigate();
-  const { handleSubmit, control, setValue, watch } = useForm({
-    defaultValues: data?.theme as FieldValues,
-  });
 
   const { mutate: saveTheme } = useUpdateEventList();
   const onSubmit = handleSubmit((theme: FieldValues) => {
@@ -145,7 +144,7 @@ export const EventListEdit = () => {
         />
 
         <EventListItem
-          theme={themeDemo as EventList}
+          theme={themeDemo}
           type={type.slug}
           name={theme.events.texts[type.slug].name}
           message={theme.events.texts[type.slug].message}
