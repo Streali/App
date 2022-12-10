@@ -7,22 +7,11 @@ import { Select } from '~/components/forms/select/select';
 import { Slider } from '~/components/forms/slider/slider';
 import { Switch } from '~/components/forms/switch/switch';
 import { animationList } from '~/utils/common/animations';
+import { selectOptions } from '~/utils/event-list/select-options';
 
 interface TabGeneralProps {
   control: Control;
 }
-
-const eventTypeList = [
-  { value: '10', label: 'Follow' },
-  { value: '20', label: 'Bits' },
-  { value: '30', label: 'Subscribe' },
-  { value: '31', label: 'Subscription Gift' },
-  { value: '40', label: 'Raid' },
-  { value: '50', label: 'Hype Train Begin' },
-  { value: '52', label: 'Hype Train End' },
-  { value: '60', label: 'Goal Begin' },
-  { value: '61', label: 'Goal End' },
-];
 
 const TabGeneral = (props: TabGeneralProps) => {
   const { control } = props;
@@ -52,10 +41,10 @@ const TabGeneral = (props: TabGeneralProps) => {
         <Controller
           name="events_activate"
           control={control}
-          defaultValue={eventTypeList}
+          defaultValue={selectOptions}
           render={({ field: { onChange, value } }) => (
             <Select
-              options={eventTypeList}
+              options={selectOptions}
               defaultValue={value}
               onChange={onChange}
               className="mb-3"

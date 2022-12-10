@@ -1,5 +1,6 @@
-import { Control, Controller } from 'react-hook-form';
 import { SingleValue } from 'react-select';
+import { Control, Controller } from 'react-hook-form';
+import { EventType, EventTypeDict, EventTypeSlug } from '@streali/common';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Select } from '~/components/forms/select/select';
@@ -8,44 +9,35 @@ import { Modal } from '~/components/modal/modal';
 import { toastr, ToastType } from '~/components/toast/toast';
 import AllContent from './content/all-content';
 import EventContent from './content/event-content';
+import type { Enum } from '@streali/common';
 
 interface TabEventsProps {
   control: Control;
   setValue: (name: string, value: unknown) => void;
 }
 
-const eventSelect = [
-  { value: 'follow', label: 'Follow' },
-  { value: 'cheer', label: 'Bits' },
-  { value: 'subscribe', label: 'Subscribe' },
-  { value: 'subscription_gift', label: 'Subscription Gift' },
-  { value: 'raid', label: 'Raid' },
-  { value: 'hype_train_begin', label: 'Hype Train Begin' },
-  { value: 'hype_train_end', label: 'Hype Train End' },
-  { value: 'goal_begin', label: 'Goal Begin' },
-  { value: 'goal_end', label: 'Goal End' },
-];
+type EventTypeSlugWithoutHypeTrainProgress = Exclude<
+  Enum<typeof EventTypeSlug>,
+  typeof EventTypeSlug[typeof EventType.HypeTrainProgress]
+>;
+
+const eventSelectOptions = Array.from(EventTypeDict.values())
+  .map((item) => ({
+    label: item.label,
+    value: item.slug,
+  }))
+  .filter((item) => item.value !== EventTypeSlug[EventType.HypeTrainProgress]);
 
 const TabStyles = (props: TabEventsProps) => {
   const { control, setValue } = props;
-  const [selectedTab, setSelectedTab] = useState<
-    | 'follow'
-    | 'cheer'
-    | 'subscribe'
-    | 'subscription_gift'
-    | 'raid'
-    | 'hype_train_begin'
-    | 'hype_train_end'
-    | 'goal_begin'
-    | 'goal_end'
-  >('follow');
+  const [selectedTab, setSelectedTab] = useState<EventTypeSlugWithoutHypeTrainProgress>('follow');
   const [modifyAllEvents, setModifyAllEvents] = useState(control._formValues.events.modify_all);
   const [applyAll, setApplyAll] = useState(false);
 
   const handleApplyAll = () => {
     const values = control._getWatch().events.styles.all;
 
-    eventSelect.forEach((event) => {
+    eventSelectOptions.forEach((event) => {
       setValue(`events.styles.${event.value}`, values);
     });
 
@@ -70,6 +62,7 @@ const TabStyles = (props: TabEventsProps) => {
                   setModifyAllEvents(checked);
                 }}
               />
+
               {modifyAllEvents && (
                 <Modal
                   open={applyAll}
@@ -103,33 +96,24 @@ const TabStyles = (props: TabEventsProps) => {
           )}
         />
       </TabItem>
+
       {!modifyAllEvents ? (
         <>
           <TabItem title="Event">
             <Select
-              options={eventSelect}
-              defaultValue={eventSelect.find((select) => select.value === selectedTab)}
+              options={eventSelectOptions}
+              defaultValue={eventSelectOptions.find((select) => select.value === selectedTab)}
               className="mb-3"
               onChange={(e) => {
                 const val = e as SingleValue<{ value: string; label: string }>;
                 if (val) {
-                  setSelectedTab(
-                    val.value as
-                      | 'follow'
-                      | 'cheer'
-                      | 'subscribe'
-                      | 'subscription_gift'
-                      | 'raid'
-                      | 'hype_train_begin'
-                      | 'hype_train_end'
-                      | 'goal_begin'
-                      | 'goal_end'
-                  );
+                  setSelectedTab(val.value as EventTypeSlugWithoutHypeTrainProgress);
                 }
               }}
             />
           </TabItem>
-          {eventSelect.map(
+
+          {eventSelectOptions.map(
             (event) =>
               event.value === selectedTab && (
                 <EventContent key={event.value} control={control} id={selectedTab} />

@@ -25,6 +25,7 @@
     "@radix-ui/react-switch": "^1.0.1",
     "@radix-ui/react-tabs": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.2",
+    "@streali/common": "^0.0.7",
     "@tanstack/react-query": "^4.19.1",
     "@tanstack/react-query-devtools": "^4.19.1",
     "@uiw/react-color": "^1.1.1",

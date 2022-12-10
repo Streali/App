@@ -1,36 +1,36 @@
 export const authKeys = {
-  root: ['auth'],
-  user: () => [...authKeys.root, 'user'],
-  check: () => [...authKeys.root, 'check'],
-} as const;
+  root: ['auth'] as const,
+  user: () => [...authKeys.root, 'user'] as const,
+  check: () => [...authKeys.root, 'check'] as const,
+};
 
 export const chatKeys = {
-  root: ['chat'],
-  lists: () => [...chatKeys.root, 'lists'],
-  details: () => [...chatKeys.root, 'details'],
-  detail: (id: string) => [...chatKeys.details(), id],
-} as const;
+  root: ['chat'] as const,
+  lists: () => [...chatKeys.root, 'lists'] as const,
+  details: () => [...chatKeys.root, 'details'] as const,
+  detail: (id: string) => [...chatKeys.details(), id] as const,
+};
 
 export const alertKeys = {
-  root: ['alert'],
-  lists: () => [...alertKeys.root, 'lists'],
-  details: () => [...alertKeys.root, 'details'],
-  detail: (id: string) => [...alertKeys.details(), id],
-} as const;
+  root: ['alert'] as const,
+  lists: () => [...alertKeys.root, 'lists'] as const,
+  details: () => [...alertKeys.root, 'details'] as const,
+  detail: (id: string) => [...alertKeys.details(), id] as const,
+};
 
 export const eventKeys = {
-  root: ['event'],
-  lists: () => [...eventKeys.root, 'lists'],
-} as const;
+  root: ['event'] as const,
+  lists: () => [...eventKeys.root, 'lists'] as const,
+};
 
 export const eventListKeys = {
-  root: ['event-list'],
-  lists: () => [...eventListKeys.root, 'lists'],
-  details: () => [...eventListKeys.root, 'details'],
-  detail: (id: string) => [...eventListKeys.details(), id],
-} as const;
+  root: ['event-list'] as const,
+  lists: () => [...eventListKeys.root, 'lists'] as const,
+  details: () => [...eventListKeys.root, 'details'] as const,
+  detail: (id: string) => [...eventListKeys.details(), id] as const,
+};
 
 export const queryKeys = {
-  lottie: (url?: string) => ['lottie', url],
-  googleFont: () => ['googleFont'],
-} as const;
+  lottie: (url?: string) => ['lottie', url] as const,
+  googleFont: () => ['googleFont'] as const,
+};

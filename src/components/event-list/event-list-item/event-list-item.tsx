@@ -3,22 +3,17 @@ import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
 import { selectAnimation, selectAnimationOut } from '~/utils/common/animations';
 import { EventMessageToText } from '~/utils/event-list/event-message-to-text';
+import type { Enum, EventTypeSlug, EventType } from '@streali/common';
 
 type EventListItemProps = {
   theme: EventList;
   name: string;
   message: string;
   event: BaseEvent;
-  type:
-    | 'follow'
-    | 'cheer'
-    | 'subscribe'
-    | 'subscription_gift'
-    | 'raid'
-    | 'hype_train_begin'
-    | 'hype_train_end'
-    | 'goal_begin'
-    | 'goal_end';
+  type: Exclude<
+    Enum<typeof EventTypeSlug>,
+    typeof EventTypeSlug[typeof EventType.HypeTrainProgress]
+  >;
 };
 
 const EventListItem = (props: EventListItemProps) => {

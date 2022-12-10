@@ -1,38 +1,30 @@
-import { Control, Controller } from 'react-hook-form';
-import { SuggestionDataItem } from 'react-mentions';
 import { SingleValue } from 'react-select';
+import { SuggestionDataItem } from 'react-mentions';
+import { Control, Controller } from 'react-hook-form';
+import { EventType, EventTypeDict, EventTypeSlug } from '@streali/common';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { AutocompleteInput } from '~/components/forms/autocomplete-input/autocomplete-input';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
+import type { Enum } from '@streali/common';
 
 type TabTextsProps = {
   control: Control;
 };
 
-type EventObject = {
-  follow: string | SuggestionDataItem[];
-  cheer: string | SuggestionDataItem[];
-  subscribe: string | SuggestionDataItem[];
-  subscription_gift: string | SuggestionDataItem[];
-  raid: string | SuggestionDataItem[];
-  hype_train_begin: string | SuggestionDataItem[];
-  hype_train_end: string | SuggestionDataItem[];
-  goal_begin: string | SuggestionDataItem[];
-  goal_end: string | SuggestionDataItem[];
-};
+type EventTypeSlugWithoutHypeTrainProgress = Exclude<
+  Enum<typeof EventTypeSlug>,
+  typeof EventTypeSlug[typeof EventType.HypeTrainProgress]
+>;
 
-const eventSelect = [
-  { value: 'follow', label: 'Follow' },
-  { value: 'cheer', label: 'Bits' },
-  { value: 'subscribe', label: 'Subscribe' },
-  { value: 'subscription_gift', label: 'Subscription Gift' },
-  { value: 'raid', label: 'Raid' },
-  { value: 'hype_train_begin', label: 'Hype Train Begin' },
-  { value: 'hype_train_end', label: 'Hype Train End' },
-  { value: 'goal_begin', label: 'Goal Begin' },
-  { value: 'goal_end', label: 'Goal End' },
-];
+type EventObject = Record<EventTypeSlugWithoutHypeTrainProgress, string | SuggestionDataItem[]>;
+
+const eventSelectOptions = Array.from(EventTypeDict.values())
+  .map((item) => ({
+    label: item.label,
+    value: item.slug,
+  }))
+  .filter((item) => item.value !== EventTypeSlug[EventType.HypeTrainProgress]);
 
 const eventDefaultMessages: EventObject = {
   follow: '{{pseudo}} follow the channel!',
@@ -83,31 +75,9 @@ const eventAutocompleteOptions: EventObject = {
   ],
 };
 
-const EventNameDefault = {
-  follow: 'Follow',
-  cheer: 'Bits',
-  subscribe: 'Subscribe',
-  subscription_gift: 'Subscription Gift',
-  raid: 'Raid',
-  hype_train_begin: 'Hype Train Begin',
-  hype_train_end: 'Hype Train End',
-  goal_begin: 'Goal Begin',
-  goal_end: 'Goal End',
-};
-
 const TabTexts = (props: TabTextsProps) => {
   const { control } = props;
-  const [selectedTab, setSelectedTab] = useState<
-    | 'follow'
-    | 'cheer'
-    | 'subscribe'
-    | 'subscription_gift'
-    | 'raid'
-    | 'hype_train_begin'
-    | 'hype_train_end'
-    | 'goal_begin'
-    | 'goal_end'
-  >('follow');
+  const [selectedTab, setSelectedTab] = useState<EventTypeSlugWithoutHypeTrainProgress>('follow');
 
   const autocomplete = [
     {
@@ -120,28 +90,17 @@ const TabTexts = (props: TabTextsProps) => {
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
       <TabItem title="Event">
         <Select
-          options={eventSelect}
-          defaultValue={eventSelect.find((select) => select.value === selectedTab)}
+          options={eventSelectOptions}
+          defaultValue={eventSelectOptions.find((select) => select.value === selectedTab)}
           className="mb-3"
           onChange={(e) => {
             const val = e as SingleValue<{ value: string; label: string }>;
             if (val) {
-              setSelectedTab(
-                val.value as
-                  | 'follow'
-                  | 'cheer'
-                  | 'subscribe'
-                  | 'subscription_gift'
-                  | 'raid'
-                  | 'hype_train_begin'
-                  | 'hype_train_end'
-                  | 'goal_begin'
-                  | 'goal_end'
-              );
+              setSelectedTab(val.value as EventTypeSlugWithoutHypeTrainProgress);
             }
           }}
         />
-        {eventSelect.map(
+        {eventSelectOptions.map(
           (event) =>
             event.value === selectedTab && (
               <TabItem title="Texts" key={event.value}>
@@ -154,10 +113,11 @@ const TabTexts = (props: TabTextsProps) => {
                     Ex: #pseudo follow the **channel**!
                   </span>
                 </div>
+
                 <Controller
                   name={`events.texts.${event.value}.name`}
                   control={control}
-                  defaultValue={EventNameDefault[selectedTab]}
+                  defaultValue={EventTypeDict.get(selectedTab)?.label}
                   render={({ field: { onChange, value } }) => (
                     <Input
                       value={value}

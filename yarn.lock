@@ -3762,6 +3762,11 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
+"@streali/common@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@streali/common/-/common-0.0.7.tgz#2ae750061a10efb5fa14bee47f5e27f94020f679"
+  integrity sha512-Ibake6qV0DQhpkouRh4vnNxtRQyspnaGLMK0vfnMQ1l49K0H2fCEXWAoAvSmJh7qSRhQYUmFBN+wzZu+n0QxCA==
+
 "@tanstack/eslint-plugin-query@^4.15.1":
   version "4.15.1"
   resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-4.15.1.tgz#0be92fe6ffe10e7b0e47d192fa94af1d7fbb7b65"

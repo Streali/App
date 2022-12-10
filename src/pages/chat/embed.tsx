@@ -1,6 +1,6 @@
-import tmi from 'tmi.js';
 import { motion } from 'framer-motion';
 import { EmoteOptions, parse } from 'simple-tmi-emotes';
+import tmi from 'tmi.js';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { useChat } from '~/hooks/chat/use-chat';
 import type { TwitchMessage } from '~/types/schemas/chat';
