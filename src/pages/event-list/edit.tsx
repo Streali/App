@@ -10,6 +10,11 @@ import { EventList, EventListResponse } from '~/types/schemas/event-list';
 import { selectOptions } from '~/utils/event-list/select-options';
 import { fakeEvent } from '~/utils/event/fake-events';
 
+type EventTypeWithoutHypeTrainProgress = Exclude<
+  Enum<typeof EventType>,
+  typeof EventType.HypeTrainProgress
+>;
+
 export const EventListEdit = () => {
   const { id } = useParams();
 
@@ -114,6 +119,14 @@ export const EventListEdit = () => {
     }
   }, [theme]);
 
+  const chosenEvents = useMemo(
+    () =>
+      theme?.events_activate.map((event) =>
+        Number(event.value)
+      ) as EventTypeWithoutHypeTrainProgress[],
+    [theme?.events_activate]
+  );
+
   if (status === 'error' || !theme) {
     return <p>Loading...</p>;
   }
@@ -153,7 +166,7 @@ export const EventListEdit = () => {
       </div>
 
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
-        <EventListDemo theme={theme} />
+        <EventListDemo theme={theme} chosenEvents={chosenEvents} />
       </div>
     </div>
   );

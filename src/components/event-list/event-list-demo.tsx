@@ -4,9 +4,16 @@ import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
 import EventListItem from './event-list-item/event-list-item';
+import { Enum, EventType } from '@streali/common';
+
+type EventTypeWithoutHypeTrainProgress = Exclude<
+  Enum<typeof EventType>,
+  typeof EventType.HypeTrainProgress
+>;
 
 type EventListDemoProps = {
   theme: EventList;
+  chosenEvents: EventTypeWithoutHypeTrainProgress[];
 };
 
 const eventType = {
@@ -21,10 +28,8 @@ const eventType = {
   62: 'goal_end',
 };
 
-const choiceEvent = [10, 20, 30, 31, 40, 50, 52, 60, 62];
-
 const EventListDemo = (props: EventListDemoProps) => {
-  const { theme } = props;
+  const { theme, chosenEvents } = props;
 
   const [events, setEvents] = useState<BaseEvent[]>([]);
 
@@ -34,7 +39,7 @@ const EventListDemo = (props: EventListDemoProps) => {
         setEvents((d) => {
           if (d.length >= 50) d.shift();
           const newEvent: BaseEvent = fakeEvent(
-            choiceEvent[Math.floor(Math.random() * choiceEvent.length)]
+            chosenEvents[Math.floor(Math.random() * chosenEvents.length)]
           );
           return [...d, newEvent];
         }),
@@ -42,7 +47,7 @@ const EventListDemo = (props: EventListDemoProps) => {
     );
 
     return () => clearInterval(interval);
-  }, []);
+  }, [chosenEvents]);
 
   return (
     <>

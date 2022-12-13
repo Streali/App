@@ -10,6 +10,11 @@ import { defaultEventListTheme } from '~/utils/event-list/default-event-list-the
 import { selectOptions } from '~/utils/event-list/select-options';
 import { fakeEvent } from '~/utils/event/fake-events';
 
+type EventTypeWithoutHypeTrainProgress = Exclude<
+  Enum<typeof EventType>,
+  typeof EventType.HypeTrainProgress
+>;
+
 export const EventListCreate = () => {
   const [theme, setTheme] = useState<EventList>(defaultEventListTheme);
   const [selectEvent, setSelectEvent] = useState<{
@@ -113,6 +118,14 @@ export const EventListCreate = () => {
     }
   }, [theme]);
 
+  const chosenEvents = useMemo(
+    () =>
+      theme.events_activate.map((event) =>
+        Number(event.value)
+      ) as EventTypeWithoutHypeTrainProgress[],
+    [theme.events_activate]
+  );
+
   return (
     <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
@@ -137,7 +150,7 @@ export const EventListCreate = () => {
       </div>
 
       <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
-        <EventListDemo theme={theme} />
+        <EventListDemo theme={theme} chosenEvents={chosenEvents} />
       </div>
     </div>
   );
