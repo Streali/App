@@ -92,7 +92,10 @@ export const Color = (props: ColorProps) => {
               onClick={() => setShowPicker(true)}
               className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-dark-400"
             >
-              <div className="h-6 w-6 rounded" style={{ backgroundColor: val }}></div>
+              <div className="h-6 w-6 overflow-hidden rounded">
+                <div style={{ backgroundColor: val }} />
+                <img src="./src/assets/transparency-bg.png" alt="transparency background" />
+              </div>
             </div>
           }
         >
