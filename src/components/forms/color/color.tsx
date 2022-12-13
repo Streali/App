@@ -4,6 +4,7 @@ import { InputState } from '~/components/forms/input/input';
 import { Label } from '~/components/forms/label/label';
 import { Popover } from '~/components/popover/popover';
 import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';
+import './color.scss';
 
 export interface ColorProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
@@ -17,6 +18,20 @@ export interface ColorProps extends ComponentPropsWithoutRef<'input'> {
   side?: 'top' | 'right' | 'bottom' | 'left';
   align?: 'start' | 'center' | 'end';
 }
+
+const hexToDecimal = (hex: string) => {
+  return parseInt(hex, 16);
+};
+
+const hexaToHsva = (hexa: string) => {
+  const { h, s, v } = hexToHsva(hexa);
+  return {
+    h,
+    s,
+    v,
+    a: hexa.length > 7 ? hexToDecimal(hexa.substring(7)) / 255 : 1,
+  };
+};
 
 export const Color = (props: ColorProps) => {
   const {
@@ -34,13 +49,18 @@ export const Color = (props: ColorProps) => {
   } = props;
 
   const [val, setVal] = useState<string>(value || '#000000');
+  const [hsva, setHsva] = useState<{ h: number; s: number; v: number; a: number }>(
+    hexaToHsva(value) || { h: 0, s: 0, v: 0, a: 1 }
+  );
+  const [error, setError] = useState<string | undefined>(errorMessage);
+  const [currentState, setCurrentState] = useState<InputState>(state);
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const input = useRef<HTMLLabelElement>(null);
 
   const stateClassName = {
     [InputState.Normal]: '',
-    [InputState.Error]: '!border-error-500',
-    [InputState.Success]: '!border-success-500',
+    [InputState.Error]: 'color-picker__input--error !border-error-500 ',
+    [InputState.Success]: 'color-picker__input--success !border-success-500 ',
   };
 
   const haveValueClassName =
@@ -49,32 +69,28 @@ export const Color = (props: ColorProps) => {
   const disabledClassName = inputProps.disabled ? '!bg-dark-400' : '';
 
   const onChangeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
-    setVal(e.target.value);
+    const newVal = e.target.value;
+
+    if (newVal.length >= 4) {
+      setError('');
+      setCurrentState(InputState.Normal);
+      setHsva(hexaToHsva(newVal));
+    }
+
+    if (newVal.length < 4) {
+      setError('Invalid color');
+      setCurrentState(InputState.Error);
+    }
+
+    setVal(newVal);
   };
 
   const onChangePickerValue = (value: string) => {
     const newVal = value.substring(7) === 'ff' ? value.slice(0, 7) : value;
     setVal(newVal);
-    onColorChange && onColorChange(newVal);
+    setHsva(hexaToHsva(newVal));
+    onColorChange?.(newVal);
   };
-
-  const hexToDecimal = (hex: string) => {
-    return parseInt(hex, 16);
-  };
-
-  const hexaToHsva = (hexa: string) => {
-    const { h, s, v } = hexToHsva(hexa);
-    return {
-      h,
-      s,
-      v,
-      a: hexa.length > 7 ? hexToDecimal(hexa.substring(7)) / 255 : 1,
-    };
-  };
-
-  useEffect(() => {
-    setVal(value);
-  }, [value]);
 
   return (
     <label className={`relative block ${containerClassName}`} ref={input}>
@@ -99,22 +115,22 @@ export const Color = (props: ColorProps) => {
             </div>
           }
         >
-          <ColorPicker color={hexaToHsva(val)} onChange={(e) => onChangePickerValue(e)} />
+          <ColorPicker color={hsva} onChange={(e) => onChangePickerValue(e)} />
         </Popover>
 
         {haveInput && (
           <input
             type="text"
-            className={`h-10 flex-1 rounded-md border border-transparent bg-dark-400 px-4 text-xs text-white outline-none transition focus:border-primary-500 ${stateClassName[state]} ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
+            className={`${stateClassName[currentState]} h-10 flex-1 rounded-md border border-transparent bg-dark-400 px-4 text-xs text-white outline-none transition focus:border-primary-500  ${haveValueClassName} ${disabledClassName} ${inputProps.className}`}
             maxLength={9}
             value={val.includes('#') ? val.toUpperCase() : `#${val.toUpperCase()}`}
             onChange={(e) => onChangeTextValue(e)}
           />
         )}
       </div>
-      {errorMessage && (
+      {error && (
         <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">
-          {errorMessage}
+          {error}
         </span>
       )}
     </label>
