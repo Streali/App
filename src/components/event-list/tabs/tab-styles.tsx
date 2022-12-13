@@ -10,10 +10,12 @@ import { toastr, ToastType } from '~/components/toast/toast';
 import AllContent from './content/all-content';
 import EventContent from './content/event-content';
 import type { Enum } from '@streali/common';
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 interface TabEventsProps {
   control: Control;
   setValue: (name: string, value: unknown) => void;
+  chosenEvents: EventTypeWithoutHypeTrainProgress[];
 }
 
 type EventTypeSlugWithoutHypeTrainProgress = Exclude<
@@ -21,15 +23,8 @@ type EventTypeSlugWithoutHypeTrainProgress = Exclude<
   typeof EventTypeSlug[typeof EventType.HypeTrainProgress]
 >;
 
-const eventSelectOptions = Array.from(EventTypeDict.values())
-  .map((item) => ({
-    label: item.label,
-    value: item.slug,
-  }))
-  .filter((item) => item.value !== EventTypeSlug[EventType.HypeTrainProgress]);
-
 const TabStyles = (props: TabEventsProps) => {
-  const { control, setValue } = props;
+  const { control, setValue, chosenEvents } = props;
   const [selectedTab, setSelectedTab] = useState<EventTypeSlugWithoutHypeTrainProgress>('follow');
   const [modifyAllEvents, setModifyAllEvents] = useState(control._formValues.events.modify_all);
   const [applyAll, setApplyAll] = useState(false);
@@ -44,6 +39,17 @@ const TabStyles = (props: TabEventsProps) => {
     toastr(ToastType.Success, 'All events styles have been updated');
     setApplyAll(false);
   };
+
+  const eventSelectOptions = useMemo(
+    () =>
+      Array.from(EventTypeDict.values())
+        .filter((event) => chosenEvents.includes(event.value))
+        .map((item) => ({
+          label: item.label,
+          value: item.slug,
+        })),
+    [chosenEvents]
+  );
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">

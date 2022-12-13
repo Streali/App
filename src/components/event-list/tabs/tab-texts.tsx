@@ -7,9 +7,11 @@ import { AutocompleteInput } from '~/components/forms/autocomplete-input/autocom
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
 import type { Enum } from '@streali/common';
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 type TabTextsProps = {
   control: Control;
+  chosenEvents: EventTypeWithoutHypeTrainProgress[];
 };
 
 type EventTypeSlugWithoutHypeTrainProgress = Exclude<
@@ -18,13 +20,6 @@ type EventTypeSlugWithoutHypeTrainProgress = Exclude<
 >;
 
 type EventObject = Record<EventTypeSlugWithoutHypeTrainProgress, string | SuggestionDataItem[]>;
-
-const eventSelectOptions = Array.from(EventTypeDict.values())
-  .map((item) => ({
-    label: item.label,
-    value: item.slug,
-  }))
-  .filter((item) => item.value !== EventTypeSlug[EventType.HypeTrainProgress]);
 
 const eventDefaultMessages: EventObject = {
   follow: '{{pseudo}} followed the channel!',
@@ -76,7 +71,7 @@ const eventAutocompleteOptions: EventObject = {
 };
 
 const TabTexts = (props: TabTextsProps) => {
-  const { control } = props;
+  const { control, chosenEvents } = props;
   const [selectedTab, setSelectedTab] = useState<EventTypeSlugWithoutHypeTrainProgress>('follow');
 
   const autocomplete = [
@@ -85,6 +80,17 @@ const TabTexts = (props: TabTextsProps) => {
       options: eventAutocompleteOptions[selectedTab] as SuggestionDataItem[],
     },
   ];
+
+  const eventSelectOptions = useMemo(
+    () =>
+      Array.from(EventTypeDict.values())
+        .filter((event) => chosenEvents.includes(event.value))
+        .map((item) => ({
+          label: item.label,
+          value: item.slug,
+        })),
+    [chosenEvents]
+  );
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">

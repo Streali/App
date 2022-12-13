@@ -7,13 +7,8 @@ import { Select } from '~/components/forms/select/select';
 import { useEventList } from '~/hooks/event-list/use-event-list';
 import { useUpdateEventList } from '~/hooks/event-list/use-update-event-list';
 import { EventList, EventListResponse } from '~/types/schemas/event-list';
-import { selectOptions } from '~/utils/event-list/select-options';
 import { fakeEvent } from '~/utils/event/fake-events';
-
-type EventTypeWithoutHypeTrainProgress = Exclude<
-  Enum<typeof EventType>,
-  typeof EventType.HypeTrainProgress
->;
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 export const EventListEdit = () => {
   const { id } = useParams();
@@ -127,6 +122,17 @@ export const EventListEdit = () => {
     [theme?.events_activate]
   );
 
+  const selectOptions = useMemo(
+    () =>
+      Array.from(EventTypeDict.values())
+        .filter((event) => chosenEvents?.includes(event.value))
+        .map((item) => ({
+          label: item.label,
+          value: item.value.toString(),
+        })),
+    [chosenEvents]
+  );
+
   if (status === 'error' || !theme) {
     return <p>Loading...</p>;
   }
@@ -145,7 +151,12 @@ export const EventListEdit = () => {
   return (
     <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
-        <EventListSettings control={control} setValue={setValue} onSubmit={onSubmit} />
+        <EventListSettings
+          control={control}
+          setValue={setValue}
+          onSubmit={onSubmit}
+          chosenEvents={chosenEvents}
+        />
       </div>
 
       <div className="flex w-full flex-1 flex-col items-end justify-center gap-6 rounded-2xl bg-dark-600 p-10">

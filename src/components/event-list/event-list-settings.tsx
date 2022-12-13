@@ -4,22 +4,24 @@ import { TabProps, Tabs } from '../tabs/tabs';
 import TabGeneral from './tabs/tab-general';
 import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 type EventListSettingsProps = {
   control: Control;
   setValue: (name: string, value: unknown) => void;
   onSubmit: () => void;
+  chosenEvents: EventTypeWithoutHypeTrainProgress[];
 };
 
 export const EventListSettings = (props: EventListSettingsProps) => {
-  const { control, setValue, onSubmit } = props;
+  const { control, setValue, onSubmit, chosenEvents } = props;
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
-    { title: 'Texts', content: <TabTexts control={control} /> },
+    { title: 'Texts', content: <TabTexts control={control} chosenEvents={chosenEvents} /> },
     {
       title: 'Styles',
-      content: <TabStyles control={control} setValue={setValue} />,
+      content: <TabStyles control={control} setValue={setValue} chosenEvents={chosenEvents} />,
     },
   ];
 

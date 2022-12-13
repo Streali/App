@@ -4,12 +4,7 @@ import { BaseEvent } from '~/types/schemas/event';
 import { EventList } from '~/types/schemas/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
 import EventListItem from './event-list-item/event-list-item';
-import { Enum, EventType } from '@streali/common';
-
-type EventTypeWithoutHypeTrainProgress = Exclude<
-  Enum<typeof EventType>,
-  typeof EventType.HypeTrainProgress
->;
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 type EventListDemoProps = {
   theme: EventList;
