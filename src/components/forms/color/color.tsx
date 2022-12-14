@@ -4,6 +4,7 @@ import { InputState } from '~/components/forms/input/input';
 import { Label } from '~/components/forms/label/label';
 import { Popover } from '~/components/popover/popover';
 import type { ChangeEvent, ComponentPropsWithoutRef } from 'react';
+import TransparencyBg from '~/assets/transparency-bg.png';
 import './color.scss';
 
 export interface ColorProps extends ComponentPropsWithoutRef<'input'> {
@@ -110,7 +111,7 @@ export const Color = (props: ColorProps) => {
             >
               <div className="relative h-6 w-6 overflow-hidden rounded">
                 <div className="absolute h-full w-full" style={{ backgroundColor: val }} />
-                <img src="./src/assets/transparency-bg.png" alt="transparency background" />
+                <img src={TransparencyBg} alt="transparency background" />
               </div>
             </div>
           }
