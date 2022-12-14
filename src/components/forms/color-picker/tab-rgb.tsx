@@ -5,7 +5,7 @@ import type { ChangeEvent } from 'react';
 
 export const TabRGB = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [rgba, setRgba] = useState<RgbaColor>(hsvaToRgba(color));
+  const rgba = hsvaToRgba(color);
 
   const inputStyle = 'w-8';
 
@@ -23,10 +23,6 @@ export const TabRGB = (props: TabsProps) => {
       onChange({ ...color, a: value });
     }
   };
-
-  useEffect(() => {
-    setRgba(hsvaToRgba(color));
-  }, [color]);
 
   return (
     <div className="flex gap-1">

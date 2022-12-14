@@ -10,7 +10,7 @@ export interface HexaColor {
 
 export const TabHex = (props: TabsProps) => {
   const { color, onChange } = props;
-  const [hexa, setHexa] = useState<HexaColor>({ hex: hsvaToHex(color), a: color.a });
+  const hexa: HexaColor = { hex: hsvaToHex(color), a: color.a };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'hex') {
@@ -23,10 +23,6 @@ export const TabHex = (props: TabsProps) => {
       onChange({ ...color, a: value });
     }
   };
-
-  useEffect(() => {
-    setHexa({ hex: hsvaToHex(color), a: color.a });
-  }, [color]);
 
   return (
     <div className="flex gap-4">
