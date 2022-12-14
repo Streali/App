@@ -4,4 +4,13 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
+  &__input {
+    &--error {
+      border-color: theme('colors.error.500') !important;
+    }
+    &--success {
+      border-color: theme('colors.success.500') !important;
+    }
+  }
 }

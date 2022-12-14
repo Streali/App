@@ -71,14 +71,15 @@ export const Color = (props: ColorProps) => {
 
   const onChangeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
     const newVal = e.target.value;
+    const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
-    if (newVal.length >= 4) {
+    if (hexRegex.test(newVal)) {
       setError('');
       setCurrentState(InputState.Normal);
       setHsva(hexaToHsva(newVal));
     }
 
-    if (newVal.length < 4) {
+    if (!hexRegex.test(newVal)) {
       setError('Invalid color');
       setCurrentState(InputState.Error);
     }
