@@ -36,7 +36,7 @@ export const defaultEventListTheme: EventList = {
       label: 'Goal Begin',
     },
     {
-      value: '61',
+      value: '62',
       label: 'Goal End',
     },
   ],

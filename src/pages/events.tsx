@@ -62,7 +62,7 @@ const listEvents = [
   {
     label: 'Goal End',
     checked: true,
-    type: 61,
+    type: 62,
   },
 ];
 
