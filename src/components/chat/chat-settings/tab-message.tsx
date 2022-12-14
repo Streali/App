@@ -18,16 +18,6 @@ export const TabMessage = (props: TabGeneralProps) => {
 
   return (
     <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
-      <TabItem title="Text style">
-        <Controller
-          name="message.text"
-          control={control}
-          defaultValue={defaultChatTheme.message.text}
-          render={({ field: { onChange, value } }) => (
-            <TextStyle onChange={onChange} settings={value} />
-          )}
-        />
-      </TabItem>
       <TabItem title="Full width">
         <Controller
           name="message.full_width"
@@ -39,6 +29,46 @@ export const TabMessage = (props: TabGeneralProps) => {
               onChange={onChange}
               className="mb-3"
               label="Activate full width"
+            />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Text Twitch color">
+        <Controller
+          name="message.text_twitch_color"
+          control={control}
+          defaultValue={defaultChatTheme.message.text_twitch_color}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              onChange={onChange}
+              className="mb-3"
+              label="Use user Twitch color"
+            />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Text style">
+        <Controller
+          name="message.text"
+          control={control}
+          defaultValue={defaultChatTheme.message.text}
+          render={({ field: { onChange, value } }) => (
+            <TextStyle onChange={onChange} settings={value} />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Background Twitch color">
+        <Controller
+          name="message.background_twitch_color"
+          control={control}
+          defaultValue={defaultChatTheme.message.background_twitch_color}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              onChange={onChange}
+              className="mb-3"
+              label="Use user Twitch color"
             />
           )}
         />

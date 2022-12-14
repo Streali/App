@@ -30,6 +30,7 @@ export const ChatThemeGlobalSchema = z.object({
 });
 
 export const ChatThemeContainerSchema = z.object({
+  background_twitch_color: z.boolean(),
   background: z.string(),
   shadow: ShadowSchema,
   border: BorderSettingsSchema,
@@ -40,7 +41,9 @@ export const ChatThemeContainerSchema = z.object({
 });
 
 export const ChatThemeMessageSchema = z.object({
+  text_twitch_color: z.boolean(),
   text: TextStyleSchema,
+  background_twitch_color: z.boolean(),
   background: z.string(),
   shadow: ShadowSchema,
   border: BorderSettingsSchema,
@@ -51,7 +54,9 @@ export const ChatThemeMessageSchema = z.object({
 });
 
 export const ChatThemeNameSchema = z.object({
+  text_twitch_color: z.boolean(),
   text: TextStyleSchema,
+  background_twitch_color: z.boolean(),
   background: z.string(),
   shadow: ShadowSchema,
   border: BorderSettingsSchema,

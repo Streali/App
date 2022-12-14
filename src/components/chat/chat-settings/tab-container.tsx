@@ -32,6 +32,21 @@ export const TabContainer = (props: TabGeneralProps) => {
           )}
         />
       </TabItem>
+      <TabItem title="Background Twitch color">
+        <Controller
+          name="container.background_twitch_color"
+          control={control}
+          defaultValue={defaultChatTheme.container.background_twitch_color}
+          render={({ field: { onChange, value } }) => (
+            <Switch
+              checked={value}
+              onChange={onChange}
+              className="mb-3"
+              label="Use user Twitch color"
+            />
+          )}
+        />
+      </TabItem>
       <TabItem title="Box background">
         <Controller
           name="container.background"

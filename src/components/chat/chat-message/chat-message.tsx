@@ -1,7 +1,6 @@
 import './chat-message.scss';
 
 import { Fragment } from 'react';
-import { selectAnimation } from '~/utils/common/animations';
 import { Container } from './container';
 import { Message } from './message';
 import { Name } from './name';
@@ -16,7 +15,7 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
   const { settings, message } = props;
 
   return (
-    <Container settings={settings}>
+    <Container settings={settings} color={message.color}>
       {settings.global.order.map((item, index) => (
         <Fragment key={index}>
           {item.id === 'name' && (
@@ -25,10 +24,16 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
               settings={settings.name}
               name={message.username}
               badges={message.badges}
+              color={message.color}
             />
           )}
           {item.id === 'message' && (
-            <Message key={item.id} settings={settings.message} message={message.message} />
+            <Message
+              key={item.id}
+              settings={settings.message}
+              message={message.message}
+              color={message.color}
+            />
           )}
         </Fragment>
       ))}

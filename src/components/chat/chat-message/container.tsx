@@ -6,15 +6,17 @@ import type { CSSProperties } from 'react';
 export interface ContainerProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
   children: React.ReactNode;
+  color?: string;
 }
 
 export const Container = (props: ContainerProps) => {
-  const { settings, children } = props;
+  const { settings, children, color } = props;
 
   const containerStyle: CSSProperties = {
     flexDirection: settings.global.layout === 'stack' ? 'column' : 'row',
     width: settings.container.full_width ? '100%' : 'fit-content',
-    background: settings.container.background,
+    background:
+      settings.container.background_twitch_color && color ? color : settings.container.background,
     boxShadow: `${settings.container.shadow.shadowOffsetX}px ${settings.container.shadow.shadowOffsetY}px ${settings.container.shadow.shadowBlur}px ${settings.container.shadow.shadowColor}`,
     borderTop: `${settings.container.border.top.width}px ${settings.container.border.top.style} ${settings.container.border.top.color}`,
     borderRight: `${settings.container.border.right.width}px ${settings.container.border.right.style} ${settings.container.border.right.color}`,

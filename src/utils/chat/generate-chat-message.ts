@@ -50,6 +50,19 @@ const defaultBadges = {
   artist: false,
 };
 
+const randomColors = [
+  '#15e64c',
+  '#15b8e6',
+  '#151ce6',
+  '#7315e6',
+  '#e615db',
+  '#e61553',
+  '#e61515',
+  '#99e615',
+  '#e6c615',
+  '#e66f15',
+];
+
 export const generateUsername = () => {
   return randomUsernames[Math.floor(Math.random() * randomUsernames.length)];
 };
@@ -65,6 +78,10 @@ export const generateBadges = () => {
   };
 };
 
+export const generateColor = () => {
+  return randomColors[Math.floor(Math.random() * randomColors.length)];
+};
+
 export const generateTwitchMessage = (): TwitchMessage => {
   return {
     id: chance().guid(),
@@ -76,6 +93,6 @@ export const generateTwitchMessage = (): TwitchMessage => {
     badges: chance().integer({ min: 1, max: 2 }) == 1 ? generateBadges() : defaultBadges,
     mod: false,
     subscriber: false,
-    color: '#000000',
+    color: generateColor(),
   };
 };

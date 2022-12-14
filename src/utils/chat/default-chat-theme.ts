@@ -14,6 +14,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   },
   container: {
     full_width: false,
+    background_twitch_color: false,
     background: '#ffffff00',
     shadow: {
       shadowColor: '#000000',
@@ -48,6 +49,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   },
   name: {
     full_width: false,
+    text_twitch_color: false,
     text: {
       fontFamily: 'Rubik',
       fontSize: 16,
@@ -60,6 +62,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       lineHeight: 100,
       textShadow: { shadowOffsetX: 0, shadowOffsetY: 0, shadowBlur: 0, shadowColor: '#000000' },
     },
+    background_twitch_color: false,
     background: '#ffffff',
     shadow: {
       shadowColor: '#000000',
@@ -102,6 +105,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   },
   message: {
     full_width: false,
+    text_twitch_color: false,
     text: {
       fontFamily: 'Rubik',
       fontSize: 16,
@@ -114,6 +118,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       lineHeight: 100,
       textShadow: { shadowOffsetX: 0, shadowOffsetY: 0, shadowBlur: 0, shadowColor: '#000000' },
     },
+    background_twitch_color: false,
     background: '#ffffff',
     shadow: {
       shadowColor: '#000000',
