@@ -39,11 +39,6 @@ const listEvents = [
     type: 50,
   },
   {
-    label: 'Hype Train Progress',
-    checked: true,
-    type: 51,
-  },
-  {
     label: 'Hype Train End',
     checked: true,
     type: 52,
