@@ -5,7 +5,7 @@ import type { ChangeEvent } from 'react';
 
 export const TabRGB = (props: TabsProps) => {
   const { color, onChange } = props;
-  const rgba = hsvaToRgba(color);
+  const rgba: RgbaColor = hsvaToRgba(color);
 
   const inputStyle = 'w-8';
 
