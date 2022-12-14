@@ -10,6 +10,7 @@ import { useLogout } from '~/hooks/auth/use-logout';
 export type NavigationItem = {
   icon: string;
   link: string;
+  name: string;
 };
 
 export type PopoverNavigationItem = {
@@ -17,26 +18,10 @@ export type PopoverNavigationItem = {
   items: PopoverLink[];
 };
 
-export type NavigationItems = Array<NavigationItem | PopoverNavigationItem>;
+export type NavigationItems = Array<NavigationItem>;
 
 export interface NavbarProps {
   navigation: NavigationItems;
-}
-
-function renderItem(item: NavigationItem | PopoverNavigationItem, index: number) {
-  if ('items' in item) {
-    return (
-      <div key={index}>
-        <PopoverButtonNavbar icon={item.icon} items={item.items} />
-      </div>
-    );
-  }
-
-  return (
-    <div key={index}>
-      <ButtonNavbar icon={item.icon} link={item.link} />
-    </div>
-  );
 }
 
 export const Navbar = (props: NavbarProps) => {
@@ -44,6 +29,7 @@ export const Navbar = (props: NavbarProps) => {
   const { mutate: logout } = useLogout();
   const { navigation } = props;
   const [userNavOpen, setUserNavOpen] = useState(false);
+  const location = useLocation();
 
   const userNavigation: PopoverLink[] = [
     {
@@ -56,16 +42,30 @@ export const Navbar = (props: NavbarProps) => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 flex h-screen w-20 flex-col items-center justify-between border-r border-dark-300 bg-dark-500">
-      <div>
-        <Link to="/" className="flex h-20 w-20 items-center justify-center bg-primary-500">
+    <div className="fixed top-0 left-0 flex h-screen w-[300px] flex-col items-end justify-between border-r border-dark-400 bg-dark-500 p-10">
+      <div className="flex w-full flex-col items-end">
+        <Link to="/" className="mb-10">
           <img src={Logo} alt="Logo Streali" />
         </Link>
-        <div className="flex flex-col gap-1 py-5 px-5">
-          {navigation.map((item, index) => renderItem(item, index))}
+        <div className="flex flex-col items-end gap-2">
+          {navigation.map((item, index) => (
+            <Link
+              to={item.link}
+              key={index}
+              className="group flex items-center gap-2 text-sm font-bold"
+            >
+              <Icon
+                name={item.icon}
+                className={`transition-colors duration-200 group-hover:text-primary-500 ${
+                  location.pathname.includes(item.link) ? 'text-primary-500' : 'text-white'
+                }`}
+              />
+              <span>{item.name}</span>
+            </Link>
+          ))}
         </div>
       </div>
-      <div className="flex flex-shrink-0 p-4">
+      <div className="flex flex-shrink-0">
         {user && (
           <Popover
             open={userNavOpen}

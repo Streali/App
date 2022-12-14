@@ -22,7 +22,7 @@ export const ChatLibrary = () => {
 
   return (
     <div className="p-10">
-      <div className="mb-5 flex justify-between">
+      <div className="mb-5 flex items-center justify-between">
         <h1 className="font-title text-4xl font-semibold">Chat theme library</h1>
         <div className="flex items-center gap-2">
           <Import
@@ -54,7 +54,7 @@ export const ChatLibrary = () => {
       )}
       {(!data || data.length === 0) && (
         <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-4">
-          <h2 className="text-2xl font-medium">No themes found 🥲</h2>
+          <h2 className="text-2xl font-medium">No themes found</h2>
           <Button iconLeft="add-line" link="/chats/create">
             Create chat theme
           </Button>

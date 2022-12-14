@@ -20,7 +20,7 @@ const EventListLibrary = () => {
 
   return (
     <div className="p-10">
-      <div className="mb-5 flex justify-between">
+      <div className="mb-5 flex items-center justify-between">
         <h1 className="font-title text-4xl font-semibold">Event lists library</h1>
         <div className="flex items-center gap-2">
           <Import

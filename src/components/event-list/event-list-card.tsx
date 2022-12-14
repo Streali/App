@@ -25,7 +25,7 @@ const EventListCard = (props: EventListCardProps) => {
 
   return (
     <>
-      <div className=" flex h-[250px] w-full items-center justify-center overflow-hidden  rounded-t-lg border-2 border-dark-400 bg-dark-600 p-6">
+      <div className=" flex h-[250px] w-full items-center justify-center overflow-hidden  rounded-t-lg border border-dark-400 bg-dark-600 p-6">
         <EventListItem
           theme={theme}
           name={'Follow'}
