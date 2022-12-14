@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChatTheme } from '~/types/schemas/chat';
+import { selectAnimation } from '~/utils/common/animations';
 import type { CSSProperties } from 'react';
-import { selectAnimation } from '~/utils/chat/animations';
 
 export interface ContainerProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
