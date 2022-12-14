@@ -1,16 +1,16 @@
-import { SingleValue } from 'react-select';
-import { Control, Controller } from 'react-hook-form';
 import { EventType, EventTypeDict, EventTypeSlug } from '@streali/common';
+import { Control, Controller } from 'react-hook-form';
+import { SingleValue } from 'react-select';
 import { Button, ButtonColor, ButtonSize } from '~/components/button/button';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
 import { Select } from '~/components/forms/select/select';
 import { Switch } from '~/components/forms/switch/switch';
 import { Modal } from '~/components/modal/modal';
 import { toastr, ToastType } from '~/components/toast/toast';
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 import AllContent from './content/all-content';
 import EventContent from './content/event-content';
 import type { Enum } from '@streali/common';
-import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 interface TabEventsProps {
   control: Control;
