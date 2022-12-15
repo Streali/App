@@ -15,9 +15,10 @@ export const ColorPicker = (props: ColorPickerProps) => {
   const { color = rgbaStringToHsva('rgba(255,0,0,1)'), onChange, className } = props;
   const [hsva, setHsva] = useState<HsvaColor>(color);
 
-  useEffect(() => {
-    onChange(colorResult(hsva).hexa);
-  }, [hsva]);
+  const handleChange = (newColor: HsvaColor) => {
+    setHsva(newColor);
+    onChange(colorResult(newColor).hexa);
+  };
 
   return (
     <div
@@ -26,7 +27,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
       <Hue
         hue={hsva.h}
         onChange={(newHue) => {
-          setHsva({ ...hsva, ...newHue });
+          handleChange({ ...hsva, ...newHue });
         }}
         pointer={Pointer}
         radius="4px 0 0 4px"
@@ -37,12 +38,12 @@ export const ColorPicker = (props: ColorPickerProps) => {
       <div className="flex flex-col gap-4" style={{ width: '214px' }}>
         <Saturation
           hsva={hsva}
-          onChange={(newColor) => setHsva({ ...hsva, ...newColor, a: hsva.a })}
+          onChange={(newColor) => handleChange({ ...hsva, ...newColor, a: hsva.a })}
           radius="0 4px 0 0"
           style={{ height: '240px', width: '100%' }}
           pointer={Pointer}
         />
-        <Tabs color={hsva} onChange={(newColor) => setHsva(newColor)} />
+        <Tabs color={hsva} onChange={(newColor) => handleChange(newColor)} />
       </div>
     </div>
   );
