@@ -46,6 +46,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       bottom_right: 0,
       bottom_left: 0,
     },
+    alignment: 'right',
   },
   name: {
     full_width: false,
@@ -135,7 +136,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     margin: {
       top: 0,
       right: 0,
-      bottom: 8,
+      bottom: 0,
       left: 0,
     },
     padding: {

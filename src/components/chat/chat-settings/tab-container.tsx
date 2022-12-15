@@ -1,4 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
+import { Alignment } from '~/components/forms/alignment/alignment';
 import { BorderRadius } from '~/components/forms/border-radius/border-radius';
 import { Border } from '~/components/forms/border/border';
 import { Color } from '~/components/forms/color/color';
@@ -54,6 +55,16 @@ export const TabContainer = (props: TabGeneralProps) => {
           defaultValue={defaultChatTheme.container.background}
           render={({ field: { onChange, value } }) => (
             <Color value={value} onColorChange={onChange} containerClassName="mb-3" />
+          )}
+        />
+      </TabItem>
+      <TabItem title="Alignment">
+        <Controller
+          name="container.alignment"
+          control={control}
+          defaultValue={defaultChatTheme.global.alignment}
+          render={({ field: { onChange, value } }) => (
+            <Alignment className="mb-3" value={value} onChange={onChange} />
           )}
         />
       </TabItem>

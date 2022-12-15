@@ -25,13 +25,22 @@ export const Container = (props: ContainerProps) => {
     margin: `${settings.container.margin.top}px ${settings.container.margin.right}px ${settings.container.margin.bottom}px ${settings.container.margin.left}px`,
     padding: `${settings.container.padding.top}px ${settings.container.padding.right}px ${settings.container.padding.bottom}px ${settings.container.padding.left}px`,
     borderRadius: `${settings.container.radius.top_left}px ${settings.container.radius.top_right}px ${settings.container.radius.bottom_right}px ${settings.container.radius.bottom_left}px`,
-    alignItems:
-      settings.global.alignment === 'left'
-        ? 'flex-start'
-        : settings.global.alignment === 'right'
-        ? 'flex-end'
-        : ('center' as 'flex-start' | 'flex-end' | 'center'),
-    marginBottom: settings.global.space_between_messages + 'px',
+    ...(settings.global.layout === 'stack' && {
+      alignItems:
+        settings.container.alignment === 'left'
+          ? 'flex-start'
+          : settings.container.alignment === 'right'
+          ? 'flex-end'
+          : ('center' as 'flex-start' | 'flex-end' | 'center'),
+    }),
+    ...(settings.global.layout === 'inline' && {
+      justifyContent:
+        settings.container.alignment === 'left'
+          ? 'flex-start'
+          : settings.container.alignment === 'right'
+          ? 'flex-end'
+          : ('center' as 'flex-start' | 'flex-end' | 'center'),
+    }),
   };
 
   return (

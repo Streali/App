@@ -68,7 +68,7 @@ export const ChatCreate = () => {
               },
               mod: true,
               subscriber: false,
-              color: '#000',
+              color: '#4287f5',
             }}
           />
         </div>

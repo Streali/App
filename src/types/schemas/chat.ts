@@ -38,6 +38,7 @@ export const ChatThemeContainerSchema = z.object({
   padding: SpacingSchema,
   radius: BorderRadiusSchema,
   full_width: z.boolean(),
+  alignment: z.nativeEnum(ChatAlignment),
 });
 
 export const ChatThemeMessageSchema = z.object({
