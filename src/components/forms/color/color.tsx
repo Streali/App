@@ -71,7 +71,7 @@ export const Color = (props: ColorProps) => {
 
   const onChangeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
     const newVal = e.target.value;
-    const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+    const hexRegex = /^#(?:[0-9a-fA-F]{3,4}){1,2}$/;
 
     if (hexRegex.test(newVal)) {
       setError('');

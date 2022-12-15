@@ -1,8 +1,9 @@
 import { hexToHsva, hsvaToHex } from '@uiw/color-convert';
+import { HsvaColor } from '@uiw/react-color';
 import { TabInput } from '~/components/tabs/tab-input';
+import { InputState } from '../input/input';
 import { TabsProps } from './tabs';
 import type { ChangeEvent } from 'react';
-import { InputState } from '../input/input';
 
 export interface HexaColor {
   hex: string;
@@ -12,11 +13,19 @@ export interface HexaColor {
 export const TabHex = (props: TabsProps) => {
   const { color, onChange } = props;
   const [hexa, setHexa] = useState<HexaColor>({ hex: hsvaToHex(color), a: color.a });
+  const [hsva, setHsva] = useState<HsvaColor>(color);
   const [hexaState, setHexaState] = useState<InputState>(InputState.Normal);
+  const hexRegex = /^(?:[0-9a-fA-F]{3}){1,2}$/;
+
+  useMemo(() => {
+    if (JSON.stringify(color) !== JSON.stringify(hsva)) {
+      const newColor = { hex: hsvaToHex(color), a: color.a };
+      setHexa(newColor);
+    }
+  }, [color]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    const hexRegex = /^(?:[0-9a-fA-F]{3}){1,2}$/;
 
     if (e.target.name === 'hex' && hexRegex.test(newValue)) {
       setHexaState(InputState.Normal);
@@ -24,6 +33,7 @@ export const TabHex = (props: TabsProps) => {
       const value = `#${newValue}`;
       const { h, s, v } = hexToHsva(value);
       setHexa({ hex: value, a: color.a });
+      setHsva({ h, s, v, a: color.a });
       onChange({ ...color, h, s, v });
     }
 
@@ -35,6 +45,7 @@ export const TabHex = (props: TabsProps) => {
     if (e.target.name === 'a') {
       const value = newValue !== '' ? parseInt(newValue) / 100 : 0;
       setHexa({ ...hexa, a: value });
+      setHsva({ ...hsva, a: value });
       onChange({ ...color, a: value });
     }
   };

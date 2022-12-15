@@ -16,8 +16,6 @@ const stateClassName = {
 export const TabInput = (props: TabInputProps) => {
   const { label, className = '', state = InputState.Normal, ...InputProps } = props;
 
-  console.log('state', state);
-
   const resetInputStyle =
     'bg-transparent border-transparent appearance-none focus:outline-none focus:shadow-outline ';
 
