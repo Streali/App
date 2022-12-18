@@ -24,8 +24,7 @@ const autocomplete = [
       { id: 'follower_count', display: 'follower count' },
       { id: 'last_cheer_donor', display: 'last cheer donor' },
       { id: 'last_cheer_donor_amount', display: 'last cheer donor amount' },
-      { id: 'last_sub_gifter', display: 'last sub gifter' },
-      { id: 'last_raider', display: 'last raider' },
+      { id: 'viewer_count', display: 'viewer count' },
     ],
   },
 ];

@@ -2,6 +2,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import LabelElement from '~/components/labels/label-element.tsx/label-element';
 import LabelSettings from '~/components/labels/label-settings/label-settings';
 import { useCreateLabel } from '~/hooks/label/use-create-label';
+import { useLabelData } from '~/hooks/label/use-label-data';
 import { Label } from '~/types/schemas/label';
 import { defaultLabel } from '~/utils/label/default-label';
 
@@ -39,6 +40,10 @@ const CreateLabel = () => {
     }
   }, [theme.label.text.fontFamily, theme.value.text.fontFamily, theme.value.accent.fontFamily]);
 
+  const { data: labelData } = useLabelData();
+
+  if (!labelData) return <p>Loading...</p>;
+
   return (
     <div className="flex gap-10 p-10">
       <div className="w-[450px] shrink-0">
@@ -46,7 +51,7 @@ const CreateLabel = () => {
       </div>
       <div className="flex flex-1 gap-10">
         <div className="flex w-full flex-1 items-center justify-center rounded-2xl bg-dark-600 p-10">
-          <LabelElement theme={theme} />
+          <LabelElement theme={theme} data={labelData} />
         </div>
       </div>
     </div>

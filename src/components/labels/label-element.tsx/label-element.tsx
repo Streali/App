@@ -1,13 +1,14 @@
-import { CSSProperties } from 'react';
-import { Label } from '~/types/schemas/label';
+import { CSSProperties, Fragment } from 'react';
+import { Label, LabelData } from '~/types/schemas/label';
 import { LabelValueToText } from '~/utils/label/label-value-to-text';
 
 interface LabelElementProps {
   theme: Label;
+  data: LabelData;
 }
 
 const LabelElement = (props: LabelElementProps) => {
-  const { theme } = props;
+  const { theme, data } = props;
   const container = useRef<HTMLDivElement>(null);
 
   const containerStyle: CSSProperties = {
@@ -96,15 +97,17 @@ const LabelElement = (props: LabelElementProps) => {
   return (
     <div style={containerStyle} className="flex flex-col" ref={container}>
       {theme.order.map((item) => (
-        <>
+        <Fragment key={item.id}>
           {item.id === 'label' && <div style={labelStyle}>{theme.label.content}</div>}
           {item.id === 'value' && (
             <div
               style={valueStyle}
-              dangerouslySetInnerHTML={{ __html: LabelValueToText(theme.value.content) }}
+              dangerouslySetInnerHTML={{
+                __html: LabelValueToText(theme.value.content, data),
+              }}
             ></div>
           )}
-        </>
+        </Fragment>
       ))}
     </div>
   );

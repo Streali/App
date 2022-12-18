@@ -9,4 +9,5 @@ export const AuthUserSchema = z.object({
   username: z.string(),
   avatar_url: z.string(),
   email: z.string(),
+  secret: z.string(),
 });

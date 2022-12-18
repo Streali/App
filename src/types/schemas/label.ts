@@ -54,4 +54,27 @@ export const LabelSchema = z.object({
   value: LabelValueSchema,
 });
 
+export const LabelDataSchema = z.object({
+  latestFollower: z.object({
+    displayName: z.string(),
+  }),
+  latestSubscriber: z.object({
+    displayName: z.string(),
+  }),
+  subscriptionCount: z.object({
+    amount: z.number(),
+  }),
+  viewerCount: z.object({
+    amount: z.number(),
+  }),
+  followerCount: z.object({
+    amount: z.number(),
+  }),
+  lastCheerDonor: z.object({
+    displayName: z.string(),
+    amount: z.number(),
+  }),
+});
+
 export type Label = z.infer<typeof LabelSchema>;
+export type LabelData = z.infer<typeof LabelDataSchema>;
