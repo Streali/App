@@ -6,7 +6,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 const LabelEmbed = () => {
   const { id } = useParams();
   const { data, isLoading } = useLabel(id!);
-  const { data: labelData, refetch } = useLabelData();
+  const { data: labelData } = useLabelData();
 
   useEffect(() => {
     if (data) {
@@ -31,13 +31,6 @@ const LabelEmbed = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = 'transparent';
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      refetch();
-    }, 30000);
-    return () => clearInterval(interval);
   }, []);
 
   if (isLoading || !data || !labelData) {

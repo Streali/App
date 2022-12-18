@@ -17,5 +17,7 @@ export const useLabelData = () => {
 
       return data;
     },
+    refetchInterval: 1000 * 30,
+    staleTime: Infinity,
   });
 };
