@@ -107,7 +107,7 @@ const TabValue = (props: TabValueProps) => {
       </TabItem>
       <TabItem title="Box border">
         <Controller
-          name="label.border"
+          name="value.border"
           control={control}
           defaultValue={defaultChatTheme.name.border}
           render={({ field: { onChange, value } }) => (
