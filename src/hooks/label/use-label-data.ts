@@ -3,13 +3,13 @@ import { useAuthUser } from '~/hooks/auth/use-auth-user';
 import { labelKeys } from '~/hooks/query-keys';
 import { apiClient } from '~/utils/axios/axios';
 
-export const useLabelData = () => {
+export const useLabelData = (userSecret?: string) => {
   const { data: user } = useAuthUser();
 
   return useQuery({
-    queryKey: labelKeys.info(user?.id || ''),
-    queryFn: async () => {
-      const { data } = await apiClient.get(`/users/${user!.secret}/labels-info`);
+    queryKey: labelKeys.info(userSecret || user?.secret || ''),
+    queryFn: async ({ queryKey }) => {
+      const { data } = await apiClient.get(`/users/${queryKey[2]}/labels-info`);
 
       if (!data) {
         return null;
@@ -17,7 +17,7 @@ export const useLabelData = () => {
 
       return data;
     },
-    enabled: !!user,
+    enabled: !!userSecret || !!user?.secret,
     refetchInterval: 1000 * 30,
     staleTime: Infinity,
   });

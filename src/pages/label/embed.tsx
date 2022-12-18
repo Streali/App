@@ -6,7 +6,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 const LabelEmbed = () => {
   const { id } = useParams();
   const { data, isLoading } = useLabel(id!);
-  const { data: labelData } = useLabelData();
+  const { data: labelData } = useLabelData(data?.user.secret);
 
   useEffect(() => {
     if (data) {
