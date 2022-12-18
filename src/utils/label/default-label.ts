@@ -106,7 +106,7 @@ export const defaultLabel: Label = {
     margin: {
       top: 0,
       right: 0,
-      bottom: 8,
+      bottom: 0,
       left: 0,
     },
     padding: {
