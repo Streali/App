@@ -35,6 +35,7 @@ export const labelKeys = {
   lists: () => [...labelKeys.root, 'lists'] as const,
   details: () => [...labelKeys.root, 'details'] as const,
   detail: (id: string) => [...labelKeys.details(), id] as const,
+  info: (userId: string) => [...labelKeys.root, 'info', userId] as const,
 };
 
 export const queryKeys = {
