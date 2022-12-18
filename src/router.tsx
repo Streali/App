@@ -11,6 +11,7 @@ import { EventListEdit } from './pages/event-list/edit';
 import { EventListEmbed } from './pages/event-list/embed';
 import EventListLibrary from './pages/event-list/library';
 import type { RouteObject } from 'react-router-dom';
+import CreateLabel from './pages/label/create';
 
 export const chatRouter: RouteObject[] = [
   {
@@ -64,6 +65,13 @@ export const eventListRoutes: RouteObject[] = [
   },
 ];
 
+export const labelRoutes: RouteObject[] = [
+  {
+    path: 'labels/create',
+    element: <CreateLabel />,
+  },
+];
+
 export const embedRoutes: RouteObject[] = [
   {
     path: '/chats/:id/embed',
@@ -78,5 +86,6 @@ export const embedRoutes: RouteObject[] = [
 export const routes: RouteObject[] = [
   ...chatRouter,
   ...eventRoutes,
+  ...labelRoutes,
   ...eventListRoutes /*...alertRoutes*/,
 ];

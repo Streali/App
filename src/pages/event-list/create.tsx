@@ -41,7 +41,7 @@ export const EventListCreate = () => {
 
   const type = EventTypeDict.get(Number(selectEvent.value));
 
-  if (!type || type.value === EventType.HypeTrainProgress) {
+  if (!type) {
     throw new Error(`EventType ${selectEvent.value} not found`);
   }
 

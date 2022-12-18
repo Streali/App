@@ -11,6 +11,11 @@ export const navigation: NavigationItems = [
     link: '/event-lists',
     name: 'Event Lists',
   },
+  {
+    icon: 'price-tag-3-line',
+    link: '/labels/create',
+    name: 'Labels',
+  },
   // {
   //   icon: 'alarm-warning-line',
   //   items: [

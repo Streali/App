@@ -30,6 +30,13 @@ export const eventListKeys = {
   detail: (id: string) => [...eventListKeys.details(), id] as const,
 };
 
+export const labelKeys = {
+  root: ['label'] as const,
+  lists: () => [...labelKeys.root, 'lists'] as const,
+  details: () => [...labelKeys.root, 'details'] as const,
+  detail: (id: string) => [...labelKeys.details(), id] as const,
+};
+
 export const queryKeys = {
   lottie: (url?: string) => ['lottie', url] as const,
   googleFont: () => ['googleFont'] as const,

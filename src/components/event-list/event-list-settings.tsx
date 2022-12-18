@@ -1,10 +1,10 @@
 import { Control } from 'react-hook-form';
+import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 import { Button, ButtonColor } from '../button/button';
 import { TabProps, Tabs } from '../tabs/tabs';
 import TabGeneral from './tabs/tab-general';
 import TabStyles from './tabs/tab-styles';
 import TabTexts from './tabs/tab-texts';
-import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 
 type EventListSettingsProps = {
   control: Control;
