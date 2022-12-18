@@ -10,8 +10,11 @@ import { EventListCreate } from './pages/event-list/create';
 import { EventListEdit } from './pages/event-list/edit';
 import { EventListEmbed } from './pages/event-list/embed';
 import EventListLibrary from './pages/event-list/library';
+import LabelCreate from './pages/label/create';
+import LabelEdit from './pages/label/edit';
+import LabelEmbed from './pages/label/embed';
+import LabelLibrary from './pages/label/library';
 import type { RouteObject } from 'react-router-dom';
-import CreateLabel from './pages/label/create';
 
 export const chatRouter: RouteObject[] = [
   {
@@ -68,7 +71,15 @@ export const eventListRoutes: RouteObject[] = [
 export const labelRoutes: RouteObject[] = [
   {
     path: 'labels/create',
-    element: <CreateLabel />,
+    element: <LabelCreate />,
+  },
+  {
+    path: 'labels',
+    element: <LabelLibrary />,
+  },
+  {
+    path: 'labels/:id/edit',
+    element: <LabelEdit />,
   },
 ];
 
@@ -80,6 +91,10 @@ export const embedRoutes: RouteObject[] = [
   {
     path: '/event-lists/:id/embed',
     element: <EventListEmbed />,
+  },
+  {
+    path: 'labels/:id/embed',
+    element: <LabelEmbed />,
   },
 ];
 

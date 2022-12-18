@@ -6,7 +6,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 import { Label } from '~/types/schemas/label';
 import { defaultLabel } from '~/utils/label/default-label';
 
-const CreateLabel = () => {
+const LabelCreate = () => {
   const [theme, setTheme] = useState<Label>(defaultLabel);
 
   const { handleSubmit, watch, control } = useForm({
@@ -58,4 +58,4 @@ const CreateLabel = () => {
   );
 };
 
-export default CreateLabel;
+export default LabelCreate;

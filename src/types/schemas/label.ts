@@ -47,11 +47,20 @@ export const LabelValueSchema = z.object({
 });
 
 export const LabelSchema = z.object({
-  title: z.string(),
   order: OrderSchema,
   container: LabelContainerSchema,
   label: LabelLabelSchema,
   value: LabelValueSchema,
+});
+
+export const LabelResponseSchema = z.object({
+  theme: LabelSchema,
+  id: z.string(),
+  created_at: z.string(),
+  updated_at: z.string(),
+  user_id: z.string(),
+  title: z.string(),
+  secret: z.string(),
 });
 
 export const LabelDataSchema = z.object({
@@ -78,3 +87,4 @@ export const LabelDataSchema = z.object({
 
 export type Label = z.infer<typeof LabelSchema>;
 export type LabelData = z.infer<typeof LabelDataSchema>;
+export type LabelResponse = z.infer<typeof LabelResponseSchema>;

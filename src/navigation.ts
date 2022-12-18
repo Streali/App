@@ -13,7 +13,7 @@ export const navigation: NavigationItems = [
   },
   {
     icon: 'price-tag-3-line',
-    link: '/labels/create',
+    link: '/labels',
     name: 'Labels',
   },
   // {
