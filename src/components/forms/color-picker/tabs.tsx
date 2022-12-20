@@ -1,4 +1,5 @@
 import { HsvaColor, hsvaToRgbaString } from '@uiw/color-convert';
+import TransparencyBg from '~/assets/transparency-bg.png';
 import { TabHex } from './tab-hex';
 import { TabHSL } from './tab-hsl';
 import { TabRGB } from './tab-rgb';
@@ -18,12 +19,13 @@ export const Tabs = (props: TabsProps) => {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex w-full items-center gap-2 px-2">
-        <div
-          className="h-4 w-4 shrink-0 overflow-hidden rounded"
-          style={{
-            backgroundColor: `${hsvaToRgbaString(color)}`,
-          }}
-        ></div>
+        <div className="relative h-4 w-4 shrink-0 overflow-hidden rounded">
+          <div
+            className="absolute h-full w-full"
+            style={{ backgroundColor: `${hsvaToRgbaString(color)}` }}
+          />
+          <img src={TransparencyBg} alt="transparency background" />
+        </div>
 
         {tab === 'hex' && <TabHex color={color} onChange={(e: HsvaColor) => onChange(e)} />}
         {tab === 'rgba' && <TabRGB color={color} onChange={(e: HsvaColor) => onChange(e)} />}

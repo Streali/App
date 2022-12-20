@@ -1,5 +1,6 @@
 import './color-picker.scss';
 import { HsvaColor, rgbaStringToHsva, color as colorResult } from '@uiw/color-convert';
+import { Alpha } from '@uiw/react-color';
 import Hue from '@uiw/react-color-hue';
 import Saturation from '@uiw/react-color-saturation';
 import { Pointer } from './pointer';
@@ -26,22 +27,28 @@ export const ColorPicker = (props: ColorPickerProps) => {
     >
       <Hue
         hue={hsva.h}
-        onChange={(newHue) => {
-          handleChange({ ...hsva, ...newHue });
-        }}
+        onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
         pointer={Pointer}
         radius="4px 0 0 4px"
         direction="vertical"
         width="6px"
         height="320px"
       />
-      <div className="flex flex-col gap-4" style={{ width: '214px' }}>
+      <div className="flex flex-col" style={{ width: '214px' }}>
         <Saturation
           hsva={hsva}
           onChange={(newColor) => handleChange({ ...hsva, ...newColor, a: hsva.a })}
           radius="0 4px 0 0"
           style={{ height: '240px', width: '100%' }}
           pointer={Pointer}
+        />
+        <Alpha
+          hsva={hsva}
+          onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
+          pointer={({ left }) => <Pointer top="50%" left={left} />}
+          width="100%"
+          height="6px"
+          className="mb-4"
         />
         <Tabs color={hsva} onChange={(newColor) => handleChange(newColor)} />
       </div>
