@@ -4355,12 +4355,12 @@
     "@typescript-eslint/types" "5.47.0"
     eslint-visitor-keys "^3.3.0"
 
-"@uiw/color-convert@1.1.1", "@uiw/color-convert@^1.1.1":
+"@uiw/color-convert@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@uiw/color-convert/-/color-convert-1.1.1.tgz#6dc15114f5047b2c6382195d2720d1db17137935"
   integrity sha512-lLuNBe6r1/hXzQi04YOnaOWJFgpbJgEuL+CYOfd03EBwo0r1aKVGlmhu6xhDATooKRx3CRWM+SgImy9Iebj/Tg==
 
-"@uiw/react-color-alpha@1.1.1", "@uiw/react-color-alpha@^1.1.1":
+"@uiw/react-color-alpha@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@uiw/react-color-alpha/-/react-color-alpha-1.1.1.tgz#006883e7fb6c55478726d8b64dbf83e53f1d82ba"
   integrity sha512-PM4CuZDJpljiALflIKO6fMJAs70N7W087OZe3VsFgDC5joqjr/ScNQ4aY1OVJCorfbA441q4bK3SRSrjQyQd/A==
