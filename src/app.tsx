@@ -51,7 +51,7 @@ export const App = () => {
       <main
         className={`relative min-h-screen ${
           !noLayout.some((path) => location.pathname.includes(path))
-            ? 'ml-[300px] w-[calc(100%_-_300px)]'
+            ? 'ml-[200px] w-[calc(100%_-_200px)]'
             : 'ml-0 w-screen'
         }`}
       >

@@ -42,7 +42,7 @@ export const Navbar = (props: NavbarProps) => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 flex h-screen w-[300px] flex-col items-end justify-between border-r border-dark-400 bg-dark-500 p-10">
+    <div className="fixed top-0 left-0 flex h-screen w-[200px] flex-col items-end justify-between border-r border-dark-400 bg-dark-500 p-10">
       <div className="flex w-full flex-col items-end">
         <Link to="/" className="mb-10">
           <img src={Logo} alt="Logo Streali" />
