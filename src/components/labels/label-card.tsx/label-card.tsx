@@ -6,6 +6,7 @@ import { useDeleteLabel } from '~/hooks/label/use-delete-label';
 import { useExportLabel } from '~/hooks/label/use-export-label';
 import { LabelData, LabelResponse } from '~/types/schemas/label';
 import LabelElement from '../label-element.tsx/label-element';
+import { useDuplicateLabel } from '~/hooks/label/use-duplicate-label';
 
 type LabelCardProps = {
   label: LabelResponse;
@@ -16,6 +17,7 @@ const LabelCard = (props: LabelCardProps) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const { mutate: duplicateLabel } = useDuplicateLabel();
   const { mutate: deleteLabel } = useDeleteLabel();
   const { mutate: exportEventList } = useExportLabel();
 
@@ -40,6 +42,13 @@ const LabelCard = (props: LabelCardProps) => {
                 title: 'Edit',
                 link: `/labels/${label.secret}/edit`,
                 icon: 'edit-box-line',
+              },
+              {
+                title: 'Duplicate',
+                onClick: () => {
+                  duplicateLabel(label.id);
+                },
+                icon: 'clipboard-line',
               },
               {
                 title: 'Embed',
