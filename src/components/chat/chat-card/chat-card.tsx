@@ -6,6 +6,7 @@ import { toastr, ToastType } from '~/components/toast/toast';
 import { useDeleteChat } from '~/hooks/chat/use-delete-chat';
 import { useExportChatTheme } from '~/hooks/chat/use-export-chat';
 import type { ChatTheme } from '~/types/schemas/chat';
+import { useDuplicateChat } from '~/hooks/chat/use-duplicate-chat';
 
 export interface ChatCardProps {
   theme: ChatTheme;
@@ -13,8 +14,11 @@ export interface ChatCardProps {
 
 export const ChatCard = (props: ChatCardProps) => {
   const { theme } = props;
+
+  const { mutate: duplicateChat } = useDuplicateChat();
   const { mutate: deleteChatTheme } = useDeleteChat();
   const { mutate: exportChatTheme } = useExportChatTheme();
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -59,6 +63,13 @@ export const ChatCard = (props: ChatCardProps) => {
                 title: 'Edit',
                 link: `/chats/${theme.id}/edit`,
                 icon: 'edit-box-line',
+              },
+              {
+                title: 'Duplicate',
+                onClick: () => {
+                  duplicateChat(theme.id);
+                },
+                icon: 'clipboard-line',
               },
               {
                 title: 'Embed',
