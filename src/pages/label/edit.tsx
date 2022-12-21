@@ -13,7 +13,7 @@ const LabelEdit = () => {
   const { data: label } = useLabel(id!);
 
   const { handleSubmit, watch, control, reset } = useForm({
-    defaultValues: { ...label?.theme, title: label?.title } as FieldValues,
+    defaultValues: theme as FieldValues,
   });
 
   const { mutate: saveTheme } = useUpdateLabel();
@@ -23,13 +23,20 @@ const LabelEdit = () => {
 
   useEffect(() => {
     if (!label) return;
-
-    setTheme(label.theme);
-    reset(label.theme);
+    setTheme({
+      ...label.theme,
+      title: label.title,
+    });
+    reset({
+      ...label.theme,
+      title: label.title,
+    });
   }, [label]);
 
   useEffect(() => {
-    const subscription = watch((value) => setTheme(value as Label));
+    const subscription = watch((value) => {
+      setTheme(value as Label);
+    });
     return () => subscription.unsubscribe();
   }, [watch]);
 

@@ -51,6 +51,7 @@ export const LabelSchema = z.object({
   container: LabelContainerSchema,
   label: LabelLabelSchema,
   value: LabelValueSchema,
+  title: z.optional(z.string()),
 });
 
 export const LabelResponseSchema = z.object({
