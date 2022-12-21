@@ -9,16 +9,11 @@ import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatCreate = () => {
   const [settings, setSettings] = useState(defaultChatTheme);
-  const navigate = useNavigate();
 
   const { mutate: createChat } = useCreateChat();
 
   const handleSubmit = (theme: FieldValues) => {
-    createChat(theme as ChatTheme, {
-      onSuccess: () => {
-        navigate('/chats');
-      },
-    });
+    createChat(theme as ChatTheme);
   };
 
   return (

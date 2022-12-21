@@ -9,7 +9,6 @@ import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatEdit = () => {
   const [settings, setSettings] = useState<ChatTheme | null>(null);
-  const navigate = useNavigate();
   const { id } = useParams();
   const { data: theme, status, error } = useChat(id!);
 
@@ -22,11 +21,7 @@ export const ChatEdit = () => {
   const { mutate: updateChat } = useUpdateChat();
 
   const handleSubmit = (theme: FieldValues) => {
-    updateChat(theme as ChatTheme, {
-      onSuccess: () => {
-        navigate('/chats');
-      },
-    });
+    updateChat(theme as ChatTheme);
   };
 
   if (status === 'loading' || !settings) {

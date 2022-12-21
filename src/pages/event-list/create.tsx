@@ -21,18 +21,13 @@ export const EventListCreate = () => {
     value: `${EventType.Follow}`,
   });
 
-  const navigate = useNavigate();
   const { handleSubmit, control, setValue, watch } = useForm({
     defaultValues: defaultEventListTheme as FieldValues,
   });
 
   const { mutate: saveTheme } = useCreateEventList();
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    saveTheme(theme as EventList, {
-      onSuccess: () => {
-        navigate('/event-lists');
-      },
-    });
+    saveTheme(theme as EventList);
   });
 
   useEffect(() => {

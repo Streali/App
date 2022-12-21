@@ -33,18 +33,12 @@ export const EventListEdit = () => {
     reset(data.theme);
   }, [data]);
 
-  const navigate = useNavigate();
-
   const { mutate: saveTheme } = useUpdateEventList();
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    saveTheme(
-      { id: data?.id, theme: theme } as Omit<EventListResponse, 'created_at' | 'updated_at'>,
-      {
-        onSuccess: () => {
-          navigate('/event-lists');
-        },
-      }
-    );
+    saveTheme({ id: data?.id, theme: theme } as Omit<
+      EventListResponse,
+      'created_at' | 'updated_at'
+    >);
   });
 
   useEffect(() => {
