@@ -7,6 +7,7 @@ import { PopoverNavigation } from '../popover/navigation/popover-navigation';
 import { Popover } from '../popover/popover';
 import { toastr, ToastType } from '../toast/toast';
 import EventListItem from './event-list-item/event-list-item';
+import { useDuplicateEventList } from '~/hooks/event-list/use-duplicate-event-list';
 
 type EventListCardProps = {
   theme: EventList;
@@ -18,6 +19,7 @@ const EventListCard = (props: EventListCardProps) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const { mutate: duplicateEventList } = useDuplicateEventList();
   const { mutate: deleteEventList } = useDeleteEventList();
   const { mutate: exportEventList } = useExportEventList();
 
@@ -50,6 +52,13 @@ const EventListCard = (props: EventListCardProps) => {
                 title: 'Edit',
                 link: `/event-lists/${id}/edit`,
                 icon: 'edit-box-line',
+              },
+              {
+                title: 'Duplicate',
+                onClick: () => {
+                  duplicateEventList(id);
+                },
+                icon: 'clipboard-line',
               },
               {
                 title: 'Embed',
