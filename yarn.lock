@@ -4222,11 +4222,6 @@
   resolved "https://registry.yarnpkg.com/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz#b6725d5f4af24ace33b36fafd295136e75509f43"
   integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
 
-"@types/webfontloader@^1.6.35":
-  version "1.6.35"
-  resolved "https://registry.yarnpkg.com/@types/webfontloader/-/webfontloader-1.6.35.tgz#c9cedff2995c61ee9b2064714e7f7d7763ac50bd"
-  integrity sha512-IJlrsiDWq6KghQ7tPlL5tcwSUyOxLDceT+AFUY7Ylj0Fcv3/h3QkANqQxZ0B5mEpEKxhTw76vDmvrruSMV9n9Q==
-
 "@types/webpack-env@^1.16.0":
   version "1.18.0"
   resolved "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.18.0.tgz"
@@ -11609,6 +11604,13 @@ react-element-to-jsx-string@^14.3.4:
     is-plain-object "5.0.0"
     react-is "17.0.2"
 
+react-google-font-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-google-font-loader/-/react-google-font-loader-1.1.0.tgz#9c9ae97aae3d2177e922c9bf4ab6312b903abc79"
+  integrity sha512-mnPYxBdhYEldTtREYPKllbmMvCGkTbpdmNjR6iTM3eTNWcg17OrfXjq9HRDZe+1+mhnUnI/AOcpvG0LIQPcLIw==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-hook-form@^7.40.0:
   version "7.40.0"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.40.0.tgz#62bc939dddca88522cd7f5135b6603192ccf7e17"
@@ -13925,11 +13927,6 @@ web-namespaces@^1.0.0:
   version "1.1.4"
   resolved "https://registry.npmjs.org/web-namespaces/-/web-namespaces-1.1.4.tgz"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
-
-webfontloader@^1.6.28:
-  version "1.6.28"
-  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
-  integrity sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

@@ -49,6 +49,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-dropzone": "^14.2.3",
+    "react-google-font-loader": "^1.1.0",
     "react-hook-form": "^7.40.0",
     "react-hot-toast": "^2.4.0",
     "react-mentions": "^4.4.7",
@@ -61,7 +62,6 @@
     "simple-tmi-emotes": "^1.1.1",
     "tmi.js": "^1.8.5",
     "uid": "^2.0.1",
-    "webfontloader": "^1.6.28",
     "zod": "^3.19.1"
   },
   "devDependencies": {
@@ -85,7 +85,6 @@
     "@types/react-mentions": "^4.1.8",
     "@types/react-resizable": "^3.0.3",
     "@types/tmi.js": "^1.8.2",
-    "@types/webfontloader": "^1.6.35",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "@vitejs/plugin-react": "^3.0.0",

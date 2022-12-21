@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import GoogleFontLoader from 'react-google-font-loader';
 import { EmoteOptions, parse } from 'simple-tmi-emotes';
 import tmi from 'tmi.js';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
@@ -17,22 +18,6 @@ export const ChatEmbed = () => {
       }),
     [theme]
   );
-
-  useEffect(() => {
-    if (theme) {
-      (async () => {
-        const WebFont = await import('webfontloader');
-        WebFont.load({
-          google: {
-            families: [
-              theme.name.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
-              theme.message.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950',
-            ],
-          },
-        });
-      })();
-    }
-  }, [theme]);
 
   useEffect(() => {
     if (theme) {
@@ -107,21 +92,39 @@ export const ChatEmbed = () => {
     document.body.style.backgroundColor = 'transparent';
   }, []);
 
+  if (!theme) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div
-      className="relative flex h-screen flex-col items-end justify-end overflow-hidden"
-      style={{ bottom: `-${theme?.global.space_between_messages}px` }}
-    >
-      {theme &&
-        messages.map((message) => (
-          <motion.div
-            key={message.id}
-            className="w-full"
-            layout={theme.global.animation !== 'none'}
-          >
-            <ChatMessage settings={theme} message={message} />
-          </motion.div>
-        ))}
-    </div>
+    <>
+      <GoogleFontLoader
+        fonts={[
+          {
+            font: theme.name.text.fontFamily,
+            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+          },
+          {
+            font: theme.message.text.fontFamily,
+            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+          },
+        ]}
+      />
+      <div
+        className="relative flex h-screen flex-col items-end justify-end overflow-hidden"
+        style={{ bottom: `-${theme?.global.space_between_messages}px` }}
+      >
+        {theme &&
+          messages.map((message) => (
+            <motion.div
+              key={message.id}
+              className="w-full"
+              layout={theme.global.animation !== 'none'}
+            >
+              <ChatMessage settings={theme} message={message} />
+            </motion.div>
+          ))}
+      </div>
+    </>
   );
 };

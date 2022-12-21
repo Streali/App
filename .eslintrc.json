@@ -27,6 +27,7 @@
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": "off",
     "import/no-unresolved": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "import/order": [
       "warn",
       {

@@ -1,4 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
+import GoogleFontLoader from 'react-google-font-loader';
 import EventListItem from '~/components/event-list/event-list-item/event-list-item';
 import { useEventSource } from '~/hooks/core/use-event-source';
 import { useEventList } from '~/hooks/event-list/use-event-list';
@@ -37,89 +38,6 @@ export const EventListEmbed = () => {
   }, [theme]);
 
   useEffect(() => {
-    if (theme) {
-      (async () => {
-        const WebFont = await import('webfontloader');
-        WebFont.load({
-          google: {
-            families: [
-              theme.theme.events.styles.all.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.all.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.all.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.follow.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.follow.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.follow.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.subscribe.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.subscribe.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.subscribe.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.subscription_gift.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.subscription_gift.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.subscription_gift.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.raid.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.raid.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.raid.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.cheer.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.cheer.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.cheer.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.hype_train_begin.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.hype_train_begin.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.hype_train_begin.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.hype_train_end.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.hype_train_end.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.hype_train_end.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.goal_begin.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.goal_begin.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.goal_begin.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-
-              theme.theme.events.styles.goal_end.message.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.goal_end.message.accent.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-              theme.theme.events.styles.goal_end.name.text_style.fontFamily +
-                ':100,200,300,400,500,600,700,800,900,950',
-            ],
-          },
-        });
-      })();
-    }
-  }, [theme]);
-
-  useEffect(() => {
     document.body.style.backgroundColor = 'transparent';
   }, []);
 
@@ -127,22 +45,135 @@ export const EventListEmbed = () => {
     return <div>Loading...</div>;
   }
 
+  const fonts = [
+    {
+      font: theme.theme.events.styles.all.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.all.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.follow.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.follow.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.subscribe.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.subscribe.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.subscription_gift.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.subscription_gift.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.raid.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.raid.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.cheer.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.cheer.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.hype_train_begin.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.hype_train_begin.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.hype_train_end.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.hype_train_end.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.goal_begin.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.goal_begin.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.goal_end.name.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+    {
+      font: theme.theme.events.styles.goal_end.message.text_style.fontFamily,
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
+  ];
+
   return (
-    <div className="flex h-screen flex-1 flex-col items-end justify-end">
-      {events.map((event, i) => {
-        const eventsActivate = theme.theme.events_activate.map((e) => {
-          return {
-            label: e.label,
-            value: parseInt(e.value),
-          };
-        });
-        if (eventsActivate.find((e) => e.value === event.type)) {
-          return (
-            <AnimatePresence key={`${event.id}-${i}`}>
-              <EventListItem
-                theme={theme.theme}
-                name={
-                  theme.theme.events.texts[
+    <>
+      <GoogleFontLoader fonts={fonts} />
+      <div className="flex h-screen flex-1 flex-col items-end justify-end">
+        {events.map((event, i) => {
+          const eventsActivate = theme.theme.events_activate.map((e) => {
+            return {
+              label: e.label,
+              value: parseInt(e.value),
+            };
+          });
+          if (eventsActivate.find((e) => e.value === event.type)) {
+            return (
+              <AnimatePresence key={`${event.id}-${i}`}>
+                <EventListItem
+                  theme={theme.theme}
+                  name={
+                    theme.theme.events.texts[
+                      eventType[event.type] as
+                        | 'follow'
+                        | 'cheer'
+                        | 'subscribe'
+                        | 'subscription_gift'
+                        | 'raid'
+                        | 'hype_train_begin'
+                        | 'hype_train_end'
+                        | 'goal_begin'
+                        | 'goal_end'
+                    ].name
+                  }
+                  message={
+                    theme.theme.events.texts[
+                      eventType[event.type] as
+                        | 'follow'
+                        | 'cheer'
+                        | 'subscribe'
+                        | 'subscription_gift'
+                        | 'raid'
+                        | 'hype_train_begin'
+                        | 'hype_train_end'
+                        | 'goal_begin'
+                        | 'goal_end'
+                    ].message
+                  }
+                  event={event}
+                  type={
                     eventType[event.type] as
                       | 'follow'
                       | 'cheer'
@@ -153,40 +184,13 @@ export const EventListEmbed = () => {
                       | 'hype_train_end'
                       | 'goal_begin'
                       | 'goal_end'
-                  ].name
-                }
-                message={
-                  theme.theme.events.texts[
-                    eventType[event.type] as
-                      | 'follow'
-                      | 'cheer'
-                      | 'subscribe'
-                      | 'subscription_gift'
-                      | 'raid'
-                      | 'hype_train_begin'
-                      | 'hype_train_end'
-                      | 'goal_begin'
-                      | 'goal_end'
-                  ].message
-                }
-                event={event}
-                type={
-                  eventType[event.type] as
-                    | 'follow'
-                    | 'cheer'
-                    | 'subscribe'
-                    | 'subscription_gift'
-                    | 'raid'
-                    | 'hype_train_begin'
-                    | 'hype_train_end'
-                    | 'goal_begin'
-                    | 'goal_end'
-                }
-              />
-            </AnimatePresence>
-          );
-        }
-      })}
-    </div>
+                  }
+                />
+              </AnimatePresence>
+            );
+          }
+        })}
+      </div>
+    </>
   );
 };

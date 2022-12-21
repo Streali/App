@@ -46,17 +46,6 @@ export const AlertText = (props: AlertTextProps) => {
     },
   };
 
-  useEffect(() => {
-    (async () => {
-      const WebFont = await import('webfontloader');
-      WebFont.load({
-        google: {
-          families: [settings.text.fontFamily + ':100,200,300,400,500,600,700,800,900,950'],
-        },
-      });
-    })();
-  }, [settings, posX, posY]);
-
   return (
     <AnimatePresence>
       {timestamp >= start_time && timestamp <= start_time + duration && (
