@@ -59,7 +59,7 @@ export const Border = (props: BorderProps) => {
         : setAllBorders(false);
       setCurrentSettings(settings);
     }
-  }, []);
+  }, [settings]);
 
   if (allBorders) {
     return (
@@ -73,7 +73,7 @@ export const Border = (props: BorderProps) => {
           <Input
             type="number"
             suffix="px"
-            defaultValue={currentSettings.top.width}
+            defaultValue={settings?.top.width}
             className="w-full"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;
