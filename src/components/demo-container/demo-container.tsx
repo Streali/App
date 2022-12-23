@@ -7,7 +7,7 @@ export type DemoContainerProps = {
 
 const DemoContainer = (props: DemoContainerProps) => {
   const { children } = props;
-  const [color, setColor] = useState<string>('#ff0000');
+  const [color, setColor] = useState<string>('#040508');
 
   return (
     <div
@@ -16,7 +16,7 @@ const DemoContainer = (props: DemoContainerProps) => {
     >
       {children}
       <div className="absolute inset-0  flex h-14 w-full items-center justify-end bg-dark-600/40 px-2 backdrop-blur-sm">
-        <Color haveInput={false} color={color} onColorChange={setColor} />
+        <Color haveInput={false} value={color} onColorChange={setColor} />
       </div>
     </div>
   );
