@@ -6,6 +6,7 @@ import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
 import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
+import DemoContainer from '~/components/demo-container/demo-container';
 
 export const ChatCreate = () => {
   const [settings, setSettings] = useState(defaultChatTheme);
@@ -65,9 +66,9 @@ export const ChatCreate = () => {
               }}
             />
           </div>
-          <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
+          <DemoContainer>
             <ChatDemo settings={settings} />
-          </div>
+          </DemoContainer>
         </div>
       </div>
     </>

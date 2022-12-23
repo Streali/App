@@ -3,6 +3,7 @@ import { FieldValues } from 'react-hook-form';
 import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
+import DemoContainer from '~/components/demo-container/demo-container';
 import { useChat } from '~/hooks/chat/use-chat';
 import { useUpdateChat } from '~/hooks/chat/use-update-chat';
 import type { ChatTheme } from '~/types/schemas/chat';
@@ -81,9 +82,9 @@ export const ChatEdit = () => {
               }}
             />
           </div>
-          <div className="flex h-[calc(100vh_-_80px)] flex-1 flex-col items-end justify-end overflow-hidden rounded-2xl bg-dark-600 p-10">
+          <DemoContainer>
             <ChatDemo settings={settings} />
-          </div>
+          </DemoContainer>
         </div>
       </div>
     </>
