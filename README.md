@@ -31,6 +31,10 @@ Streali provides you with tools to make your streaming experience easier. Whethe
 
 You can find the architecture of the project on FigJam: [Here](https://www.figma.com/file/x8XGLvGorcFihEgSpmJL9R/Streali---Frontend-Architecture?node-id=0%3A1)
 
+## Stack
+
+You can find the technical stack used on [Stackshare](https://stackshare.io/streali/streali).
+
 ## Design system
 
 Like the project, the design system is also open source. You can view and use it on Figma.
