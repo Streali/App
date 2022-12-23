@@ -18,7 +18,6 @@ export function File(props: FileProps) {
   const [fileName, setFileName] = useState<string[]>([]);
 
   const handleDrop = (acceptedFiles: File[]) => {
-    console.log(acceptedFiles);
     setFileName(acceptedFiles.map((file) => file.name));
     onChange && onChange(acceptedFiles);
   };
@@ -28,14 +27,15 @@ export function File(props: FileProps) {
       onDrop={(acceptedFiles) => handleDrop(acceptedFiles)}
       onDropRejected={() => toastr(ToastType.Error, 'Error', 'File is too large')}
       onError={(error) => {
-        toastr(ToastType.Error, 'Error', error.message);
         console.log(error);
+        toastr(ToastType.Error, 'Error', error.message);
       }}
       onDragEnter={() => setDragOver(true)}
       onDragLeave={() => setDragOver(false)}
       maxFiles={maxFiles}
       accept={accept}
       maxSize={sizeConversion}
+      multiple={maxFiles > 1}
       disabled={disabled}
     >
       {({ getRootProps, getInputProps }) => (
@@ -51,15 +51,12 @@ export function File(props: FileProps) {
             <input {...getInputProps()} />
             {fileName.length === 0 && (
               <>
-                <Button
-                  size={ButtonSize.Very_Small}
-                  disabled={disabled}
-                  className="mb-3"
-                  onClick={() => console.log('open file')}
-                >
+                <Button size={ButtonSize.Very_Small} disabled={disabled} className="mb-3">
                   Choose the file
                 </Button>
-                <p className="text-xs">Drop some files here, or click to select files</p>
+                <p className="text-center text-xs">
+                  Drop some files here, or click to select files
+                </p>
               </>
             )}
             {fileName.length > 0 && (
@@ -67,7 +64,7 @@ export function File(props: FileProps) {
                 <Button size={ButtonSize.Very_Small} className="mb-3">
                   Change the file
                 </Button>
-                <p className="text-xs">{fileName.join(', ')}</p>
+                <p className="text-center text-xs">{fileName.join(', ')}</p>
               </>
             )}
           </div>

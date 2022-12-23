@@ -10,6 +10,7 @@ export interface ModalProps {
   buttons?: ReactNode;
   open: boolean;
   onOpenChange?: (open: boolean) => void;
+  containerClassName?: string;
 }
 
 export const Modal = (props: ModalProps) => {
@@ -21,6 +22,7 @@ export const Modal = (props: ModalProps) => {
     open,
     triggerContainerClassName = '',
     onOpenChange,
+    containerClassName = '',
   } = props;
   const [isOpen, setIsOpen] = useState(open);
 
@@ -40,7 +42,7 @@ export const Modal = (props: ModalProps) => {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed top-0 left-0 z-10 h-full w-full bg-dark-500 opacity-70" />
         <Dialog.Content
-          className={`min-w-40 fixed top-1/2 left-1/2 z-20 w-[calc(600px-48px)] max-w-[calc(100vw-48px)] -translate-x-1/2 -translate-y-1/2 animate-dialogFadeIn rounded-md bg-dark-400 p-5`}
+          className={`min-w-40 fixed top-1/2 left-1/2 z-20 w-[calc(600px-48px)] max-w-[calc(100vw-48px)] -translate-x-1/2 -translate-y-1/2 animate-dialogFadeIn rounded-md bg-dark-400 p-5 ${containerClassName}`}
         >
           <div className="mb-3 flex w-full items-center justify-between">
             <Dialog.Title className="font-title text-3xl font-semibold">{title}</Dialog.Title>
