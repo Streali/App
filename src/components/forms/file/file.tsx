@@ -9,10 +9,19 @@ export interface FileProps {
   accept?: { [key: string]: string[] };
   disabled?: boolean;
   className?: string;
+  viewFileList?: boolean;
 }
 
 export function File(props: FileProps) {
-  const { onChange, maxFiles = 1, maxSize = 1, accept, disabled = false, className = '' } = props;
+  const {
+    onChange,
+    maxFiles = 1,
+    maxSize = 1,
+    accept,
+    disabled = false,
+    className = '',
+    viewFileList = true,
+  } = props;
   const [dragOver, setDragOver] = useState(false);
   const sizeConversion = maxSize * 1000000;
   const [fileName, setFileName] = useState<string[]>([]);
@@ -27,7 +36,6 @@ export function File(props: FileProps) {
       onDrop={(acceptedFiles) => handleDrop(acceptedFiles)}
       onDropRejected={() => toastr(ToastType.Error, 'Error', 'File is too large')}
       onError={(error) => {
-        console.log(error);
         toastr(ToastType.Error, 'Error', error.message);
       }}
       onDragEnter={() => setDragOver(true)}
@@ -64,7 +72,7 @@ export function File(props: FileProps) {
                 <Button size={ButtonSize.Very_Small} className="mb-3">
                   Change the file
                 </Button>
-                <p className="text-center text-xs">{fileName.join(', ')}</p>
+                {viewFileList && <p className="text-center text-xs">{fileName.join(', ')}</p>}
               </>
             )}
           </div>

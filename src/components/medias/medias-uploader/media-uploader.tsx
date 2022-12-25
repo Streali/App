@@ -6,10 +6,11 @@ import { FileTypeToTag } from '~/utils/common/file-type-to-tag';
 
 interface MediaUploaderProps {
   trigger: React.ReactNode;
+  onSuccess?: () => void;
 }
 
 const MediaUploader = (props: MediaUploaderProps) => {
-  const { trigger } = props;
+  const { trigger, onSuccess } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
 
@@ -20,6 +21,7 @@ const MediaUploader = (props: MediaUploaderProps) => {
       uploadFile(file, {
         onSuccess: () => {
           file.name === files[files.length - 1].name && setIsOpen(false);
+          onSuccess && onSuccess();
         },
       });
     });
@@ -32,12 +34,13 @@ const MediaUploader = (props: MediaUploaderProps) => {
         title="Upload media"
         open={isOpen}
         onOpenChange={setIsOpen}
-        containerClassName="max-h-[80vh] overflow-y-scroll custom-scrollbar"
+        containerClassName="max-h-[80vh] overflow-y-scroll custom-scrollbar !bg-dark-600"
       >
         <File
           onChange={setFiles}
           maxSize={20}
           maxFiles={99}
+          viewFileList={false}
           accept={{
             image: ['image/png', 'image/jpeg', 'image/gif'],
             video: ['video/mp4', 'video/webm'],
@@ -49,7 +52,7 @@ const MediaUploader = (props: MediaUploaderProps) => {
           {files.map((file) => (
             <div
               key={file.name}
-              className="flex items-center justify-between rounded bg-dark-500 px-3 py-2 text-sm"
+              className="flex items-center justify-between rounded bg-dark-400 px-3 py-2 text-sm"
             >
               <div className="flex items-center gap-2">
                 <span className="rounded-sm bg-primary-500 py-1 px-2 text-xs font-bold uppercase">
