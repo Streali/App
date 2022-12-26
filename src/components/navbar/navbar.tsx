@@ -4,7 +4,7 @@ import { Avatar } from '~/components/avatar/avatar';
 import { Icon } from '~/components/icon/icon';
 import { PopoverLink, PopoverNavigation } from '~/components/popover/navigation/popover-navigation';
 import { Popover } from '~/components/popover/popover';
-import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useUser } from '~/hooks/auth/use-user';
 import { useLogout } from '~/hooks/auth/use-logout';
 
 export type NavigationItem = {
@@ -25,7 +25,7 @@ export interface NavbarProps {
 }
 
 export const Navbar = (props: NavbarProps) => {
-  const { data: user } = useAuthUser();
+  const { data: user } = useUser();
   const { mutate: logout } = useLogout();
   const { navigation } = props;
   const [userNavOpen, setUserNavOpen] = useState(false);

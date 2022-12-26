@@ -1,15 +1,11 @@
 import { Navigate } from 'react-router-dom';
 import { Button } from '~/components/button/button';
-import { useAuthCheck } from '~/hooks/auth/use-auth-check';
+import { useAuth } from '~/contexts/auth-provider';
 
 export const Login = () => {
-  const { data, status } = useAuthCheck();
+  const { user } = useAuth();
 
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
-
-  if (data?.authenticated) {
+  if (user) {
     return <Navigate to="/" replace />;
   }
 

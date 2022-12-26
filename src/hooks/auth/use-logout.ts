@@ -13,7 +13,6 @@ export function useLogout() {
     {
       onSuccess() {
         Sentry.setUser(null);
-        void queryClient.invalidateQueries(authKeys.check());
         void queryClient.setQueryData(authKeys.user(), null);
       },
     }

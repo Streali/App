@@ -6,14 +6,14 @@ import { ChatEmbed } from '~/pages/chat/embed';
 import { ChatLibrary } from '~/pages/chat/library';
 import { Dashboard } from '~/pages/dashboard';
 import { Events } from '~/pages/events';
-import { EventListCreate } from './pages/event-list/create';
-import { EventListEdit } from './pages/event-list/edit';
-import { EventListEmbed } from './pages/event-list/embed';
-import EventListLibrary from './pages/event-list/library';
-import LabelCreate from './pages/label/create';
-import LabelEdit from './pages/label/edit';
-import LabelEmbed from './pages/label/embed';
-import LabelLibrary from './pages/label/library';
+import { EventListCreate } from '../pages/event-list/create';
+import { EventListEdit } from '../pages/event-list/edit';
+import { EventListEmbed } from '../pages/event-list/embed';
+import EventListLibrary from '../pages/event-list/library';
+import LabelCreate from '../pages/label/create';
+import LabelEdit from '../pages/label/edit';
+import LabelEmbed from '../pages/label/embed';
+import LabelLibrary from '../pages/label/library';
 import type { RouteObject } from 'react-router-dom';
 
 export const chatRouter: RouteObject[] = [
@@ -83,7 +83,7 @@ export const labelRoutes: RouteObject[] = [
   },
 ];
 
-export const embedRoutes: RouteObject[] = [
+export const routes: RouteObject[] = [
   {
     path: '/chats/:id/embed',
     element: <ChatEmbed />,
@@ -98,7 +98,7 @@ export const embedRoutes: RouteObject[] = [
   },
 ];
 
-export const routes: RouteObject[] = [
+export const protectedRoutes: RouteObject[] = [
   ...chatRouter,
   ...eventRoutes,
   ...labelRoutes,

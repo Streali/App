@@ -16,6 +16,7 @@ export const navigation: NavigationItems = [
     link: '/labels',
     name: 'Labels',
   },
+
   // {
   //   icon: 'alarm-warning-line',
   //   items: [
@@ -28,4 +29,4 @@ export const navigation: NavigationItems = [
   // },
 ];
 
-export const noLayout = ['/login', '/embed', '/events'];
+export const pagesWithoutLayout = ['/login', '/embed', '/events'];

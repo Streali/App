@@ -2,7 +2,7 @@ import { Accordion } from '~/components/accordion/accordion';
 import { Button, ButtonSize } from '~/components/button/button';
 import { Event } from '~/components/event/event';
 import { Checkbox } from '~/components/forms/checkbox/checkbox';
-import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
 import { useUserEvent } from '~/hooks/event/use-user-events';
 import { BaseEvent } from '~/types/schemas/event';
@@ -70,7 +70,7 @@ export const Events = () => {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: events } = useUserEvent();
-  const { data: user } = useAuthUser();
+  const { data: user } = useUser();
   const eventSource = useEventSource<BaseEvent>({
     onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
   });

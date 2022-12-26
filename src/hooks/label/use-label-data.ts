@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { useAuthUser } from '~/hooks/auth/use-auth-user';
+import { useUser } from '~/hooks/auth/use-user';
 import { labelKeys } from '~/hooks/query-keys';
 import { apiClient } from '~/utils/axios/axios';
 
 export const useLabelData = (userSecret?: string) => {
-  const { data: user } = useAuthUser();
+  const { data: user } = useUser();
 
   return useQuery({
     queryKey: labelKeys.info(userSecret || user?.secret || ''),
