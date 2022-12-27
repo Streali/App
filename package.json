@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.2.0",
+    "@monaco-editor/react": "^4.4.6",
     "@radix-ui/react-accordion": "^1.0.1",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-popover": "^1.0.2",
