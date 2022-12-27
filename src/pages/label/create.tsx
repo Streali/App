@@ -9,6 +9,7 @@ import { defaultLabel } from '~/utils/label/default-label';
 
 const LabelCreate = () => {
   const [theme, setTheme] = useState<Label>(defaultLabel);
+  const navigate = useNavigate();
 
   const { handleSubmit, watch, control } = useForm({
     defaultValues: defaultLabel as FieldValues,
@@ -16,7 +17,11 @@ const LabelCreate = () => {
 
   const { mutate: saveTheme } = useCreateLabel();
   const onCreate = handleSubmit((theme: FieldValues) => {
-    saveTheme(theme as Label);
+    saveTheme(theme as Label, {
+      onSuccess: (data) => {
+        navigate(`/labels/${data.id}/edit`);
+      },
+    });
   });
 
   useEffect(() => {

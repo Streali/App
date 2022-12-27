@@ -21,6 +21,7 @@ export const EventListCreate = () => {
     label: EventTypeDict.get(EventType.Follow)!.label,
     value: `${EventType.Follow}`,
   });
+  const navigate = useNavigate();
 
   const { handleSubmit, control, setValue, watch } = useForm({
     defaultValues: defaultEventListTheme as FieldValues,
@@ -28,7 +29,11 @@ export const EventListCreate = () => {
 
   const { mutate: saveTheme } = useCreateEventList();
   const onSubmit = handleSubmit((theme: FieldValues) => {
-    saveTheme(theme as EventList);
+    saveTheme(theme as EventList, {
+      onSuccess: (data) => {
+        navigate(`/event-lists/${data.id}/edit`);
+      },
+    });
   });
 
   useEffect(() => {

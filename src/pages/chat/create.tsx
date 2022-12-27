@@ -3,18 +3,23 @@ import { FieldValues } from 'react-hook-form';
 import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
+import DemoContainer from '~/components/demo-container/demo-container';
 import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
-import DemoContainer from '~/components/demo-container/demo-container';
 
 export const ChatCreate = () => {
   const [settings, setSettings] = useState(defaultChatTheme);
+  const navigate = useNavigate();
 
   const { mutate: createChat } = useCreateChat();
 
   const handleSubmit = (theme: FieldValues) => {
-    createChat(theme as ChatTheme);
+    createChat(theme as ChatTheme, {
+      onSuccess: (data) => {
+        navigate(`/chats/${data.id}/edit`);
+      },
+    });
   };
 
   return (
