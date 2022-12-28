@@ -1,7 +1,6 @@
 export const authKeys = {
   root: ['auth'] as const,
   user: () => [...authKeys.root, 'user'] as const,
-  check: () => [...authKeys.root, 'check'] as const,
 };
 
 export const chatKeys = {
