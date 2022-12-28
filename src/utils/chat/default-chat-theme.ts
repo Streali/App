@@ -11,6 +11,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       { id: 'message', name: 'Message' },
     ],
     animation: 'fade-in-left',
+    developer_mode: false,
   },
   container: {
     full_width: false,
@@ -151,5 +152,9 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
       bottom_right: 4,
       bottom_left: 4,
     },
+  },
+  code: {
+    html: '',
+    css: '',
   },
 };

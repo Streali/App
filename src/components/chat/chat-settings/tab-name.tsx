@@ -18,7 +18,7 @@ export const TabName = (props: TabGeneralProps) => {
   const { control } = props;
 
   return (
-    <div className="custom-scrollbar h-[calc(100vh_-_208px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
+    <div className="custom-scrollbar h-[calc(100vh_-_252px)] overflow-y-auto rounded-2xl bg-dark-600 p-6">
       <TabItem title="Full width">
         <Controller
           name="name.full_width"
