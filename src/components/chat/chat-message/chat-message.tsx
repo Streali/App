@@ -2,7 +2,7 @@ import './chat-message.scss';
 
 import { Liquid } from 'liquidjs';
 import { Fragment } from 'react';
-import root from 'react-shadow';
+import { scopeCSS } from '~/utils/common/scope-css';
 import { Container } from './container';
 import { Message } from './message';
 import { Name } from './name';
@@ -60,14 +60,13 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
 
     try {
       const template = engine.parseAndRenderSync(settings.code.html, data);
+      const style = scopeCSS(settings.code.css, '[data-scope]');
 
       return (
-        <div>
-          <root.div>
-            <style>{settings.code.css}</style>
-            <div dangerouslySetInnerHTML={{ __html: template }}></div>
-          </root.div>
-        </div>
+        <>
+          <style>{style}</style>
+          <div dangerouslySetInnerHTML={{ __html: template }} data-scope></div>
+        </>
       );
     } catch (error) {
       const err = error as Error;
