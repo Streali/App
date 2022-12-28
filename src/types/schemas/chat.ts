@@ -27,6 +27,7 @@ export const ChatThemeGlobalSchema = z.object({
   layout: z.nativeEnum(ChatLayout),
   order: OrderSchema,
   animation: z.string(),
+  developer_mode: z.boolean(),
 });
 
 export const ChatThemeContainerSchema = z.object({
@@ -76,6 +77,10 @@ export const ChatThemeSchema = z.object({
   message: ChatThemeMessageSchema,
   name: ChatThemeNameSchema,
   user_id: z.string(),
+  code: z.object({
+    html: z.string(),
+    css: z.string(),
+  }),
 });
 
 export const TwitchBadgeSchema = z.object({

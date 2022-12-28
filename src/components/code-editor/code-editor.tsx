@@ -1,4 +1,5 @@
-import Editor from '@monaco-editor/react';
+import Editor, { useMonaco } from '@monaco-editor/react';
+import Theme from '~/assets/codetheme.json';
 
 interface CodeEditorProps {
   initialValue: string;
@@ -10,17 +11,146 @@ interface CodeEditorProps {
 
 const CodeEditor = (props: CodeEditorProps) => {
   const { initialValue, language = 'html', className = '', editorClassName, onChange } = props;
+  const monaco = useMonaco();
+  const [customTheme, setCustomTheme] = useState(false);
 
   const handleEditorChange = (value: string | undefined) => {
     onChange?.(value || '');
   };
 
+  useEffect(() => {
+    if (monaco) {
+      monaco.languages.register({ id: 'liquid' });
+
+      monaco.languages.registerCompletionItemProvider('liquid', {
+        provideCompletionItems: () => {
+          const autocompleteProviderItems = [];
+          const keywords = [
+            'assign',
+            'capture',
+            'endcapture',
+            'increment',
+            'decrement',
+            'if',
+            'else',
+            'elsif',
+            'endif',
+            'for',
+            'endfor',
+            'break',
+            'continue',
+            'limit',
+            'offset',
+            'range',
+            'reversed',
+            'cols',
+            'case',
+            'endcase',
+            'when',
+            'block',
+            'endblock',
+            'true',
+            'false',
+            'in',
+            'unless',
+            'endunless',
+            'cycle',
+            'tablerow',
+            'endtablerow',
+            'contains',
+            'startswith',
+            'endswith',
+            'comment',
+            'endcomment',
+            'raw',
+            'endraw',
+            'editable',
+            'endentitylist',
+            'endentityview',
+            'endinclude',
+            'endmarker',
+            'entitylist',
+            'entityview',
+            'forloop',
+            'image',
+            'include',
+            'marker',
+            'outputcache',
+            'plugin',
+            'style',
+            'text',
+            'widget',
+            'abs',
+            'append',
+            'at_least',
+            'at_most',
+            'capitalize',
+            'ceil',
+            'compact',
+            'concat',
+            'date',
+            'default',
+            'divided_by',
+            'downcase',
+            'escape',
+            'escape_once',
+            'first',
+            'floor',
+            'join',
+            'last',
+            'lstrip',
+            'map',
+            'minus',
+            'modulo',
+            'newline_to_br',
+            'plus',
+            'prepend',
+            'remove',
+            'remove_first',
+            'replace',
+            'replace_first',
+            'reverse',
+            'round',
+            'rstrip',
+            'size',
+            'slice',
+            'sort',
+            'sort_natural',
+            'split',
+            'strip',
+            'strip_html',
+            'strip_newlines',
+            'times',
+            'truncate',
+            'truncatewords',
+            'uniq',
+            'upcase',
+            'url_decode',
+            'url_encode',
+          ];
+
+          for (let i = 0; i < keywords.length; i++) {
+            autocompleteProviderItems.push({
+              label: keywords[i],
+              kind: monaco.languages.CompletionItemKind.Keyword,
+            });
+          }
+
+          return { suggestions: autocompleteProviderItems };
+        },
+      });
+
+      monaco.editor.defineTheme('ok', Theme);
+      setCustomTheme(true);
+    }
+  }, [monaco]);
+
   return (
     <div className={`h-full w-full ${className}`}>
       <Editor
-        defaultLanguage={language}
+        defaultLanguage={language === 'html' ? 'liquid' : language}
         defaultValue={initialValue}
-        theme="vs-dark"
+        theme={customTheme ? 'ok' : 'vs-dark'}
         className={editorClassName}
         onChange={handleEditorChange}
         options={{

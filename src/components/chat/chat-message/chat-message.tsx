@@ -1,6 +1,8 @@
 import './chat-message.scss';
 
+import { Liquid } from 'liquidjs';
 import { Fragment } from 'react';
+import root from 'react-shadow';
 import { Container } from './container';
 import { Message } from './message';
 import { Name } from './name';
@@ -34,6 +36,48 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
     }),
     marginBottom: settings.global.space_between_messages + 'px',
   };
+
+  if (settings.global.developer_mode) {
+    const data = {
+      ...message,
+      displayBadges: function () {
+        const listBadgesUrl = Object.entries(message.badges)
+          .map(([key, value]) => {
+            if (value) {
+              return { url: `/badges/twitch/${key}.png` };
+            } else {
+              return null;
+            }
+          })
+          .filter((n) => n);
+        return listBadgesUrl;
+      },
+    };
+
+    const engine = new Liquid({
+      strictFilters: false,
+    });
+
+    try {
+      const template = engine.parseAndRenderSync(settings.code.html, data);
+
+      return (
+        <div>
+          <root.div>
+            <style>{settings.code.css}</style>
+            <div dangerouslySetInnerHTML={{ __html: template }}></div>
+          </root.div>
+        </div>
+      );
+    } catch (error) {
+      const err = error as Error;
+      return (
+        <div className="mb-2 rounded bg-error-500 p-1 text-xs font-bold">
+          {err.message.split(',')[0]}
+        </div>
+      );
+    }
+  }
 
   return (
     <div style={globalStyle} className="flex w-full">

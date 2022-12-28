@@ -1,29 +1,42 @@
 import GoogleFontLoader from 'react-google-font-loader';
-import { FieldValues } from 'react-hook-form';
+import { Controller, FieldValues, useForm } from 'react-hook-form';
+import { Button, ButtonColor } from '~/components/button/button';
 import { ChatDemo } from '~/components/chat/chat-demo/chat-demo';
 import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
+import CodeEditor from '~/components/code-editor/code-editor';
 import DemoContainer from '~/components/demo-container/demo-container';
+import { Switch } from '~/components/forms/switch/switch';
 import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
 
 export default function ChatCreate() {
   const [settings, setSettings] = useState(defaultChatTheme);
+  const [developerMode, setDeveloperMode] = useState(false);
+  const { watch, getValues, control, handleSubmit } = useForm({
+    defaultValues: settings as FieldValues,
+  });
+
   const navigate = useNavigate();
 
   const { mutate: createChat } = useCreateChat();
 
-  const handleSubmit = (theme: FieldValues) => {
+  const onSubmit = handleSubmit((theme: FieldValues) => {
     createChat(theme as ChatTheme, {
       onSuccess: (data) => {
         navigate(`/chats/${data.id}/edit`);
       },
     });
-  };
+  });
+
+  useEffect(() => {
+    const subscription = watch((value) => setSettings(value as ChatTheme));
+    return () => subscription.unsubscribe();
+  }, [watch, getValues]);
 
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <GoogleFontLoader
         fonts={[
           {
@@ -38,12 +51,32 @@ export default function ChatCreate() {
       />
       <div className="flex gap-10 p-10">
         <div className="w-[450px] shrink-0">
+          <div className="mb-5 flex items-center justify-between">
+            <h1 className="font-title text-4xl font-semibold">New chatbox</h1>
+            <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
+              Save
+            </Button>
+          </div>
+          <Controller
+            name="global.developer_mode"
+            control={control}
+            defaultValue={false}
+            render={({ field: { onChange, value } }) => (
+              <Switch
+                onChange={(checked) => {
+                  onChange(checked);
+                  setDeveloperMode(checked);
+                }}
+                checked={value}
+                label="Developer mode"
+                className="mb-5"
+              />
+            )}
+          />
           <ChatSettings
-            title="New chatbox"
             className="overflow-hidden"
-            onSettingsChange={(settings) => setSettings(settings as ChatTheme)}
-            settings={defaultChatTheme}
-            onSave={(data) => handleSubmit(data)}
+            developerMode={developerMode}
+            control={control}
           />
         </div>
         <div className="flex flex-1 gap-10">
@@ -71,11 +104,49 @@ export default function ChatCreate() {
               }}
             />
           </div>
-          <DemoContainer>
+          <DemoContainer isDeveloperMode={developerMode}>
             <ChatDemo settings={settings} />
           </DemoContainer>
         </div>
       </div>
-    </>
+      {developerMode && (
+        <div className="px-10 pb-10">
+          <div className="box-border flex h-[350px] gap-5 rounded-2xl bg-dark-600 p-5">
+            <div className="h-full flex-1">
+              <p className="mb-3 font-bold">HTML</p>
+              <Controller
+                name="code.html"
+                control={control}
+                defaultValue={'<div>test</div>'}
+                render={({ field: { onChange, value } }) => (
+                  <CodeEditor
+                    language="html"
+                    initialValue={value}
+                    onChange={onChange}
+                    className="!h-[270px]"
+                  />
+                )}
+              />
+            </div>
+            <div className="h-full flex-1">
+              <p className="mb-3 font-bold">CSS</p>
+              <Controller
+                name="code.css"
+                control={control}
+                defaultValue={'.test { color: red; }'}
+                render={({ field: { onChange, value } }) => (
+                  <CodeEditor
+                    language="css"
+                    initialValue={value}
+                    onChange={onChange}
+                    className="!h-[270px]"
+                  />
+                )}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </form>
   );
 }
