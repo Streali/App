@@ -18,7 +18,7 @@ export const useLabelData = (userSecret?: string) => {
       return data;
     },
     enabled: !!userSecret || !!user?.secret,
-    refetchInterval: 1000 * 30,
+    refetchInterval: 1000 * 10,
     staleTime: Infinity,
   });
 };
