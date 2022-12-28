@@ -9,7 +9,7 @@ export interface UseUserChatThemes {
   isLoading: boolean;
 }
 
-export const useUserChat = () => {
+export const useChats = () => {
   return useQuery({
     queryKey: chatKeys.lists(),
     queryFn: async () => {

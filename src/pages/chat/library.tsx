@@ -3,12 +3,12 @@ import { Button, ButtonColor } from '~/components/button/button';
 import { ChatCard } from '~/components/chat/chat-card/chat-card';
 import { Import } from '~/components/import/import';
 import { useCreateChat } from '~/hooks/chat/use-create-chat';
-import { useUserChat } from '~/hooks/chat/use-user-chat';
+import { useChats } from '~/hooks/chat/use-chats';
 import { ChatExportThemeSchema } from '~/types/schemas/chat';
 import type { ChatTheme } from '~/types/schemas/chat';
 
 export const ChatLibrary = () => {
-  const { data, isLoading } = useUserChat();
+  const { data, isLoading } = useChats();
   const navigate = useNavigate();
   const { mutate: createChat } = useCreateChat();
 
