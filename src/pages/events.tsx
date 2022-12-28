@@ -122,6 +122,10 @@ export const Events = () => {
     return () => close();
   }, [user]);
 
+  const filteredEvent = allEvents
+    ?.filter((e) => checkedEvents.map((c) => c.type).includes(e.type) && !e.replayed)
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
   return (
     <div className="p-5">
       <Accordion title="Filters">
@@ -145,13 +149,9 @@ export const Events = () => {
       </Accordion>
 
       <div className="flex-1">
-        {allEvents
-          ?.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-          .map((event) => {
-            if (checkedEvents.find((e) => e.type === event.type)) {
-              return <Event key={event.id} event={event} />;
-            }
-          })}
+        {filteredEvent.map((event) => (
+          <Event key={event.id} event={event} />
+        ))}
       </div>
     </div>
   );
