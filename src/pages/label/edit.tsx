@@ -7,7 +7,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 import { useUpdateLabel } from '~/hooks/label/use-update-label';
 import { Label, LabelResponse } from '~/types/schemas/label';
 
-const LabelEdit = () => {
+export default function LabelEdit() {
   const [theme, setTheme] = useState<Label | null>(null);
   const { id } = useParams();
   const { data: label } = useLabel(id!);
@@ -78,6 +78,4 @@ const LabelEdit = () => {
       </div>
     </>
   );
-};
-
-export default LabelEdit;
+}

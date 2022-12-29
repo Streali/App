@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { protectedRoutes, routes } from '~/boot/router';
+import { routes } from '~/boot/router';
+import FullPageLoader from '~/components/layout/full-page-loader';
 import Shell from '~/components/layout/shell';
 import { Protected } from '~/components/protect/protected';
-import { Login } from '~/pages/login';
+import { splitBy } from '~/utils/common/split-by';
 
 export default function App() {
   const navigate = useNavigate();
@@ -15,21 +17,23 @@ export default function App() {
     }
   }, []);
 
+  const [protectedRoutes, guestRoutes] = splitBy(routes, (route) => route.protected);
+
   return (
     <Shell>
-      <Routes>
-        <Route path={'/login'} element={<Login />} />
-
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-
-        <Route element={<Protected />}>
-          {protectedRoutes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
+      <Suspense fallback={<FullPageLoader />}>
+        <Routes>
+          {guestRoutes.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
           ))}
-        </Route>
-      </Routes>
+
+          <Route element={<Protected />}>
+            {protectedRoutes.map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+          </Route>
+        </Routes>
+      </Suspense>
     </Shell>
   );
 }

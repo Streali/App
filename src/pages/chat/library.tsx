@@ -2,12 +2,12 @@ import { FieldValues } from 'react-hook-form';
 import { Button, ButtonColor } from '~/components/button/button';
 import { ChatCard } from '~/components/chat/chat-card/chat-card';
 import { Import } from '~/components/import/import';
-import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { useChats } from '~/hooks/chat/use-chats';
+import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { ChatExportThemeSchema } from '~/types/schemas/chat';
 import type { ChatTheme } from '~/types/schemas/chat';
 
-export const ChatLibrary = () => {
+export default function ChatLibrary() {
   const { data, isLoading } = useChats();
   const navigate = useNavigate();
   const { mutate: createChat } = useCreateChat();
@@ -62,4 +62,4 @@ export const ChatLibrary = () => {
       )}
     </div>
   );
-};
+}

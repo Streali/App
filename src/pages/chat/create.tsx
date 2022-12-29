@@ -8,7 +8,7 @@ import { useCreateChat } from '~/hooks/chat/use-create-chat';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
 
-export const ChatCreate = () => {
+export default function ChatCreate() {
   const [settings, setSettings] = useState(defaultChatTheme);
   const navigate = useNavigate();
 
@@ -78,4 +78,4 @@ export const ChatCreate = () => {
       </div>
     </>
   );
-};
+}

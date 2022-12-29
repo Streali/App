@@ -3,7 +3,7 @@ import LabelElement from '~/components/labels/label-element.tsx/label-element';
 import { useLabel } from '~/hooks/label/use-label';
 import { useLabelData } from '~/hooks/label/use-label-data';
 
-const LabelEmbed = () => {
+export default function LabelEmbed() {
   const { id } = useParams();
   const { data, isLoading } = useLabel(id!);
   const { data: labelData } = useLabelData(data?.user.secret);
@@ -37,6 +37,4 @@ const LabelEmbed = () => {
       <LabelElement theme={data.theme} data={labelData} />
     </>
   );
-};
-
-export default LabelEmbed;
+}

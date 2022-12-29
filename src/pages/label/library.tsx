@@ -4,7 +4,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 import { useUserLabels } from '~/hooks/label/use-user-label';
 import { LabelResponse } from '~/types/schemas/label';
 
-const LabelLibrary = () => {
+export default function LabelLibrary() {
   const { data, isLoading } = useUserLabels();
   const { data: labelData } = useLabelData();
 
@@ -43,6 +43,4 @@ const LabelLibrary = () => {
       )}
     </div>
   );
-};
-
-export default LabelLibrary;
+}

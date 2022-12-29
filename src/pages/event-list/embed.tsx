@@ -17,7 +17,7 @@ const eventType = {
   '62': 'goal_end',
 };
 
-export const EventListEmbed = () => {
+export default function EventListEmbed() {
   const [events, setEvents] = useState<BaseEvent[]>([]);
   const { id } = useParams();
   const { data: theme, status } = useEventList(id!);
@@ -193,4 +193,4 @@ export const EventListEmbed = () => {
       </div>
     </>
   );
-};
+}

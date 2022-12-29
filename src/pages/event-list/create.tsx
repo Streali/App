@@ -12,7 +12,7 @@ import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 import { defaultEventListTheme } from '~/utils/event-list/default-event-list-theme';
 import { fakeEvent } from '~/utils/event/fake-events';
 
-export const EventListCreate = () => {
+export default function EventListCreate() {
   const [theme, setTheme] = useState<EventList>(defaultEventListTheme);
   const [selectEvent, setSelectEvent] = useState<{
     label: Enum<typeof EventTypeLabel>;
@@ -190,4 +190,4 @@ export const EventListCreate = () => {
       </div>
     </>
   );
-};
+}

@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 import { Button } from '~/components/button/button';
 import { useAuth } from '~/contexts/auth-provider';
 
-export const Login = () => {
+export default function Login() {
   const { user } = useAuth();
 
   if (user) {
@@ -27,4 +27,4 @@ export const Login = () => {
       </Button>
     </div>
   );
-};
+}
