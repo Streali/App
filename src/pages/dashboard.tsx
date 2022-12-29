@@ -61,7 +61,7 @@ type EventCheck = {
   type: number;
 };
 
-export const Dashboard = () => {
+export default function Dashboard() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: user } = useUser();
@@ -185,4 +185,4 @@ export const Dashboard = () => {
       </div>
     </div>
   );
-};
+}

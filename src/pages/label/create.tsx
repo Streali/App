@@ -7,7 +7,7 @@ import { useLabelData } from '~/hooks/label/use-label-data';
 import { Label } from '~/types/schemas/label';
 import { defaultLabel } from '~/utils/label/default-label';
 
-const LabelCreate = () => {
+export default function LabelCreate() {
   const [theme, setTheme] = useState<Label>(defaultLabel);
   const navigate = useNavigate();
 
@@ -63,6 +63,4 @@ const LabelCreate = () => {
       </div>
     </>
   );
-};
-
-export default LabelCreate;
+}

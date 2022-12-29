@@ -12,7 +12,7 @@ import { EventList, EventListResponse } from '~/types/schemas/event-list';
 import { EventTypeWithoutHypeTrainProgress } from '~/types/types/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
 
-export const EventListEdit = () => {
+export default function EventListEdit() {
   const { id } = useParams();
 
   const [theme, setTheme] = useState<EventList | null>(null);
@@ -200,4 +200,4 @@ export const EventListEdit = () => {
       </div>
     </>
   );
-};
+}

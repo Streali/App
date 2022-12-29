@@ -8,7 +8,7 @@ import { useChat } from '~/hooks/chat/use-chat';
 import { useUpdateChat } from '~/hooks/chat/use-update-chat';
 import type { ChatTheme } from '~/types/schemas/chat';
 
-export const ChatEdit = () => {
+export default function ChatEdit() {
   const [settings, setSettings] = useState<ChatTheme | null>(null);
   const { id } = useParams();
   const { data: theme, status, error } = useChat(id!);
@@ -89,4 +89,4 @@ export const ChatEdit = () => {
       </div>
     </>
   );
-};
+}

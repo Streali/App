@@ -6,7 +6,7 @@ import { ChatMessage } from '~/components/chat/chat-message/chat-message';
 import { useChat } from '~/hooks/chat/use-chat';
 import type { TwitchMessage } from '~/types/schemas/chat';
 
-export const ChatEmbed = () => {
+export default function ChatEmbed() {
   const [messages, setMessages] = useState<TwitchMessage[]>([]);
   const { id } = useParams();
   const { data: theme } = useChat(id!);
@@ -127,4 +127,4 @@ export const ChatEmbed = () => {
       </div>
     </>
   );
-};
+}

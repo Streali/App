@@ -66,7 +66,7 @@ const listEvents = [
   },
 ];
 
-export const Events = () => {
+export default function Events() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: events } = useUserEvent();
@@ -155,4 +155,4 @@ export const Events = () => {
       </div>
     </div>
   );
-};
+}

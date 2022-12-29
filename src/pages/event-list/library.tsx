@@ -6,7 +6,7 @@ import { useCreateEventList } from '~/hooks/event-list/use-create-event-list';
 import { useUserEventList } from '~/hooks/event-list/use-user-event-list';
 import { EventList, EventListResponse, EventListSchema } from '~/types/schemas/event-list';
 
-const EventListLibrary = () => {
+export default function EventListLibrary() {
   const { data, isLoading } = useUserEventList();
   const { mutate: createEventList } = useCreateEventList();
 
@@ -60,6 +60,4 @@ const EventListLibrary = () => {
       )}
     </div>
   );
-};
-
-export default EventListLibrary;
+}
