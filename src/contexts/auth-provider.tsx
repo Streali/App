@@ -11,18 +11,18 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const { data, isFetched, isError, isLoading } = useUser();
 
   useEffect(() => {
-    if (!isFetched) {
+    if (isFetched && data !== undefined) {
       setFirstAttemptFinished(true);
     }
   }, [isFetched]);
 
   if (!firstAttemptFinished) {
-    if (isLoading) {
-      return <FullPageLoader />;
-    }
-
     if (isError) {
       return <div>Something went wrong</div>;
+    }
+
+    if (isLoading) {
+      return <FullPageLoader />;
     }
   }
 
