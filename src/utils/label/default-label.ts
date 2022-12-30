@@ -217,4 +217,5 @@ export const defaultLabel: Label = {
       name: 'Line 2',
     },
   ],
+  layout: 'stack',
 };

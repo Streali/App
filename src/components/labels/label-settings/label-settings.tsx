@@ -10,10 +10,11 @@ interface LabelSettingsProps {
   className?: string;
   control: Control;
   onSubmit?: () => void;
+  title: string;
 }
 
 const LabelSettings = (props: LabelSettingsProps) => {
-  const { className = '', control, onSubmit } = props;
+  const { className = '', control, onSubmit, title } = props;
 
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
@@ -26,7 +27,7 @@ const LabelSettings = (props: LabelSettingsProps) => {
     <div className={className}>
       <form onSubmit={onSubmit}>
         <div className="mb-5 flex items-center justify-between">
-          <h1 className="font-title text-4xl font-semibold">Create label</h1>
+          <h1 className="font-title text-4xl font-semibold">{title}</h1>
           <Button type="submit" iconLeft="save-line" color={ButtonColor.Accent}>
             Save
           </Button>
