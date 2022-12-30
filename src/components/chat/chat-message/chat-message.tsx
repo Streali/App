@@ -59,8 +59,8 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
     });
 
     try {
-      const template = engine.parseAndRenderSync(settings.code.html, data);
-      const style = scopeCSS(settings.code.css, '[data-scope]');
+      const template = engine.parseAndRenderSync(settings.code?.html || '', data);
+      const style = scopeCSS(settings.code?.css || '', '[data-scope]');
 
       return (
         <>

@@ -48,18 +48,20 @@ export default function ChatEdit() {
 
   return (
     <form onSubmit={onSubmit}>
-      <GoogleFontLoader
-        fonts={[
-          {
-            font: settings.name.text.fontFamily,
-            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-          },
-          {
-            font: settings.message.text.fontFamily,
-            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-          },
-        ]}
-      />
+      {settings.name.text.fontFamily && settings.message.text.fontFamily && (
+        <GoogleFontLoader
+          fonts={[
+            {
+              font: settings.name.text.fontFamily,
+              weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+            },
+            {
+              font: settings.message.text.fontFamily,
+              weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+            },
+          ]}
+        />
+      )}
       <div className="flex gap-10 p-10">
         <div className="w-[450px] shrink-0">
           <div className="mb-5 flex items-center justify-between">

@@ -1,4 +1,5 @@
 import Editor, { useMonaco } from '@monaco-editor/react';
+import { emmetHTML, emmetCSS, expandAbbreviation } from 'emmet-monaco-es';
 import Theme from '~/assets/codetheme.json';
 
 interface CodeEditorProps {
@@ -20,6 +21,9 @@ const CodeEditor = (props: CodeEditorProps) => {
 
   useEffect(() => {
     if (monaco) {
+      // Emmet
+      language === 'html' ? emmetHTML(monaco, ['html', 'liquid']) : emmetCSS(monaco, ['css']);
+
       monaco.languages.register({ id: 'liquid' });
 
       monaco.languages.registerCompletionItemProvider('liquid', {
