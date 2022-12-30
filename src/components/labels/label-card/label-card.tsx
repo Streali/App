@@ -3,10 +3,10 @@ import { PopoverNavigation } from '~/components/popover/navigation/popover-navig
 import { Popover } from '~/components/popover/popover';
 import { toastr, ToastType } from '~/components/toast/toast';
 import { useDeleteLabel } from '~/hooks/label/use-delete-label';
+import { useDuplicateLabel } from '~/hooks/label/use-duplicate-label';
 import { useExportLabel } from '~/hooks/label/use-export-label';
 import { LabelData, LabelResponse } from '~/types/schemas/label';
 import LabelElement from '../label-element/label-element';
-import { useDuplicateLabel } from '~/hooks/label/use-duplicate-label';
 
 type LabelCardProps = {
   label: LabelResponse;
@@ -40,7 +40,7 @@ const LabelCard = (props: LabelCardProps) => {
             links={[
               {
                 title: 'Edit',
-                link: `/labels/${label.secret}/edit`,
+                link: `/labels/${label.id}/edit`,
                 icon: 'edit-box-line',
               },
               {
