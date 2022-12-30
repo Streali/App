@@ -61,13 +61,23 @@ const TabValue = (props: TabValueProps) => {
           control={control}
           defaultValue={'{{last subscriber}}'}
           render={({ field: { onChange, value } }) => (
-            <AutocompleteInput
-              options={autocomplete}
-              value={value}
-              onChange={(e) => onChange(e.target.value)}
-              label="Event message"
-              className="mb-3"
-            />
+            <>
+              <div className="mb-3 rounded bg-dark-500 p-3 text-sm">
+                <p className="mb-3">
+                  For the content, you can use # to add a dynamic text and surround your a word with
+                  ** to make it accent.
+                </p>
+                <span className="rounded border border-dark-300 bg-dark-400 px-3 py-1 text-xs">
+                  Ex: **#last follower**!
+                </span>
+              </div>
+              <AutocompleteInput
+                options={autocomplete}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                className="mb-3"
+              />
+            </>
           )}
         />
       </TabItem>

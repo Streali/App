@@ -35,8 +35,8 @@ const TabGeneral = (props: TabGeneralProps) => {
           name="order"
           control={control}
           defaultValue={[
-            { id: 'label', name: 'Label' },
-            { id: 'value', name: 'Value' },
+            { id: 'label', name: 'Line 1' },
+            { id: 'value', name: 'Line 2' },
           ]}
           render={({ field: { onChange, value } }) => (
             <DnDList elements={value} onChange={onChange} />

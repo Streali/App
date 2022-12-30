@@ -1,9 +1,9 @@
 import { Control, Controller } from 'react-hook-form';
 import { TabItem } from '~/components/chat/chat-settings/tab-item';
+import { AutocompleteInput } from '~/components/forms/autocomplete-input/autocomplete-input';
 import { BorderRadius } from '~/components/forms/border-radius/border-radius';
 import { Border } from '~/components/forms/border/border';
 import { Color } from '~/components/forms/color/color';
-import { Input } from '~/components/forms/input/input';
 import { Shadow } from '~/components/forms/shadow/shadow';
 import { Spacing } from '~/components/forms/spacing/spacing';
 import { Switch } from '~/components/forms/switch/switch';
@@ -13,6 +13,27 @@ import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 export interface TabLabelProps {
   control: Control;
 }
+
+const autocomplete = [
+  {
+    trigger: '#',
+    options: [
+      { id: 'last_subscriber', display: 'last subscriber' },
+      { id: 'subscriber_count', display: 'subscriber count' },
+      { id: 'last_follower', display: 'last follower' },
+      { id: 'follower_count', display: 'follower count' },
+      { id: 'last_cheer_donor', display: 'last cheer donor' },
+      { id: 'last_cheer_donor_amount', display: 'last cheer donor amount' },
+      { id: 'viewer_count', display: 'viewer count' },
+      { id: 'current_hour', display: 'current hour' },
+      { id: 'current_minute', display: 'current minute' },
+      { id: 'current_second', display: 'current second' },
+      { id: 'current_day', display: 'current day' },
+      { id: 'current_month', display: 'current month' },
+      { id: 'current_year', display: 'current year' },
+    ],
+  },
+];
 
 const TabLabel = (props: TabLabelProps) => {
   const { control } = props;
@@ -25,7 +46,7 @@ const TabLabel = (props: TabLabelProps) => {
           control={control}
           defaultValue={false}
           render={({ field: { onChange, value } }) => (
-            <Switch checked={value} onChange={onChange} className="mb-3" label="Show the label" />
+            <Switch checked={value} onChange={onChange} className="mb-3" label="Show the line" />
           )}
         />
       </TabItem>
@@ -50,14 +71,23 @@ const TabLabel = (props: TabLabelProps) => {
           control={control}
           defaultValue={'Last subscriber'}
           render={({ field: { onChange, value } }) => (
-            <Input
-              defaultValue={value}
-              className="mb-3"
-              onChange={(e) => {
-                const target = e.target as HTMLInputElement;
-                onChange(target.value);
-              }}
-            />
+            <>
+              <div className="mb-3 rounded bg-dark-500 p-3 text-sm">
+                <p className="mb-3">
+                  For the content, you can use # to add a dynamic text and surround your a word with
+                  ** to make it accent.
+                </p>
+                <span className="rounded border border-dark-300 bg-dark-400 px-3 py-1 text-xs">
+                  Ex: **#last follower**!
+                </span>
+              </div>
+              <AutocompleteInput
+                options={autocomplete}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                className="mb-3"
+              />
+            </>
           )}
         />
       </TabItem>

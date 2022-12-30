@@ -106,7 +106,14 @@ const LabelElement = (props: LabelElementProps) => {
     <div style={containerStyle} className="flex flex-col" ref={container}>
       {theme.order.map((item) => (
         <Fragment key={item.id}>
-          {item.id === 'label' && <div style={labelStyle}>{theme.label.content}</div>}
+          {item.id === 'label' && (
+            <div
+              style={labelStyle}
+              dangerouslySetInnerHTML={{
+                __html: LabelValueToText(theme.label.content, data, currentDate),
+              }}
+            ></div>
+          )}
           {item.id === 'value' && (
             <div
               style={valueStyle}
