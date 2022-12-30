@@ -25,6 +25,12 @@ const autocomplete = [
       { id: 'last_cheer_donor', display: 'last cheer donor' },
       { id: 'last_cheer_donor_amount', display: 'last cheer donor amount' },
       { id: 'viewer_count', display: 'viewer count' },
+      { id: 'current_hour', display: 'current hour' },
+      { id: 'current_minute', display: 'current minute' },
+      { id: 'current_second', display: 'current second' },
+      { id: 'current_day', display: 'current day' },
+      { id: 'current_month', display: 'current month' },
+      { id: 'current_year', display: 'current year' },
     ],
   },
 ];

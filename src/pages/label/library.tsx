@@ -1,5 +1,5 @@
 import { Button } from '~/components/button/button';
-import LabelCard from '~/components/labels/label-card.tsx/label-card';
+import LabelCard from '~/components/labels/label-card/label-card';
 import { useLabelData } from '~/hooks/label/use-label-data';
 import { useUserLabels } from '~/hooks/label/use-user-label';
 import { LabelResponse } from '~/types/schemas/label';
