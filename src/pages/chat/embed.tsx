@@ -90,6 +90,7 @@ export default function ChatEmbed() {
 
   useEffect(() => {
     document.body.style.backgroundColor = 'transparent';
+    document.body.style.overflow = 'hidden';
   }, []);
 
   if (!theme) {
