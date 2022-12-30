@@ -1,6 +1,6 @@
 import GoogleFontLoader from 'react-google-font-loader';
 import { FieldValues, useForm } from 'react-hook-form';
-import LabelElement from '~/components/labels/label-element.tsx/label-element';
+import LabelElement from '~/components/labels/label-element/label-element';
 import LabelSettings from '~/components/labels/label-settings/label-settings';
 import { useLabel } from '~/hooks/label/use-label';
 import { useLabelData } from '~/hooks/label/use-label-data';

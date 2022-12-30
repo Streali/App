@@ -1,5 +1,5 @@
 import GoogleFontLoader from 'react-google-font-loader';
-import LabelElement from '~/components/labels/label-element.tsx/label-element';
+import LabelElement from '~/components/labels/label-element/label-element';
 import { useLabel } from '~/hooks/label/use-label';
 import { useLabelData } from '~/hooks/label/use-label-data';
 

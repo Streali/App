@@ -1,6 +1,16 @@
+import { DateTime } from 'luxon';
 import { LabelData } from './../../types/schemas/label';
 
-export const LabelValueToText = (value: string, data: LabelData) => {
+export const LabelValueToText = (value: string, data: LabelData, currentDate: Date) => {
+  const date = DateTime.fromJSDate(currentDate);
+
+  const hour = date.hour < 10 ? `0${date.hour}` : date.hour;
+  const minute = date.minute < 10 ? `0${date.minute}` : date.minute;
+  const second = date.second < 10 ? `0${date.second}` : date.second;
+  const day = date.day < 10 ? `0${date.day}` : date.day;
+  const month = date.month < 10 ? `0${date.month}` : date.month;
+  const year = date.year < 10 ? `0${date.year}` : date.year;
+
   const regex = /\*\*(.*?)\*\*/g;
   return value
     .replaceAll(
@@ -31,5 +41,11 @@ export const LabelValueToText = (value: string, data: LabelData) => {
       '{{last cheer donor amount}}',
       data.lastCheerDonor?.amount ? data.lastCheerDonor?.amount.toString() : '0'
     )
+    .replaceAll('{{current hour}}', hour.toString())
+    .replaceAll('{{current minute}}', minute.toString())
+    .replaceAll('{{current second}}', second.toString())
+    .replaceAll('{{current day}}', day.toString())
+    .replaceAll('{{current month}}', month.toString())
+    .replaceAll('{{current year}}', year.toString())
     .replaceAll(regex, '<span>$1</span>');
 };

@@ -10,6 +10,14 @@ interface LabelElementProps {
 const LabelElement = (props: LabelElementProps) => {
   const { theme, data } = props;
   const container = useRef<HTMLDivElement>(null);
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  });
 
   const containerStyle: CSSProperties = {
     //flexDirection: theme.global.layout === 'stack' ? 'column' : 'row',
@@ -103,7 +111,7 @@ const LabelElement = (props: LabelElementProps) => {
             <div
               style={valueStyle}
               dangerouslySetInnerHTML={{
-                __html: LabelValueToText(theme.value.content, data),
+                __html: LabelValueToText(theme.value.content, data, currentDate),
               }}
             ></div>
           )}
