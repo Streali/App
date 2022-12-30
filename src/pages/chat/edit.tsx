@@ -9,6 +9,7 @@ import DemoContainer from '~/components/demo-container/demo-container';
 import { Switch } from '~/components/forms/switch/switch';
 import { useChat } from '~/hooks/chat/use-chat';
 import { useUpdateChat } from '~/hooks/chat/use-update-chat';
+import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
 
 export default function ChatEdit() {
@@ -130,7 +131,7 @@ export default function ChatEdit() {
               <Controller
                 name="code.html"
                 control={control}
-                defaultValue={'<div>test</div>'}
+                defaultValue={defaultChatTheme.code?.html}
                 render={({ field: { onChange, value } }) => (
                   <CodeEditor
                     language="html"
@@ -146,7 +147,7 @@ export default function ChatEdit() {
               <Controller
                 name="code.css"
                 control={control}
-                defaultValue={'.test { color: red; }'}
+                defaultValue={defaultChatTheme.code?.css}
                 render={({ field: { onChange, value } }) => (
                   <CodeEditor
                     language="css"

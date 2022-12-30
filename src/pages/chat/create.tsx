@@ -117,7 +117,7 @@ export default function ChatCreate() {
               <Controller
                 name="code.html"
                 control={control}
-                defaultValue={'<div>test</div>'}
+                defaultValue={defaultChatTheme.code?.html}
                 render={({ field: { onChange, value } }) => (
                   <CodeEditor
                     language="html"
@@ -133,7 +133,7 @@ export default function ChatCreate() {
               <Controller
                 name="code.css"
                 control={control}
-                defaultValue={'.test { color: red; }'}
+                defaultValue={defaultChatTheme.code?.css}
                 render={({ field: { onChange, value } }) => (
                   <CodeEditor
                     language="css"

@@ -1,5 +1,5 @@
 import Editor, { useMonaco } from '@monaco-editor/react';
-import { emmetHTML, emmetCSS, expandAbbreviation } from 'emmet-monaco-es';
+import { emmetHTML, emmetCSS } from 'emmet-monaco-es';
 import Theme from '~/assets/codetheme.json';
 
 interface CodeEditorProps {

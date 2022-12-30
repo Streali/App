@@ -154,7 +154,89 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
   },
   code: {
-    html: '',
-    css: '',
+    html: `
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+<div class="message">
+    <div class="name">
+        {% if displayBadges.size > 0 %}
+        <div class="badges">
+            {% for badge in displayBadges %}
+                <img src={{badge.url}}>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{username}}
+    </div>
+    <div class="content">
+        {{message}}
+    </div>
+</div>
+    `,
+    css: `
+.message {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    animation: pop 1s cubic-bezier(1, 0, 0, 1) both;
+}
+
+.name {
+    background-color: white;
+    display: inline-flex;
+    color: black;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-family: 'Rubik';
+    margin-bottom: 8px;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.name .badges {
+    display: flex;
+    gap: 2px;
+}
+
+.name .badges img {
+    width: 16px;
+    height: 16px;
+}
+
+.content {
+    background-color: white;
+    display: inline-flex;
+    color: black;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-family: 'Rubik';
+    margin-bottom: 8px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+        left: 110%;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+    `,
   },
 };
