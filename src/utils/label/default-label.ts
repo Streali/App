@@ -210,11 +210,11 @@ export const defaultLabel: Label = {
   order: [
     {
       id: 'label',
-      name: 'Label',
+      name: 'Line 1',
     },
     {
       id: 'value',
-      name: 'Value',
+      name: 'Line 2',
     },
   ],
 };

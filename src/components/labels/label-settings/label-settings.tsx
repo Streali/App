@@ -18,8 +18,8 @@ const LabelSettings = (props: LabelSettingsProps) => {
   const tabs: TabProps[] = [
     { title: 'General', content: <TabGeneral control={control} /> },
     { title: 'Container', content: <TabContainer control={control} /> },
-    { title: 'Label', content: <TabLabel control={control} /> },
-    { title: 'Value', content: <TabValue control={control} /> },
+    { title: 'Line 1', content: <TabLabel control={control} /> },
+    { title: 'Line 2', content: <TabValue control={control} /> },
   ];
 
   return (
