@@ -1,5 +1,4 @@
 import { createContext, type ReactNode } from 'react';
-import FullPageLoader from '~/components/layout/full-page-loader';
 import { useUser } from '~/hooks/auth/use-user';
 import type { User } from '~/types/schemas/auth';
 
@@ -22,7 +21,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     if (isLoading) {
-      return <FullPageLoader />;
+      return <div className="flex h-screen w-full items-center justify-center bg-dark-500"></div>;
     }
   }
 
