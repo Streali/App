@@ -9,6 +9,11 @@ import {
   TextStyleSchema,
 } from './components';
 
+export const LabelLayout = {
+  stack: 'stack',
+  inline: 'inline',
+} as const;
+
 export const LabelContainerSchema = z.object({
   background: z.string(),
   shadow: ShadowSchema,
@@ -52,6 +57,10 @@ export const LabelSchema = z.object({
   label: LabelLabelSchema,
   value: LabelValueSchema,
   title: z.optional(z.string()),
+  layout: z
+    .nativeEnum(LabelLayout)
+    .optional()
+    .transform((value) => value ?? 'stack'),
 });
 
 export const LabelResponseSchema = z.object({

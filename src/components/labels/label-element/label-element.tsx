@@ -20,7 +20,7 @@ const LabelElement = (props: LabelElementProps) => {
   });
 
   const containerStyle: CSSProperties = {
-    //flexDirection: theme.global.layout === 'stack' ? 'column' : 'row',
+    flexDirection: theme.layout === 'stack' ? 'column' : 'row',
     width: theme.container.full_width ? '100%' : 'fit-content',
     background: theme.container.background,
     boxShadow: `${theme.container.shadow.shadowOffsetX}px ${theme.container.shadow.shadowOffsetY}px ${theme.container.shadow.shadowBlur}px ${theme.container.shadow.shadowColor}`,
