@@ -71,6 +71,7 @@ export const ChatThemeNameSchema = z.object({
 
 export const ChatThemeSchema = z.object({
   id: z.string(),
+  secret: z.string().optional(),
   title: z.string(),
   global: ChatThemeGlobalSchema,
   container: ChatThemeContainerSchema,

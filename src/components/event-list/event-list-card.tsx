@@ -1,4 +1,5 @@
 import { useDeleteEventList } from '~/hooks/event-list/use-delete-event-list';
+import { useDuplicateEventList } from '~/hooks/event-list/use-duplicate-event-list';
 import { useExportEventList } from '~/hooks/event-list/use-export-event-list';
 import { EventList } from '~/types/schemas/event-list';
 import { fakeEvent } from '~/utils/event/fake-events';
@@ -7,15 +8,15 @@ import { PopoverNavigation } from '../popover/navigation/popover-navigation';
 import { Popover } from '../popover/popover';
 import { toastr, ToastType } from '../toast/toast';
 import EventListItem from './event-list-item/event-list-item';
-import { useDuplicateEventList } from '~/hooks/event-list/use-duplicate-event-list';
 
 type EventListCardProps = {
   theme: EventList;
   id: string;
+  secret: string;
 };
 
 const EventListCard = (props: EventListCardProps) => {
-  const { theme, id } = props;
+  const { theme, id, secret } = props;
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -64,7 +65,7 @@ const EventListCard = (props: EventListCardProps) => {
                 title: 'Embed',
                 onClick: () => {
                   navigator.clipboard.writeText(
-                    `${window.location.origin.toString()}/event-lists/${id}/embed`
+                    `${import.meta.env.VITE_EMBED_URL}/event-lists/${secret}`
                   );
                   toastr(
                     ToastType.Success,

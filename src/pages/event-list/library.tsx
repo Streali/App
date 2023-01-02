@@ -45,7 +45,7 @@ export default function EventListLibrary() {
             data.length > 0 &&
             data?.map((theme: EventListResponse) => (
               <div key={theme.id}>
-                <EventListCard theme={theme.theme} id={theme.id} />
+                <EventListCard theme={theme.theme} id={theme.id} secret={theme.secret} />
               </div>
             ))}
         </div>

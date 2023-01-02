@@ -54,7 +54,7 @@ const LabelCard = (props: LabelCardProps) => {
                 title: 'Embed',
                 onClick: () => {
                   navigator.clipboard.writeText(
-                    `${window.location.origin.toString()}/labels/${label.secret}/embed`
+                    `${import.meta.env.VITE_EMBED_URL}/labels/${label.secret}`
                   );
                   toastr(
                     ToastType.Success,

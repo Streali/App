@@ -100,6 +100,7 @@ export const EventListResponseSchema = z.object({
   updated_at: z.string(),
   theme: EventListSchema,
   user_id: z.string(),
+  secret: z.string(),
 });
 
 export type EventList = z.infer<typeof EventListSchema>;

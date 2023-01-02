@@ -4,9 +4,9 @@ import { PopoverNavigation } from '~/components/popover/navigation/popover-navig
 import { Popover } from '~/components/popover/popover';
 import { toastr, ToastType } from '~/components/toast/toast';
 import { useDeleteChat } from '~/hooks/chat/use-delete-chat';
+import { useDuplicateChat } from '~/hooks/chat/use-duplicate-chat';
 import { useExportChatTheme } from '~/hooks/chat/use-export-chat';
 import type { ChatTheme } from '~/types/schemas/chat';
-import { useDuplicateChat } from '~/hooks/chat/use-duplicate-chat';
 
 export interface ChatCardProps {
   theme: ChatTheme;
@@ -75,7 +75,7 @@ export const ChatCard = (props: ChatCardProps) => {
                 title: 'Embed',
                 onClick: () => {
                   navigator.clipboard.writeText(
-                    `${window.location.origin.toString()}/chats/${theme.id}/embed`
+                    `${import.meta.env.VITE_EMBED_URL}/chats/${theme.secret}`
                   );
                   toastr(
                     ToastType.Success,
