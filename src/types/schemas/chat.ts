@@ -80,8 +80,8 @@ export const ChatThemeSchema = z.object({
   user_id: z.string(),
   code: z
     .object({
-      html: z.string(),
-      css: z.string(),
+      html: z.string().nullable(),
+      css: z.string().nullable(),
     })
     .optional(),
 });
