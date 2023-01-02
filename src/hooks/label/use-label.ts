@@ -1,14 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { z } from 'zod';
 import { LabelResponseSchema } from '~/types/schemas/label';
 import { apiClient } from '~/utils/axios/axios';
-import { labelKeys } from './../query-keys';
-
-const userEmbedSchema = z.object({
-  user: z.object({
-    secret: z.string(),
-  }),
-});
+import { labelKeys } from '../query-keys';
 
 export const useLabel = (themeId: string) => {
   return useQuery({
@@ -20,7 +13,7 @@ export const useLabel = (themeId: string) => {
         return null;
       }
 
-      return LabelResponseSchema.merge(userEmbedSchema).parse(data);
+      return LabelResponseSchema.parse(data);
     },
     staleTime: Infinity,
   });
