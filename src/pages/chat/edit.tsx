@@ -49,7 +49,7 @@ export default function ChatEdit() {
 
   return (
     <form onSubmit={onSubmit}>
-      {settings.name.text.fontFamily && settings.message.text.fontFamily && (
+      {settings?.name?.text.fontFamily && settings?.message?.text.fontFamily && (
         <GoogleFontLoader
           fonts={[
             {
