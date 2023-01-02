@@ -13,8 +13,8 @@ export const Container = (props: ContainerProps) => {
   const { settings, children, color } = props;
 
   const containerStyle: CSSProperties = {
-    flexDirection: settings.global.layout === 'stack' ? 'column' : 'row',
-    width: settings.container.full_width ? '100%' : 'fit-content',
+    flexDirection: settings?.global.layout === 'stack' ? 'column' : 'row',
+    width: settings?.container?.full_width ? '100%' : 'fit-content',
     background:
       settings.container.background_twitch_color && color ? color : settings.container.background,
     boxShadow: `${settings.container.shadow.shadowOffsetX}px ${settings.container.shadow.shadowOffsetY}px ${settings.container.shadow.shadowBlur}px ${settings.container.shadow.shadowColor}`,
