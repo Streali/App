@@ -1,40 +1,9 @@
-import GoogleFontLoader from 'react-google-font-loader';
-import LabelElement from '~/components/labels/label-element/label-element';
-import { useLabel } from '~/hooks/label/use-label';
-import { useLabelData } from '~/hooks/label/use-label-data';
-
 export default function LabelEmbed() {
-  const { id } = useParams();
-  const { data, isLoading } = useLabel(id!);
-  const { data: labelData } = useLabelData(data?.user.secret);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = 'transparent';
-  }, []);
-
-  if (isLoading || !data || !labelData) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <>
-      <GoogleFontLoader
-        fonts={[
-          {
-            font: data.theme.label.text.fontFamily,
-            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-          },
-          {
-            font: data.theme.value.text.fontFamily,
-            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-          },
-          {
-            font: data.theme.value.accent.fontFamily,
-            weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-          },
-        ]}
-      />
-      <LabelElement theme={data.theme} data={labelData} />
-    </>
+    <div className="flex h-screen w-full items-center justify-center">
+      <p className="rounded bg-error-500 p-3">
+        This embed URL is no longer valid. You need to get the new one on app.streali.com
+      </p>
+    </div>
   );
 }
