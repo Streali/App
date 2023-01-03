@@ -4,8 +4,8 @@ import { Avatar } from '~/components/avatar/avatar';
 import { Icon } from '~/components/icon/icon';
 import { PopoverLink, PopoverNavigation } from '~/components/popover/navigation/popover-navigation';
 import { Popover } from '~/components/popover/popover';
-import { useUser } from '~/hooks/auth/use-user';
 import { useLogout } from '~/hooks/auth/use-logout';
+import { useUser } from '~/hooks/auth/use-user';
 
 export type NavigationItem = {
   icon: string;
@@ -32,6 +32,11 @@ export const Navbar = (props: NavbarProps) => {
   const location = useLocation();
 
   const userNavigation: PopoverLink[] = [
+    {
+      title: 'Billing',
+      icon: 'bank-card-line',
+      link: '/users/billing',
+    },
     {
       title: 'Sign out',
       icon: 'logout-box-line',

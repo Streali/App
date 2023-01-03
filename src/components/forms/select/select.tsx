@@ -24,6 +24,7 @@ export interface SelectProps {
   disabled?: boolean;
   defaultValue?: { value: string; label: string };
   multiple?: boolean;
+  containerClassName?: string;
 }
 
 export const Select = (props: SelectProps) => {
@@ -39,6 +40,7 @@ export const Select = (props: SelectProps) => {
     disabled = false,
     defaultValue,
     multiple = false,
+    containerClassName = '',
   } = props;
 
   const [val, setVal] = useState<
@@ -70,7 +72,7 @@ export const Select = (props: SelectProps) => {
   };
 
   return (
-    <label>
+    <label className={containerClassName}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <ReactSelect
         options={options}

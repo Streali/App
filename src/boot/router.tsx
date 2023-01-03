@@ -20,6 +20,8 @@ const ChatEmbed = lazy(() => import('~/pages/chat/embed'));
 const EventListEmbed = lazy(() => import('~/pages/event-list/embed'));
 const LabelEmbed = lazy(() => import('~/pages/label/embed'));
 
+const Billing = lazy(() => import('~/pages/users/billing'));
+
 type CustomRouteObject = RouteObject & { protected: boolean };
 
 export const rootRoutes: CustomRouteObject[] = [
@@ -112,10 +114,19 @@ export const embedRoutes: CustomRouteObject[] = [
   },
 ];
 
+export const userRoutes: CustomRouteObject[] = [
+  {
+    path: '/users/billing',
+    element: <Billing />,
+    protected: true,
+  },
+];
+
 export const routes: CustomRouteObject[] = [
   ...rootRoutes,
   ...chatRoutes,
   ...labelRoutes,
   ...eventListRoutes,
   ...embedRoutes,
+  ...userRoutes,
 ];
