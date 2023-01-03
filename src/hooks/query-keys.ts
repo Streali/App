@@ -40,4 +40,5 @@ export const labelKeys = {
 export const queryKeys = {
   lottie: (url?: string) => ['lottie', url] as const,
   googleFont: () => ['googleFont'] as const,
+  countries: () => ['countries'] as const,
 };

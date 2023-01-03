@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { SingleValue } from 'react-select';
 import CreditCard from '~/components/billing/credit-card';
@@ -5,16 +6,22 @@ import Plan from '~/components/billing/plan';
 import { Button, ButtonColor } from '~/components/button/button';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
-
-const listCountry = [
-  { value: 'US', label: 'United States' },
-  { value: 'CA', label: 'Canada' },
-  { value: 'MX', label: 'Mexico' },
-  { value: 'FR', label: 'France' },
-];
+import { useCountries } from '~/hooks/core/use-countries';
 
 export default function Billing() {
   const { control, handleSubmit } = useForm();
+  const { data: countries } = useCountries();
+
+  const listCountry = useMemo(
+    () =>
+      countries
+        ?.map((country) => ({
+          label: country.name,
+          value: country.iso_code,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)) ?? [],
+    [countries]
+  );
 
   const onAddressSave = handleSubmit((address: FieldValues) => {
     console.log(address);
@@ -82,96 +89,104 @@ export default function Billing() {
 
       <h2 className="mb-5 font-title text-2xl font-semibold">Billing address</h2>
       <form onSubmit={onAddressSave} className="rounded-lg bg-dark-600 p-10">
-        <div className="mb-3 flex gap-10">
+        <div className="space-y-5">
           <Controller
-            name="firstname"
+            name="organization"
             control={control}
             defaultValue={''}
             render={({ field: { onChange, value } }) => (
               <Input
                 onChange={onChange}
                 defaultValue={value}
-                label="Firstname"
+                label="Organization"
                 containerClassName="flex-1"
               />
             )}
           />
-          <Controller
-            name="lastname"
-            control={control}
-            defaultValue={''}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                onChange={onChange}
-                defaultValue={value}
-                label="Lastname"
-                containerClassName="flex-1"
-              />
-            )}
-          />
-        </div>
-        <Controller
-          name="address"
-          control={control}
-          defaultValue={''}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              onChange={onChange}
-              defaultValue={value}
-              label="Address"
-              containerClassName="flex-1 mb-3"
+
+          <div className="flex gap-10">
+            <Controller
+              name="address"
+              control={control}
+              defaultValue={''}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  onChange={onChange}
+                  defaultValue={value}
+                  label="Address"
+                  containerClassName="flex-1"
+                />
+              )}
             />
-          )}
-        />
-        <div className="mb-3 flex gap-10">
-          <Controller
-            name="city"
-            control={control}
-            defaultValue={''}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                onChange={onChange}
-                defaultValue={value}
-                label="City"
-                containerClassName="flex-1"
-              />
-            )}
-          />
-          <Controller
-            name="zipcode"
-            control={control}
-            defaultValue={''}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                onChange={onChange}
-                defaultValue={value}
-                label="Zipcode"
-                containerClassName="flex-1"
-              />
-            )}
-          />
-          <Controller
-            name="country"
-            control={control}
-            defaultValue={'FR'}
-            render={({ field: { onChange, value } }) => (
-              <Select
-                options={[]}
-                label="Country"
-                containerClassName="flex-1"
-                defaultValue={listCountry.find((item) => item.value === value)}
-                onChange={(value) => {
-                  const v = value as SingleValue<{ label: string; value: string }>;
-                  onChange(v?.value);
-                }}
-              />
-            )}
-          />
-        </div>
-        <div className="mt-5 flex w-full justify-end">
-          <Button type="submit" color={ButtonColor.Accent}>
-            Save
-          </Button>
+
+            <Controller
+              name="address_complement"
+              control={control}
+              defaultValue={''}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  onChange={onChange}
+                  defaultValue={value}
+                  label="Complement"
+                  containerClassName="flex-1"
+                />
+              )}
+            />
+          </div>
+
+          <div className="flex gap-10">
+            <Controller
+              name="postal_code"
+              control={control}
+              defaultValue={''}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  onChange={onChange}
+                  defaultValue={value}
+                  label="Postal code"
+                  containerClassName="flex-1"
+                />
+              )}
+            />
+
+            <Controller
+              name="city"
+              control={control}
+              defaultValue={''}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  onChange={onChange}
+                  defaultValue={value}
+                  label="City"
+                  containerClassName="flex-1"
+                />
+              )}
+            />
+
+            <Controller
+              name="country"
+              control={control}
+              defaultValue={'FR'}
+              render={({ field: { onChange, value } }) => (
+                <Select
+                  options={[]}
+                  label="Country"
+                  containerClassName="flex-1"
+                  defaultValue={listCountry.find((item) => item.value === value)}
+                  onChange={(value) => {
+                    const v = value as SingleValue<{ label: string; value: string }>;
+                    onChange(v?.value);
+                  }}
+                />
+              )}
+            />
+          </div>
+
+          <div className="flex w-full justify-end">
+            <Button type="submit" color={ButtonColor.Accent}>
+              Save
+            </Button>
+          </div>
         </div>
       </form>
     </div>
