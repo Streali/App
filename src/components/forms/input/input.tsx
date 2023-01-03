@@ -23,6 +23,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   suffixIconSvg?: IconSVG;
   suffixIcon?: string;
   suffix?: string;
+  optional?: boolean;
 }
 
 export const Input = (props: InputProps) => {
@@ -40,6 +41,7 @@ export const Input = (props: InputProps) => {
     suffixIcon,
     suffixIconSvg,
     suffix,
+    optional = false,
     ...inputProps
   } = props;
 
@@ -64,7 +66,11 @@ export const Input = (props: InputProps) => {
 
   return (
     <label className={`relative block ${containerClassName}`}>
-      {label && <Label className={labelClassName}>{label}</Label>}
+      {label && (
+        <Label className={labelClassName} optional={optional}>
+          {label}
+        </Label>
+      )}
       {(prefixIconSvg || prefixIcon) && (
         <Icon
           svg={prefixIconSvg}
