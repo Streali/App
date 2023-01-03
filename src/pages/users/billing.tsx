@@ -1,10 +1,10 @@
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { SingleValue } from 'react-select';
+import CreditCard from '~/components/billing/credit-card';
+import Plan from '~/components/billing/plan';
 import { Button, ButtonColor } from '~/components/button/button';
-import CreditCard from '~/components/credit-card/credit-card';
 import { Input } from '~/components/forms/input/input';
 import { Select } from '~/components/forms/select/select';
-import { Icon } from '~/components/icon/icon';
 
 const listCountry = [
   { value: 'US', label: 'United States' },
@@ -16,7 +16,7 @@ const listCountry = [
 export default function Billing() {
   const { control, handleSubmit } = useForm();
 
-  const onAdressSave = handleSubmit((address: FieldValues) => {
+  const onAddressSave = handleSubmit((address: FieldValues) => {
     console.log(address);
   });
 
@@ -25,79 +25,35 @@ export default function Billing() {
       <h1 className="mb-10 font-title text-4xl font-semibold">Billing</h1>
       <h2 className="mb-5 font-title text-2xl font-semibold">Available plans</h2>
       <div className="mb-10 flex gap-10">
-        <div className="flex-1 rounded-lg bg-dark-600 p-5">
-          <div className="mb-5 flex items-center justify-between">
-            <h3 className="font-bold">Free</h3>
-            <p className="rounded bg-white px-2 py-1 text-sm font-bold text-dark-500">Current</p>
-          </div>
-          <h4 className="mb-5 text-3xl font-bold">
-            $0<span className="text-xl font-normal">/month</span>
-          </h4>
-          <ul>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">Access to all Streali modules</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">1 Chat theme</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">1 Event list</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">2 Labels</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">500mb file storage</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-primary-500" />
-              <span className="ml-2">Editor mode only</span>
-            </li>
-          </ul>
-        </div>
+        <Plan
+          name={'Free'}
+          price={0}
+          isCurrent={true}
+          popular={false}
+          perks={[
+            'Access to all Streali modules',
+            '1 Chat theme',
+            '1 Event list',
+            '2 labels',
+            '500mb file storage',
+            'Editor mode',
+          ]}
+        />
 
-        <div className="flex-1 rounded-lg bg-primary-500 p-5">
-          <div className="mb-5 flex items-center justify-between">
-            <h3 className="font-bold">Pro</h3>
-          </div>
-          <h4 className="mb-5 text-3xl font-bold">
-            $9<span className="text-xl font-normal">/month</span>
-          </h4>
-          <ul className="mb-5">
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">Access to all Streali modules</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">Unlimited Chat theme</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">Unlimited Event list</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">Unlimited Labels</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">2Gb file storage</span>
-            </li>
-            <li className="flex items-center font-semibold">
-              <Icon name="checkbox-circle-fill" className="text-xl text-white" />
-              <span className="ml-2">Editor mode & Developer mode</span>
-            </li>
-          </ul>
-          <Button color={ButtonColor.Dark} className="w-full justify-center">
-            Switch to this plan
-          </Button>
-        </div>
+        <Plan
+          name={'Pro'}
+          price={9}
+          isCurrent={false}
+          popular={true}
+          perks={[
+            'Access to all Streali modules',
+            'Unlimited Chat theme',
+            'Unlimited Event list',
+            'Unlimited labels',
+            '10Gb file storage',
+            'Editor mode & Developer mode',
+          ]}
+        />
       </div>
 
       <h2 className="mb-5 font-title text-2xl font-semibold">Payment method</h2>
@@ -125,7 +81,7 @@ export default function Billing() {
       </div>
 
       <h2 className="mb-5 font-title text-2xl font-semibold">Billing address</h2>
-      <form onSubmit={onAdressSave} className="rounded-lg bg-dark-600 p-10">
+      <form onSubmit={onAddressSave} className="rounded-lg bg-dark-600 p-10">
         <div className="mb-3 flex gap-10">
           <Controller
             name="firstname"
