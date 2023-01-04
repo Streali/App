@@ -44,7 +44,7 @@
     "css": "^3.0.0",
     "emmet-monaco-es": "^5.1.2",
     "framer-motion": "^7.6.19",
-    "html2canvas": "^1.4.1",
+    "html-to-image": "^1.11.4",
     "interactjs": "^1.10.17",
     "liquidjs": "^10.3.3",
     "logrocket": "^3.0.1",

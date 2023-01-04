@@ -1,12 +1,11 @@
-import html2canvas from 'html2canvas';
+import { toPng } from 'html-to-image';
 
 export function useExportElementToPng() {
   const exportElement = (element: HTMLDivElement) => {
-    html2canvas(element).then((canva) => {
+    toPng(element).then((dataUrl) => {
       const image = new Image();
-      image.src = canva.toDataURL();
+      image.src = dataUrl;
       document.body.appendChild(image);
-      image.setAttribute('download', 'image.png');
     });
   };
 
