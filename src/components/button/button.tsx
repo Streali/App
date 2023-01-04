@@ -29,6 +29,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   buttonIconSVG?: IconProps;
   link?: string;
   external?: boolean;
+  loading?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -46,6 +47,7 @@ export const Button = (props: ButtonProps) => {
     buttonIconSVG,
     link,
     external,
+    loading,
     onClick,
     className = '',
     type = 'button',
@@ -107,7 +109,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button onClick={onClick} className={defineClassName} type={type} {...otherProps}>
-      {buttonContent}
+      {loading ? <p>Loading</p> : buttonContent}
     </button>
   );
 };
