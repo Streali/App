@@ -80,10 +80,13 @@ export const Button = (props: ButtonProps) => {
 
   const defineClassName = `gap-2 focus-visible:outline-2 focus-visible:outline focus-visible:outline-offset-[3px] inline-flex items-center text-white font-bold transition-colors ${
     colorChoose[color]
-  } ${sizeChoose[size]} ${disabled ? disabledClassName : ''} ${className}`;
+  } ${sizeChoose[size]} ${disabled || loading ? disabledClassName : ''} ${className}`;
 
   const buttonContent = (
     <>
+      {loading && (
+        <Icon data-testid="btn-iconloading" className="animate-spin" name="loader-5-line" />
+      )}
       {iconLeft && <Icon data-testid="btn-iconleft" name={iconLeft} />}
       {buttonIconSVG && <Icon {...buttonIconSVG} />}
       {buttonIcon ? <Icon data-testid="btn-icon" name={buttonIcon} /> : children}
@@ -108,8 +111,14 @@ export const Button = (props: ButtonProps) => {
   }
 
   return (
-    <button onClick={onClick} className={defineClassName} type={type} {...otherProps}>
-      {loading ? <p>Loading</p> : buttonContent}
+    <button
+      onClick={onClick}
+      className={defineClassName}
+      type={type}
+      disabled={disabled || loading}
+      {...otherProps}
+    >
+      {buttonContent}
     </button>
   );
 };
