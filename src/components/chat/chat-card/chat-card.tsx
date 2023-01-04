@@ -7,6 +7,7 @@ import { useDeleteChat } from '~/hooks/chat/use-delete-chat';
 import { useDuplicateChat } from '~/hooks/chat/use-duplicate-chat';
 import { useExportChatTheme } from '~/hooks/chat/use-export-chat';
 import type { ChatTheme } from '~/types/schemas/chat';
+import { useExportElementToPng } from '~/hooks/use-export-element-to-png';
 
 export interface ChatCardProps {
   theme: ChatTheme;
@@ -21,10 +22,14 @@ export const ChatCard = (props: ChatCardProps) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const { exportElement } = useExportElementToPng();
+  const chatRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <>
       <div className=" flex h-[250px] w-full items-center justify-center overflow-hidden rounded-t-lg border border-dark-400 bg-dark-600 p-6">
         <ChatMessage
+          ref={chatRef}
           settings={theme}
           message={{
             id: '1',
@@ -90,6 +95,11 @@ export const ChatCard = (props: ChatCardProps) => {
                 onClick: () => {
                   exportChatTheme(theme);
                 },
+                icon: 'file-code-line',
+              },
+              {
+                title: 'Export to PNG',
+                onClick: () => chatRef.current && exportElement(chatRef.current),
                 icon: 'file-code-line',
               },
               {
