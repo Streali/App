@@ -36,7 +36,7 @@ export function PaymentFlowModal(props: PaymentFlowModalProps) {
 
   return (
     <Modal
-      containerClassName="!max-w-3xl !w-full"
+      containerClassName="!max-w-3xl !w-full !bg-dark-600 !p-10"
       trigger={
         <Button color={ButtonColor.Dark} className="mt-5 w-full justify-center">
           Switch to this plan

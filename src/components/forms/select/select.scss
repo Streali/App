@@ -175,3 +175,7 @@
     color: theme('colors.white') !important;
   }
 }
+
+.select__menu-portal {
+  z-index: 9999 !important;
+}

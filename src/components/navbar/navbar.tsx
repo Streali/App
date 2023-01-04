@@ -6,6 +6,7 @@ import { PopoverLink, PopoverNavigation } from '~/components/popover/navigation/
 import { Popover } from '~/components/popover/popover';
 import { useLogout } from '~/hooks/auth/use-logout';
 import { useUser } from '~/hooks/auth/use-user';
+import { Button, ButtonColor } from '../button/button';
 
 export type NavigationItem = {
   icon: string;
@@ -70,7 +71,12 @@ export const Navbar = (props: NavbarProps) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-shrink-0">
+      <div className="flex flex-shrink-0 flex-col items-end gap-3">
+        <div>
+          <Button className="!w-full" color={ButtonColor.Accent} link="/users/billing">
+            Streali Pro
+          </Button>
+        </div>
         {user && (
           <Popover
             open={userNavOpen}

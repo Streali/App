@@ -7,6 +7,8 @@ import { ChatSettings } from '~/components/chat/chat-settings/chat-settings';
 import CodeEditor from '~/components/code-editor/code-editor';
 import DemoContainer from '~/components/demo-container/demo-container';
 import { Switch } from '~/components/forms/switch/switch';
+import ProBadge from '~/components/pro-badge/pro-badge';
+import { useCurrentPlan } from '~/hooks/billing/use-current-plan';
 import { useChat } from '~/hooks/chat/use-chat';
 import { useUpdateChat } from '~/hooks/chat/use-update-chat';
 import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
@@ -17,6 +19,7 @@ export default function ChatEdit() {
   const [developerMode, setDeveloperMode] = useState(false);
   const { id } = useParams();
   const { data: theme, status, error } = useChat(id!);
+  const { data: plan } = useCurrentPlan();
 
   const { watch, getValues, control, handleSubmit } = useForm({
     defaultValues: theme as FieldValues,
@@ -71,22 +74,25 @@ export default function ChatEdit() {
               Save
             </Button>
           </div>
-          <Controller
-            name="global.developer_mode"
-            control={control}
-            defaultValue={false}
-            render={({ field: { onChange, value } }) => (
-              <Switch
-                onChange={(checked) => {
-                  onChange(checked);
-                  setDeveloperMode(checked);
-                }}
-                checked={value}
-                label="Developer mode"
-                className="mb-5"
-              />
-            )}
-          />
+          <div className="mb-5 flex items-center gap-2">
+            <Controller
+              name="global.developer_mode"
+              control={control}
+              defaultValue={false}
+              render={({ field: { onChange, value } }) => (
+                <Switch
+                  onChange={(checked) => {
+                    onChange(checked);
+                    setDeveloperMode(checked);
+                  }}
+                  disabled={plan?.name === 'free'}
+                  checked={value}
+                  label="Developer mode"
+                />
+              )}
+            />
+            {plan?.name === 'free' && <ProBadge />}
+          </div>
           <ChatSettings
             className="overflow-hidden"
             developerMode={developerMode}

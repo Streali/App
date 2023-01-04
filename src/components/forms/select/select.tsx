@@ -25,6 +25,8 @@ export interface SelectProps {
   defaultValue?: { value: string; label: string };
   multiple?: boolean;
   containerClassName?: string;
+  isPortal?: boolean;
+  placement?: 'top' | 'auto' | 'bottom';
 }
 
 export const Select = (props: SelectProps) => {
@@ -41,6 +43,8 @@ export const Select = (props: SelectProps) => {
     defaultValue,
     multiple = false,
     containerClassName = '',
+    isPortal = true,
+    placement = 'auto',
   } = props;
 
   const [val, setVal] = useState<
@@ -84,7 +88,8 @@ export const Select = (props: SelectProps) => {
         data-testid="select"
         isDisabled={disabled}
         value={defaultValue}
-        menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+        menuPortalTarget={typeof document !== 'undefined' && isPortal ? document.body : null}
+        menuPlacement={placement}
       />
       {errorMessage && (
         <span className="mt-1.5 text-xs text-error-500" data-testid="input-errormessage">

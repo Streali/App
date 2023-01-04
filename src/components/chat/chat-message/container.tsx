@@ -12,6 +12,8 @@ export interface ContainerProps {
 export const Container = (props: ContainerProps) => {
   const { settings, children, color } = props;
 
+  if (!settings) return null;
+
   const containerStyle: CSSProperties = {
     flexDirection: settings?.global.layout === 'stack' ? 'column' : 'row',
     width: settings?.container?.full_width ? '100%' : 'fit-content',

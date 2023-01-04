@@ -138,6 +138,7 @@ export function AddressForm() {
               <Select
                 options={listCountry}
                 label="Country"
+                isPortal={false}
                 containerClassName="flex-1"
                 defaultValue={listCountry.find((item) => item.value === value)}
                 onChange={(value) => {
