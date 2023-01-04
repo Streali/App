@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Button, ButtonColor } from '~/components/button/button';
+import { PaymentFlowModal } from '~/components/billing/payment-flow-modal';
 import { Icon } from '~/components/icon/icon';
 
 interface PlanProps {
@@ -8,10 +8,11 @@ interface PlanProps {
   isCurrent: boolean;
   popular: boolean;
   perks: string[];
+  onContinue: () => void;
 }
 
 export default function Plan(props: PlanProps) {
-  const { name, price, isCurrent, popular } = props;
+  const { name, price, isCurrent, popular, onContinue } = props;
 
   const containerClasses = clsx('flex-1 rounded-lg p-5', {
     'bg-primary-500': popular,
@@ -29,7 +30,9 @@ export default function Plan(props: PlanProps) {
         <h3 className="font-bold">{name}</h3>
 
         {isCurrent && (
-          <p className="rounded bg-white px-2 py-1 text-sm font-bold text-dark-500">Current</p>
+          <p className="rounded bg-green-200 px-2 py-1 text-xs font-bold uppercase text-green-700">
+            Current
+          </p>
         )}
       </div>
 
@@ -47,11 +50,7 @@ export default function Plan(props: PlanProps) {
         ))}
       </ul>
 
-      {!isCurrent && (
-        <Button color={ButtonColor.Dark} className="mt-5 w-full justify-center">
-          Switch to this plan
-        </Button>
-      )}
+      {!isCurrent && <PaymentFlowModal onContinue={onContinue} />}
     </div>
   );
 }

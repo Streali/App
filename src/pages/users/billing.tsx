@@ -1,31 +1,17 @@
-import { useMemo } from 'react';
-import { Controller, FieldValues, useForm } from 'react-hook-form';
-import { SingleValue } from 'react-select';
+import { AddressForm } from '~/components/billing/address-form';
 import CreditCard from '~/components/billing/credit-card';
 import Plan from '~/components/billing/plan';
-import { Button, ButtonColor } from '~/components/button/button';
-import { Input } from '~/components/forms/input/input';
-import { Select } from '~/components/forms/select/select';
-import { useCountries } from '~/hooks/core/use-countries';
+import { Button } from '~/components/button/button';
+import { useCancelPlan } from '~/hooks/billing/use-cancel-plan';
+import { useCurrentPlan } from '~/hooks/billing/use-current-plan';
+import { usePaymentMethods } from '~/hooks/billing/use-payment-methods';
+import { useUpgradePlan } from '~/hooks/billing/use-upgrade-plan';
 
 export default function Billing() {
-  const { control, handleSubmit } = useForm();
-  const { data: countries } = useCountries();
-
-  const listCountry = useMemo(
-    () =>
-      countries
-        ?.map((country) => ({
-          label: country.name,
-          value: country.iso_code,
-        }))
-        .sort((a, b) => a.label.localeCompare(b.label)) ?? [],
-    [countries]
-  );
-
-  const onAddressSave = handleSubmit((address: FieldValues) => {
-    console.log(address);
-  });
+  const { data: plan } = useCurrentPlan();
+  const { data: paymentMethods } = usePaymentMethods();
+  const { mutate: upgradePlan } = useUpgradePlan();
+  const { mutate: cancelPlan } = useCancelPlan();
 
   return (
     <div className="p-10">
@@ -35,7 +21,7 @@ export default function Billing() {
         <Plan
           name={'Free'}
           price={0}
-          isCurrent={true}
+          isCurrent={plan?.name === 'free'}
           popular={false}
           perks={[
             'Access to all Streali modules',
@@ -45,12 +31,13 @@ export default function Billing() {
             '500mb file storage',
             'Editor mode',
           ]}
+          onContinue={() => cancelPlan()}
         />
 
         <Plan
           name={'Pro'}
           price={9}
-          isCurrent={false}
+          isCurrent={plan?.name === 'pro'}
           popular={true}
           perks={[
             'Access to all Streali modules',
@@ -60,135 +47,36 @@ export default function Billing() {
             '10Gb file storage',
             'Editor mode & Developer mode',
           ]}
+          onContinue={() => upgradePlan()}
         />
       </div>
 
       <h2 className="mb-5 font-title text-2xl font-semibold">Payment method</h2>
       <div className="mb-10 grid grid-cols-3 gap-10">
-        <CreditCard
-          cardEnd="1234"
-          type="mastercard"
-          expiring="01/25"
-          onDelete={() => console.log('delete')}
-          onSetDefault={() => console.log('set default')}
-          isDefault
-        />
-        <CreditCard
-          cardEnd="1234"
-          type="visa"
-          expiring="01/25"
-          onDelete={() => console.log('delete')}
-          onSetDefault={() => console.log('set default')}
-          isDefault={false}
-        />
+        {paymentMethods?.map((paymentMethod) => (
+          <CreditCard
+            key={paymentMethod.id}
+            type={paymentMethod.brand as 'visa' | 'mastercard'}
+            expiring={`${paymentMethod.expiry_month}/${paymentMethod.expiry_year}`}
+            cardEnd={paymentMethod.last_four}
+            onDelete={() => console.log('delete')}
+            onSetDefault={() => console.log('set default')}
+            isDefault
+          />
+        ))}
+
         <div className="flex h-60 flex-col items-center justify-center rounded-lg border-2 border-dotted border-dark-300 bg-dark-400 p-5">
           <p className="mb-5 font-bold">Add a new payment method</p>
-          <Button>Add a card</Button>
+          <Button link={`${import.meta.env.VITE_API_URL}/billings/payment-methods/add`} external>
+            Add a card
+          </Button>
         </div>
       </div>
 
       <h2 className="mb-5 font-title text-2xl font-semibold">Billing address</h2>
-      <form onSubmit={onAddressSave} className="rounded-lg bg-dark-600 p-10">
-        <div className="space-y-5">
-          <Controller
-            name="organization"
-            control={control}
-            defaultValue={''}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                onChange={onChange}
-                defaultValue={value}
-                label="Organization"
-                containerClassName="flex-1"
-              />
-            )}
-          />
-
-          <div className="flex gap-10">
-            <Controller
-              name="address"
-              control={control}
-              defaultValue={''}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  onChange={onChange}
-                  defaultValue={value}
-                  label="Address"
-                  containerClassName="flex-1"
-                />
-              )}
-            />
-
-            <Controller
-              name="address_complement"
-              control={control}
-              defaultValue={''}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  onChange={onChange}
-                  defaultValue={value}
-                  label="Complement"
-                  containerClassName="flex-1"
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex gap-10">
-            <Controller
-              name="postal_code"
-              control={control}
-              defaultValue={''}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  onChange={onChange}
-                  defaultValue={value}
-                  label="Postal code"
-                  containerClassName="flex-1"
-                />
-              )}
-            />
-
-            <Controller
-              name="city"
-              control={control}
-              defaultValue={''}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  onChange={onChange}
-                  defaultValue={value}
-                  label="City"
-                  containerClassName="flex-1"
-                />
-              )}
-            />
-
-            <Controller
-              name="country"
-              control={control}
-              defaultValue={'FR'}
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  options={[]}
-                  label="Country"
-                  containerClassName="flex-1"
-                  defaultValue={listCountry.find((item) => item.value === value)}
-                  onChange={(value) => {
-                    const v = value as SingleValue<{ label: string; value: string }>;
-                    onChange(v?.value);
-                  }}
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex w-full justify-end">
-            <Button type="submit" color={ButtonColor.Accent}>
-              Save
-            </Button>
-          </div>
-        </div>
-      </form>
+      <div className="rounded-lg bg-dark-600 p-10">
+        <AddressForm />
+      </div>
     </div>
   );
 }
