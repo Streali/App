@@ -5,6 +5,7 @@ import type { ChatTheme, TwitchMessage } from '~/types/schemas/chat';
 
 export interface ChatDemoProps {
   settings: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme;
+  timeBetweenMessages?: number;
 }
 
 export const ChatDemo = (props: ChatDemoProps) => {
@@ -12,6 +13,7 @@ export const ChatDemo = (props: ChatDemoProps) => {
   const [messages, setMessages] = useState<TwitchMessage[]>([]);
 
   useEffect(() => {
+    const timeBetweenMessages = Math.max(250, props.timeBetweenMessages ?? 1250);
     const interval = setInterval(
       () =>
         setMessages((d) => {
@@ -19,11 +21,11 @@ export const ChatDemo = (props: ChatDemoProps) => {
           const newMessage: TwitchMessage = generateTwitchMessage();
           return [...d, newMessage];
         }),
-      1250
+      timeBetweenMessages
     );
 
     return () => clearInterval(interval);
-  }, []);
+  }, [props.timeBetweenMessages]);
 
   return (
     <>
