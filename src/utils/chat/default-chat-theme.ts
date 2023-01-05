@@ -159,7 +159,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
 
-<div class="message">
+<div class="message" style="--twitch-color: {{color}}">
     <div class="name">
         {% if displayBadges.size > 0 %}
         <div class="badges">
@@ -188,7 +188,7 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
 .name {
     background-color: white;
     display: inline-flex;
-    color: black;
+    color: var(--twitch-color);
     align-items: center;
     gap: 8px;
     padding: 4px;

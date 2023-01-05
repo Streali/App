@@ -112,7 +112,7 @@ export default function ChatCreate() {
       {developerMode && (
         <div className="px-10 pb-10">
           <div className="box-border flex h-[350px] gap-5 rounded-2xl bg-dark-600 p-5">
-            <div className="h-full flex-1">
+            <div className="h-full flex-1 resize-x">
               <p className="mb-3 font-bold">HTML</p>
               <Controller
                 name="code.html"
@@ -128,7 +128,7 @@ export default function ChatCreate() {
                 )}
               />
             </div>
-            <div className="h-full flex-1">
+            <div className="h-full flex-1 resize">
               <p className="mb-3 font-bold">CSS</p>
               <Controller
                 name="code.css"

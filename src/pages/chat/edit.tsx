@@ -18,13 +18,16 @@ export default function ChatEdit() {
   const { id } = useParams();
   const { data: theme, status, error } = useChat(id!);
 
-  const { watch, getValues, control, handleSubmit } = useForm({
+  const { watch, getValues, control, handleSubmit, reset } = useForm({
     defaultValues: theme as FieldValues,
   });
 
   useEffect(() => {
     if (theme) {
+      console.log(theme);
       setSettings(theme);
+      reset(theme);
+      setDeveloperMode(theme.global.developer_mode || false);
     }
   }, [theme]);
 
