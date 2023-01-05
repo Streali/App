@@ -1,6 +1,6 @@
 import './chat-message.scss';
 
-import { Liquid } from 'liquidjs';
+import nunjucks from 'nunjucks';
 import { Fragment } from 'react';
 import { scopeCSS } from '~/utils/common/scope-css';
 import { Container } from './container';
@@ -40,26 +40,19 @@ export const ChatMessage = memo(function ChatMessage(props: ChatMessageProps) {
   if (settings.global.developer_mode) {
     const data = {
       ...message,
-      displayBadges: function () {
-        const listBadgesUrl = Object.entries(message.badges)
-          .map(([key, value]) => {
-            if (value) {
-              return { url: `/badges/twitch/${key}.png` };
-            } else {
-              return null;
-            }
-          })
-          .filter((n) => n);
-        return listBadgesUrl;
-      },
+      displayBadges: Object.entries(message.badges)
+        .map(([key, value]) => {
+          if (value) {
+            return { url: `/badges/twitch/${key}.png` };
+          } else {
+            return null;
+          }
+        })
+        .filter((n) => n),
     };
 
-    const engine = new Liquid({
-      strictFilters: false,
-    });
-
     try {
-      const template = engine.parseAndRenderSync(settings.code?.html || '', data);
+      const template = nunjucks.renderString(settings.code?.html || '', data);
       const style = scopeCSS(settings.code?.css || '', '[data-scope]');
 
       return (

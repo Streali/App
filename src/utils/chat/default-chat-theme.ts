@@ -154,89 +154,86 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
   },
   code: {
-    html: `
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    html: `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
 
-<div class="message" style="--twitch-color: {{color}}">
-    <div class="name">
-        {% if displayBadges.size > 0 %}
-        <div class="badges">
-            {% for badge in displayBadges %}
-                <img src={{badge.url}}>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {{username}}
-    </div>
-    <div class="content">
-        {{message}}
-    </div>
-</div>
-    `,
-    css: `
-.message {
-    margin-bottom: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    position: relative;
-    animation: pop 1s cubic-bezier(1, 0, 0, 1) both;
+<div class="message" style="--twitch-color: {{ color }}">
+  <div class="name">
+    {% if displayBadges.length > 0 %}
+      <div class="badges">
+        {% for badge in displayBadges %}
+          <img src="{{ badge.url }}">
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <span>{{ username }}</span>
+  </div>
+  <div class="content">
+    {{ message }}
+  </div>
+</div>`,
+    css: `.message {
+  align-items: flex-end;
+  animation: pop 1s cubic-bezier(1, 0, 0, 1) both;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .name {
-    background-color: white;
-    display: inline-flex;
-    color: var(--twitch-color);
-    align-items: center;
-    gap: 8px;
-    padding: 4px;
-    border: 1px solid black;
-    border-radius: 4px;
-    font-family: 'Rubik';
-    margin-bottom: 8px;
-    width: fit-content;
-    font-weight: 700;
-    font-size: 14px;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid black;
+  color: var(--twitch-color);
+  display: inline-flex;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 4px;
+  width: fit-content;
 }
 
 .name .badges {
-    display: flex;
-    gap: 2px;
+  display: flex;
+  gap: 2px;
 }
 
 .name .badges img {
-    width: 16px;
-    height: 16px;
+  height: 16px;
+  width: 16px;
 }
 
 .content {
-    background-color: white;
-    display: inline-flex;
-    color: black;
-    align-items: center;
-    gap: 8px;
-    padding: 4px;
-    border: 1px solid black;
-    border-radius: 4px;
-    font-family: 'Rubik';
-    margin-bottom: 8px;
-    width: fit-content;
-    font-size: 14px;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid black;
+  color: black;
+  display: inline-flex;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 4px;
+  width: fit-content;
 }
 
 @keyframes pop {
-    0% {
-        opacity: 0;
-        left: 110%;
-    }
+  0% {
+    opacity: 0;
+    left: 110%;
+  }
 
-    100% {
-        opacity: 1;
-        left: 0;
-    }
-}
-    `,
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}`,
   },
 };

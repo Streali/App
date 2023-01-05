@@ -1,6 +1,7 @@
 import Editor, { useMonaco } from '@monaco-editor/react';
 import { emmetHTML, emmetCSS } from 'emmet-monaco-es';
 import Theme from '~/assets/codetheme.json';
+import { nunjucksConfig, nunjucksLanguage } from '~/components/code-editor/nunjucks';
 
 interface CodeEditorProps {
   initialValue: string;
@@ -20,145 +21,110 @@ const CodeEditor = (props: CodeEditorProps) => {
   };
 
   useEffect(() => {
-    if (monaco) {
-      // Emmet
-      language === 'html' ? emmetHTML(monaco, ['html', 'liquid']) : emmetCSS(monaco, ['css']);
+    if (!monaco) return;
 
-      monaco.languages.register({ id: 'liquid' });
+    language === 'html' ? emmetHTML(monaco, ['html', 'nunjucks']) : emmetCSS(monaco, ['css']);
 
-      monaco.languages.registerCompletionItemProvider('liquid', {
-        provideCompletionItems: () => {
-          const autocompleteProviderItems = [];
-          const keywords = [
-            'assign',
-            'capture',
-            'endcapture',
-            'increment',
-            'decrement',
-            'if',
-            'else',
-            'elsif',
-            'endif',
-            'for',
-            'endfor',
-            'break',
-            'continue',
-            'limit',
-            'offset',
-            'range',
-            'reversed',
-            'cols',
-            'case',
-            'endcase',
-            'when',
-            'block',
-            'endblock',
-            'true',
-            'false',
-            'in',
-            'unless',
-            'endunless',
-            'cycle',
-            'tablerow',
-            'endtablerow',
-            'contains',
-            'startswith',
-            'endswith',
-            'comment',
-            'endcomment',
-            'raw',
-            'endraw',
-            'editable',
-            'endentitylist',
-            'endentityview',
-            'endinclude',
-            'endmarker',
-            'entitylist',
-            'entityview',
-            'forloop',
-            'image',
-            'include',
-            'marker',
-            'outputcache',
-            'plugin',
-            'style',
-            'text',
-            'widget',
-            'abs',
-            'append',
-            'at_least',
-            'at_most',
-            'capitalize',
-            'ceil',
-            'compact',
-            'concat',
-            'date',
-            'default',
-            'divided_by',
-            'downcase',
-            'escape',
-            'escape_once',
-            'first',
-            'floor',
-            'join',
-            'last',
-            'lstrip',
-            'map',
-            'minus',
-            'modulo',
-            'newline_to_br',
-            'plus',
-            'prepend',
-            'remove',
-            'remove_first',
-            'replace',
-            'replace_first',
-            'reverse',
-            'round',
-            'rstrip',
-            'size',
-            'slice',
-            'sort',
-            'sort_natural',
-            'split',
-            'strip',
-            'strip_html',
-            'strip_newlines',
-            'times',
-            'truncate',
-            'truncatewords',
-            'uniq',
-            'upcase',
-            'url_decode',
-            'url_encode',
-          ];
+    monaco.editor.defineTheme('streali', Theme);
+    setCustomTheme(true);
 
-          for (let i = 0; i < keywords.length; i++) {
-            autocompleteProviderItems.push({
-              label: keywords[i],
-              kind: monaco.languages.CompletionItemKind.Keyword,
-            });
-          }
+    if (language === 'html') {
+      monaco.languages.register({ id: 'nunjucks' });
+      monaco.languages.setMonarchTokensProvider('nunjucks', nunjucksLanguage);
+      monaco.languages.setLanguageConfiguration('nunjucks', nunjucksConfig);
 
-          return { suggestions: autocompleteProviderItems };
+      const completionDisposable = monaco.languages.registerCompletionItemProvider('nunjucks', {
+        provideCompletionItems(model, position) {
+          const word = model.getWordUntilPosition(position);
+
+          const range = {
+            startLineNumber: position.lineNumber,
+            endLineNumber: position.lineNumber,
+            startColumn: word.startColumn,
+            endColumn: word.endColumn,
+          };
+
+          return {
+            suggestions: [
+              {
+                label: 'Conditional',
+                kind: monaco.languages.CompletionItemKind.Snippet,
+                documentation: 'If statement',
+                insertText: '{% if ${1:condition} %}\n\t$0\n{% endif %}',
+                insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                range,
+              },
+              {
+                label: 'Loop',
+                kind: monaco.languages.CompletionItemKind.Snippet,
+                documentation: 'For loop',
+                insertText: '{% for ${1:item} in ${2:items} %}\n\t$0\n{% endfor %}',
+                insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                range,
+              },
+              {
+                label: 'Variable',
+                kind: monaco.languages.CompletionItemKind.Snippet,
+                documentation: 'Variable',
+                insertText: '{{ ${1:variable} }}',
+                insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                range,
+              },
+              {
+                label: 'displayBadges',
+                kind: monaco.languages.CompletionItemKind.Variable,
+                documentation: 'Array of badges',
+                insertText: 'displayBadges',
+                range,
+              },
+              {
+                label: 'color',
+                kind: monaco.languages.CompletionItemKind.Variable,
+                documentation: 'Twitch Color of the user',
+                insertText: 'color',
+                range,
+              },
+              {
+                label: 'message',
+                kind: monaco.languages.CompletionItemKind.Variable,
+                documentation: 'Message of the user',
+                insertText: 'message',
+                range,
+              },
+              {
+                label: 'username',
+                kind: monaco.languages.CompletionItemKind.Variable,
+                documentation: 'Name of the user',
+                insertText: 'username',
+                range,
+              },
+            ],
+          };
         },
       });
 
-      monaco.editor.defineTheme('ok', Theme);
-      setCustomTheme(true);
+      return () => {
+        completionDisposable?.dispose();
+      };
     }
   }, [monaco]);
 
   return (
     <div className={`h-full w-full ${className}`}>
       <Editor
-        defaultLanguage={language === 'html' ? 'liquid' : language}
+        defaultLanguage={language === 'html' ? 'nunjucks' : language}
         defaultValue={initialValue}
-        theme={customTheme ? 'ok' : 'vs-dark'}
+        theme={customTheme ? 'streali' : 'vs-dark'}
         className={editorClassName}
         onChange={handleEditorChange}
         options={{
           minimap: { enabled: false },
+          fontSize: 15,
+          lineHeight: 30,
+          tabSize: 2,
+          suggest: {
+            insertMode: 'replace',
+          },
         }}
       />
     </div>
