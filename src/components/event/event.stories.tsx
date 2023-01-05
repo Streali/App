@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from '~/components/button/button';
 import { Event } from './event';
 
 export default {
@@ -13,7 +12,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   event: {
     id: '123',
-    created_at: '2021-01-01T00:00:00.000Z',
+    created_at: new Date().toString(),
     type: 10,
     payload: {
       displayName: 'WillTraore',

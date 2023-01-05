@@ -93,6 +93,16 @@ export const Event = (props: EventProps) => {
 
   const { mutate: replay } = useReplayEvent();
 
+  const [humanCreatedAt, setHumanCreated] = useState(HumanDate(event.created_at));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHumanCreated(HumanDate(event.created_at));
+    }, 1000 * 60 * 2);
+
+    return () => clearInterval(interval);
+  }, [event]);
+
   return (
     <>
       <div className="flex w-full items-center divide-x divide-dark-300 border-b border-dark-300 bg-dark-400 py-2 first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-b-0">
@@ -100,7 +110,7 @@ export const Event = (props: EventProps) => {
           {EventTypeText[event.type]}
         </span>
 
-        <div className="w-9 shrink-0 text-center text-dark-100">{HumanDate(event.created_at)}</div>
+        <div className="w-9 shrink-0 text-center text-dark-100">{humanCreatedAt}</div>
 
         <div className="flex-grow px-3">
           {EventTypeMessage[event.type](event.payload as any)}
