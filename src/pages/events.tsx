@@ -6,6 +6,7 @@ import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
 import { useEvents } from '~/hooks/event/use-events';
 import { BaseEvent } from '~/types/schemas/event';
+import { useDynamicRenderKey } from '~/hooks/core/use-dynamic-render-key';
 
 type EventCheck = {
   label: string;
@@ -65,21 +66,6 @@ const listEvents = [
     type: 62,
   },
 ];
-
-function useDynamicRenderKey(intervalInMs = 1_000 * 60) {
-  const [renderKey, setRenderKey] = useState(Date.now());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRenderKey(Date.now());
-    }, intervalInMs);
-    return () => clearInterval(interval);
-  }, []);
-
-  return {
-    renderKey,
-  };
-}
 
 export default function Events() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
