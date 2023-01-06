@@ -4,7 +4,7 @@ import { Checkbox } from '~/components/forms/checkbox/checkbox';
 import { toastr, ToastType } from '~/components/toast/toast';
 import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
-import { useUserEvent } from '~/hooks/event/use-user-events';
+import { useEvents } from '~/hooks/event/use-events';
 import { BaseEvent } from '~/types/schemas/event';
 
 const listEvents = [
@@ -65,7 +65,7 @@ export default function Dashboard() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: user } = useUser();
-  const { data: events } = useUserEvent();
+  const { data: events } = useEvents();
   const eventSource = useEventSource<BaseEvent>({
     onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
   });

@@ -1,15 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toastr, ToastType } from '~/components/toast/toast';
-import { EventListResponse } from '~/types/schemas/event-list';
-import { apiClient } from '~/utils/axios/axios';
-import { eventListKeys } from './../query-keys';
+import { eventListKeys } from '~/hooks/query-keys';
+import { EventListResponse, EventListResponseSchema } from '~/types/schemas/event-list';
+import { http } from '~/utils/http/client';
 
 export const useUpdateEventList = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
     async (params: Omit<EventListResponse, 'created_at' | 'updated_at'>) => {
-      const { data } = await apiClient.put(`/event-lists/${params.id}`, params.theme);
+      const data = await http
+        .put(`event-lists/${params.id}`, { body: JSON.stringify(params.theme) })
+        .json();
 
       toastr(
         ToastType.Success,
@@ -17,7 +19,7 @@ export const useUpdateEventList = () => {
         'Congratulation! You can use your theme right now 👍'
       );
 
-      return data;
+      return EventListResponseSchema.parse(data);
     },
     {
       onSuccess(_, params) {

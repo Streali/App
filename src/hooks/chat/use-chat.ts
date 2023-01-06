@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { chatKeys } from '~/hooks/query-keys';
 import { ChatThemeSchema } from '~/types/schemas/chat';
-import { apiClient } from '~/utils/axios/axios';
+import { http } from '~/utils/http/client';
 
 export const useChat = (themeId: string) => {
   return useQuery({
     queryKey: chatKeys.detail(themeId),
     queryFn: async () => {
-      const { data } = await apiClient.get(`/chat-themes/${themeId}`);
+      const data = await http.get(`chat-themes/${themeId}`).json();
 
       if (!data) {
         return null;

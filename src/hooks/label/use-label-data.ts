@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { useUser } from '~/hooks/auth/use-user';
 import { labelKeys } from '~/hooks/query-keys';
-import { apiClient } from '~/utils/axios/axios';
+import { LabelDataSchema } from '~/types/schemas/label';
+import { http } from '~/utils/http/client';
 
 export const useLabelData = () => {
   const { data: user } = useUser();
@@ -9,13 +10,13 @@ export const useLabelData = () => {
   return useQuery({
     queryKey: labelKeys.info(user?.secret || ''),
     queryFn: async ({ queryKey }) => {
-      const { data } = await apiClient.get(`/users/${queryKey[2]}/labels-info`);
+      const data = await http.get(`users/${queryKey[2]}/labels-info`).json();
 
       if (!data) {
         return null;
       }
 
-      return data;
+      return LabelDataSchema.parse(data);
     },
     enabled: !!user?.secret,
     refetchInterval: 1000 * 10,

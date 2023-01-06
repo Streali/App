@@ -16,17 +16,6 @@ export const navigation: NavigationItems = [
     link: '/labels',
     name: 'Labels',
   },
-
-  // {
-  //   icon: 'alarm-warning-line',
-  //   items: [
-  //     {
-  //       title: 'Create alert',
-  //       icon: 'add-line',
-  //       link: '/alerts/create',
-  //     },
-  //   ],
-  // },
 ];
 
 export const pagesWithoutLayout = ['/login', '/embed', '/events'];

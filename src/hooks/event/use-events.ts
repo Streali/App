@@ -2,13 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import * as z from 'zod';
 import { eventKeys } from '~/hooks/query-keys';
 import { EventSchema } from '~/types/schemas/event';
-import { apiClient } from '~/utils/axios/axios';
+import { http } from '~/utils/http/client';
 
-export const useUserEvent = () => {
+export const useEvents = () => {
   return useQuery({
     queryKey: eventKeys.lists(),
     queryFn: async () => {
-      const { data } = await apiClient.get(`/events`);
+      const data = await http.get(`events`).json();
 
       if (!data) {
         return [];

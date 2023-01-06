@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toastr, ToastType } from '~/components/toast/toast';
-import { apiClient } from '~/utils/axios/axios';
+import { http } from '~/utils/http/client';
 import { labelKeys } from './../query-keys';
 
 export const useDeleteLabel = () => {
@@ -8,7 +8,7 @@ export const useDeleteLabel = () => {
 
   return useMutation(
     async (id: string) => {
-      await apiClient.delete(`/labels/${id}`);
+      await http.delete(`labels/${id}`);
 
       toastr(ToastType.Success, 'Label deleted', 'Your label is successfully deleted !');
     },

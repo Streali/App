@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toastr, ToastType } from '~/components/toast/toast';
-import { Label } from '~/types/schemas/label';
-import { apiClient } from '~/utils/axios/axios';
+import { Label, LabelResponseSchema } from '~/types/schemas/label';
+import { http } from '~/utils/http/client';
 import { labelKeys } from './../query-keys';
 
 export function useCreateLabel() {
@@ -9,7 +9,7 @@ export function useCreateLabel() {
 
   return useMutation(
     async (params: Label) => {
-      const { data } = await apiClient.post('/labels', params);
+      const data = await http.post('labels', { body: JSON.stringify(params) }).json();
 
       toastr(
         ToastType.Success,
@@ -17,7 +17,7 @@ export function useCreateLabel() {
         'Congratulation! You can use your label right now 👍'
       );
 
-      return data;
+      return LabelResponseSchema.parse(data);
     },
     {
       onSuccess() {
