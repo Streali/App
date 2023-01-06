@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { LabelData } from './../../types/schemas/label';
+import { LabelData } from '~/types/schemas/label';
 
 export const LabelValueToText = (value: string, data: LabelData, currentDate: Date) => {
   const date = DateTime.fromJSDate(currentDate);
@@ -35,11 +35,11 @@ export const LabelValueToText = (value: string, data: LabelData, currentDate: Da
     )
     .replaceAll(
       '{{last cheer donor}}',
-      data.lastCheerDonor?.displayName ? data.lastCheerDonor?.displayName : 'Anonymous'
+      data.latestCheerDonor?.displayName ? data.latestCheerDonor?.displayName : 'Anonymous'
     )
     .replaceAll(
       '{{last cheer donor amount}}',
-      data.lastCheerDonor?.amount ? data.lastCheerDonor?.amount.toString() : '0'
+      data.latestCheerDonor?.amount ? data.latestCheerDonor?.amount.toString() : '0'
     )
     .replaceAll('{{current hour}}', hour.toString())
     .replaceAll('{{current minute}}', minute.toString())
