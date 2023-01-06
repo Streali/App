@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Navbar } from './navbar';
+import { Navbar, type NavigationItems } from './navbar';
 
 export default {
   title: 'Navbar',
@@ -11,24 +11,16 @@ export default {
 
 export const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
-const navigation = [
-  {
-    icon: 'book-2-line',
-    link: '/',
-  },
+const navigation: NavigationItems = [
   {
     icon: 'home-line',
-    items: [
-      {
-        title: 'Show',
-        link: '/',
-      },
-      {
-        icon: 'home-line',
-        title: 'Create',
-        link: '/create',
-      },
-    ],
+    link: '/',
+    name: 'Dashboard',
+  },
+  {
+    icon: 'book-2-line',
+    link: '/properties',
+    name: 'Properties',
   },
 ];
 
