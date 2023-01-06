@@ -75,10 +75,10 @@ export const LabelResponseSchema = z.object({
 
 export const LabelDataSchema = z.object({
   latestFollower: z.object({
-    displayName: z.string(),
+    displayName: z.string().optional(),
   }),
   latestSubscriber: z.object({
-    displayName: z.string(),
+    displayName: z.string().optional(),
   }),
   subscriptionCount: z.object({
     amount: z.number(),
@@ -89,9 +89,9 @@ export const LabelDataSchema = z.object({
   followerCount: z.object({
     amount: z.number(),
   }),
-  lastCheerDonor: z.object({
-    displayName: z.string(),
-    amount: z.number(),
+  latestCheerDonor: z.object({
+    displayName: z.string().optional(),
+    amount: z.number().optional(),
   }),
 });
 

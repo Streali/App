@@ -3,11 +3,11 @@ import { Button, ButtonColor } from '~/components/button/button';
 import EventListCard from '~/components/event-list/event-list-card';
 import { Import } from '~/components/import/import';
 import { useCreateEventList } from '~/hooks/event-list/use-create-event-list';
-import { useUserEventList } from '~/hooks/event-list/use-user-event-list';
+import { useEventLists } from '~/hooks/event-list/use-event-lists';
 import { EventList, EventListResponse, EventListSchema } from '~/types/schemas/event-list';
 
 export default function EventListLibrary() {
-  const { data, isLoading } = useUserEventList();
+  const { data, isLoading } = useEventLists();
   const { mutate: createEventList } = useCreateEventList();
 
   const handleSubmit = (theme: FieldValues) => {

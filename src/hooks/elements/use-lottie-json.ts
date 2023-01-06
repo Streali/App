@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import ky from 'ky';
 import { queryKeys } from '~/hooks/query-keys';
 
 export const useLottieJson = (url: string) => {
   return useQuery({
     queryKey: queryKeys.lottie(url),
-    queryFn: async () => {
-      const response = await axios.get(url);
-
-      return response.data;
+    queryFn: () => {
+      return ky.get(url).json();
     },
     staleTime: Infinity,
   });

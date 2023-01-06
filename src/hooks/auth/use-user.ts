@@ -2,13 +2,13 @@ import * as Sentry from '@sentry/react';
 import { useQuery } from '@tanstack/react-query';
 import { authKeys } from '~/hooks/query-keys';
 import { UserSchema } from '~/types/schemas/auth';
-import { apiClient } from '~/utils/axios/axios';
+import { http } from '~/utils/http/client';
 
 async function fetchUser() {
   try {
-    const response = await apiClient.get('/me');
+    const data = await http.get('me').json();
 
-    const user = UserSchema.parse(response.data);
+    const user = UserSchema.parse(data);
 
     Sentry.setUser({
       id: user.id,

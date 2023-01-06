@@ -4,7 +4,7 @@ import { Event } from '~/components/event/event';
 import { Checkbox } from '~/components/forms/checkbox/checkbox';
 import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
-import { useUserEvent } from '~/hooks/event/use-user-events';
+import { useEvents } from '~/hooks/event/use-events';
 import { BaseEvent } from '~/types/schemas/event';
 
 type EventCheck = {
@@ -69,7 +69,7 @@ const listEvents = [
 export default function Events() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
-  const { data: events } = useUserEvent();
+  const { data: events } = useEvents();
   const { data: user } = useUser();
   const eventSource = useEventSource<BaseEvent>({
     onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),

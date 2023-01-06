@@ -10,13 +10,6 @@ export const chatKeys = {
   detail: (id: string) => [...chatKeys.details(), id] as const,
 };
 
-export const alertKeys = {
-  root: ['alert'] as const,
-  lists: () => [...alertKeys.root, 'lists'] as const,
-  details: () => [...alertKeys.root, 'details'] as const,
-  detail: (id: string) => [...alertKeys.details(), id] as const,
-};
-
 export const eventKeys = {
   root: ['event'] as const,
   lists: () => [...eventKeys.root, 'lists'] as const,

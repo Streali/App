@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
-import { apiClient } from '~/utils/axios/axios';
+import { http } from '~/utils/http/client';
 
 export function useReplayEvent() {
   return useMutation((eventId: string) => {
-    return apiClient.post(`/events/${eventId}/replay`);
+    return http.post(`events/${eventId}/replay`).json();
   });
 }

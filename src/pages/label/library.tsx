@@ -1,11 +1,11 @@
 import { Button } from '~/components/button/button';
 import LabelCard from '~/components/labels/label-card/label-card';
 import { useLabelData } from '~/hooks/label/use-label-data';
-import { useUserLabels } from '~/hooks/label/use-user-label';
+import { useLabels } from '~/hooks/label/use-labels';
 import { LabelResponse } from '~/types/schemas/label';
 
 export default function LabelLibrary() {
-  const { data, isLoading } = useUserLabels();
+  const { data, isLoading } = useLabels();
   const { data: labelData } = useLabelData();
 
   if (isLoading || !labelData) {

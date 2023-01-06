@@ -1,15 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toastr, ToastType } from '~/components/toast/toast';
-import { apiClient } from '~/utils/axios/axios';
-import { LabelResponse } from './../../types/schemas/label';
-import { labelKeys } from './../query-keys';
+import { labelKeys } from '~/hooks/query-keys';
+import { LabelResponse, LabelResponseSchema } from '~/types/schemas/label';
+import { http } from '~/utils/http/client';
 
 export const useUpdateLabel = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
     async (params: Omit<LabelResponse, 'created_at' | 'updated_at' | 'user_id' | 'secret'>) => {
-      const { data } = await apiClient.put(`/labels/${params.id}`, params.theme);
+      const data = await http
+        .put(`labels/${params.id}`, { body: JSON.stringify(params.theme) })
+        .json();
 
       toastr(
         ToastType.Success,
@@ -17,7 +19,7 @@ export const useUpdateLabel = () => {
         'Congratulation! You can use your label right now 👍'
       );
 
-      return data;
+      return LabelResponseSchema.parse(data);
     },
     {
       onSuccess(_, params) {

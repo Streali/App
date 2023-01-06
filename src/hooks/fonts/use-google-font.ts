@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import ky from 'ky';
 import { queryKeys } from '~/hooks/query-keys';
 
 export interface GoogleFontsFamily {
@@ -23,13 +23,15 @@ export const useGoogleFont = () => {
   return useQuery({
     queryKey: queryKeys.googleFont(),
     queryFn: async () => {
-      const response = await axios.get(
-        `https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=${
-          import.meta.env.VITE_GOOGLE_FONTS_API_KEY
-        }`
-      );
+      const response = await ky
+        .get(
+          `https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=${
+            import.meta.env.VITE_GOOGLE_FONTS_API_KEY
+          }`
+        )
+        .json<{ items: any }>();
 
-      return response.data.items;
+      return response.items;
     },
     staleTime: Infinity,
   });
