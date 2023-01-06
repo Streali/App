@@ -4,12 +4,12 @@ import { LabelData } from '~/types/schemas/label';
 export const LabelValueToText = (value: string, data: LabelData, currentDate: Date) => {
   const date = DateTime.fromJSDate(currentDate);
 
-  const hour = date.hour < 10 ? `0${date.hour}` : date.hour;
-  const minute = date.minute < 10 ? `0${date.minute}` : date.minute;
-  const second = date.second < 10 ? `0${date.second}` : date.second;
-  const day = date.day < 10 ? `0${date.day}` : date.day;
-  const month = date.month < 10 ? `0${date.month}` : date.month;
-  const year = date.year < 10 ? `0${date.year}` : date.year;
+  const hour = date.hour.toString().padStart(2, '0');
+  const minute = date.minute.toString().padStart(2, '0');
+  const second = date.second.toString().padStart(2, '0');
+  const day = date.day.toString().padStart(2, '0');
+  const month = date.month.toString().padStart(2, '0');
+  const year = date.year;
 
   const regex = /\*\*(.*?)\*\*/g;
   return value
