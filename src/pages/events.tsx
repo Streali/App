@@ -66,10 +66,26 @@ const listEvents = [
   },
 ];
 
+function useDynamicRenderKey(intervalInMs = 1_000 * 60) {
+  const [renderKey, setRenderKey] = useState(Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRenderKey(Date.now());
+    }, intervalInMs);
+    return () => clearInterval(interval);
+  }, []);
+
+  return {
+    renderKey,
+  };
+}
+
 export default function Events() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: events } = useEvents();
+  const { renderKey } = useDynamicRenderKey();
   const { data: user } = useUser();
   const eventSource = useEventSource<BaseEvent>({
     onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
@@ -150,7 +166,7 @@ export default function Events() {
 
       <div className="flex-1">
         {filteredEvent.map((event) => (
-          <Event key={event.id} event={event} />
+          <Event key={`${renderKey}-${event.id}`} event={event} />
         ))}
       </div>
     </div>
