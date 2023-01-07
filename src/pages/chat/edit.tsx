@@ -25,6 +25,7 @@ export default function ChatEdit() {
   useEffect(() => {
     if (!theme) return;
 
+    setSettings(theme);
     reset(theme);
     setDeveloperMode(theme.global.developer_mode || false);
   }, [theme]);
