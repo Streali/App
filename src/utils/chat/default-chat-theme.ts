@@ -230,6 +230,10 @@ export const defaultCss = `.message {
   width: fit-content;
 }
 
+.content img {
+  height: 100%;
+}
+
 @keyframes pop {
   0% {
     opacity: 0;
