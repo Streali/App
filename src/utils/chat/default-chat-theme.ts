@@ -154,7 +154,12 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     },
   },
   code: {
-    html: `<link rel="preconnect" href="https://fonts.googleapis.com">
+    html: null,
+    css: null,
+  },
+};
+
+export const defaultHtml = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
 
@@ -173,8 +178,9 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
   <div class="content">
     {{ message }}
   </div>
-</div>`,
-    css: `.message {
+</div>`;
+
+export const defaultCss = `.message {
   align-items: flex-end;
   animation: pop 1s cubic-bezier(1, 0, 0, 1) both;
   display: flex;
@@ -234,6 +240,4 @@ export const defaultChatTheme: Omit<ChatTheme, 'user_id' | 'id'> | ChatTheme = {
     opacity: 1;
     left: 0;
   }
-}`,
-  },
-};
+}`;
