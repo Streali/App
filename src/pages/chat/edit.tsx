@@ -9,7 +9,7 @@ import DemoContainer from '~/components/demo-container/demo-container';
 import { Switch } from '~/components/forms/switch/switch';
 import { useChat } from '~/hooks/chat/use-chat';
 import { useUpdateChat } from '~/hooks/chat/use-update-chat';
-import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
+import { defaultChatTheme, defaultCss, defaultHtml } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
 
 export default function ChatEdit() {
@@ -23,13 +23,27 @@ export default function ChatEdit() {
   });
 
   useEffect(() => {
-    if (theme) {
-      console.log(theme);
-      setSettings(theme);
-      reset(theme);
-      setDeveloperMode(theme.global.developer_mode || false);
-    }
+    if (!theme) return;
+
+    reset(theme);
+    setDeveloperMode(theme.global.developer_mode || false);
   }, [theme]);
+
+  useEffect(() => {
+    if (!developerMode) return;
+
+    const theme = getValues() as ChatTheme;
+
+    if (theme.code?.html === null) {
+      theme.code.html = defaultHtml;
+    }
+
+    if (theme.code?.css === null) {
+      theme.code.css = defaultCss;
+    }
+
+    reset(theme);
+  }, [developerMode]);
 
   const { mutate: updateChat } = useUpdateChat();
 

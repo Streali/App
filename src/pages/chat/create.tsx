@@ -8,13 +8,13 @@ import CodeEditor from '~/components/code-editor/code-editor';
 import DemoContainer from '~/components/demo-container/demo-container';
 import { Switch } from '~/components/forms/switch/switch';
 import { useCreateChat } from '~/hooks/chat/use-create-chat';
-import { defaultChatTheme } from '~/utils/chat/default-chat-theme';
+import { defaultChatTheme, defaultCss, defaultHtml } from '~/utils/chat/default-chat-theme';
 import type { ChatTheme } from '~/types/schemas/chat';
 
 export default function ChatCreate() {
   const [settings, setSettings] = useState(defaultChatTheme);
   const [developerMode, setDeveloperMode] = useState(false);
-  const { watch, getValues, control, handleSubmit } = useForm({
+  const { watch, getValues, reset, control, handleSubmit } = useForm({
     defaultValues: settings as FieldValues,
   });
 
@@ -29,6 +29,22 @@ export default function ChatCreate() {
       },
     });
   });
+
+  useEffect(() => {
+    if (!developerMode) return;
+
+    const theme = getValues() as ChatTheme;
+
+    if (theme.code?.html === null) {
+      theme.code.html = defaultHtml;
+    }
+
+    if (theme.code?.css === null) {
+      theme.code.css = defaultCss;
+    }
+
+    reset(theme);
+  }, [developerMode]);
 
   useEffect(() => {
     const subscription = watch((value) => setSettings(value as ChatTheme));
