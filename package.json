@@ -57,6 +57,7 @@
     "react-router-dom": "^6.4.5",
     "react-select": "^5.7.0",
     "remixicon": "^2.5.0",
+    "simple-tmi-emotes": "^1.1.1",
     "uid": "^2.0.1",
     "zod": "^3.19.1"
   },
