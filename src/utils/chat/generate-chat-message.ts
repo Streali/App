@@ -4,7 +4,16 @@ import type { TwitchMessage } from '~/types/schemas/chat';
 
 export const randomMessages = [
   {
-    message: 'Hello',
+    message: ':):)',
+    emotes: {
+      '1': ['0-1', '2-3'],
+    },
+  },
+  {
+    message: 'Hello HeyGuys',
+    emotes: {
+      '30259': ['6-12'],
+    },
   },
   {
     message: 'Are you sure? Kappa',
@@ -12,19 +21,24 @@ export const randomMessages = [
       '25': ['14-19'],
     },
   },
-
   {
     message: 'How are you?',
   },
   {
-    message: 'What are you doing?',
+    message: 'What are you doing? NotLikeThis',
+    emotes: {
+      '58765': ['20-30'],
+    },
   },
   {
     message:
       "They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.",
   },
   {
-    message: 'It is beneficial for them to work with eachother.',
+    message: 'It is beneficial for them to work with each other LUL',
+    emotes: {
+      '425618': ['50-60'],
+    },
   },
   {
     message: 'I have been busier these days due to having a lot on my plate.',
