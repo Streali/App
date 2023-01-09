@@ -6,6 +6,7 @@ import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
 import { useEvents } from '~/hooks/event/use-events';
 import { BaseEvent } from '~/types/schemas/event';
+import { useDynamicRenderKey } from '~/hooks/core/use-dynamic-render-key';
 
 type EventCheck = {
   label: string;
@@ -70,6 +71,7 @@ export default function Events() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
   const { data: events } = useEvents();
+  const { renderKey } = useDynamicRenderKey();
   const { data: user } = useUser();
   const eventSource = useEventSource<BaseEvent>({
     onEventReceived: (event) => setAllEvents((prev) => [...prev, event]),
@@ -150,7 +152,7 @@ export default function Events() {
 
       <div className="flex-1">
         {filteredEvent.map((event) => (
-          <Event key={event.id} event={event} />
+          <Event key={`${renderKey}-${event.id}`} event={event} />
         ))}
       </div>
     </div>

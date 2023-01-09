@@ -6,6 +6,7 @@ import { useUser } from '~/hooks/auth/use-user';
 import { useEventSource } from '~/hooks/core/use-event-source';
 import { useEvents } from '~/hooks/event/use-events';
 import { BaseEvent } from '~/types/schemas/event';
+import { useDynamicRenderKey } from '~/hooks/core/use-dynamic-render-key';
 
 const listEvents = [
   {
@@ -64,6 +65,7 @@ type EventCheck = {
 export default function Dashboard() {
   const [eventChecked, setEventChecked] = useState<EventCheck[]>([]);
   const [allEvents, setAllEvents] = useState<BaseEvent[]>([]);
+  const { renderKey } = useDynamicRenderKey();
   const { data: user } = useUser();
   const { data: events } = useEvents();
   const eventSource = useEventSource<BaseEvent>({
@@ -164,7 +166,7 @@ export default function Dashboard() {
 
         <div className="custom-scrollbar max-h-[calc(100vh_-_367px)] flex-1 overflow-y-auto rounded-lg pr-2">
           {filteredEvent.map((event) => (
-            <Event key={event.id} event={event} />
+            <Event key={`${renderKey}-${event.id}`} event={event} />
           ))}
         </div>
       </div>
