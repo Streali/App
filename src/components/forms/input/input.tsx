@@ -11,6 +11,7 @@ export enum InputState {
 
 export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   label?: string;
+  value?: string;
   className?: string;
   labelClassName?: string;
   containerClassName?: string;
@@ -28,6 +29,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
 export const Input = (props: InputProps) => {
   const {
     label,
+    value = '',
     labelClassName = '',
     className = '',
     containerClassName = '',
@@ -43,7 +45,7 @@ export const Input = (props: InputProps) => {
     ...inputProps
   } = props;
 
-  const [val, setVal] = useState<string>('');
+  const [val, setVal] = useState<string>(value);
 
   const stateClassName = {
     [InputState.Normal]: '',
@@ -100,6 +102,7 @@ export const Input = (props: InputProps) => {
           stateClassName[state]
         } ${haveValueClassName} ${disabledClassName} ${className}`}
         data-testid="input"
+        value={value}
         onChange={onChangeValue}
         {...inputProps}
       />
