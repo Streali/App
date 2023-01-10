@@ -54,6 +54,8 @@
     "react-hook-form": "^7.40.0",
     "react-hot-toast": "^2.4.0",
     "react-mentions": "^4.4.7",
+    "react-resizable": "^3.0.4",
+    "react-resizable-panels": "^0.0.30",
     "react-router-dom": "^6.4.5",
     "react-select": "^5.7.0",
     "remixicon": "^2.5.0",
