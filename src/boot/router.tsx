@@ -93,7 +93,7 @@ export const embedRoutes: CustomRouteObject[] = [
   {
     path: '/events',
     element: <EventEmbed />,
-    protected: false,
+    protected: true,
   },
   {
     path: '/chats/:id/embed',
